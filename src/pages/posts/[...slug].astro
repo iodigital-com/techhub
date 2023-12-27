@@ -1,19 +1,32 @@
 ---
 import { getCollection } from "astro:content";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+import { getSeries } from "../../utils/content-collections.util";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("articles");
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  const articleEntries = await getCollection("articles");
+
+  // http://127.0.0.1:4321/posts/my-article-series/my-test
+  // "id": "my-article-series/my-test.md",
+  // "slug": "my-article-series/my-test",
+
+  return articleEntries.map((entry) => {
+    const series = getSeries(articleEntries, entry.id);
+
+    return {
+      params: { slug: entry.slug },
+      props: {
+        entry,
+        ...(series.length > 0 && { series }),
+      },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+const { entry, series } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<MarkdownPostLayout article={entry}>
+<MarkdownPostLayout article={entry} series={series}>
   <Content />
 </MarkdownPostLayout>

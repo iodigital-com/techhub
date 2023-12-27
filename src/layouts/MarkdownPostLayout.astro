@@ -2,11 +2,13 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 import type { CollectionEntry } from "astro:content";
+
 interface Props {
   article: CollectionEntry<"articles">;
+  series?: CollectionEntry<"articles">[];
 }
 
-const { article } = Astro.props;
+const { article, series } = Astro.props;
 ---
 
 <BaseLayout pageTitle={article.data.title}>
@@ -14,8 +16,21 @@ const { article } = Astro.props;
     <img src={article.data.image.url} alt={article.data.image.alt} />
     <p>Written by {article.data.author}</p>
 
-    {article.data.tags.map((tag) => <li>{tag}</li>)}
-    {article.data.author}
+    <ul>
+      {article.data.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+
+    {
+      series && (
+        <ul class="series">
+          {series.map((serie) => (
+            <li>
+              <a href={`/posts/${serie.slug}`}>{serie.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
   </div>
   <div class="tags">
     {
@@ -33,6 +48,10 @@ const { article } = Astro.props;
     .layout {
       background-color: #cecece;
       color: red;
+    }
+
+    .series {
+      background-color: #a1a1a1;
     }
 
     a {
