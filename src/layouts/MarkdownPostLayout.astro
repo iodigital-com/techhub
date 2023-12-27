@@ -1,20 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const { frontmatter } = Astro.props;
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  article: CollectionEntry<"articles">;
+}
+
+const { article } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout pageTitle={article.data.title}>
   <div class="layout">
-    <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
-    <p>Written by {frontmatter.author}</p>
+    <img src={article.data.image.url} alt={article.data.image.alt} />
+    <p>Written by {article.data.author}</p>
 
-    {frontmatter.tags.map((tag) => <li>{tag}</li>)}
-    {frontmatter.author}
+    {article.data.tags.map((tag) => <li>{tag}</li>)}
+    {article.data.author}
   </div>
   <div class="tags">
     {
-      frontmatter.tags.map((tag) => (
+      article.data.tags.map((tag) => (
         <p class="tag">
           <a href={`/tags/${tag}`}>{tag}</a>
         </p>
