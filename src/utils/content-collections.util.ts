@@ -10,7 +10,7 @@ function isSeries(id: string) {
   return id.split("/").length > 1;
 }
 
-function getSeriesId(id: string) {
+function getSeriesFolder(id: string) {
   return id.split("/")[0];
 }
 
@@ -23,9 +23,9 @@ export function getSeries(
   return collectionEntries.filter(({ id: collectionEntryId }) => {
     if (!isSeries(collectionEntryId)) return false;
 
-    const seriesId = getSeriesId(id);
-    const collectionEntrySeriesId = getSeriesId(collectionEntryId);
-    if (seriesId !== collectionEntrySeriesId) return false;
+    const seriesFolder = getSeriesFolder(id);
+    const collectionEntrySeriesFolder = getSeriesFolder(collectionEntryId);
+    if (seriesFolder !== collectionEntrySeriesFolder) return false;
 
     return true;
   });
