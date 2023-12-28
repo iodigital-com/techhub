@@ -2,7 +2,9 @@
 const { url, title, serie } = Astro.props;
 ---
 
-<a class:list={[{ serie: serie }]} href={url}> {title}</a>
+<article>
+  <a class:list={[{ serie: serie }]} href={url}> {title}</a>
+</article>
 
 <style>
   .serie {
