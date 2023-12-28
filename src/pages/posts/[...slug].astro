@@ -1,32 +1,36 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntries } from "astro:content";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
 import { getSeries } from "../../utils/content-collections.util";
 
 export async function getStaticPaths() {
-  const articleEntries = await getCollection("articles");
+  const articles = await getCollection("articles");
 
   // http://127.0.0.1:4321/posts/my-article-series/my-test
   // "id": "my-article-series/my-test.md",
   // "slug": "my-article-series/my-test",
 
-  return articleEntries.map((entry) => {
-    const series = getSeries(articleEntries, entry.id);
+  return Promise.all(
+    articles.map(async (article) => {
+      const series = getSeries(articles, article.id);
+      const authors = await getEntries(article.data.authors);
 
-    return {
-      params: { slug: entry.slug },
-      props: {
-        entry,
-        ...(series.length > 0 && { series }),
-      },
-    };
-  });
+      return {
+        params: { slug: article.slug },
+        props: {
+          article,
+          authors,
+          ...(series.length > 0 && { series }),
+        },
+      };
+    })
+  );
 }
 
-const { entry, series } = Astro.props;
-const { Content } = await entry.render();
+const { article, series, authors } = Astro.props;
+const { Content } = await article.render();
 ---
 
-<MarkdownPostLayout article={entry} series={series}>
+<MarkdownPostLayout article={article} series={series} authors={authors}>
   <Content />
 </MarkdownPostLayout>

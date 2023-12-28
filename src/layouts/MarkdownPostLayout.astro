@@ -6,18 +6,21 @@ import type { CollectionEntry } from "astro:content";
 interface Props {
   article: CollectionEntry<"articles">;
   series?: CollectionEntry<"articles">[];
+  authors: CollectionEntry<"authors">[];
 }
 
-const { article, series } = Astro.props;
+const { article, series, authors } = Astro.props;
 ---
 
 <BaseLayout pageTitle={article.data.title}>
   <div class="layout">
-    <p>Written by {article.data.authors.join(", ")}</p>
+    <ul class="layout__authors">
+      {authors.map((author) => <li>{author.data.name}</li>)}
+    </ul>
 
     {
       series && (
-        <ul class="series">
+        <ul class="layout__series">
           {series.map((serie) => (
             <li>
               <a href={`/posts/${serie.slug}`}>{serie.data.title}</a>
@@ -36,7 +39,7 @@ const { article, series } = Astro.props;
       color: red;
     }
 
-    .series {
+    .layout__series {
       background-color: #a1a1a1;
     }
 
