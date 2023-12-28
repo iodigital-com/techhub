@@ -2,7 +2,7 @@ import { type CollectionEntry } from "astro:content";
 
 export function getSeries(
   articles: CollectionEntry<"articles">[],
-  article: CollectionEntry<"articles">
+  article: CollectionEntry<"articles">,
 ) {
   if (!article.data.serie) return [];
 

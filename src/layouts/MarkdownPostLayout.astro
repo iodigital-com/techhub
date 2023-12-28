@@ -13,7 +13,7 @@ const { article, series, authors } = Astro.props;
 ---
 
 <BaseLayout pageTitle={article.data.title}>
-  <div class="layout">
+  <article>
     <ul class="layout__authors">
       {authors.map((author) => <li>{author.data.name}</li>)}
     </ul>
@@ -29,22 +29,7 @@ const { article, series, authors } = Astro.props;
         </ul>
       )
     }
-  </div>
 
-  <slot />
-
-  <style>
-    .layout {
-      background-color: #cecece;
-      color: red;
-    }
-
-    .layout__series {
-      background-color: #a1a1a1;
-    }
-
-    a {
-      color: #00539f;
-    }
-  </style>
+    <slot />
+  </article>
 </BaseLayout>

@@ -11,8 +11,6 @@ const articles = await getCollection(
 ---
 
 <BaseLayout pageTitle="Blog">
-  <p>This is the blog</p>
-  <p>This is where I will post about my journey learning Astro.</p>
   <ul>
     {
       articles.map((article) => (
