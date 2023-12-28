@@ -2,7 +2,7 @@ import { type CollectionEntry } from "astro:content";
 
 /**
  * Id gets constructed based on the folder structure.
- * src/content/articles/my-article-series/my-article.md creates an id of: my-article-siers/my-article
+ * src/content/articles/my-article-series/my-article.md creates an id of: my-article-series/my-article
  *
  * src/content/articles/my-article.md creates an id of: my-article
  */

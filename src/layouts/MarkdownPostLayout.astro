@@ -13,12 +13,7 @@ const { article, series } = Astro.props;
 
 <BaseLayout pageTitle={article.data.title}>
   <div class="layout">
-    <img src={article.data.image.url} alt={article.data.image.alt} />
-    <p>Written by {article.data.author}</p>
-
-    <ul>
-      {article.data.tags.map((tag) => <li>{tag}</li>)}
-    </ul>
+    <p>Written by {article.data.authors.join(", ")}</p>
 
     {
       series && (
@@ -30,15 +25,6 @@ const { article, series } = Astro.props;
           ))}
         </ul>
       )
-    }
-  </div>
-  <div class="tags">
-    {
-      article.data.tags.map((tag) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
     }
   </div>
 
@@ -56,20 +42,6 @@ const { article, series } = Astro.props;
 
     a {
       color: #00539f;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      margin: 0.25em;
-      border: dotted 1px #a1a1a1;
-      border-radius: 0.5em;
-      padding: 0.5em 1em;
-      font-size: 1.15em;
-      background-color: #f8fcfd;
     }
   </style>
 </BaseLayout>
