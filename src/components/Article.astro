@@ -1,0 +1,11 @@
+---
+const { url, title, serie } = Astro.props;
+---
+
+<a class:list={[{ serie: serie }]} href={url}> {title}</a>
+
+<style>
+  .serie {
+    color: red;
+  }
+</style>

@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
   return Promise.all(
     articles.map(async (article) => {
-      const series = getSeries(articles, article.id);
+      const series = getSeries(articles, article);
       const authors = await getEntries(article.data.authors);
 
       return {
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
         props: {
           article,
           authors,
-          ...(series.length > 0 && { series }),
+          series,
         },
       };
     })

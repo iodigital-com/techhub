@@ -11,6 +11,7 @@ const articlesCollection = defineCollection({
     theme: z.string().optional(),
     serie: z.string().optional(),
     canonicalUrl: z.string().optional(),
+    hideInArticleList: z.boolean().optional(),
   }),
 });
 

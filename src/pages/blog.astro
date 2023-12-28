@@ -1,10 +1,13 @@
 ---
 import { getCollection } from "astro:content";
-import BlogPost from "../components/BlogPost.astro";
+import Article from "../components/Article.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
-const allPosts = await getCollection("articles");
+const articles = await getCollection(
+  "articles",
+  ({ data }) => !data.hideInArticleList
+);
 ---
 
 <BaseLayout pageTitle="Blog">
@@ -12,9 +15,13 @@ const allPosts = await getCollection("articles");
   <p>This is where I will post about my journey learning Astro.</p>
   <ul>
     {
-      allPosts.map((post) => (
+      articles.map((article) => (
         <li>
-          <BlogPost title={post.data.title} url={`/posts/${post.slug}/`} />
+          <Article
+            title={article.data.title}
+            url={`/articles/${article.slug}/`}
+            serie={article.data.serie}
+          />
         </li>
       ))
     }

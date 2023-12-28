@@ -5,7 +5,7 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
   article: CollectionEntry<"articles">;
-  series?: CollectionEntry<"articles">[];
+  series: CollectionEntry<"articles">[];
   authors: CollectionEntry<"authors">[];
 }
 
@@ -23,7 +23,7 @@ const { article, series, authors } = Astro.props;
         <ul class="layout__series">
           {series.map((serie) => (
             <li>
-              <a href={`/posts/${serie.slug}`}>{serie.data.title}</a>
+              <a href={`/articles/${serie.slug}`}>{serie.data.title}</a>
             </li>
           ))}
         </ul>
