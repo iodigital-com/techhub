@@ -15,11 +15,7 @@ const articles = await getCollection(
     {
       articles.map((article) => (
         <li>
-          <Article
-            title={article.data.title}
-            url={`/articles/${article.slug}/`}
-            serie={article.data.serie}
-          />
+          <Article url={`/articles/${article.slug}/`} article={article} />
         </li>
       ))
     }
