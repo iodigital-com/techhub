@@ -9,7 +9,7 @@ theme: "blue"
 
 In the fast-changing world of front-end development it's hard to keep up with all the new libraries and frameworks out there that promise to be the next big thing. Frameworks tend to do a lot of heavy lifting but also tend to not agree with each other. As a developer this means that you might have to rewrite code to swap out the old framework for the new. It becomes more of an issue if you must rewrite nearly _all_ of your code if the frameworks can't live together.
 
-![Schema of the elements of a URL](/articles/why-lit-is-on-fire/standards.png)
+![Schema of the elements of a URL](./images/why-lit-is-on-fire/standards.png)
 
 Luckily things are changing (again). With architectural choices like [micro frontends](https://www.iodigital.com/en/insights/technology/micro-frontend-future-frontend-development) it is possible to break up a complex and large code base in logical smaller parts. What if those parts share a few components? Which framework should you use? It should be interoperable and future ready. This is one example where _web components_ shine as you can use those [anywhere](https://caniuse.com/custom-elementsv1) you use HTML.
 
@@ -79,7 +79,7 @@ export class HelloWorld extends LitElement {
 ```
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <body>
     <hello-world type="amazing">Light DOM fallback</hello-world>
@@ -89,7 +89,7 @@ export class HelloWorld extends LitElement {
 
 This `<hello-world>` example comes in at _235 bytes_ with _6KB_ for LIT (minified and compressed).
 
-![Schema of the elements of a URL](/articles/why-lit-is-on-fire/hello-world-bundle-size.png)
+![Schema of the elements of a URL](./images/why-lit-is-on-fire/hello-world-bundle-size.png)
 
 Start saying hello to the world by cloning the [source code](https://github.com/lucienimmink/lit-hello-world).
 

@@ -16,7 +16,7 @@ You can use CSS Cascade Layers for this. Currently, with any webpage, there are 
 
 So what if we can add another layer? And another? This can be very useful in the date picker example. If we scope that a bit bigger, we actually need a vendor layer. In this layer, right after the browser layer, we load all vendor styles. Then next, we can load our regular CSS layer. It might look a bit like this:
 
-![Image showing three stacked squares as CSS Cascade layers](/articles/you-need-css-cascade-layers/layers-example.png)
+![Image showing three stacked squares as CSS Cascade layers](./images/you-need-css-cascade-layers/layers-example.png)
 
 This way, you don’t need to combat any vendor styles and have everything needly stacked. This is what CSS Cascade Layers allow you to do.
 

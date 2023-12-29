@@ -10,7 +10,7 @@ Communicating data between client and server is something that the web is all ab
 
 ## Polling
 
-![Polling is done by requesting and responding over and over again](/articles/sse/polling.webp)
+![Polling is done by requesting and responding over and over again](./images/sse/polling.webp)
 
 One of the easiest ways to get updates is by requesting if there is new data. By calling the server at regular intervals the client will get the updates in a timely manner, but what is timely? How many times does the client need to call the server? What happens if a lot of clients are calling the server at the same time? Depending on the use case polling can be a valid technique to get updates from the server. In case the data changes in irregular intervals a polling request/response results in a lot of unnecessary HTTP calls. If the data changes multiple times per second a polling request/response might miss a lot of these changes since the client will only get the response of the request it has sent, but that also depends on the serverside implementation.
 
@@ -35,7 +35,7 @@ const poll = async () => {
 
 ## WebSockets
 
-![WebSockets](/articles/sse/websockets.webp)
+![WebSockets](./images/sse/websockets.webp)
 
 For real-time updates, polling is not a valid option due to the HTTP overhead of opening and closing the connection. For this WebSockets were created and standardized in 2011. Based on TCP but different from HTTP. WebSockets use their native protocols `ws` and `wss`. WebSockets enable interaction between client and server with lower overhead alternatives like polling. The socket connection remains open and both client and server have event-based listeners for reacting to any data sent over and forth.
 
@@ -75,7 +75,7 @@ socket.onerror = (event) => {
 
 ## Server-sent events
 
-![sse-single-client](/articles/sse/sse-single-client.webp)
+![sse-single-client](./images/sse/sse-single-client.webp)
 
 Server-sent events (SSE for short) are a low-overhead technique for sending data from a server in real-time once the client establishes the connection. They are commonly used to send updates or continuous data to one or multiple clients using the browser's `EventSource` API. The biggest differences between WebSockets and SSE are that SSE is server-to-client communication only and that SSE is based on HTTP and as such is as secure as HTTP is.
 

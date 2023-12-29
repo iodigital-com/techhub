@@ -48,7 +48,7 @@ On the one hand, this could be done with **4 lines of copy pasta** and everythin
 On the other hand, the whole function could be rewritten saving about **237 lines**, making the code a lot cleaner and easier to read.
 By adding comments (keep these brief and relevant!) you can pass on extra information to other people who need to understand the code later on.
 
-![Code Trouble](/articles/how-to-save-a-kitten-by-writing-clean-code/code-trouble.jpeg)
+![Code Trouble](./images/how-to-save-a-kitten-by-writing-clean-code/code-trouble.jpeg)
 
 Now for the other word I put an emphasis on: **possible**.
 I know you'll never be able to write perfectly future-proof code, because long-term projects will require maintenance, new features and extensions;
@@ -85,7 +85,7 @@ behind [their architecture](http://symfony.com/doc/current/quick_tour/the_archit
 On my latest Symfony project our team took advantage of DDD (Domain Driven Design) patterns.
 We split up our code in several [bounded contexts](http://martinfowler.com/bliki/BoundedContext.html) as you can see in the image below.
 
-![DDD Folders](/articles/how-to-save-a-kitten-by-writing-clean-code/folder-ddd.png)
+![DDD Folders](./images/how-to-save-a-kitten-by-writing-clean-code/folder-ddd.png)
 
 Instead of the default Services/Course, we identified **4 contexts** in our domain and **split** the **code** correspondingly:
 
@@ -253,4 +253,4 @@ By forcing yourself to stick to certain standards, you and your team will become
 Including this little kitten!
 Good job!
 
-![Smile](/articles/how-to-save-a-kitten-by-writing-clean-code/cat-smile.jpeg)
+![Smile](./images/how-to-save-a-kitten-by-writing-clean-code/cat-smile.jpeg)

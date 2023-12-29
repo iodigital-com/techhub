@@ -37,7 +37,7 @@ The generation process consists of three steps:
 2. Generating an output file that lists all generated Dockerfiles
 3. Building and publishing all the generated Dockerfiles using Jenkins
 
-![Dockerfile templating steps](/articles/dockerfile-templating-to-automate-image-creation/dockerfile-templating-steps-transparent.png)
+![Dockerfile templating steps](./images/dockerfile-templating-to-automate-image-creation/dockerfile-templating-steps-transparent.png)
 
 I'll first talk about compiling the dockerfiles and generating the output file in Node.js and then we'll make a switch to building the images with Jenkins.
 

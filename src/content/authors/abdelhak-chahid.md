@@ -1,6 +1,6 @@
 ---
 name: Abdelhak Chahid
-avatar: /authors/abdelhak-chahid.jpeg
+avatar: ./avatars/abdelhak-chahid.jpeg
 occupation: Data Scientist
 medium: https://medium.com/@Abdelhak_chahid
 linkedin: https://www.linkedin.com/in/abdelhak-chahid-2929aa1b7/

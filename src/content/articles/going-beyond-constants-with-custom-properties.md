@@ -16,7 +16,7 @@ One of the best places to start is of course… BUTTONS! When we create buttons,
 
 Using mixins combined with only SASS variables will create quite a large output for our buttons. Say - for example - we want to style these 4 buttons:
 
-![4 buttons, a primary, secondary and outline variants](/articles/going-beyond-constants-with-custom-properties/the-button-case.png)
+![4 buttons, a primary, secondary and outline variants](./images/going-beyond-constants-with-custom-properties/the-button-case.png)
 
 Each of these buttons have a hover state as well, [you can see them on this codepen](https://codepen.io/utilitybend/pen/JjmKWKb) with the SASS output as CSS
 
@@ -81,7 +81,7 @@ Besides buttons, we all love a good grid, right? So maybe we want to take a bit 
 
 You have a little grid that is connected with some dots. On a certain breakpoint you might want to increase the `gap` of your grid an the connection should just grow:
 
-![Two column grid, with columns connected with a dotted line](/articles/going-beyond-constants-with-custom-properties/grid-system.png)
+![Two column grid, with columns connected with a dotted line](./images/going-beyond-constants-with-custom-properties/grid-system.png)
 
 When we’re making our grid, we could set our `gap` with a custom property and use that same custom property to position our dotted line between the columns. The benefit? You only need to write one media query (or container query, for the cool kids) to make everything work.
 
@@ -210,7 +210,7 @@ We can set the `:root` custom property to have a space, which will just show som
 
 **Can you tell which is the oklab gradient?**
 
-![Gradient from blue to yellow](/articles/going-beyond-constants-with-custom-properties/gradient.png)
+![Gradient from blue to yellow](./images/going-beyond-constants-with-custom-properties/gradient.png)
 
 ## The holy trinity: Control custom properties with JavaScript
 
@@ -218,7 +218,7 @@ I love the web platform and when you can create something that makes HTML, CSS a
 
 ### Moving spotlight with custom properties
 
-![Spotlight over text that reads custom properties](/articles/going-beyond-constants-with-custom-properties/custom-properties.png)
+![Spotlight over text that reads custom properties](./images/going-beyond-constants-with-custom-properties/custom-properties.png)
 
 For this demo we’re going to make a little spotlight that follows your cursor, all you need is a `<div>`
 
@@ -271,7 +271,7 @@ The formula to calculate the axis is pretty easy: we just use the axis from our 
 
 Especially with the new and upcoming features such as container queries and `:has()`, using custom properties really seems to click. I’m currently working on a lot of demo’s that combine these exciting features and wanted to share one of them.
 
-![Select with below a list that contains fruit and vegetable names](/articles/going-beyond-constants-with-custom-properties/fruits-veggies.png)
+![Select with below a list that contains fruit and vegetable names](./images/going-beyond-constants-with-custom-properties/fruits-veggies.png)
 
 Let’s say we have the following select and list in our HTML:
 

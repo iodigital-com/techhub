@@ -66,7 +66,7 @@ curl wttr.in/Amsterdam
 
 This command will return a detailed weather report, including current conditions, temperature, humidity, wind speed, and more. If you need help or want to explore additional options, you can use the `:help` feature by appending it to the URL like this:
 
-![Amsterdam weather](/articles/i-dont-want-to-leave-my-terminal/weather.png "Amsterdam weather")
+![Amsterdam weather](./images/i-dont-want-to-leave-my-terminal/weather.png "Amsterdam weather")
 
 ```bash
 curl wttr.in/:help
@@ -89,7 +89,7 @@ curl rate.sx/btc
 curl rate.sx/xrp@2023-10-01
 ```
 
-![BTC daily chart](/articles/i-dont-want-to-leave-my-terminal/crypto.png "BTC daily")
+![BTC daily chart](./images/i-dont-want-to-leave-my-terminal/crypto.png "BTC daily")
 
 This command will provide historical data for the selected cryptocurrency on the specified date.
 

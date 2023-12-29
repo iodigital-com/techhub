@@ -19,7 +19,7 @@ The objective of the puzzle is to move all the disks from the leftmost peg to th
 2. A larger disk may not be placed on top of a smaller disk.
 3. All disks, except the one being moved, must be on a peg.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/towersOfHanoi.png)
+![](../images/dotnet-puzzels/towersOfHanoi/towersOfHanoi.png)
 
 Do you think you can write a piece of code to solve this puzzle?
 
@@ -27,4 +27,4 @@ Using your favorite programming language write a function that takes the number 
 
 I will be sharing my thoughts and solution with you in my next article, till then you can think of a solution that helps solve the Tower of Hanoi.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/towersOfHanoi.webp)
+![](../images/dotnet-puzzels/towersOfHanoi/towersOfHanoi.webp)

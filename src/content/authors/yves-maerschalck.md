@@ -1,6 +1,6 @@
 ---
 name: Yves Maerschalck
-avatar: /authors/yves-maerschalck.jpg
+avatar: ./avatars/yves-maerschalck.jpg
 occupation: Fullstack developer
 twitter: https://twitter.com/ymaerschalck
 linkedin: https://www.linkedin.com/in/maerschalck

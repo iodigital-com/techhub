@@ -323,7 +323,7 @@ You can help developers with this process using [Commitizen](https://github.com/
 
 This will then guide you through an interactive CLI:
 
-![Screenshot of questions the interactive CLI prompts with](/articles/how-do-i-build-a-component-library/linting-testing/commitizen.png)
+![Screenshot of questions the interactive CLI prompts with](../images/how-do-i-build-a-component-library/linting-testing/commitizen.png)
 
 ## Looking back
 

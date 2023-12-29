@@ -12,7 +12,7 @@ serie: "getting-started-with-trpc"
 
 In this two-part series, we'll be building a todo app using tRPC. In the first part, we'll start by creating a backend API using tRPC, and then in the second part, we'll create a (React Native) frontend UI that consumes the API. By the end of this series, you'll have a fully functioning todo app!
 
-![what we are creating](/articles/getting-started-with-trpc/what-we-are-creating.png)
+![what we are creating](../images/getting-started-with-trpc/what-we-are-creating.png)
 
 _Note: at the time this article was written, tRPC v10 was still in beta; therefore, some of the provided code examples might not work anymore._
 
@@ -306,7 +306,7 @@ export const todoRouter = t.router({
 
 Let's open Postman and test our API:
 
-![Testing our first mutation](/articles/getting-started-with-trpc/testing-our-first-mutation.png)
+![Testing our first mutation](../images/getting-started-with-trpc/testing-our-first-mutation.png)
 
 Since we configured a default value when creating our `todo` schema with `Zod`, the `id` and `completed` fields will automatically be filled.
 
@@ -426,19 +426,19 @@ If we can't find a todo that matches the provided id, we throw a `TRPCError`. Th
 
 Now that we have implemented all our mutations, we can finally test them. Let's start by adding two new todo's using our API.
 
-![Testing our APIs: adding todos](/articles/getting-started-with-trpc/testing-our-apis-adding-todos.png)
+![Testing our APIs: adding todos](../images/getting-started-with-trpc/testing-our-apis-adding-todos.png)
 
 Now, let's list them using our `todo.all` API
 
-![Testing our APIs: displaying todos](/articles/getting-started-with-trpc/testing-our-apis-displaying-all-todos.png)
+![Testing our APIs: displaying todos](../images/getting-started-with-trpc/testing-our-apis-displaying-all-todos.png)
 
 Now, let's update one of the todo's
 
-![Testing our APIs: updating todos](/articles/getting-started-with-trpc/testing-our-apis-updating-todos.png)
+![Testing our APIs: updating todos](../images/getting-started-with-trpc/testing-our-apis-updating-todos.png)
 
 And finally, let's delete one of them
 
-![Testing our APIs: deleting todos](/articles/getting-started-with-trpc/testing-our-apis-deleting-todos.png)
+![Testing our APIs: deleting todos](../images/getting-started-with-trpc/testing-our-apis-deleting-todos.png)
 
 Tada 🥳! Everything is working as it should!
 

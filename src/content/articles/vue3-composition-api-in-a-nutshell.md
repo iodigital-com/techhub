@@ -16,7 +16,7 @@ With the arrival of Vue 3 we can declare components with the `options API` (old 
 
 With the composition API the Vue components are more structured and readable, this can be very helpful especially when components grow. The following image displays more structured components.
 
-![vue3-options-api-composition-api](/articles/vue3-composition-api-in-a-nutshell/options-api-composition-api.png)
+![vue3-options-api-composition-api](./images/vue3-composition-api-in-a-nutshell/options-api-composition-api.png)
 
 According to the official Vue documentation, the most important benefits are:
 

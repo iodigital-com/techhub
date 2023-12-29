@@ -95,7 +95,7 @@ It's a simple enough guideline, but it's also an easy one to sin against, not in
 indications of a component's factual boundaries. One thing that helped me tremendously was to include crop marks (the red crosses in the image below). They
 are relatively unobtrusive, yet a quick glance will reveal if unwanted spacing exists.
 
-![Example of crop marks](/articles/consistent-css-spacing-is-hard/cropmark.jpg)
+![Example of crop marks](./images/consistent-css-spacing-is-hard/cropmark.jpg)
 
 ## Conclusion
 

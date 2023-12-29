@@ -1,6 +1,6 @@
 ---
 name: Abbe Keultjes
-avatar: /authors/abbe-keultjes.jpeg
+avatar: ./avatars/abbe-keultjes.jpeg
 occupation: Developer Advocate & Frontend Developer
 twitter: https://twitter.com/flauwekeul
 linkedin: https://www.linkedin.com/in/abbekeultjes/

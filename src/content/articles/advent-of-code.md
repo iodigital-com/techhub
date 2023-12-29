@@ -130,7 +130,7 @@ I found most of the puzzles quite interesting and challenging, but I will mentio
 Type of the problem: Integer Overflow<br />
 Solution: Find a common denominator.
 
-![Monkey in the middle game image.](/articles/advent-of-code/monkey-in-the-middle.jpg)
+![Monkey in the middle game image.](./images/advent-of-code/monkey-in-the-middle.jpg)
 
 Many of us know the game from childhood when kids are standing around and passing the ball to each other. You are standing in the centre of the circle and trying to catch the ball. They call it 'Monkey In The Middle'. Except that in this puzzle you are now the one who stays in the middle and monkeys are around you throwing items which they stole from your backpack. Where a monkey throws an item depends on whether the monkey can divide your stress level, integer argument, by a certain number. After many rounds, you need to figure out which monkey to chase (the most active monkey, which has most of the items).
 
@@ -187,7 +187,7 @@ Complete solution in GitHub: [Day 11](https://github.com/dmitri-sirobokov/advent
 
 Algorithm: Dijkstra (or Bfs).
 
-![Hill Climbing Algorithm image.](/articles/advent-of-code/hill-climbing-algorithm.jpg)
+![Hill Climbing Algorithm image.](./images/advent-of-code/hill-climbing-algorithm.jpg)
 
 In this puzzle, we have to find the shortest path to the top of the mountain. When I hear the "shortest path" I almost immediately think about [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm). The algorithm is developed by Dutch computer scientists in 1956 and became the most popular algorithm in navigation systems which everyone is using nowadays. I would recommend everyone to learn how it works and this puzzle is an excellent occasion to practice your implementation. It is fun.
 
@@ -254,11 +254,11 @@ Each geode robot costs 3 ore and 12 obsidian.
 
 If I draw a flow diagram, it will look like this:
 
-![Graph flow diagram](/articles/advent-of-code/geo-graph-flow-diagram.jpg)
+![Graph flow diagram](./images/advent-of-code/geo-graph-flow-diagram.jpg)
 
 This is an NP-type problem. Every minute we have 5 choices (to create one of the 4 robots or skip one minute). If we construct a graph from those choices, after 2 minutes we will have 25 nodes, after 3 minutes 125 nodes, and so on. After 30 minutes that will be about 10^20 nodes! If we would need to simulate 100 minutes we would have more nodes than all atoms in the Universe. That is how NP-complexity grows exponentially:
 
-![Graph flow diagram](/articles/advent-of-code/geo-graph-tree.jpg)
+![Graph flow diagram](./images/advent-of-code/geo-graph-tree.jpg)
 
 The goal here is to search through all leaf-nodes in the graph for maximum value using [Dfs](https://en.wikipedia.org/wiki/Depth-first_search), but we need to find a way how to reduce the number of nodes so our programs can finish within a feasible amount of time. These are optimizations which I applied to reduce the number of nodes, based on some observations:
 

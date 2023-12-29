@@ -18,13 +18,13 @@ Using a module system in JavaScript, or in any programming language, is crucial 
 
 Modules allow developers to split their code into smaller, more manageable pieces, each responsible for a specific feature or functionality. This makes the codebase more **organized, readable, and maintainable**.
 
-![The image shows an example of organizing code](/articles/javascript-module-systems/code-organization.webp)
+![The image shows an example of organizing code](./images/javascript-module-systems/code-organization.webp)
 
 ### 2. Scope Management and Collision Avoidance
 
 Each module has its own scope, meaning variables and functions defined in a module are not globally accessible unless explicitly exported. This helps in avoiding variable conflicts and polluting the global namespace.
 
-![The image shows an example of organizing code](/articles/javascript-module-systems/scope-management.png)
+![The image shows an example of organizing code](./images/javascript-module-systems/scope-management.png)
 
 ### 3. Dependency Management
 
@@ -32,7 +32,7 @@ Dependency management is clearer with modules, as dependencies are explicitly im
 
 Suppose you have three JavaScript files: `utility.js`, `dataProcessor.js`, and `app.js`. The `dataProcessor.js` file depends on a function from `utility.js`, and `app.js` depends on a function from `dataProcessor.js`.
 
-![The image shows an example of dependency management](/articles/javascript-module-systems/code-organization-Dependency.png)
+![The image shows an example of dependency management](./images/javascript-module-systems/code-organization-Dependency.png)
 
 ## Available module systems in JavaScript
 

@@ -17,7 +17,7 @@ As developers, it’s important to share what we do on GitHub. I'm a consultant 
 
 GitHub offers a few tools for you to add content to your profile. Make sure to always offer these basics. Ensure to have a representable profile picture and fill in the basic details like your name. It sounds obvious, but developers often have a nickname as their GitHub username. GitHub allows you to specify your actual name alongside. Next, you can specify your role which is a good way to tell people what you actually do. Make sure to link to your other, often more active, platforms like Twitter, LinkedIn and your personal (blogging) website. Finally, if your organization is on GitHub, make sure to join them. Great, your basic profile will now look something like this:
 
-![Screenshot of basic information on my GitHub account](/articles/how-to-make-your-github-profile-stand-out/github-profile-basics.png)
+![Screenshot of basic information on my GitHub account](./images/how-to-make-your-github-profile-stand-out/github-profile-basics.png)
 
 ## Have actual (demo) projects on your GitHub profile
 
@@ -27,7 +27,7 @@ Now I hear you thinking, Dave, I don’t have months to build a full-fledged app
 
 A real-time scrum poker app I build to try out Remix and Supabase.
 
-![Screenshot of grid where a user can select an effort they think a task should be](/articles/how-to-make-your-github-profile-stand-out/remix-scrum-poker.png)
+![Screenshot of grid where a user can select an effort they think a task should be](./images/how-to-make-your-github-profile-stand-out/remix-scrum-poker.png)
 
 - Talk: [https://www.youtube.com/watch?v=cPnUKJ4zfTo](https://www.youtube.com/watch?v=cPnUKJ4zfTo)
 - GitHub: https://github.com/DaveBitter/remix-scrum-poker
@@ -35,7 +35,7 @@ A real-time scrum poker app I build to try out Remix and Supabase.
 
 A fictitious futuristic sneaker webshop to try out the View Transitions API
 
-![Screenshot of the overview page with a product grid for a futuristic sneaker store](/articles/how-to-make-your-github-profile-stand-out/view-transitions-api.png)
+![Screenshot of the overview page with a product grid for a futuristic sneaker store](./images/how-to-make-your-github-profile-stand-out/view-transitions-api.png)
 
 - Article: [https://techhub.iodigital.com/articles/the-view-transitions-api](https://techhub.iodigital.com/articles/the-view-transitions-api)
 - GitHub: https://github.com/DaveBitter/view-transitions-api-demo
@@ -43,7 +43,7 @@ A fictitious futuristic sneaker webshop to try out the View Transitions API
 
 A showcase of the Face Detection API for smart face cropping:
 
-![A photo of a man with a red rectangle drawn on his face](/articles/how-to-make-your-github-profile-stand-out/face-detection-api.png)
+![A photo of a man with a red rectangle drawn on his face](./images/how-to-make-your-github-profile-stand-out/face-detection-api.png)
 
 - Article: [https://techhub.iodigital.com/articles/native-face-detection-cropping](https://techhub.iodigital.com/articles/native-face-detection-cropping)
 - GitHub: https://github.com/DaveBitter/face-cropper-demo
@@ -51,7 +51,7 @@ A showcase of the Face Detection API for smart face cropping:
 
 Sometimes I need some inspiration, however. When I set out to actually create a small (demo) project I often look at the [Frontend Mentor challenges](https://www.frontendmentor.io/challenges). It has a great set of already designer projects that you can build. An example of one I build is the Pomodoro:
 
-![A screenshot of a purple pomodoro timer](/articles/how-to-make-your-github-profile-stand-out/pomodoro.png)
+![A screenshot of a purple pomodoro timer](./images/how-to-make-your-github-profile-stand-out/pomodoro.png)
 
 - GitHub: https://github.com/DaveBitter/pomodoro
 - Demo: [https://pomodoro.davebitter.com/](https://pomodoro.davebitter.com/)
@@ -70,7 +70,7 @@ Template repositories are great to eliminate losing time when starting up. They 
 
 When visiting the projects above on GitHub you might notice some similarities in the Readme of each project. Often, I see people just having the code in the repository with a (nearly) empty Readme. This is where I believe you can make a difference in having (your projects on) your GitHub profile stand out. Take a look at [the Readme for the Pomodoro project](https://github.com/DaveBitter/pomodoro#readme) I build:
 
-![A screenshot of the Readme of the Pomodoro project on GitHub](/articles/how-to-make-your-github-profile-stand-out/pomodoro-readme.png)
+![A screenshot of the Readme of the Pomodoro project on GitHub](./images/how-to-make-your-github-profile-stand-out/pomodoro-readme.png)
 
 In this Readme I:
 
@@ -88,11 +88,11 @@ This only took me a few minutes to do but drastically changes the information so
 
 As so many developers don’t have a well-filled GitHub profile filled with awesome projects, you will most likely already stand out with these covered. Next, GitHub offers to pin up to six repositories on your profile page. Make a selection of the project you want to showcase:
 
-![A screenshot of my GitHub profile with six repository cards pinned](/articles/how-to-make-your-github-profile-stand-out/github-profile-pinned-repositories.png)
+![A screenshot of my GitHub profile with six repository cards pinned](./images/how-to-make-your-github-profile-stand-out/github-profile-pinned-repositories.png)
 
 That is already starting to look better! There is one step we can take however to take it to the next level. We can add a GitHub Profile Readme:
 
-![A screenshot of my GitHub Profile Readme where I introduce myself](/articles/how-to-make-your-github-profile-stand-out/github-profile-readme.png)
+![A screenshot of my GitHub Profile Readme where I introduce myself](./images/how-to-make-your-github-profile-stand-out/github-profile-readme.png)
 
 In essence, a GitHub Profile Readme is a markdown file that will be shown above your pinned repositories. The easiest way to do this is to create a new repository with the same name as your GitHub username. In my case, that will be [https://github.com/DaveBitter/DaveBitter](https://github.com/DaveBitter/DaveBitter). There, you add a Readme file at the root of the project with any content you want. For more information, you can read my article on the [GitHub Profile Readme](https://www.davebitter.com/quick-bits/github-profile-readme) or watch my [YouTube video](https://www.youtube.com/watch?v=ewtT4NJX6NA) explaining it. In the YouTube video, I go over some amazingly creative examples listed on [this page](https://github.com/abhisheknaiidu/awesome-github-profile-readme) as well so be sure to check it out!
 

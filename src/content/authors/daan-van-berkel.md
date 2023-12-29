@@ -1,5 +1,5 @@
 ---
 name: Daan van Berkel
-avatar: /authors/daan-van-berkel.jpg
+avatar: ./avatars/daan-van-berkel.jpg
 occupation: Software Developer
 ---

@@ -1,6 +1,6 @@
 ---
 name: Ali Göktaş
-avatar: /authors/ali-goktas.jpg
+avatar: ./avatars/ali-goktas.jpg
 occupation: Software Developer
 twitter: https://twitter.com/alisgoktas
 linkedin: https://www.linkedin.com/in/aligoktas96

@@ -1,6 +1,6 @@
 ---
 name: Jafar Rezaei
-avatar: /authors/jafar-rezaei.jpeg
+avatar: ./avatars/jafar-rezaei.jpeg
 occupation: Senior Frontend Developer
 twitter: https://twitter.com/sayjeyhi
 linkedin: https://www.linkedin.com/in/jafar-rezaei/
