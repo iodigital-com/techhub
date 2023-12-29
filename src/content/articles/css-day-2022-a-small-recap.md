@@ -12,11 +12,11 @@ canonicalUrl: "https://utilitybend.com/blog/css-day-2022-a-small-recap"
 
 Every time I go to a hotel, I seem to struggle the first night with getting some sleep. Waking up way too early to head off to the conference, I decided to go for a morning run, the sun was just starting to peep through the trees, letting me know that today will be a good day.
 
-![Morning run at css day](/articles/css-day-2022-a-small-recap/morning-run.jpg)
+![Morning run at css day](./images/css-day-2022-a-small-recap/morning-run.jpg)
 
 ## About the venue of CSS Day
 
-![Zuiderkerk: venue of css day](/articles/css-day-2022-a-small-recap/venue.jpg)
+![Zuiderkerk: venue of css day](./images/css-day-2022-a-small-recap/venue.jpg)
 
 Now being hosted in the Zuiderkerk, a fantastic location. When I arrived, to my surprise, I was welcomed by the clocks of the church. But strangely enough, when you are inside of the church you can barely hear them. I’m not the church-going type of person, let alone, two days in a row. But I do know a bit about acoustics and they really did a lot of effort when it comes to sound, except for the beautiful architecture, you could barely notice that you were sitting in church. After a hard deserved croissant after my morning run, It was time to take places and start the conference.
 
@@ -44,7 +44,7 @@ The first in-depth tech talk of the day. There was clearly a lot to say about us
 
 It’s nice to see a Belgian up on that stage, as a former lecturer at Odisee you can clearly see the teaching skills of Bramus. With an audience still recovering from a lunch break he was able to keep the attention while going in depth about the cascade. He already [wrote a blogpost about this](https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/) which I read some time ago. But hearing him speak about it in combination with beautiful crafted slides made my enthusiasm grow just that little bit more. Excellent talk about this feature that is rolling out in all major browsers right now. The love for cascade layers is real and from a personal standpoint, I'm really happy about the syntax of this feature, it’s simpel, elegant, and easy to understand, especially after you understand the cascade just that little bit better. Thanks Bramus, keep talking with those hands!
 
-![Bramus](/articles/css-day-2022-a-small-recap/bramus.jpg)
+![Bramus](./images/css-day-2022-a-small-recap/bramus.jpg)
 
 [Watch on YouTube: Bramus Van Damme: The CSS Cascade, a deep dive](https://www.youtube.com/watch?v=zEPXyqj7pEA)
 
@@ -54,7 +54,7 @@ Ana Ferreira is Head of design at Doist, and has been working remotely for the c
 
 > “Let’s not use being overworked as a badge of honor. Set boundaries and prioritize your well-being” Anna Ferreira
 
-![Ana ferreira](/articles/css-day-2022-a-small-recap/ana-ferreira.jpg)
+![Ana ferreira](./images/css-day-2022-a-small-recap/ana-ferreira.jpg)
 
 ### Chris Lilley: Escaping the sRGB Prison
 
@@ -70,7 +70,7 @@ I don’t have a lot of experience when it comes to Figma, so I didn’t know wh
 
 A little snap of the fingers and away we go for day 2. I was really looking forward to this because I had been working on accessible scroll tabs a while back. Adam made a beautiful presentation made with scroll snaps, as it should be ;). Really showing the full potential of scroll snapping beyond your basic slider. Using the scroll snap alignment to place the last item of a chat window at the bottom, so on page load it will always be visible. Using sticky positioning to create an overflow effect, and a lot more. He ended with a few things that they are working on in the [scroll snap module 2](https://drafts.csswg.org/css-scroll-snap-2/) which among other things includes a :snapped pseudo element to target the current snapped item. Lovely stuff. Ow yeah, and I might need to revisit my demo just a little bit. Oh, and an interesting sidenote, together with Tab Atkins he’s also working on the [CSS nesting module](https://www.w3.org/TR/css-nesting-1/).
 
-![Adam argyle](/articles/css-day-2022-a-small-recap/Adam-argyle.jpg)
+![Adam argyle](./images/css-day-2022-a-small-recap/Adam-argyle.jpg)
 
 ### Michelle Barker: Creative CSS Layout
 
@@ -80,7 +80,7 @@ Michelle started off with one of the questions that all of the css developers as
 
 Animations, animations, ANIMATIONS! We are getting spoiled at CSS Day this year with a variety of topics. Amit Sheen creates some of the greatest CSS animations out there. He does note that some of his animations aren’t to be used in a live environment due to the performance issues they could bring. But giving an insight on how he starts working on them was a great thing to see. It sounds simple but he starts with pen and paper, writing multiple graphs to align animations to each other, by writing curves on the graph to indicate the easing of them. Using a negative delay on animations so that you don’t get the “hard start” when an animation begins. Another really clever thing is to use @property to animate multiple transforms at the same time. A lot to take home from and some best practises that i’m sure to use in the future.
 
-![Amit sheen](/articles/css-day-2022-a-small-recap/amit-sheen.jpg)
+![Amit sheen](./images/css-day-2022-a-small-recap/amit-sheen.jpg)
 
 ### Ben Evans: The Joy of CSS
 
@@ -96,7 +96,7 @@ When designing for services, what are the things you need to think about. In the
 
 She also talked about the [earthquakes in Groningen](https://dwarshuis.com/aardbevingen-groningen/visualisatie/view/?lang=en) where people could get a subsidy for repairs or strengthening their houses. This resulted in enormous waiting lines, not only in real life, but also on the web. A badly created website, where by changing the URL you could get another spot on the waiting list and another person would be kicked out instead; When you hopefully/eventually got in after hours of waiting you were treated to a very bad crafted form that could even make a tech person scared for filling it in.
 
-![Maike klip](/articles/css-day-2022-a-small-recap/Maike-klip.jpg)
+![Maike klip](./images/css-day-2022-a-small-recap/Maike-klip.jpg)
 
 ### Tab Atkins-Bittner: The Future of Organizing Your CSS
 
@@ -156,14 +156,14 @@ He also talked about the CSS nesting module and they need your help. I wasn't go
 
 Do design systems alway lead to a good design? From that starting point Stephen Hay was going to start with telling some of the things that we lie about, mostly to ourselves. Design decisions are part of a system and often do not resemble the reality of the full design. It’s a system in a system. What this talk was really about is communication really. We need to talk with designers, show them what is possible in CSS. We don’t do that enough and there are a lot of cool things we can do nowadays which could impact design decisions.
 
-![Stephen Hay](/articles/css-day-2022-a-small-recap/Stephen-Hay.jpg)
+![Stephen Hay](./images/css-day-2022-a-small-recap/Stephen-Hay.jpg)
 
 ## Meeting up with iO colleagues
 
 A fantastic added bonus is that I had the chance to meet up with some other iO colleagues from campus Eindhoven and get a burger with them in the evening.
 iO really was represented at CSS Day. (Excuse my terrible selfie skills)
 
-![Burgers with iO colleagues](/articles/css-day-2022-a-small-recap/io-colleagues.jpg)
+![Burgers with iO colleagues](./images/css-day-2022-a-small-recap/io-colleagues.jpg)
 
 ## Conclusion
 
@@ -179,4 +179,4 @@ This was an amazing CSS Day edition, there was so much variety, I had some reall
 
 And guess what, they’ll be back next year! On the 8th and 9th of june.
 
-![The end of css day](/articles/css-day-2022-a-small-recap/the-end-of-css-day.jpg)
+![The end of css day](./images/css-day-2022-a-small-recap/the-end-of-css-day.jpg)

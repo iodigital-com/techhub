@@ -1,5 +1,5 @@
 ---
 name: Thijs Busser
-avatar: /authors/thijs-busser.png
+avatar: ./avatars/thijs-busser.png
 occupation: Frontend developer
 ---

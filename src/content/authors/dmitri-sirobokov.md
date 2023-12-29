@@ -1,6 +1,6 @@
 ---
 name: Dmitri Sirobokov
-avatar: /authors/dmitri-sirobokov.jpg
+avatar: ./avatars/dmitri-sirobokov.jpg
 occupation: Software Developer (Full stack)
 linkedin: https://www.linkedin.com/in/dmitri-sirobokov/
 github: https://github.com/dmitri-sirobokov

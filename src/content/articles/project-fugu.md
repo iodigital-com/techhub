@@ -21,11 +21,11 @@ But what about the web platform itself? Progressive Web Apps (PWAs) bring offlin
 
 Project Fugu 🐡 is an effort to close gaps in the web's capabilities enabling new classes of applications to run on the web. APIs that Project Fugu is delivering enable new experiences on the web while preserving the web's core benefits of security, low friction, and cross-platform delivery. All Project Fugu API proposals are made in the open and on the standards track.
 
-![Schema of the elements of a URL](/articles/project-fugu/api-call-abstraction.webp)
+![Schema of the elements of a URL](./images/project-fugu/api-call-abstraction.webp)
 
 Fugu is organized as a Chromium project, open to all Chromium contributors and organizations. Today, that includes Microsoft, Intel, Samsung, Electron and Google (among others). Fugu Leads triage incoming requests from partners, determine demand, prioritize them, find champions, track development, and help organize the release and documentation for the capability.
 
-![Schema of the elements of a URL](/articles/project-fugu/adding-apis.webp)
+![Schema of the elements of a URL](./images/project-fugu/adding-apis.webp)
 
 Let's take a look at some of the features that have already been released:
 

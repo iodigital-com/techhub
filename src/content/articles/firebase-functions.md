@@ -16,7 +16,7 @@ Let's look at the Firebase Functions definition provided by Google:
 
 We no longer need to create, distribute, and maintain backend APIs thanks to Firebase Functions. For instance, when a new user signs up with Firebase Authentication and we want to store a record in our database, we also don't want to allow write access to our database from the front end, so we write and deploy a cloud function to handle that task instead. More use cases can be found [here](https://firebase.google.com/docs/functions/use-cases) if you're interested.
 
-![The image shows a simple flow of using firebase functions.](/articles/firebase-functions/overview.png)
+![The image shows a simple flow of using firebase functions.](./images/firebase-functions/overview.png)
 
 ## Setup your project
 
@@ -66,7 +66,7 @@ admin.initializeApp();
 
 There are two methods for calling Firebase Functions. The functions can be called directly by the **HTTP Triggers** method or as part of an event called **Background Triggers**.
 
-![The image shows methods for calling firebase functions](/articles/firebase-functions/triggers.png)
+![The image shows methods for calling firebase functions](./images/firebase-functions/triggers.png)
 
 We can trigger some functions when a user signs up, or trigger a function by adding, updating, or deleting a record from the database. It can be run when the database event occurs.
 
@@ -96,11 +96,11 @@ Firebase deploy --only functions
 
 Then, in Firebase's functions section, you can see the function.
 
-![The image displays Firebase Functions' section on Firebase console](/articles/firebase-functions/firebase-functions-section.png)
+![The image displays Firebase Functions' section on Firebase console](./images/firebase-functions/firebase-functions-section.png)
 
 After you deploy an HTTP function, you can invoke it using its own unique URL. The URL can be found by going to the functions section.
 
-![The image shows where you can find function's URL](/articles/firebase-functions/function-url.png)
+![The image shows where you can find function's URL](./images/firebase-functions/function-url.png)
 
 The URL includes the following, in order:
 

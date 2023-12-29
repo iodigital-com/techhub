@@ -1,6 +1,6 @@
 ---
 name: Mohamad Shiralizadeh
-avatar: /authors/mohamad-shiralizadeh.jpeg
+avatar: ./avatars/mohamad-shiralizadeh.jpeg
 occupation: Senior Frontend Developer
 twitter: https://twitter.com/shiralizadeh
 linkedin: https://www.linkedin.com/in/shiralizadeh/

@@ -1,6 +1,6 @@
 ---
 name: Mehmet Akif Tütüncü
-avatar: /authors/mehmet-akif-tutuncu.jpg
+avatar: ./avatars/mehmet-akif-tutuncu.jpg
 occupation: Senior Software Engineer
 email: akif.tutuncu@iodigital.com
 website: https://akif.dev

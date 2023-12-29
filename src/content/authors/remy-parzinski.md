@@ -1,6 +1,6 @@
 ---
 name: Remy Parzinski
-avatar: /authors/remy-parzinski.jpg
+avatar: ./avatars/remy-parzinski.jpg
 occupation: Front-end Developer
 linkedin: https://www.linkedin.com/in/remy-parzinski-5ab60811b/
 github: https://github.com/remypar5

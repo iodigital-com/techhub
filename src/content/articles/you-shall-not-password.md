@@ -29,11 +29,11 @@ WebAuthn provides an API for the browser to communicate with two types of authen
 
 **Platform authenticators** leverage the capabilities of the device itself and provide a way for the user to safely prove their identity. This mostly comes down to biometrics like fingerprint or face recognition.
 
-![Platform authenticators](/articles/you-shall-not-password/platform-authenticators.svg)
+![Platform authenticators](./images/you-shall-not-password/platform-authenticators.svg)
 
 **Roaming authenticators** consists of physical hardware that is in the possession of the user. These can communicate with the device via Bluetooth, NFC, or USB.
 
-![Roaming authenticators](/articles/you-shall-not-password/roaming-authenticators.svg)
+![Roaming authenticators](./images/you-shall-not-password/roaming-authenticators.svg)
 
 Having multiple options allows for flexibility for the user but also allows for broader support of different kinds of devices. For instance, not all devices support biometrics but might have Bluetooth or a USB port to use a physical security key. A list of platform and browser combinations with both platform and roaming authenticators can be found on the following [website](https://webauthn.me/browser-support).
 
@@ -43,11 +43,11 @@ With the help of Google, Mozilla, Microsoft and Apple, the specification has bec
 
 For a user to start using their authenticator for authentication, registration must first take place. The server sends a challenge that the client must send back in a signed format, to mitigate replay attacks. Once the challenge is received, the user is prompted to choose an authenticator. This prompt is triggered by calling the designated method in the WebAuthn API. This API directly communicates with the browser to determine the available authenticators. Once an authenticator is chosen and the necessary steps have been taken by the user, like a biometric check, a keypair is created. The private key is stored on the user’s device and is used to sign the challenge. The public key and signed challenge are sent to the server. The server validates the request and is responsible for storing the public key with the user’s account.
 
-![Registration](/articles/you-shall-not-password/registration.svg)
+![Registration](./images/you-shall-not-password/registration.svg)
 
 Once the user has registered and starts the authentication process to log in, the server once again starts with the challenge. The WebAuthn API is invoked again by the browser, the user performs the biometric check once again and the challenge is signed with the private key on the device. The challenge is sent to the server and is validated with the stored public key of the user.
 
-![Authentication](/articles/you-shall-not-password/authentication.svg)
+![Authentication](./images/you-shall-not-password/authentication.svg)
 
 ## Benefits and challenges
 

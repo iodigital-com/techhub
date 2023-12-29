@@ -26,7 +26,7 @@ Let’s illustrate the algorithm for three disks and consider peg A as the sourc
 
 **Step 1)** Initially, all the disks will be stacked on peg A.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/1.png)
+![](../images/dotnet-puzzels/towersOfHanoi/1.png)
 
 At this stage:
 
@@ -44,7 +44,7 @@ Notice that we are at stage one again for the same tower of Hanoi problem for tw
 
 Now we need to move n-1 or one disk from source to helper, moving the smallest disk from peg A to peg C.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/2.png)
+![](../images/dotnet-puzzels/towersOfHanoi/2.png)
 
 At this stage:
 
@@ -54,7 +54,7 @@ Helper = peg C
 
 **Step 3)** Then, according to our algorithm, the nth or 2nd disk needs should be transferred into the destination or peg B.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/3.png)
+![](../images/dotnet-puzzels/towersOfHanoi/3.png)
 
 At this stage:
 
@@ -64,7 +64,7 @@ Helper = peg C
 
 **Step 4)** Now, we will move the n-1 disks or disk one from helper or peg C to the destination or peg B according to the third stage of our algorithm.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/4.png)
+![](../images/dotnet-puzzels/towersOfHanoi/4.png)
 
 At this stage:
 
@@ -84,13 +84,13 @@ Helper = peg B
 
 **Step 7)** Now we can see that
 
-![](/articles/dotnet-puzzels/towersOfHanoi/5.png)
+![](../images/dotnet-puzzels/towersOfHanoi/5.png)
 
 d is to move the remaining disks from helper (peg B) to destination (peg C). We will use the initial source or peg A as a helper in this case.
 
 Step 8) As we can’t move two disks simultaneously, we will call a recursive call for disk 1. According to the last step and our algorithm, a destination in this step is peg A.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/6.png)
+![](../images/dotnet-puzzels/towersOfHanoi/6.png)
 
 At this stage:
 
@@ -100,7 +100,7 @@ Helper = peg C
 
 **Step 9)** Our recursive call is completed now. Then we move disk 2 from its source to its destination.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/7.png)
+![](../images/dotnet-puzzels/towersOfHanoi/7.png)
 
 At this stage:
 
@@ -110,7 +110,7 @@ Helper = peg A
 
 **Step 10)** Then we move our remaining n-1 or disk 1 from helper to destination.
 
-![](/articles/dotnet-puzzels/towersOfHanoi/8.png)
+![](../images/dotnet-puzzels/towersOfHanoi/8.png)
 
 **We will apply this approach as below to solve the puzzle:**
 

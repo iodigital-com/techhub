@@ -10,7 +10,7 @@ In the previous parts of this series, we introduced you to the OpenAPI specifica
 
 <br/>
 
-![OpenAPI tooling](/articles/frontend-loves-openapi/frontend-loves-openapi-tools-all.svg)
+![OpenAPI tooling](../images/frontend-loves-openapi/frontend-loves-openapi-tools-all.svg)
 
 ## Documentation
 
@@ -32,7 +32,7 @@ Paths, endpoints, parameters, request bodies, etc., are transformed into methods
 
 ### Cross-programming language end-to-end type safety
 
-![OpenAPI tooling](/articles/frontend-loves-openapi/frontend-loves-openapi-tools-sdk-langs.svg)
+![OpenAPI tooling](../images/frontend-loves-openapi/frontend-loves-openapi-tools-sdk-langs.svg)
 
 Because an OpenAPI document also describes the types and formats of our dataflow, we have the opportunity to translate this to types and interfaces for typed programming languages. The OpenAPI specification is, therefore, a way to create **full cross-programming language end-to-end type safety** between API providers and consumers, just like GraphQL and tRPC give us.
 
@@ -68,7 +68,7 @@ Analogue to how we would lint our JavaScript code with ESLint, we can analyse ou
 
 As with every software project, automation can benefit our workflow.
 
-![OpenAPI tooling](/articles/frontend-loves-openapi/frontend-loves-openapi-tools-automation.svg)
+![OpenAPI tooling](../images/frontend-loves-openapi/frontend-loves-openapi-tools-automation.svg)
 
 We already mentioned putting an OpenAPI document in a Git repository to enable **versioning** of our API description. By utilising [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) and adding our OpenAPI document repository to our provider's and consumer's repositories as a submodule, we can have a form of language-agnostic dependency management via Git. Each commit of the provider or consumer repository is tied precisely to a specific commit of the OpenAPI repository. Pull or Merge Requests are linted by CI/CD to check for code quality before merging it into our Single Source of Truth.
 

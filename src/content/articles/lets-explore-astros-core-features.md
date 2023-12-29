@@ -23,7 +23,7 @@ Astro islands are UI components that are initially rendered server-side, and as 
 
 The architecture behind Astro Islands is called the Islands Architecture, whereby interactive UI components are hydrated with the [partial/progressive hydration technique](https://www.patterns.dev/posts/progressive-hydration/).ß
 
-![example of an Astro islands](/articles/lets-explore-astros-core-features/AstroIslands.png)
+![example of an Astro islands](./images/lets-explore-astros-core-features/AstroIslands.png)
 
 A prime example of the so-called "Astro islands" can be found in the image above; the Header, Sidebar, and Image Carousel are all "Astro islands" (interactive UI components) and are thus generated and hydrated individually.
 

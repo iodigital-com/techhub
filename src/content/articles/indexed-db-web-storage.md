@@ -60,7 +60,7 @@ More simply put, the storage API is a key-value store while IndexedDB is an actu
 
 Like every technique I like to learn, I first try to create an actual demo so I run into real-world requirements and issues while building. This time, I went for a good old todo app that persists data in the user’s browser:
 
-![Screenshot of a todo app with a form and a list of tasks](/articles/indexed-db-web-storage/todo-app.png)
+![Screenshot of a todo app with a form and a list of tasks](./images/indexed-db-web-storage/todo-app.png)
 
 You can [view the demo here](https://indexed-db-demo.davebitter.com/) and [view the source code over at GitHub](https://github.com/DaveBitter/indexed-db-demo).
 

@@ -718,4 +718,4 @@ To recap this first part of the article, we started with a traditional MVC-style
 
 You can find the source code of this application at [github.com/iodigital-com/reactive-kotlin-weather-api](https://github.com/iodigital-com/reactive-kotlin-weather-api).
 
-In [the second part](/articles/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/reactive-java-to-kotlin-coroutines), we will take things further by converting the application to Kotlin and adding coroutines support.
+In [the second part](../images/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/reactive-java-to-kotlin-coroutines), we will take things further by converting the application to Kotlin and adding coroutines support.

@@ -1,6 +1,6 @@
 ---
 name: iO Technology
-avatar: /authors/io.jpg
+avatar: ./avatars/io.jpg
 email: info@iodigital.com
 twitter: https://twitter.com/iodigital_com
 linkedin: https://www.linkedin.com/company/iodigital-com/

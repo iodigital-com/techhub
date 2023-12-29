@@ -45,7 +45,7 @@ Suppose we learned from an early experiment that CTR was 0.25, or we expect to a
 
 To calculate the number of visitors that are needed to detect such a difference we can use the Power calculation built-in function in Python.
 
-![Sample size calculation](/articles/peaking-at-ab-testing/sample-size-calculation.png)
+![Sample size calculation](./images/peaking-at-ab-testing/sample-size-calculation.png)
 
 According to the input we provide, we will need at least N=1571 observations in each stream (rounded up).
 
@@ -53,7 +53,7 @@ Let us generate two streams of Bernoulli data: two streams of ones and zeros des
 
 Once we get at least 1571 observations in each stream (figure 2), we can run a statistical test, and determine the p-value to evaluate if there is evidence for version A or B version.
 
-![Sample size calculation](/articles/peaking-at-ab-testing/sample-size-graph.png)
+![Sample size calculation](./images/peaking-at-ab-testing/sample-size-graph.png)
 
 After the experiment has included the minimum required sample size, we can safely now evaluate the results and extract a valid statistical conclusion.
 
@@ -61,7 +61,7 @@ After the experiment has included the minimum required sample size, we can safel
 
 Suppose, we simulate the same study, but now we let the effect be 0, i.e. there is no difference between version A and B. In addition, we want to see what will happen if we continuously look at the results and stop this experiment as early as the p-value is deemed to be significant. What is wrong with this behavior?
 
-![Sample size calculation](/articles/peaking-at-ab-testing/sample-size-graph2.png)
+![Sample size calculation](./images/peaking-at-ab-testing/sample-size-graph2.png)
 
 In figure 3, we see that the p-values oscillate near the alpha level at the start, and in some cases, it does cross that red region (significance region). As the sample size increase, we see a runaway of this level. Because the p-value had already crossed the significance level several times. Anyone who is continuously monitoring this experiment might have incorrectly called it a winner early on, hence stopping the experiment.
 

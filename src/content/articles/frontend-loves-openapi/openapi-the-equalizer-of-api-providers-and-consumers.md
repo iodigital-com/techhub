@@ -10,7 +10,7 @@ In the [previous part of this series](let-us-introduce-you-to-openapi), we explo
 
 ## Code First
 
-![OpenAPI Code First visualization](/articles/frontend-loves-openapi/frontend-loves-openapi-code-first.svg)
+![OpenAPI Code First visualization](../images/frontend-loves-openapi/frontend-loves-openapi-code-first.svg)
 
 The Code First workflow is where the API provider is the Source Of Truth of your API definition. In cases where an API provider is built using a well-maintained framework, chances are that there is a plugin available to automatically generate an OpenAPI document from the API endpoints and data models.
 
@@ -18,7 +18,7 @@ This workflow is useful when you have an existing RESTful API provider with plan
 
 ## Design First
 
-![OpenAPI Design First visualization](/articles/frontend-loves-openapi/frontend-loves-openapi-design-first.svg)
+![OpenAPI Design First visualization](../images/frontend-loves-openapi/frontend-loves-openapi-design-first.svg)
 
 With the Design First approach, we start with the OpenAPI document. The OpenAPI document is the **Single Source of Truth** for your API definitions.
 

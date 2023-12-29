@@ -15,7 +15,7 @@ canonicalUrl: "https://utilitybend.com/blog/practical-uses-of-the-has-relational
 
 How many times have we added an extra class to check if an element contains an image, or has some extra information that we want to display. For example, You might want to make a grid where the grid item is shown bigger when it contains an image:
 
-![grid with a bigger column when an image is present](/articles/practical-uses-of-the-has-relational-pseudo-class/grid-with-bigger-column-when-image.png)
+![grid with a bigger column when an image is present](./images/practical-uses-of-the-has-relational-pseudo-class/grid-with-bigger-column-when-image.png)
 
 Whichever the templating language you’re using. You’ll probably add a condition to check if an image is available like this:
 
@@ -41,7 +41,7 @@ article:has(figure) {
 
 ## Using :has() and :not() pseudo classes combined
 
-![Gandalf in lord of the rings - you shall not pass](/articles/practical-uses-of-the-has-relational-pseudo-class/gandalf-you-shall-not-pass.jpg)
+![Gandalf in lord of the rings - you shall not pass](./images/practical-uses-of-the-has-relational-pseudo-class/gandalf-you-shall-not-pass.jpg)
 
 Taking the previous grid a step further we might want to display our grid a bit differently when there aren’t any images (figures) available. We can easily do this by combining the :has() and :not() selector. In this use-case I just wanted the “only text grid” to fill the space by using a flex layout instead of grid. So adding the following does just that:
 
@@ -71,7 +71,7 @@ Be mindful that the order plays an important role here. For example:
 
 It might be something that isn’t as popular as it used to be when it comes to design, but I really implemented a lot of hover states in footer links where the bullet of a list item had to be filled when hovering over it. This usually required adding a pseudo element with absolute positioning. An image says more than a thousand words so let me just show what I’m talking about:
 
-![list with active state using the has relational pseudo class](/articles/practical-uses-of-the-has-relational-pseudo-class/list-active-bullet.png)
+![list with active state using the has relational pseudo class](./images/practical-uses-of-the-has-relational-pseudo-class/list-active-bullet.png)
 
 This could be done by creating a simple unordered list and doing something like this:
 
@@ -194,7 +194,7 @@ table:has(tr:nth-child(5)) tr:nth-child(odd) {
 }
 ```
 
-![Tiger striped table based on number of rows](/articles/practical-uses-of-the-has-relational-pseudo-class/tiger-striped-table.png)
+![Tiger striped table based on number of rows](./images/practical-uses-of-the-has-relational-pseudo-class/tiger-striped-table.png)
 
 [See this in action on codepen](https://codepen.io/utilitybend/pen/PoexLPx).
 

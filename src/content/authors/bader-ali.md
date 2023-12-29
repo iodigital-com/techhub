@@ -1,5 +1,5 @@
 ---
 name: Bader Ali
-avatar: /authors/bader-ali.jpg
+avatar: ./avatars/bader-ali.jpg
 occupation: Trainee Software Development
 ---

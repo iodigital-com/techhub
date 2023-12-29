@@ -17,17 +17,18 @@ const articlesCollection = defineCollection({
 
 const authorsCollection = defineCollection({
   type: "content",
-  schema: z.object({
-    name: z.string(),
-    avatar: z.string().optional().nullable(),
-    occupation: z.string().optional().nullable(),
-    twitter: z.string().optional().nullable(),
-    linkedin: z.string().optional().nullable(),
-    github: z.string().optional().nullable(),
-    website: z.string().optional().nullable(),
-    medium: z.string().optional().nullable(),
-    email: z.string().optional().nullable(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      avatar: image().optional(),
+      occupation: z.string().optional().nullable(),
+      twitter: z.string().optional().nullable(),
+      linkedin: z.string().optional().nullable(),
+      github: z.string().optional().nullable(),
+      website: z.string().optional().nullable(),
+      medium: z.string().optional().nullable(),
+      email: z.string().optional().nullable(),
+    }),
 });
 
 export const collections = {
