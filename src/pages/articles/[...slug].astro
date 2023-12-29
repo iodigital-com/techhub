@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntries } from "astro:content";
-import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+import MarkdownArticleLayout from "../../layouts/MarkdownArticleLayout.astro";
 import { getSeries } from "../../utils/content-collections.util";
 
 export async function getStaticPaths() {
@@ -31,6 +31,6 @@ const { article, series, authors } = Astro.props;
 const { Content } = await article.render();
 ---
 
-<MarkdownPostLayout article={article} series={series} authors={authors}>
+<MarkdownArticleLayout article={article} series={series} authors={authors}>
   <Content />
-</MarkdownPostLayout>
+</MarkdownArticleLayout>
