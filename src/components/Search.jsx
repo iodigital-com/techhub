@@ -80,7 +80,7 @@ function Search({ searchList }) {
                         <li className="py-2">
                             <a
                                 className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
-                                href={`/${post.frontmatter.slug}`}
+                                href={`/${post.url}`}
                             >
                                 {post.frontmatter.title}
                             </a>
