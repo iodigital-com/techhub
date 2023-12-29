@@ -1,0 +1,6 @@
+---
+import Search from './Search';
+const posts = await Astro.glob('../content/**/*.{md,mdx}');
+---
+
+<Search client:load searchList={posts} />
