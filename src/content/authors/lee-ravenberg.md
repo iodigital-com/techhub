@@ -1,6 +1,6 @@
 ---
 name: Lee Ravenberg
-avatar: /authors/lee-ravenberg.jpg
+avatar: ./avatars/lee-ravenberg.jpg
 occupation: Front-end Developer
 twitter: https://twitter.com/akhibrown
 linkedin: https://www.linkedin.com/in/lee-ravenberg/

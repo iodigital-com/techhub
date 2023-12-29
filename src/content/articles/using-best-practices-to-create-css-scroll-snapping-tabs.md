@@ -89,7 +89,7 @@ Here is the basic **CSS** for this:
 }
 ```
 
-![Scroll snapping css demo](/articles/using-best-practices-to-create-css-scroll-snapping-tabs/scroll-snapping-css-example.png)
+![Scroll snapping css demo](./images/using-best-practices-to-create-css-scroll-snapping-tabs/scroll-snapping-css-example.png)
 
 ([codepen for the first step here](https://codepen.io/utilitybend/pen/JjMrjea))
 
@@ -252,4 +252,4 @@ By adding [a bit of JS from the ARIA working group](https://www.w3.org/TR/wai-ar
 
 [The final example](https://codepen.io/utilitybend/pen/poWWaRv), with kudos to people who create examples in the ARIA working group.
 
-![Accessible scroll snapping tabs](/articles/using-best-practices-to-create-css-scroll-snapping-tabs/accessible-scroll-snapping-tabs.png)
+![Accessible scroll snapping tabs](./images/using-best-practices-to-create-css-scroll-snapping-tabs/accessible-scroll-snapping-tabs.png)

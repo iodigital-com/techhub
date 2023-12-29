@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 import type { CollectionEntry } from "astro:content";
@@ -15,7 +16,16 @@ const { article, series, authors } = Astro.props;
 <BaseLayout pageTitle={article.data.title}>
   <article>
     <ul class="layout__authors">
-      {authors.map((author) => <li>{author.data.name}</li>)}
+      {
+        authors.map((author) => (
+          <li>
+            {author.data.name}
+            {author.data.avatar && (
+              <Image src={author.data.avatar} alt={author.data.name} />
+            )}
+          </li>
+        ))
+      }
     </ul>
 
     {

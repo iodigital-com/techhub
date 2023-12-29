@@ -1,6 +1,6 @@
 ---
 name: Ravindre Ramjiawan
-avatar: /authors/ravindre-ramjiawan.jpg
+avatar: ./avatars/ravindre-ramjiawan.jpg
 occupation: Frontend Developer
 linkedin: https://www.linkedin.com/in/ravindre-ramjiawan
 ---

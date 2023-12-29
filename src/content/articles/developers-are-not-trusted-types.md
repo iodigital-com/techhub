@@ -113,7 +113,7 @@ Yes, DOMPurify will sanitise the content and prevent an XSS attack from being ex
 
 You can use CSP for quite a few things, but let’s focus on the example at hand. If malicious JavaScript being executed is the real issue, can’t you just block that? You can! I’ve built a demo website to showcase different solutions. Firstly, let’s see what happens when you don’t have any CSP on your page [showcased here](https://www.trusted-type-csp-demo.davebitter.com/).
 
-![XSS injection without CSP](/articles/developers-are-not-trusted-types/without-csp.png)
+![XSS injection without CSP](./images/developers-are-not-trusted-types/without-csp.png)
 
 Once you hit the injection button, the following code is executed and the XSS vulnerability is exploited:
 
@@ -146,11 +146,11 @@ You can add a basic CSP header that looks like this:
 
 Now when you hit the injection button the malicious JavaScript of the `onerror` attribute will not be executed as [showcased here](https://www.trusted-type-csp-demo.davebitter.com/with-csp.html):
 
-![XSS injection with CSP](/articles/developers-are-not-trusted-types/with-csp-without-dom-purify.png)
+![XSS injection with CSP](./images/developers-are-not-trusted-types/with-csp-without-dom-purify.png)
 
 You can see the error thrown by the CSP in the console. To clean this up a bit up you can use DOMPurify to remove the `onerror` attribute just like we did before so you will just see this message if you forgot to sanitise somewhere:
 
-![XSS injection with CSP and DOMPurify](/articles/developers-are-not-trusted-types/with-csp-and-dom-purify.png)
+![XSS injection with CSP and DOMPurify](./images/developers-are-not-trusted-types/with-csp-and-dom-purify.png)
 
 Perfect, all done! Right?
 
@@ -171,7 +171,7 @@ First, you add the Trusted Types CSP header:
 
 Now when you hit the injection button none of the content is injected and parsed in the DOM:
 
-![XSS injection with Trusted Types CSP](/articles/developers-are-not-trusted-types/with-csp-trusted-types-and--without-dom-purify.png)
+![XSS injection with Trusted Types CSP](./images/developers-are-not-trusted-types/with-csp-trusted-types-and--without-dom-purify.png)
 
 Next to that, it shows a more detailed error message for you as a developer as to where the `innerHTML` was used to try to inject and parse the content in the DOM.
 
@@ -217,7 +217,7 @@ export default Comments;
 
 Now when you hit the injection button the malicious JavaScript of the `onerror` attribute will not be executed and the safe content will be injected and parsed as [showcased here](https://www.trusted-type-csp-demo.davebitter.com/with-csp-and-trusted-type.html):
 
-![XSS injection with Trusted Types CSP and DOMPurify](/articles/developers-are-not-trusted-types/with-csp-trusted-types-and-dom-purify.png)
+![XSS injection with Trusted Types CSP and DOMPurify](./images/developers-are-not-trusted-types/with-csp-trusted-types-and-dom-purify.png)
 
 ## Develop with the Trusted Types CSP header set
 

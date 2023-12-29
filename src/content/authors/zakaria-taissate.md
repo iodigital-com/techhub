@@ -1,6 +1,6 @@
 ---
 name: Zakaria Taissate
-avatar: /authors/zakaria-taissate.webp
+avatar: ./avatars/zakaria-taissate.webp
 occupation: Full-stack Software Engineer & Team Captain
 twitter: https://twitter.com/devzakka
 linkedin: https://www.linkedin.com/in/zakariataissate/

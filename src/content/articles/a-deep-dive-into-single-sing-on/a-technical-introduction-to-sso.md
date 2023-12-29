@@ -22,7 +22,7 @@ In this first part of the SSO blog series, we will answer the following question
 
 Before we go into the details of what SSO solutions provide, the image below will be explained to give a better understanding of the standard Single Sign-On use case.
 
-![SSO flow](/articles/a-technical-introduction-to-sso/sso-flow.png)
+![SSO flow](../images/a-technical-introduction-to-sso/sso-flow.png)
 
 As a user you want to be able to access the web application provided by Google called Gmail. In SSO terms, an application that needs authentication is called a resource service. To gain access to the application, the user will need to authenticate itself with Google.
 
@@ -36,7 +36,7 @@ Authentication is one of the main functionalities of an SSO solution. This is no
 
 ### SAML 2.0
 
-![SAML logo](/articles/a-technical-introduction-to-sso/saml-logo.png)
+![SAML logo](../images/a-technical-introduction-to-sso/saml-logo.png)
 
 The SAML 2.0 protocol has been around since 2005 but is still very relevant these days as a lot of (older) identity providers authenticate their users with this protocol. It is therefore important that your SSO solution supports this protocol when you want to connect to legacy systems.
 
@@ -46,7 +46,7 @@ The user only providing their credentials to the identity provider makes this au
 
 ### OAuth2
 
-![OAuth logo](/articles/a-technical-introduction-to-sso/oauth-logo.png)
+![OAuth logo](../images/a-technical-introduction-to-sso/oauth-logo.png)
 
 The OAuth protocol is in many aspects the same as SAML. It provides a framework for setting up session data and also redirects the user to provide credentials directly to the identity provider instead of the application requesting authentication. The difference is that it creates a stateless authentication for the user in the form of access tokens. Such a token is proof that the user has successfully authenticated and can be validated through the issuer of the token. Access tokens can either be a random value, in which case the token has to be sent back to the issuer to validate it, or it can be a JSON web token in which case the token can be validated with the public key of the issuer.
 
@@ -54,7 +54,7 @@ Being able to validate the token without the need to invoke the identity provide
 
 ### OpenID Connect
 
-![OpenID Connect logo](/articles/a-technical-introduction-to-sso/openid-connect-logo.png)
+![OpenID Connect logo](../images/a-technical-introduction-to-sso/openid-connect-logo.png)
 
 One of the things that the OAuth2 protocol misses is some form of standardization. OAuth2 is a specification and the implementation should be the same for all parties, but in practice, you see that there are differences when you set up authentication with Google or Twitter. The OpenID Connect protocol is a layer on top of OAuth2 that standardizes certain aspects like endpoints and token formats.
 
@@ -72,25 +72,25 @@ With this authorization code, the application can retrieve an access token once 
 
 With the access token, the application can request resources from a resource service. The resource service can validate the token, based on the public key of the identity provider. In addition, the access token can also contain certain roles that the authenticated user has. The application can read these from the token and make certain authorization choices based on these roles.
 
-![Authorization flow](/articles/a-technical-introduction-to-sso/authorization-flow.png)
+![Authorization flow](../images/a-technical-introduction-to-sso/authorization-flow.png)
 
 ### Client credential flow
 
 If there is a need for server-to-server communication, the client credential flow can be used. The authorization code flow uses a redirection which is not feasible for a server to use, as such, the client credential flow uses a client ID and secret to retrieve an access token directly from the identity provider. There is also no authorization code involved as the client ID and secret should be kept private between the two parties and should only be communicated from a server to server environment.
 
-![Client credential flow](/articles/a-technical-introduction-to-sso/client-credentials.png)
+![Client credential flow](../images/a-technical-introduction-to-sso/client-credentials.png)
 
 ### Direct access flow
 
 The direct access flow is identical to the client credential flow but is meant for end users of the application. This flow doesn't redirect the user and also doesn't include the authorization code. This means that the username and password of the user are directly sent to the identity provider in exchange for an access token. The problem with this flow is that the username and password are provided to the application instead of the form of the identity provider. Therefore it is not a very secure flow and is not recommended when connecting third-party applications to the SSO solution.
 
-![Direct access flow](/articles/a-technical-introduction-to-sso/direct-access.png)
+![Direct access flow](../images/a-technical-introduction-to-sso/direct-access.png)
 
 ### Implicit flow
 
 The implicit flow is not a recommended flow. When this flow was created, browsers had limitations and several workarounds had to be used. The flow has many steps in common with the authorization code flow but misses some key aspects of making it secure. The main difference is that the access token is sent back to the application directly in the redirection step. When an access token is sent back in a redirection, there are multiple ways for attackers to intercept this token.
 
-![Implicit flow](/articles/a-technical-introduction-to-sso/implicit-flow.png)
+![Implicit flow](../images/a-technical-introduction-to-sso/implicit-flow.png)
 
 ## Summary
 

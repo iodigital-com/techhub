@@ -61,7 +61,7 @@ and providing support.
 
 Once you initialise a new Redwood project, you get a mono repo with Yarn Workspaces. The client and server are decoupled through their respective **_api_** and **_web_** folders.
 
-![File structure](/articles/convention-over-configuration-with-redwoodjs/filestructure.png)
+![File structure](./images/convention-over-configuration-with-redwoodjs/filestructure.png)
 
 ### Mapping
 
@@ -75,7 +75,7 @@ Within the api directory you find a **_db_** folder in which Prisma ORM related 
 
 Redwood conveniently takes care of the mapping of GraphQL resolvers to queries and mutations.
 
-![Api](/articles/convention-over-configuration-with-redwoodjs/api.png)
+![Api](./images/convention-over-configuration-with-redwoodjs/api.png)
 
 ### Front-end
 
@@ -84,7 +84,7 @@ The only convention it imposes are the defining of routes in **_Routes.js_**, ma
 
 Other than that it is up to you to decide how you want to structure your application. Redwood provides a useful way to handle forms using a wrapper around React Hook Form, but that is totally optional. You can use any state management library you want, any styling library, any component library, and so on.
 
-![Front-end](/articles/convention-over-configuration-with-redwoodjs/front-end.png)
+![Front-end](./images/convention-over-configuration-with-redwoodjs/front-end.png)
 
 ### Auth
 

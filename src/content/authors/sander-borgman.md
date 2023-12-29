@@ -1,6 +1,6 @@
 ---
 name: Sander Borgman
-avatar: /authors/sandbor.jpg
+avatar: ./avatars/sandbor.jpg
 occupation: Frontend Consultant
 twitter:
 linkedin: https://www.linkedin.com/in/sanderborgman/

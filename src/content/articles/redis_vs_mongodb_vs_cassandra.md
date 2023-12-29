@@ -10,7 +10,7 @@ theme: "blue"
 Having to choose a database is a task that any developer, at some point, must face. Whether its for a new assignment at your job with a pre-set tech stack or just for a personal project when you have the need of store some data. The options available are many and diverse that is very easily leaving you confused while having to choose which one suits best for your situation.
 The very basic choose to make if using a relational database or a NoSQL one. The first one is usually considered very reliable (since relational database have been around for 50 years) but is most likely to be expensive (most of the relational dbs are not open source and behind some fees) and you are forced on defining tables (either by adding those manually or via some automation). NoSQL databases, on the other hand, are able to be document based, graph based, key-value pairs or wide-column stores and most of the time they are open source. In this article we are going to have a very high-level look at 3 of the most used NOSQL databases out there that have quite different use cases: Redis, MongoDB and Cassandra.
 
-![Redis Logo](/articles/redis-vs-mongodb-vs-cassandra/Redis_Logo.png)
+![Redis Logo](./images/redis-vs-mongodb-vs-cassandra/Redis_Logo.png)
 
 ### Redis
 
@@ -24,7 +24,7 @@ One of the most common use cases for Redis is while implementing any functionali
 - a search engine optimized for heavy queries
 - real-time updating graphs
 
-![MongoDB Logo](/articles/redis-vs-mongodb-vs-cassandra/MongoDB_Logo.png)
+![MongoDB Logo](./images/redis-vs-mongodb-vs-cassandra/MongoDB_Logo.png)
 
 ### MongoDB
 
@@ -40,7 +40,7 @@ Most common use case scenario are:
 - Product catalog
 - Customer analytics
 
-![Cassandra Logo](/articles/redis-vs-mongodb-vs-cassandra/cassandra-logo.png)
+![Cassandra Logo](./images/redis-vs-mongodb-vs-cassandra/cassandra-logo.png)
 
 ### Cassandra
 

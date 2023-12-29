@@ -24,7 +24,7 @@ With these requirements in mind, we'd recommend going for one of the cloud optio
 
 The start-up ended up going with Auth0 and setting it up to be able to federate between Facebook, Google and Twitter users. Their app then used the Auth0 SDKs to integrate with the Auth0 platform. The result is shown in the image below.
 
-![Startup](/articles/sso-in-action/startup.png)
+![Startup](../images/sso-in-action/startup.png)
 
 ## Business-to-Consumer (B2C)
 
@@ -36,7 +36,7 @@ The first thing we did was come up with a migration strategy to be able to move 
 
 Next, we refactored the current applications to enable logins through the OIDC authorization code flow with Red Hat SSO as the identity provider. On the release day of the SSO logins, we first migrated the users to Red Hat SSO using the Red Hat SSO compatible password hashes generated over the past months. Next, we deployed the application with the SSO login flows enabled. The result was SSO functionality between the two existing applications, and a framework to easily offer SSO with any future applications by leveraging Red Hat SSO while not having any impact on the active user base.
 
-![Business-to-Consumer](/articles/sso-in-action/b2c.png)
+![Business-to-Consumer](../images/sso-in-action/b2c.png)
 
 ## Business-to-Enterprise (B2E)
 
@@ -44,7 +44,7 @@ Most companies have a catalogue of applications and tools for their employees to
 
 This can be solved by setting up Keycloak as a service provider and federating the users from the internal Active Directory. With this setup, employees can still use their single set of credentials but only have to provide it once as Keycloak will now manage the authenticated session. All applications that support either SAML, OAuth or OpenIDConnect can be connected to Keycloak and have it act as the authentication mechanism.
 
-![Business-to-Enterprise](/articles/sso-in-action/b2e.png)
+![Business-to-Enterprise](../images/sso-in-action/b2e.png)
 
 ## Business-to-Business (B2B)
 
@@ -54,7 +54,7 @@ To solve these issues Red Hat SSO is set up which acts as a bridge between the a
 
 With this mechanism in place, users will not be able to access the application anymore once their account has been offboarded at the external company. The responsibility of authenticating and checking if the user account is still active now lies with the external company itself. In addition, the roles and groups associated with this user account can also be managed by external companies. These roles and groups can be received by Red Hat SSO once a user is redirected back from the external identity provider. The roles and groups are then mapped by Red Hat SSO to generic roles and groups the the application knows.
 
-![Business-to-Business](/articles/sso-in-action/b2b.png)
+![Business-to-Business](../images/sso-in-action/b2b.png)
 
 ## Summary
 

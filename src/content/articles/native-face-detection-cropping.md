@@ -11,7 +11,7 @@ theme: "blue"
 
 Let’s imagine that we need want to display an image on our webpage in an aspect ratio of 16 by 9. Now, this would be easy if we have a source image that has the same aspect ratio. But as a developer, you don’t always have control over this. You’ve received the following image:
 
-![A single person in frame](/articles/native-face-detection-cropping/single-face.png)
+![A single person in frame](./images/native-face-detection-cropping/single-face.png)
 
 Luckily, with modern CSS, we can easily make this 16 by 9 with the following to CSS lines:
 
@@ -24,7 +24,7 @@ img {
 
 Once doing this, we see the following result in the browser:
 
-![Half a person's face in frame](/articles/native-face-detection-cropping/single-face-cropped.png)
+![Half a person's face in frame](./images/native-face-detection-cropping/single-face-cropped.png)
 
 Oh no! We can’t see the face anymore. This is because by default the [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) is set to `center center` which will center the crop on both the x-axis and the y-axis. No problem, we can just update our CSS to:
 
@@ -38,7 +38,7 @@ img {
 
 But wait, now the bottom of the face isn’t visible:
 
-![Top half of person's face in frame](/articles/native-face-detection-cropping/single-face-cropped-manually-positioned.png)
+![Top half of person's face in frame](./images/native-face-detection-cropping/single-face-cropped-manually-positioned.png)
 
 We can ultimately fix the `object-position` by passing pixel or percentage values to get the crop just right. This is however a painstaking process that you would have to do for all your images. Besides that, what if the images can be random and you can’t cover all edge-cases?
 
@@ -48,7 +48,7 @@ We can ultimately fix the `object-position` by passing pixel or percentage value
 
 The Face Detection API, a spinoff of the [Barcode Detection API](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API), is at the time of writing only available on Chrome after turning on a feature flag. You can do this by going to `chrome://flags`, searching for `#enable-experimental-web-platform-features` and turning it on.
 
-![Chrome settings screen to enable experimental features](/articles/native-face-detection-cropping/chrome-flags-experimental.png)
+![Chrome settings screen to enable experimental features](./images/native-face-detection-cropping/chrome-flags-experimental.png)
 
 Your browser will restart and the Face Detection API will be available
 
@@ -143,7 +143,7 @@ In essence, what we’re doing is taking the face detection bounding box that is
 
 We can now take these values to, for instance, draw a box on the detected face(s) for easier debugging:
 
-![Red squares on the face of the single person in frame](/articles/native-face-detection-cropping/single-face-detection.png)
+![Red squares on the face of the single person in frame](./images/native-face-detection-cropping/single-face-detection.png)
 
 If you want to learn more about this API, the Barcode Detection or Text Detection API, you can watch my Friday Tip on _[A first look at the Shape Detection API](https://www.youtube.com/watch?v=ZnSTi3Wbs7g)_. **While you're there, make sure to subscribe!**
 
@@ -177,7 +177,7 @@ Now that we have these values, we can set the `object-position` x and y value to
 
 We basically use the top and left values of the face detected bounding box and calculate what percentage those values are based on the height and width of the image respectively. We can now see the smartly cropped face in view:
 
-![Cropped face of a single person in frame](/articles/native-face-detection-cropping/single-face-cropped-with-detection.png)
+![Cropped face of a single person in frame](./images/native-face-detection-cropping/single-face-cropped-with-detection.png)
 
 Great, that seems to work! Whichever image I use, I can be assured that the face will be in view. But what about multiple faces?
 
@@ -218,23 +218,23 @@ Luckily, we can quite easily implement the functionality to get the combined bou
 
 Firstly, we get the highest top, lowest bottom, farthest left and farthest right of all the detected faces. We can then easily calculate what the width and height have to be for the combined bounding box.
 
-![Sketch of edges of group](/articles/native-face-detection-cropping/combined-bounding-box-sketch.png)
+![Sketch of edges of group](./images/native-face-detection-cropping/combined-bounding-box-sketch.png)
 
 Then, we use those values to set the value for the `object-position` just like we did earlier. A short demo for this image:
 
-![Multiple people in frame](/articles/native-face-detection-cropping/multiple-faces.png)
+![Multiple people in frame](./images/native-face-detection-cropping/multiple-faces.png)
 
 Cropping this normally would look like this:
 
-![Multiple people in frame with the right person cut off](/articles/native-face-detection-cropping/multiple-faces-cropped.png)
+![Multiple people in frame with the right person cut off](./images/native-face-detection-cropping/multiple-faces-cropped.png)
 
 So we detect all their faces:
 
-![Multiple people in frame with a red box on their faces](/articles/native-face-detection-cropping/multiple-faces-detection.png)
+![Multiple people in frame with a red box on their faces](./images/native-face-detection-cropping/multiple-faces-detection.png)
 
 And use the combined bounding box to smartly crop the image:
 
-![Multiple people in frame cropped with all their faces visible](/articles/native-face-detection-cropping/multiple-faces-cropped-with-detection.png)
+![Multiple people in frame cropped with all their faces visible](./images/native-face-detection-cropping/multiple-faces-cropped-with-detection.png)
 
 ## Looking back
 
