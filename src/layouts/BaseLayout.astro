@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+import SearchBar from "../components/SearchBar.astro";
 
 const { pageTitle } = Astro.props;
 ---
@@ -16,7 +17,10 @@ const { pageTitle } = Astro.props;
   </head>
   <body class="container">
     <Header />
-
+    <div class="max-w-3xl mx-auto">
+      <SearchBar />
+    </div>
+  
     <main>
       <slot />
     </main>
