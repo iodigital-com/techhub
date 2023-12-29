@@ -84,7 +84,7 @@ function Search({ searchList }) {
                             >
                                 {post.frontmatter.title}
                             </a>
-                            <p className="text-sm text-gray-800">{post.frontmatter.description}</p>
+                            <p className="text-sm text-gray-800">{post.frontmatter.summary}</p>
                         </li>
                     ))}
             </ul>
