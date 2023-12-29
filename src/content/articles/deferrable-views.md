@@ -77,7 +77,7 @@ export class AppModule {
 
 The last thing that goes well together with Deferrable Views is named chunks. By default, the lazy-loaded modules and components are shown in dev tools as `.js` files with non-human-readable names. For example `chunk-IVE23K2G.js` is a terrible name for debugging purposes.
 
-![Example of default JS chunk](/articles/deferrable-views/deferrable-views-default-js-chunks.gif)
+![Example of default JS chunk](./images/deferrable-views/deferrable-views-default-js-chunks.gif)
 
 Let's fix that by adding `"namedChunks": true` into `angular.json` file:
 
@@ -104,7 +104,7 @@ After that chunk names would look like that: `huge.component-HRZM3FTC.js`
 
 Here's how final result looks like:
 
-![Final example of Deferrable Views](/articles/deferrable-views/deferrable-views-final-example.gif)
+![Final example of Deferrable Views](./images/deferrable-views/deferrable-views-final-example.gif)
 
 And here's the code if you would like to play with it:
 

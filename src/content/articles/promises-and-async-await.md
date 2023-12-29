@@ -79,7 +79,7 @@ The finally call can be placed in the chain and will always run, it is however v
 
 The promise flow basically works like the chart below.
 
-![Schema of the promise flow](/articles/promises-and-async-await/promise-flow.png)
+![Schema of the promise flow](./images/promises-and-async-await/promise-flow.png)
 
 _[Image by MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)_
 

@@ -90,7 +90,7 @@ So first of all, we can write less code, awesome! Secondly, we do not even need 
 
 Never worrying about coming up with a class name anymore, is a big upside for me.
 
-![Ryan Florence, creator of React Router and Remix about Tailwind benefits](/articles/tailwind-for-productivity/twitter-ryan-florence.png)
+![Ryan Florence, creator of React Router and Remix about Tailwind benefits](./images/tailwind-for-productivity/twitter-ryan-florence.png)
 
 Besides simplifying the class names and media queries, it often bundles multiple CSS rules into one class name or provides an easy-to-use prefix. Take the `nth` selectors as another example.
 
@@ -190,7 +190,7 @@ Besides not having to argue with your colleagues about naming stuff, I do think 
 
 4. The example from above might be covered in code reviews, but quite often slip through as well. In my opinion, Tailwind makes code reviews easier to understand as well. Sometimes adjusting a class is included in the review, but none of the instances where it's applied are. Instead of switching between multiple files within the review, or keeping the related HTML/CSS file open next to your currently reviewed code, you instantly see which CSS properties apply to the elements being reviewed.
 
-![Cory House, ReactJS teacher, consultant and tech influencer](/articles/tailwind-for-productivity/twitter-cory-house.png)
+![Cory House, ReactJS teacher, consultant and tech influencer](./images/tailwind-for-productivity/twitter-cory-house.png)
 
 Although it's still completely fine to write CSS in any way you prefer. I think it's worth considering Tailwind as an alternative for both teams with big projects as well as quickly prototyping your side projects. I only want to encourage people to give Tailwind an honest thought and compare it to your current approach on some of these measures:
 

@@ -12,7 +12,7 @@ In the previous part of this two-part series, we built the backend of our fullst
 
 In this part of the series, we will showcase the power of tRPC by creating our UI using React Native and connecting it to our backend.
 
-![What we are creating](/articles/getting-started-with-trpc/what-we-are-creating.png)
+![What we are creating](../images/getting-started-with-trpc/what-we-are-creating.png)
 
 The code for this series can be found on Github.
 
@@ -171,7 +171,7 @@ return (
 
 Llet's test if everything is working correctly by opening the terminal, and running `npx react-native run-ios` in our `client` folder. If all went well, you should have an app that looks something like this:
 
-![Testing our APIs: deleting todos](/articles/getting-started-with-trpc/creating-our-first-component.png)
+![Testing our APIs: deleting todos](../images/getting-started-with-trpc/creating-our-first-component.png)
 
 ## Creating our useTodosQuery hook
 
@@ -189,7 +189,7 @@ export default useTodosQuery;
 
 I would recommend you type the above-mentioned code out yourself to really see the magic of tRPC. I'll include a small demonstration of the power of tRPC in case you're too lazy (which I know most of you are 😋) to type it out yourself.
 
-![the power of trpc](/articles/getting-started-with-trpc/power-of-trpc.gif)
+![the power of trpc](../images/getting-started-with-trpc/power-of-trpc.gif)
 
 The autocomplete and linting is great, isn't it?
 
@@ -461,7 +461,7 @@ return (
 
 Your app should look something like this:
 
-![What we are creating](/articles/getting-started-with-trpc/creating-list-and-list-item.png)
+![What we are creating](../images/getting-started-with-trpc/creating-list-and-list-item.png)
 
 ## Creating our update and delete todo mutations hooks
 
@@ -1068,7 +1068,7 @@ And update our `Text` subtitle to make use of those variables.
 
 Now that we have implemented all our features, it's time to run through the app and test!
 
-![What we are creating](/articles/getting-started-with-trpc/full-app.gif)
+![What we are creating](../images/getting-started-with-trpc/full-app.gif)
 
 There ya go! An fully functional full stack todo app 🥳
 

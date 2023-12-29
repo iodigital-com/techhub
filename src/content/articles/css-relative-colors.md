@@ -18,12 +18,8 @@ As an example, I'm going to use iO's primary accent color `#0017ee` which transl
   --accent-chroma: 0.291;
   --accent-hue: 264.18;
 
-  --accent-oklch:
-    var(--accent-lightness)
-    var(--accent-chroma)
-    var(--accent-hue)
-
-  --accent-color: oklch(var(--accent-oklch));
+  --accent-oklch: var(--accent-lightness) var(--accent-chroma) var(--accent-hue)
+    --accent-color: oklch(var(--accent-oklch));
 }
 ```
 
@@ -51,7 +47,7 @@ The keyword here is `from` which allows for a source color (any color space) whi
 Using the `from` keyword the browser can convert the `originating color` (the one after `from`) and break it apart into the parts as variables.
 In the following example, the browser will create an `rgb` color from the named color `green` and copy over the `r`, `g` and `b` values. The browser will only convert the named color to the rgb color space but will not change any value, so the result is still the green color, but now in the rgb color space.
 
-![Schema of the elements of a URL](/articles/css-relative-colors/rgb-from-green.webp)
+![Schema of the elements of a URL](./images/css-relative-colors/rgb-from-green.webp)
 
 and so we can use the `from` keyword to convert any color space to any color space:
 

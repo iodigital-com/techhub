@@ -18,7 +18,7 @@ After I did a simple tutorial with a frontend UI app + an API app and how to con
 
 In the Azure portal I noticed it is very easy to hookup other Azure services as a 'service connection', which is in preview, but looks very promising (see screenshot with services that can be connected).
 
-![The image shows a list of all service connection available from Container Apps.](/articles/first-glance-at-azure-container-apps/serviceconnections.png)
+![The image shows a list of all service connection available from Container Apps.](./images/first-glance-at-azure-container-apps/serviceconnections.png)
 
 ## NO azure managed certificates (yet)!
 

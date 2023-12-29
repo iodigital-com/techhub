@@ -28,7 +28,7 @@ We'll be comparing these products on the following functionalities:
 
 ### Ping Identity
 
-![Ping Identity logo](/articles/an-overview-of-sso-products/ping-identity-logo.png)
+![Ping Identity logo](../images/an-overview-of-sso-products/ping-identity-logo.png)
 
 Ping Identity is a modular platform consisting of various products that each offer parts of the typical functionality expected from an identity and access management platform. This gives you the option to only run the parts that you need, as opposed to having to run a full platform when you're only really interested in using a small part of it. If you're running multiple products of the platform you're guaranteed to have compatibility and seamless integration through pre-build connectors. The table below contains an overview of the most important products and what they do.
 
@@ -41,25 +41,25 @@ Ping Identity is a modular platform consisting of various products that each off
 
 ### Auth0
 
-![Auth0 logo](/articles/an-overview-of-sso-products/auth0-logo.png)
+![Auth0 logo](../images/an-overview-of-sso-products/auth0-logo.png)
 
 Auth0 is a cloud-native solution that offers authentication-as-a-service functionality and offers a complete identity and access management platform. Generally speaking, Auth0 runs in their public cloud, however they also offer options to host it in a private cloud. This means that you get an isolated instance of Auth0 where none of your software and infrastructure is shared with other tenants.
 
 ### Keycloak
 
-![Keycloak logo](/articles/an-overview-of-sso-products/keycloak-logo.png)
+![Keycloak logo](../images/an-overview-of-sso-products/keycloak-logo.png)
 
 Keycloak is an open-source project that aims to provide a full identity and access management platform. It has a large community backing it and is constantly being developed by the community. Keycloak has been picked up by Red Hat and an enterprise version of Keycloak, Red Hat SSO, is available through them. The enterprise variant offers long-term support for its versions being released, whereas Keycloak does not. This means that you will receive security patches for older versions of Red Hat SSO, and you don't have to upgrade to newer versions as often. Currently Keycloak is mostly used as an on-premise solution, however the Keycloak project is currently working towards cloud-native support as well.
 
 ### Amazon Cognito
 
-![Amazon Cognito logo](/articles/an-overview-of-sso-products/amazon-cognito-logo.png)
+![Amazon Cognito logo](../images/an-overview-of-sso-products/amazon-cognito-logo.png)
 
 Amazon Cognito is a complete identity and access management platform available on AWS. As such it's a cloud-native solution that integrates well with other AWS services. For example, you can use Amazon SNS to send out one-time password codes and Amazon Lambda to trigger custom code during login flows. Amazon Cognito also offers advanced security features such as risk-based adaptive authentication and compromised credentials protection. Amazon Cognito can also keep metrics and data in Amazon CloudWatch for important events such as sign-ups, sign-ins, risk scores and the results of sign-in attempts and second-factor challenges.
 
 ### Okta
 
-![Okta logo](/articles/an-overview-of-sso-products/okta-logo.jpg)
+![Okta logo](../images/an-overview-of-sso-products/okta-logo.jpg)
 
 Okta is a cloud-native solution that focuses on easy integration with more than 6500 different integrations from cloud to on-premise products. Integrations range from identity providers and directories like Google, Azure Active Directory and LDAP to applications like Slack, Zoom, Salesforce and Atlassian. It's a complete identity and access management platform with features like multi-factor authentication, API management, universal directory and extensive audit logging capabilities. Every feature can be subscribed to separately which means you only pay for the features your organization needs.
 

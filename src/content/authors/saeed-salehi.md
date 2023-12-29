@@ -1,6 +1,6 @@
 ---
 name: Saeed Salehi
-avatar: /authors/saeed-salehi.jpeg
+avatar: ./avatars/saeed-salehi.jpeg
 occupation: Senior Backend Developer .Net Team
 twitter: https://twitter.com/1saeedsalehi
 linkedin: https://www.linkedin.com/in/1saeedsalehi/

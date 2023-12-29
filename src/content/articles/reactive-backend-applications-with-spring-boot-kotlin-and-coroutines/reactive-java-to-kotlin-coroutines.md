@@ -14,7 +14,7 @@ theme: "blue"
 
 In this second part of the article, we will show that we can use Kotlin coroutines to have a reactive application while writing code in direct style.
 
-We expect to start from a Spring Boot reactive project using Reactor, written in Java, see [part 1](/articles/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/java-mvc-to-reactive).
+We expect to start from a Spring Boot reactive project using Reactor, written in Java, see [part 1](../images/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/java-mvc-to-reactive).
 
 In the first part, we will focus on Kotlin and adapting the project to the language. In the second part, we will explore coroutines, and how we can use them.
 
@@ -66,7 +66,7 @@ The next step is now to upgrade our project to Kotlin. We have two methods possi
 
 #### 1. Use IDE Automatic Tool
 
-![migrate_file_kotlin.png](/articles/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/migrate_file_kotlin.png)
+![migrate_file_kotlin.png](../images/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/migrate_file_kotlin.png)
 while it works for most methods, it will limit the types to the ones that the IDE can see.
 for example:
 
@@ -361,7 +361,7 @@ suspend fun getById(@PathVariable id: Long): WeatherInfo {}
 One important question that you might have is the following: But where do we start coroutines?
 I can't see any `launch {}` anywhere in the code.
 
-![meme launch coroutines.png](/articles/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/meme_launch_coroutines.png)
+![meme launch coroutines.png](../images/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/meme_launch_coroutines.png)
 
 The same way as calling `subscribe()` yourself in reactor, you most likely don't need to.
 This is because if your controller functions are suspending, then `Spring` will launch them under the hood for you.

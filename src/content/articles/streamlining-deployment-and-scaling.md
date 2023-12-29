@@ -1,12 +1,21 @@
 ---
-title: 'Streamlining Deployment and Scaling: An Introduction to Kubernetes, Helm and Terraform'
-date: '2023-07-27'
+title: "Streamlining Deployment and Scaling: An Introduction to Kubernetes, Helm and Terraform"
+date: "2023-07-27"
 tags:
-  ['Kubernetes', 'Minikube', 'k8s', 'Helm', 'Terraform', 'Dockerization', 'Kotlin', 'Springboot']
-images: ['/articles/streamlining-deployment-and-scaling/Intro-Clouds.jpg']
-summary: 'A small go-through to explore Kubernetes, Helm and Terraform'
-authors: ['eyad-jarrar']
-theme: 'beige'
+  [
+    "Kubernetes",
+    "Minikube",
+    "k8s",
+    "Helm",
+    "Terraform",
+    "Dockerization",
+    "Kotlin",
+    "Springboot",
+  ]
+images: ["/articles/streamlining-deployment-and-scaling/Intro-Clouds.jpg"]
+summary: "A small go-through to explore Kubernetes, Helm and Terraform"
+authors: ["eyad-jarrar"]
+theme: "beige"
 ---
 
 ## Introduction
@@ -189,7 +198,7 @@ minikube start
 
 We should be able to see that our `Minikube` has a Docker container using the Docker desktop application
 
-![Minikube container](/articles/streamlining-deployment-and-scaling/Minikube-start.png)
+![Minikube container](./images/streamlining-deployment-and-scaling/Minikube-start.png)
 
 now let's initialize our `Helm` charts for this project, navigate to the root folder in our project and execute:
 
@@ -384,7 +393,7 @@ Do you want to perform these actions?
 
 it also asks for the user confirmation on what exactly is going to happen, so once we enter `yes` it will execute the above plan, which is to create both resources with our configuration. and checking the docker desktop, we will find the two images are running locally.
 
-![terraform images](/articles/streamlining-deployment-and-scaling/postgresDB-rabbitMQ-images.png)
+![terraform images](./images/streamlining-deployment-and-scaling/postgresDB-rabbitMQ-images.png)
 
 ### Final steps
 

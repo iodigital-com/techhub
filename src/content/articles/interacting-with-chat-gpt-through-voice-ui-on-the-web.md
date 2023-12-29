@@ -16,7 +16,7 @@ Personally, I don’t develop AI. I do however interact with it a lot. Like most
 
 I’ve wanted to build a demo application that enables just that. A user can start a conversation with ChatGPT and just talk. Once they’re done talking, ChatGPT processes the text and sends back a response. This response is then read out loud to the user after which the cycle continues.
 
-![A schematic of the flow described above](/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/user-interaction-schematic.png)
+![A schematic of the flow described above](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/user-interaction-schematic.png)
 
 Being a developer for the web, I naturally gravitated to the techniques I would use there. As it turned out in the end, this gave a surprising advantage in the user experience. Here is a quick glimpse of the result called “Aiva”:
 
@@ -167,18 +167,18 @@ Finally, I’ve created a `useConversation` hook that:
 
 - Keeps track of the conversation state
   - `"UNPERMITTED"` - there is no permission yet to listen to the user’s microphone
-    - ![calm visualisation of Aiva unpermitted](/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-unpermitted.gif)
+    - ![calm visualisation of Aiva unpermitted](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-unpermitted.gif)
   - `"IDLING"` - the application is currently not listening or responding
-    - ![calm visualisation of Aiva idling](/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-idling.gif)
+    - ![calm visualisation of Aiva idling](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-idling.gif)
   - `"LISTENING"` - the `useSpeechRecognition` hook is listening the to the user’s microphone
-    - ![more moving visualisation of Aiva listening](/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-listening.gif)
+    - ![more moving visualisation of Aiva listening](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-listening.gif)
   - `"RESPONDING"` - the `useSpeechSynthesis` hook is speaking to the user
-    - ![moving visualisation of Aiva unpermitted](/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-responding.gif)
+    - ![moving visualisation of Aiva unpermitted](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-responding.gif)
   - `"STOPPED"` the user stopped the application
-    - ![calm visualisation of Aiva stopped](/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-stopped.gif)
+    - ![calm visualisation of Aiva stopped](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-stopped.gif)
 - Uses the utilities exposed by the `useSpeechRecognition` and `useSpeechSynthesis` hooks to create a turn-based conversation
 
-![A schematic of the flow described above](/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-interaction-schematic.png)
+![A schematic of the flow described above](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva-interaction-schematic.png)
 
 #### ChatGPT integration
 
