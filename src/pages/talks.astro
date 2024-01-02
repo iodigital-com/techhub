@@ -1,0 +1,142 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const emailError = "Please enter a valid email address";
+const errors = { firstName: "", lastName: "", email: "", permission: "" };
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const form = Object.fromEntries(data.entries());
+
+    if (!form.firstname) {
+      errors.firstName = "Please enter a firstname";
+    }
+    if (!form.lastname) {
+      errors.lastName = "Please enter a lastname";
+    }
+    if (!form.email) {
+      errors.email = emailError;
+    }
+    if (!form.permission) {
+      errors.permission = "Please accept our privacy policy";
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error);
+    }
+  }
+}
+---
+
+<BaseLayout pageTitle="Talks">
+  <div class="grid grid-cols-12 gap-5">
+    <section class="col-start-1 col-end-7">
+      <h1 class="text-lg mb-5">Looking for an inspiring talk at your event?</h1>
+      <p>
+        We have great experts that can deliver inspiring talks at your event. <br
+        />
+        Leave your details and we will reach out to you!
+      </p>
+
+      <form method="POST" novalidate class="mt-10">
+        <fieldset class="flex gap-5 mb-5">
+          <label class="flex flex-col">
+            <span>Firstname*</span>
+            <input
+              type="text"
+              class=""
+              placeholder=" "
+              name="firstname"
+              required
+            />
+            {
+              errors.firstName && (
+                <span class="mt-2 text-red-500">{errors.firstName}</span>
+              )
+            }
+          </label>
+          <label class="flex flex-col">
+            <span>Lastname*</span>
+            <input
+              type="text"
+              class=""
+              placeholder=" "
+              name="lastname"
+              required
+            />
+            {
+              errors.lastName && (
+                <span class="mt-2 text-red-500">{errors.lastName}</span>
+              )
+            }
+          </label>
+        </fieldset>
+        <fieldset class="mb-5">
+          <label class="flex flex-col">
+            <span>Email*</span>
+            <input
+              type="email"
+              class="peer invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
+              placeholder=" "
+              name="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              required
+            />
+            <span
+              class="mt-2 text-red-500 hidden peer-[&:not(:placeholder-shown):not(:focus):invalid]:block"
+              class:list={errors.email && "!block"}
+            >
+              {emailError}
+            </span>
+          </label>
+        </fieldset>
+        <fieldset class="flex gap-5 mb-5">
+          <label class="flex flex-col">
+            <span>Company name</span>
+            <input type="text" name="companyName" />
+          </label>
+          <label class="flex flex-col">
+            <span>Phone number</span>
+            <input type="text" name="phoneNumber" />
+          </label>
+        </fieldset>
+        <fieldset class="mb-5">
+          <label class="flex gap-2">
+            <input type="checkbox" class="" name="permission" required />
+            <span>
+              iO may process my data in function of this request. View our
+              privacy policy here.*
+            </span>
+          </label>
+          {
+            errors.permission && (
+              <span class="mt-2 text-red-500">{errors.permission}</span>
+            )
+          }
+        </fieldset>
+        <button
+          class="bg-slate-900 text-slate-100 py-5 px-10 rounded-full border-2 border-transparent hover:bg-slate-100 hover:text-slate-900 hover:border-2 hover:border-slate-900"
+        >
+          Let's talk!
+        </button>
+      </form>
+    </section>
+
+    <section class="col-start-7 col-end-13 row-start-1">
+      <h1 class="text-lg mb-5">Image</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
+        doloremque nulla? Labore, exercitationem deserunt. Quis sint quod vero
+        veniam, qui porro autem illo enim id aliquam quisquam repellat mollitia
+        nostrum explicabo, quibusdam amet veritatis dolore quos omnis quo
+        voluptatum! Amet, maxime dolores. Ut ipsam optio asperiores dolores
+        maiores labore esse saepe molestiae animi veritatis, repellat in nisi id
+        nulla! Reprehenderit totam, blanditiis officia ab provident hic in
+        fugiat corporis consequuntur perferendis voluptatem ex ducimus,
+        similique, magni beatae enim laudantium asperiores veniam at eos. Iure,
+        quasi molestiae temporibus error neque architecto aspernatur. Officiis
+        facere error molestias ratione asperiores earum maiores adipisci.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
