@@ -1,10 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import Search from './Search';
 import { Image } from 'astro:assets';
-import testImage from './dmitri-sirobokov.jpg';
-const articles = await Astro.glob('../content/articles/**/*.{md,mdx}');
+const articles = await getCollection('articles');
 
-const authors = await Astro.glob('../content/authors/**/*.{md,mdx}')
+const authors = await getCollection('authors');
 ---
 
 <Search client:load articles={articles} authors={authors} />

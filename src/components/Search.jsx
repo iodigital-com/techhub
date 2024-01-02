@@ -1,54 +1,48 @@
 import Fuse from 'fuse.js';
 import { useState } from 'react';
 import { Image } from "astro:assets";
-import testAvatar from '../content/authors/avatars/dmitri-sirobokov.jpg';
 
 
 // Configs fuse.js
 // https://fusejs.io/api/options.html
 const authorsSearchOptions = {
-	keys: ['frontmatter.name'],
-	includeMatches: true,
-	minMatchCharLength: 2,
-	threshold: 0.5,
+    keys: ['data.name'],
+    includeMatches: true,
+    minMatchCharLength: 2,
+    threshold: 0.5,
 };
 
 const articlesSearchOptions = {
-	keys: ['frontmatter.title', 'frontmatter.summary', 'frontmatter.authors'],
-	includeMatches: true,
-	minMatchCharLength: 2,
-	threshold: 0.5,
+    keys: ['data.title', 'data.summary', 'data.authors'],
+    includeMatches: true,
+    minMatchCharLength: 2,
+    threshold: 0.5,
 };
 
 function Search({ articles, authors }) {
-	// User's input
-	const [query, setQuery] = useState('');
+    // User's input
+    const [query, setQuery] = useState('');
 
-	const fuseAuthors = new Fuse(authors, authorsSearchOptions);
-	const fuseArticles = new Fuse(articles, articlesSearchOptions);
+    const fuseAuthors = new Fuse(authors, authorsSearchOptions);
+    const fuseArticles = new Fuse(articles, articlesSearchOptions);
 
-	// Set a limit to the posts: 5
+    // Set a limit to the posts: 5
     const foundAuthors = fuseAuthors
-		.search(query)
-		.map((result) => result.item)
-		.slice(0, 5);
+        .search(query)
+        .map((result) => result.item)
+        .slice(0, 5);
 
-	const foundArticles = fuseArticles
-		.search(query)
-		.map((result) => result.item)
-		.slice(0, 5);
+    const foundArticles = fuseArticles
+        .search(query)
+        .map((result) => result.item)
+        .slice(0, 5);
 
-	function handleOnSearch({ target = {} }) {
-		const { value } = target;
-		setQuery(value);
-	}
+    console.log(foundAuthors);
+    console.log(foundArticles);
 
-    function getAvatarUrl(avatar) {
-        const a = document.createElement('a');
-        a.href = '../content/authors/';
-        
-        const resolveUrl = new URL(avatar, a.href);
-        return resolveUrl.pathname;
+    function handleOnSearch({ target = {} }) {
+        const { value } = target;
+        setQuery(value);
     }
 
     return (
@@ -91,39 +85,56 @@ function Search({ articles, authors }) {
                     placeholder="Search for anything..."
                 />
             </div>
-    
+
             <ul className="list-none">
-            {foundAuthors &&
+                {foundAuthors &&
                     foundAuthors.map((post) => (
                         <li className="py-2">
-                            <a
-                                className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
-                                href={`/${post.url}`}
-                            >
-                                {post.frontmatter.name}
-                                {/* <p>{getAvatarUrl(post.frontmatter.avatar)}</p> */}
-                                {/* <Image src={testAvatar.src} alt='' width="50" height="50" /> */}
-                                {/* <Image src={testAvatar} alt='akfjal' /> */}
-                                {/* <Image src={getAvatarUrl(post.frontmatter.avatar)} /> */}
-                            </a>
-                            <p className="text-sm text-gray-800">{post.frontmatter.occupation}</p>
+                            <div className="flex flex-grow flex-col justify-end">
+                                <div className="mt-2 mb-3 flex items-center text-lg">
+                                    <div className="flex-0 relative mr-3 inline-block h-10 w-10 overflow-hidden rounded-full">
+                                        <img src={post.data.avatar.src} alt={"avatar " + post.data.name} />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-medium">
+                                            <a
+                                                className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
+                                                href={`/${post.url}`}
+                                            >
+                                                {post.data.name}
+                                            </a>
+                                        </p>
+                                        <p className="text-sm text-gray-800">{post.data.occupation}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     ))}
 
                 {foundArticles &&
                     foundArticles.map((post) => (
                         <li className="py-2">
-                            <a
-                                className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
-                                href={`/${post.url}`}
-                            >
-                                {post.frontmatter.title}
-                            </a>
-                            <p className="text-sm text-gray-800">{post.frontmatter.summary}</p>
+                            <div className="flex flex-grow flex-col justify-end">
+                                <div className="mt-2 mb-3 flex items-center text-lg">
+                                    <div className="flex-0 flex-shrink-0 relative mr-3 inline-block h-10 w-10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" alt="icon blog"><path fill="currentColor" d="M192 32c0 17.7 14.3 32 32 32c123.7 0 224 100.3 224 224c0 17.7 14.3 32 32 32s32-14.3 32-32C512 128.9 383.1 0 224 0c-17.7 0-32 14.3-32 32m0 96c0 17.7 14.3 32 32 32c70.7 0 128 57.3 128 128c0 17.7 14.3 32 32 32s32-14.3 32-32c0-106-86-192-192-192c-17.7 0-32 14.3-32 32m-96 16c0-26.5-21.5-48-48-48S0 117.5 0 144v224c0 79.5 64.5 144 144 144s144-64.5 144-144s-64.5-144-144-144h-16v96h16c26.5 0 48 21.5 48 48s-21.5 48-48 48s-48-21.5-48-48z"/></svg>                                    </div>
+                                    <div>
+                                        <p className="text-sm font-medium">
+                                            <a
+                                                className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
+                                                href={`/${post.url}`}
+                                            >
+                                                {post.data.title}
+                                            </a>
+                                        </p>
+                                        <p className="text-sm text-gray-800">{post.data.summary}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     ))}
             </ul>
-        </div>
+        </div >
     );
 }
 
