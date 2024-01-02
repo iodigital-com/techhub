@@ -1,6 +1,10 @@
 ---
 import Search from './Search';
-const posts = await Astro.glob('../content/**/*.{md,mdx}');
+import { Image } from 'astro:assets';
+import testImage from './dmitri-sirobokov.jpg';
+const articles = await Astro.glob('../content/articles/**/*.{md,mdx}');
+
+const authors = await Astro.glob('../content/authors/**/*.{md,mdx}')
 ---
 
-<Search client:load searchList={posts} />
+<Search client:load articles={articles} authors={authors} />

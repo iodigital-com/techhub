@@ -1,23 +1,39 @@
 import Fuse from 'fuse.js';
 import { useState } from 'react';
+import { Image } from "astro:assets";
+import testAvatar from '../content/authors/avatars/dmitri-sirobokov.jpg';
+
 
 // Configs fuse.js
 // https://fusejs.io/api/options.html
-const options = {
-	keys: ['frontmatter.title', 'frontmatter.description', 'frontmatter.slug'],
+const authorsSearchOptions = {
+	keys: ['frontmatter.name'],
 	includeMatches: true,
 	minMatchCharLength: 2,
 	threshold: 0.5,
 };
 
-function Search({ searchList }) {
+const articlesSearchOptions = {
+	keys: ['frontmatter.title', 'frontmatter.summary', 'frontmatter.authors'],
+	includeMatches: true,
+	minMatchCharLength: 2,
+	threshold: 0.5,
+};
+
+function Search({ articles, authors }) {
 	// User's input
 	const [query, setQuery] = useState('');
 
-	const fuse = new Fuse(searchList, options);
+	const fuseAuthors = new Fuse(authors, authorsSearchOptions);
+	const fuseArticles = new Fuse(articles, articlesSearchOptions);
 
 	// Set a limit to the posts: 5
-	const posts = fuse
+    const foundAuthors = fuseAuthors
+		.search(query)
+		.map((result) => result.item)
+		.slice(0, 5);
+
+	const foundArticles = fuseArticles
 		.search(query)
 		.map((result) => result.item)
 		.slice(0, 5);
@@ -26,6 +42,14 @@ function Search({ searchList }) {
 		const { value } = target;
 		setQuery(value);
 	}
+
+    function getAvatarUrl(avatar) {
+        const a = document.createElement('a');
+        a.href = '../content/authors/';
+        
+        const resolveUrl = new URL(avatar, a.href);
+        return resolveUrl.pathname;
+    }
 
     return (
         <div>
@@ -68,15 +92,26 @@ function Search({ searchList }) {
                 />
             </div>
     
-            {query.length > 1 && (
-                <div className="my-4">
-                    Found {posts.length} {posts.length === 1 ? 'result' : 'results'} for '{query}'
-                </div>
-            )}
-    
             <ul className="list-none">
-                {posts &&
-                    posts.map((post) => (
+            {foundAuthors &&
+                    foundAuthors.map((post) => (
+                        <li className="py-2">
+                            <a
+                                className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
+                                href={`/${post.url}`}
+                            >
+                                {post.frontmatter.name}
+                                {/* <p>{getAvatarUrl(post.frontmatter.avatar)}</p> */}
+                                {/* <Image src={testAvatar.src} alt='' width="50" height="50" /> */}
+                                {/* <Image src={testAvatar} alt='akfjal' /> */}
+                                {/* <Image src={getAvatarUrl(post.frontmatter.avatar)} /> */}
+                            </a>
+                            <p className="text-sm text-gray-800">{post.frontmatter.occupation}</p>
+                        </li>
+                    ))}
+
+                {foundArticles &&
+                    foundArticles.map((post) => (
                         <li className="py-2">
                             <a
                                 className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
