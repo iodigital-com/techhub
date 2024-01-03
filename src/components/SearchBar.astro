@@ -1,10 +1,52 @@
 ---
-import { getCollection } from 'astro:content';
-import Search from './Search';
-import { Image } from 'astro:assets';
-const articles = await getCollection('articles');
+import { getCollection } from "astro:content";
+import Fuse from "fuse.js";
 
-const authors = await getCollection('authors');
+const articles = await getCollection("articles");
+const authors = await getCollection("authors");
+
+const articlesSearchOptions = {
+  keys: ["data.title", "data.summary", "data.authors"],
+  includeMatches: true,
+  minMatchCharLength: 2,
+  threshold: 0.5,
+};
+const authorsSearchOptions = {
+  keys: ["data.name"],
+  includeMatches: true,
+  minMatchCharLength: 2,
+  threshold: 0.5,
+};
+
+const fuseArticles = new Fuse(articles, articlesSearchOptions);
+const fuseAuthors = new Fuse(authors, authorsSearchOptions);
+
+let foundArticles: any[] = [];
+let foundAuthors: any[] = [];
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const search = data.get("search");
+
+    foundArticles = fuseArticles
+      .search(search as string)
+      .map((result) => result.item)
+      .slice(0, 5);
+
+    foundAuthors = fuseAuthors
+      .search(search as string)
+      .map((result) => result.item)
+      .slice(0, 5);
+  } catch (error) {}
+}
 ---
 
-<Search client:load articles={articles} authors={authors} />
+<form method="POST">
+  <input type="text" name="search" />
+  <button>Search</button>
+</form>
+
+{foundArticles.map((article) => <pre>{JSON.stringify(article, null, 2)}</pre>)}
+
+{foundAuthors.map((author) => <pre>{JSON.stringify(author, null, 2)}</pre>)}
