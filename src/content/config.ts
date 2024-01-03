@@ -20,7 +20,7 @@ const authorsCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       name: z.string(),
-      avatar: image().optional(),
+      avatar: image(),
       occupation: z.string().optional().nullable(),
       twitter: z.string().optional().nullable(),
       linkedin: z.string().optional().nullable(),
@@ -31,7 +31,19 @@ const authorsCollection = defineCollection({
     }),
 })
 
+const talksCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    authors: z.array(reference('authors')),
+    video: z.string().optional(),
+    slides: z.string().optional(),
+  }),
+})
+
 export const collections = {
   articles: articlesCollection,
   authors: authorsCollection,
+  talks: talksCollection,
 }
