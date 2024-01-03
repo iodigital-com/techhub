@@ -13,7 +13,7 @@ interface Props {
 const { article, series, authors } = Astro.props;
 ---
 
-<BaseLayout pageTitle={article.data.title}>
+<BaseLayout pageTitle={article.data.title} pageDescription={article.data.summary}>
   <article>
     <ul class="layout__authors">
       {
