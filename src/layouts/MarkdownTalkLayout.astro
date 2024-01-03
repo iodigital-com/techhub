@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "./BaseLayout.astro";
+
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  talk: CollectionEntry<"talks">;
+  authors: CollectionEntry<"authors">[];
+}
+
+const { talk, authors } = Astro.props;
+---
+
+<BaseLayout pageTitle={talk.data.title}>
+  <article class="grid grid-cols-12 gap-10">
+    <div class="col-start-1 col-end-7">
+      <h1 class="text-4xl mb-5">{talk.data.title}</h1>
+      <p>{talk.data.summary}</p>
+    </div>
+
+    <ul class="col-start-7 col-end-13">
+      {
+        authors.map((author) => (
+          <>
+            <li class="flex gap-2 items-center">
+              <Image
+                src={author.data.avatar}
+                alt={author.data.name}
+                class="w-48 h-48 rounded-full"
+              />
+              <div class="flex flex-col gap-2">
+                <h2 class="text-xl">{author.data.name}</h2>
+                <div class="text-sm">{author.data.occupation}</div>
+              </div>
+            </li>
+          </>
+        ))
+      }
+    </ul>
+
+    <slot />
+  </article>
+</BaseLayout>
