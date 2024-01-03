@@ -5,6 +5,7 @@ summary: "Defining a good structure for your theme, components, and files is key
 authors: ["zakaria-taissate"]
 theme: "blue"
 ---
+import { Image } from "astro:assets";
 
 export const exampleImageProps = {
   width: 1267,
@@ -171,7 +172,6 @@ FunX just has a gradient.
 <Image
   src="/articles/white-labeling-a-frontend-monorepo/funx.webp"
   {...exampleImageProps}
-
 />
 
 #### Radio1
