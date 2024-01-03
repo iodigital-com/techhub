@@ -1,8 +1,8 @@
 ---
-title: "Coding challenge Tower of Hanoi"
-date: "2022-12-07"
-summary: ""
-authors: ["ahmed-ali"]
+title: 'Coding challenge Tower of Hanoi'
+date: '2022-12-07'
+summary: ''
+authors: ['ahmed-ali']
 ---
 
 As developers, we spend much time fixing bugs and doing routine work. We often have tricky problems, but problem-solving is a crucial skill for a developer.

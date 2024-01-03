@@ -1,13 +1,10 @@
 ---
-title: "Going beyond constants with custom properties"
-date: "2023-06-26"
-images:
-  [
-    "/articles/going-beyond-constants-with-custom-properties/custom-properties.png",
-  ]
-summary: "If you love CSS, you’ve probably heard of custom properties (a.k.a. CSS variables) before. Still, a lot of people seem to use them as constants for their CSS. In this article, I will try to give you some more insights on how you can use these custom properties to create some smart systems or even use them as booleans in CSS and create easy progressive enhancements."
-authors: ["brecht-de-ruyte"]
-theme: "rouge"
+title: 'Going beyond constants with custom properties'
+date: '2023-06-26'
+images: ['/articles/going-beyond-constants-with-custom-properties/custom-properties.png']
+summary: 'If you love CSS, you’ve probably heard of custom properties (a.k.a. CSS variables) before. Still, a lot of people seem to use them as constants for their CSS. In this article, I will try to give you some more insights on how you can use these custom properties to create some smart systems or even use them as booleans in CSS and create easy progressive enhancements.'
+authors: ['brecht-de-ruyte']
+theme: 'rouge'
 ---
 
 ## Creating a smart button system
@@ -89,10 +86,7 @@ Here is the basic HTML for this:
 
 ```html
 <div class="wrapper">
-  <div>
-    There are fixed points throughout time where things must stay exactly the
-    way they are.
-  </div>
+  <div>There are fixed points throughout time where things must stay exactly the way they are.</div>
   <div>This is not one of them</div>
 </div>
 ```
@@ -124,7 +118,7 @@ And the CSS:
   block-size: 10px;
   border-block-end: 5px dotted black;
   transform: translateY(-50%);
-  content: "";
+  content: '';
 }
 ```
 
@@ -245,14 +239,14 @@ The main take-away from this is the transform property, we’re setting it for b
 Next up, we’ll use a `mousemove` event in Javascript and do a little calculation to set these custom properties to make the spotlight appear in the center of our cursor:
 
 ```javascript
-const spotlight = document.getElementById("mouse-follower");
-document.addEventListener("mousemove", (event) => {
+const spotlight = document.getElementById('mouse-follower')
+document.addEventListener('mousemove', (event) => {
   const xAxis = event.clientX - spotlight.clientWidth / 2,
-    yAxis = event.clientY - spotlight.clientHeight / 2;
+    yAxis = event.clientY - spotlight.clientHeight / 2
 
-  spotlight.style.setProperty("--xAxis", `${xAxis}px`);
-  spotlight.style.setProperty("--yAxis", `${yAxis}px`);
-});
+  spotlight.style.setProperty('--xAxis', `${xAxis}px`)
+  spotlight.style.setProperty('--yAxis', `${yAxis}px`)
+})
 ```
 
 The formula to calculate the axis is pretty easy: we just use the axis from our event and subtract half the width of our spotlight itself.
@@ -301,7 +295,7 @@ When we change our select, we only want to display the items with the same class
   --fruits: true;
 }
 
-:root:has(.select-view option:checked[value="veggie"]) {
+:root:has(.select-view option:checked[value='veggie']) {
   --fruits: false;
 }
 
@@ -311,7 +305,7 @@ When we change our select, we only want to display the items with the same class
   }
 }
 
-:root:has(.select-view option:checked[value="fruit"]) {
+:root:has(.select-view option:checked[value='fruit']) {
   --veggies: false;
 }
 

@@ -1,10 +1,10 @@
 ---
-title: "Reducing latency in _AI Speech Synthesis_"
-date: "2023-11-16"
-images: ["/articles/reducing-latency-in-ai-speech-synthesis/aiva.png"]
-summary: "AI-powered speech synthesis is getting incredibly realistic. This opens up many possibilities to generate realistic audio based on the text you provide. Whilst relatively fast, the latency still isn’t low enough for “real-time synthesis”. Let’s optimise that!"
-authors: ["dave-bitter"]
-theme: "blue"
+title: 'Reducing latency in _AI Speech Synthesis_'
+date: '2023-11-16'
+images: ['/articles/reducing-latency-in-ai-speech-synthesis/aiva.png']
+summary: 'AI-powered speech synthesis is getting incredibly realistic. This opens up many possibilities to generate realistic audio based on the text you provide. Whilst relatively fast, the latency still isn’t low enough for “real-time synthesis”. Let’s optimise that!'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 In [my previous article](./images/interacting-with-chat-gpt-through-voice-ui-on-the-web), I showed how you can interact with ChatGPT through Voice UI on the web. If you haven’t already, read that article first to know what I built. What sells the illusion of having a real-time conversation with the AI is the low latency. Because the response is so quick, it doesn’t feel like the AI needs to process your information and create an audio file to playback to you. Even though this part feels realistic, the robotic voice for the speech synthesis doesn’t. My colleague [Christofer Falkman](https://www.linkedin.com/in/christoferfalkman/) pointed me to a way I could make Aiva, the ChatGPT-powered assistant, even more realistic. Using [ElevenLabs](https://elevenlabs.io/)’s AI-powered speech synthesis I can replace this robotic voice with an incredibly realistic voice. Time to upgrade Aiva!

@@ -1,13 +1,13 @@
 ---
-title: "Container Queries, the next step towards a truly modular CSS"
-date: "2022-06-15"
+title: 'Container Queries, the next step towards a truly modular CSS'
+date: '2022-06-15'
 images:
   [
-    "/articles/container-queries-the-next-step-towards-a-truly-modular-css/hero.svg",
-    "/articles/container-queries-the-next-step-towards-a-truly-modular-css/container-queries-hero.jpg",
+    '/articles/container-queries-the-next-step-towards-a-truly-modular-css/hero.svg',
+    '/articles/container-queries-the-next-step-towards-a-truly-modular-css/container-queries-hero.jpg',
   ]
-summary: "Container queries enables encapsulation of adaptive styling based on the size, style or state of a parent element. This allows responsive component-based architectures, like design systems and component libraries, to provide the most optimal responsive styling within a component itself."
-authors: ["maarten-van-hoof"]
+summary: 'Container queries enables encapsulation of adaptive styling based on the size, style or state of a parent element. This allows responsive component-based architectures, like design systems and component libraries, to provide the most optimal responsive styling within a component itself.'
+authors: ['maarten-van-hoof']
 ---
 
 **\*TL;DR** Container queries enables encapsulation of adaptive styling based on the size, style or state of a parent element. This allows responsive component-based architectures, like design systems and component libraries, to provide the most optimal responsive styling within a component itself.\*
@@ -79,13 +79,13 @@ internal-dashboard {
 external-widget {
 }
 
-external-widget[type="gauge"] {
+external-widget[type='gauge'] {
 }
-external-widget[type="pie"] {
+external-widget[type='pie'] {
 }
-external-widget[type="weather"] {
+external-widget[type='weather'] {
 }
-external-widget[type="users"] {
+external-widget[type='users'] {
 }
 ```
 
@@ -94,19 +94,19 @@ external-widget[type="users"] {
 Or we could use ResizeObserver API, a browser API that through JavaScript can take an elements size into account and act accordingly. But, with this solution, we have to wait until the JavaScript is evaluated. Without the proper measures, like some form of loading screen and making sure this solution is loaded before every other piece of JavaScript is ready, it can cause a Flash of Unstyled Content.
 
 ```js
-const $widget = document.querySelector(".widget");
+const $widget = document.querySelector('.widget')
 
 const resizeObserver = new ResizeObserver((entries) => {
   for (let entry of entries) {
     if (entry.target.width > entry.contentBoxSize.inlineSize) {
-      entry.target.classList.add("widget--large");
+      entry.target.classList.add('widget--large')
     } else {
-      entry.target.classList.remove("widget--large");
+      entry.target.classList.remove('widget--large')
     }
   }
-});
+})
 
-resizeObserver.observe($widget);
+resizeObserver.observe($widget)
 ```
 
 A CSS solution however, that is if we use the recommendation of loading critical styles upfront and avoiding render-blocking JavaScript on page load, is evaluated before JavaScript. Therefore, we'll receive the correct layout on first paint.

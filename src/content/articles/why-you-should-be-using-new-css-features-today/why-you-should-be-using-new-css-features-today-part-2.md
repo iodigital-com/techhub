@@ -1,14 +1,11 @@
 ---
-title: "Why you should be using new CSS features today - part 2"
-date: "2022-12-05"
-images:
-  [
-    "/articles/why-you-should-be-using-new-css-features-today/new-css-features-2.png",
-  ]
+title: 'Why you should be using new CSS features today - part 2'
+date: '2022-12-05'
+images: ['/articles/why-you-should-be-using-new-css-features-today/new-css-features-2.png']
 summary: "In the previous part of this article, I tried to tickle your brain a bit to unleash your curiosity and drive your determination to try some new CSS features today. That's exactly what I'll be doing in this part, writing some new stuff today so you can slowly polish new CSS skills very sneaky and hidden in the code, like a ninja."
-authors: ["brecht-de-ruyte"]
-theme: "beige"
-serie: "why-you-should-be-using-new-css-features-today"
+authors: ['brecht-de-ruyte']
+theme: 'beige'
+serie: 'why-you-should-be-using-new-css-features-today'
 ---
 
 ## Let’s talk browsers
@@ -120,8 +117,8 @@ body.panel-open {
 Inside the JS, I added the following when triggering the panel to open:
 
 ```js
-if (!CSS.supports("selector(:has(*))")) {
-  document.body.classList.toggle("panel-open");
+if (!CSS.supports('selector(:has(*))')) {
+  document.body.classList.toggle('panel-open')
 }
 ```
 
@@ -159,7 +156,7 @@ I keep on mentioning masonry as one of the things I look the most forward to in 
 ```
 
 ```js
-const supportMasonry = CSS.supports("grid-template-rows", "masonry");
+const supportMasonry = CSS.supports('grid-template-rows', 'masonry')
 
 if (!supportMasonry) {
   /* 
@@ -189,7 +186,7 @@ And as this might be my last article on the tech_hub of the year, I Wish you all
 
 ```css
 .christmas:has(.snow) {
-  list-style: "❄️";
+  list-style: '❄️';
   list-style-position: outside;
 }
 ```

@@ -1,10 +1,10 @@
 ---
-title: "Azure Cache for Redis Cheatsheets"
-date: "2022-11-07 15:30:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Azure Cache for Redis Cheatsheets'
+date: '2022-11-07 15:30:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

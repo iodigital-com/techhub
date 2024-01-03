@@ -1,14 +1,14 @@
 ---
-title: "How do I pick a _front-end framework_ & showcase it with _Storybook_?"
-date: "2022-08-24"
+title: 'How do I pick a _front-end framework_ & showcase it with _Storybook_?'
+date: '2022-08-24'
 images:
   [
-    "/articles/how-do-i-build-a-component-library/front-end-framework-storybook/front-end-framework-storybook.png",
+    '/articles/how-do-i-build-a-component-library/front-end-framework-storybook/front-end-framework-storybook.png',
   ]
-summary: "How to build a component library Part 2: Picking a front-end framework and setting up Storybook."
-authors: ["dave-bitter"]
-theme: "blue"
-serie: "how-do-i-build-a-component-library"
+summary: 'How to build a component library Part 2: Picking a front-end framework and setting up Storybook.'
+authors: ['dave-bitter']
+theme: 'blue'
+serie: 'how-do-i-build-a-component-library'
 ---
 
 <div className="p-4 bg-io_blue-100">_This article is part 2 of the series [How do I build a Component Library?](/series/how-do-i-build-a-component-library). You can find the demo repository for this series on [GitHub](https://github.com/DaveBitter/fe-monorepo) and the component library itself hosted [here](https://fe-monorepo.davebitter.com/)._</div>
@@ -99,21 +99,21 @@ Storybook then sets up everything you need to start developing. There are some t
 ```jsx
 module.exports = {
   stories: [
-    "./Introduction.stories.mdx",
-    "../packages/**/*.stories.mdx",
-    "../packages/**/*.stories.@(js|jsx|ts|tsx)",
+    './Introduction.stories.mdx',
+    '../packages/**/*.stories.mdx',
+    '../packages/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
     {
-      name: "@storybook/addon-docs",
+      name: '@storybook/addon-docs',
       options: { transcludeMarkdown: true },
     },
   ],
-  staticDirs: ["../public"],
-  framework: "@storybook/web-components",
-};
+  staticDirs: ['../public'],
+  framework: '@storybook/web-components',
+}
 ```
 
 Secondly, I’ve updated the root `package.json` with two scripts:

@@ -1,14 +1,11 @@
 ---
-title: "Why you should be using new CSS features today - part 1"
-date: "2022-11-30"
-images:
-  [
-    "/articles/why-you-should-be-using-new-css-features-today/new-css-features-1.png",
-  ]
-summary: "Unless you have no affinity with CSS at all or have been living under a rock for the last year, you should have noticed that new CSS features are skyrocketing like never before. Although this is a good thing, it might get frustrating to get a grasp on all these new playthings because every time you add something new in your styling toolbox, the next best thing is just around the corner."
-authors: ["brecht-de-ruyte"]
-theme: "beige"
-serie: "why-you-should-be-using-new-css-features-today"
+title: 'Why you should be using new CSS features today - part 1'
+date: '2022-11-30'
+images: ['/articles/why-you-should-be-using-new-css-features-today/new-css-features-1.png']
+summary: 'Unless you have no affinity with CSS at all or have been living under a rock for the last year, you should have noticed that new CSS features are skyrocketing like never before. Although this is a good thing, it might get frustrating to get a grasp on all these new playthings because every time you add something new in your styling toolbox, the next best thing is just around the corner.'
+authors: ['brecht-de-ruyte']
+theme: 'beige'
+serie: 'why-you-should-be-using-new-css-features-today'
 ---
 
 ## The main benefits of using the latest CSS features
@@ -38,17 +35,17 @@ $color-default: #555;
 /* and all the other variables over here */
 
 $alert-colors: (
-  "success": (
-    "background": $color-success,
+  'success': (
+    'background': $color-success,
   ),
-  "warning": (
-    "background": $color-warning,
+  'warning': (
+    'background': $color-warning,
   ),
-  "error": (
-    "background": $color-error,
+  'error': (
+    'background': $color-error,
   ),
-  "info": (
-    "background": $color-info,
+  'info': (
+    'background': $color-info,
   ),
 );
 
@@ -72,17 +69,17 @@ Pretty standard stuff and this works great, let’s create the same thing with c
 }
 
 $status-colors: (
-  "success": (
-    "background": var(--color-success),
+  'success': (
+    'background': var(--color-success),
   ),
-  "warning": (
-    "background": var(--color-warning),
+  'warning': (
+    'background': var(--color-warning),
   ),
-  "error": (
-    "background": var(--color-error),
+  'error': (
+    'background': var(--color-error),
   ),
-  "info": (
-    "background": var(--color-info),
+  'info': (
+    'background': var(--color-info),
   ),
 );
 

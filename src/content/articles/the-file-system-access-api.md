@@ -1,10 +1,10 @@
 ---
-title: "The File System Access API: Unlocking New Possibilities for Web Developers"
-date: "2023-02-03"
-images: ["/articles/file-system-access-api/file-system-access-api-hero.webp"]
-summary: "An incredibly powerful API exists to access the local file system of a user. Let’s have a look at how this works and why this could be interesting for your next project."
-authors: ["dave-bitter"]
-theme: "blue"
+title: 'The File System Access API: Unlocking New Possibilities for Web Developers'
+date: '2023-02-03'
+images: ['/articles/file-system-access-api/file-system-access-api-hero.webp']
+summary: 'An incredibly powerful API exists to access the local file system of a user. Let’s have a look at how this works and why this could be interesting for your next project.'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 The web is an incredibly powerful platform that keeps getting better. I’m always on the hunt for new capabilities, like the File System Access API, to create the best user experience on the web. In this article, we’ll have a look at what the File System Access API is, how it works and why this is such a great addition to the web as a platform.
@@ -48,19 +48,19 @@ const openFile = async () => {
   const [fileHandle] = await window.showOpenFilePicker({
     types: [
       {
-        description: "Markdown files",
+        description: 'Markdown files',
         accept: {
-          "text/md": [".md"],
+          'text/md': ['.md'],
         },
       },
     ],
     multiple: false,
-  });
+  })
 
   // Do something with the file handle
-};
+}
 
-elements.openFileButton.addEventListener("click", openFile);
+elements.openFileButton.addEventListener('click', openFile)
 ```
 
 Quite a few things are happening here. Let’s go over each of them. First, I create an asynchronous function. This is needed because we need to await the file picker window in the next line. Next, I actually request to open the native file of the user with `window.showOpenFilePicker`. You can pass a couple of options here like which files you allow and whether the user can pick multiple. The browser opens a file picker just like how it would do if you show a regular file input:
@@ -86,24 +86,24 @@ const openDirectory = async () => {
   const directoryHandle = await window.showDirectoryPicker({
     types: [
       {
-        description: "Markdown files",
+        description: 'Markdown files',
         accept: {
-          "text/md": [".md"],
+          'text/md': ['.md'],
         },
       },
     ],
-  });
+  })
 
   // Do something with the directory handle
-};
+}
 
-elements.openDirectoryButton.addEventListener("click", openDirectory);
+elements.openDirectoryButton.addEventListener('click', openDirectory)
 ```
 
 The second difference is that I get a single directory handle back as a result of `window.showDirectoryPicker`. To get all the file handles in that directory, I can do this:
 
 ```jsx
-const fileHandles = directoryHandle.values();
+const fileHandles = directoryHandle.values()
 ```
 
 I now have an array of all the file handles. Well, the file handles and potentially any directory handles. As there could be subdirectories, there could potentially be directory handles in the array.
@@ -111,44 +111,42 @@ I now have an array of all the file handles. Well, the file handles and potentia
 Unfortunately for me, these directory handles don’t contain an array of file handles in that directory. I can, however, do something similar to the `window.showDirectoryPicker` with a directory handle. I can request the file handles in the directory as follows:
 
 ```jsx
-const [subDirectoryHandle] = fileHandles;
+const [subDirectoryHandle] = fileHandles
 
-const subDirectoryHandles = subDirectoryHandle.values();
+const subDirectoryHandles = subDirectoryHandle.values()
 ```
 
 Now, if this array of handles contains a directory, I can do it again. This sounds like I need to do some recursive programming to walk through the file tree. I wrote a recursive that would, simplified, look something like this:
 
 ```jsx
 const getEntriesRecursivelyFromHandles = async (handles) => {
-  const entries = [];
+  const entries = []
 
   for await (const handle of handles) {
-    const { kind } = handle;
+    const { kind } = handle
 
     switch (kind) {
-      case "file":
+      case 'file':
         entries.push({
           kind,
           handle,
-        });
-        break;
+        })
+        break
 
-      case "directory":
-        const directoryHandles = await entry.values();
+      case 'directory':
+        const directoryHandles = await entry.values()
 
         entries.push({
           kind,
           handle,
-          entries: await getEntriesRecursivelyFromHandles(
-            directoryHandles
-          ).catch(console.error),
-        });
-        break;
+          entries: await getEntriesRecursivelyFromHandles(directoryHandles).catch(console.error),
+        })
+        break
     }
   }
 
-  return entries;
-};
+  return entries
+}
 ```
 
 It might look a bit complex at first, but let’s go over some of the parts. I first create an array that will hold all entries I need to build the sidebar. Then I loop over all the passed handles. If the `kind` of the handle is a file, I can just push a new object to the entries array for that file. If the handle is a directory, I request all the handles for that subdirectory and push an object to the entries array with one additional field. I add an entries key which calls the recursive function with the directory handles for the subdirectory.
@@ -160,12 +158,12 @@ I now have an array of objects with files and directories. If an item is a direc
 Now that I have this array of handles that is easier to work with, I can start building the sidebar. For the sake of brevity and focus on just the File System Access API, I won’t show the code for this, but please refer to [the project on GitHub](https://github.com/DaveBitter/file-system-api-markdown-editor). Once I have a sidebar with all the file handles, I want to display the Markdown files in a Markdown editor. There are many libraries on NPM that offer a Markdown editor. For this vanilla JS demo, I used [ToastUI Editor](https://ui.toast.com/tui-editor). Once added to the page, it’s time to load the content of the Markdown files into the editor. I can do this, simplified as followed:
 
 ```jsx
-sidebarItemFileButton.addEventListener("click", async () => {
-  const file = await fileHandle.getFile();
-  const contents = await file.text();
+sidebarItemFileButton.addEventListener('click', async () => {
+  const file = await fileHandle.getFile()
+  const contents = await file.text()
 
-  editor.setMarkdown(contents);
-});
+  editor.setMarkdown(contents)
+})
 ```
 
 Now, once the user clicks on a sidebar item, the corresponding file handle will be used to get the text content and added to the editor.
@@ -175,13 +173,13 @@ Now, once the user clicks on a sidebar item, the corresponding file handle will 
 Great, you can see all the files, open them in the editor and make changes. Naturally, you want to save these changes to the filesystem. Let’s see how I can use the file handle to update the content:
 
 ```jsx
-saveButton.addEventListener("click", async () => {
-  const contents = editor.getMarkdown();
+saveButton.addEventListener('click', async () => {
+  const contents = editor.getMarkdown()
 
-  const writable = await fileHandle.createWritable();
-  await writable.write(contents);
-  await writable.close();
-});
+  const writable = await fileHandle.createWritable()
+  await writable.write(contents)
+  await writable.close()
+})
 ```
 
 First, I add an event listener to the save button. Next, I get the latest content from the Markdown editor. I can then create a writable for the file handle that I’m making changes to, write the updated content and close the writable. While doing this the first time, the user will see another confirmation window to allow the web application to save changes:
@@ -199,20 +197,20 @@ The user might also want to create a new file in the root or one of the subdirec
 I then added an event listener that calls a function that will open a new window in the correct directory to create a new file in:
 
 ```jsx
-sidebarDirectoryNewFileButton.addEventListener("click", async () => {
+sidebarDirectoryNewFileButton.addEventListener('click', async () => {
   await window.showSaveFilePicker({
     startIn: directoryHandle,
-    suggestedName: "untitled.md",
+    suggestedName: 'untitled.md',
     types: [
       {
-        description: "Markdown files",
+        description: 'Markdown files',
         accept: {
-          "text/md": [".md"],
+          'text/md': ['.md'],
         },
       },
     ],
-  });
-});
+  })
+})
 ```
 
 I use `window.showSaveFilePicker` to trigger the UI for the user to save a new file. I can pass it a configuration to help the user a bit. In this example, I tell it to start in the subdirectory where the user clicked on the button for a new file. Next, I gave it a sensible suggested name. Finally, I told it that a Markdown file will be saved. The user will see the following:
@@ -224,13 +222,13 @@ I use `window.showSaveFilePicker` to trigger the UI for the user to save a new f
 Finally, I’ve added a button to remove a file or directory. The simplified code example for this is fairly similar and looks like this:
 
 ```jsx
-sidebarDirectoryRemoveButton.addEventListener("click", async () => {
-  await directoryHandle.remove();
-});
+sidebarDirectoryRemoveButton.addEventListener('click', async () => {
+  await directoryHandle.remove()
+})
 
-sidebarFileRemoveButton.addEventListener("click", async () => {
-  await fileHandle.remove();
-});
+sidebarFileRemoveButton.addEventListener('click', async () => {
+  await fileHandle.remove()
+})
 ```
 
 Although this works for the file handle, there is something to note for the directory handle. While you can remove an empty directory this way, it fails when there are files or subdirectories in that directory. A workaround could be to first remove all the files and subdirectories recursively as you have all the handles for them. Then, you can remove the empty directory.

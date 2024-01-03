@@ -1,13 +1,10 @@
 ---
-title: "Code Is For Humans And Humans Alone"
-date: "2023-07-19"
-images:
-  [
-    "/articles/code-is-for-humans-and-humans-alone/JavaScript-58acbb8a3df78c345bad32c2.webp",
-  ]
-summary: "Write code for human beings to improve developer experience, readability and maintainability"
-authors: ["remy-parzinski"]
-theme: "blue"
+title: 'Code Is For Humans And Humans Alone'
+date: '2023-07-19'
+images: ['/articles/code-is-for-humans-and-humans-alone/JavaScript-58acbb8a3df78c345bad32c2.webp']
+summary: 'Write code for human beings to improve developer experience, readability and maintainability'
+authors: ['remy-parzinski']
+theme: 'blue'
 ---
 
 # Code Is For Humans And Humans Alone
@@ -61,7 +58,7 @@ The same principle was applied to [Gherkin](https://cucumber.io/docs/gherkin/), 
 
 ```js
 // Let there be light
-let there = "light";
+let there = 'light'
 ```
 
 Here are a few examples of "unreadable" code and tips on how to make them readable.
@@ -72,20 +69,20 @@ The name of your variables, functions, classes, interface, types, etc. should de
 
 ```js
 const cart = [
-  { name: "foo", amount: 18 },
-  { name: "bar", amount: 24 },
-];
+  { name: 'foo', amount: 18 },
+  { name: 'bar', amount: 24 },
+]
 // Instead of
-let sum = 0;
+let sum = 0
 for (let i = 0; i < cart.length; i++) {
-  sum += cart[i].amount;
+  sum += cart[i].amount
 }
 
 // Use
-let itemsInCart = 0;
+let itemsInCart = 0
 for (let index = 0; index < cart.length; index++) {
-  const item = cart[index];
-  itemsInCart += item.amount;
+  const item = cart[index]
+  itemsInCart += item.amount
 }
 
 // Both get minified to
@@ -98,14 +95,14 @@ So you see, the engine will read the same thing regardless. So why not write it 
 // Instead of
 const x = {
   // ...
-};
-somePackage.configure(x);
+}
+somePackage.configure(x)
 
 // Use
 const defaultConfig = {
   //...
-};
-somePackage.configure(defaultConfig);
+}
+somePackage.configure(defaultConfig)
 ```
 
 If the `defaultConfig` object becomes too big you can move it into a distinct file and import it. That way we don't have to scan past the configuration and be distracted by it.
@@ -114,11 +111,11 @@ Sometimes it's just better to make a variable out of a statement so you can name
 
 ```js
 // Instead of
-const fortyTwoDaysAgo = new Date(chosenDate - 1000 * 60 * 60 * 24 * 42);
+const fortyTwoDaysAgo = new Date(chosenDate - 1000 * 60 * 60 * 24 * 42)
 
 // Use
-const fortyTwoDays = 1000 * 60 * 60 * 24 * 42;
-const fortyTwoDaysAgo = new Date(chosenDate - fortyTwoDays);
+const fortyTwoDays = 1000 * 60 * 60 * 24 * 42
+const fortyTwoDaysAgo = new Date(chosenDate - fortyTwoDays)
 ```
 
 ### Conditionals
@@ -134,14 +131,14 @@ For starters: [Please don't write confusing conditionals](https://dev.to/somedoo
 #### The incomprehensible multiline if-statement
 
 ```js
-const file = new File(/* upload from an input field */);
+const file = new File(/* upload from an input field */)
 if (
-  file.type !== "PDF" ||
-  (file.type === "PDF" && file.size <= 42) ||
-  (file.type === "DOCX" && file.lastModified <= new Date(fortyTwoDaysAgo)) ||
-  (await file.text()).indexOf("42") !== -1
+  file.type !== 'PDF' ||
+  (file.type === 'PDF' && file.size <= 42) ||
+  (file.type === 'DOCX' && file.lastModified <= new Date(fortyTwoDaysAgo)) ||
+  (await file.text()).indexOf('42') !== -1
 ) {
-  doSomething();
+  doSomething()
 }
 ```
 
@@ -152,15 +149,14 @@ We've seen this (and probably even worse) before. You probably had to look a few
 Even in English that's hard to grasp. We can make this more readable by introducing variables per section.
 
 ```js
-const file = new File(/* upload from an input field */);
-const isPDF = file.type === "PDF";
-const isSmallPDF = isPDF && file.size <= 42;
-const isRecentWordDocument =
-  file.type === "DOCX" && file.lastModified <= new Date(fortyTwoDaysAgo);
-const fileContains42 = (await file.text()).indexOf("42") !== -1;
+const file = new File(/* upload from an input field */)
+const isPDF = file.type === 'PDF'
+const isSmallPDF = isPDF && file.size <= 42
+const isRecentWordDocument = file.type === 'DOCX' && file.lastModified <= new Date(fortyTwoDaysAgo)
+const fileContains42 = (await file.text()).indexOf('42') !== -1
 
 if (!isPDF || isSmallPDF || isRecentWordDocument || fileContains42) {
-  doSomething();
+  doSomething()
 }
 ```
 
@@ -225,7 +221,7 @@ const fileNameString =
     : files?.length > 1 &&
       Array.from(files)
         ?.map((file) => file.name)
-        .join(", ");
+        .join(', ')
 ```
 
 Yuck! The `else` statement has a [logical operator](https://codeburst.io/javascript-what-is-short-circuit-evaluation-ff22b2f5608c) when truthiness is evaluated. This expression is perfectly fine, albeit not easy to read. There's even a case which is not supported in here. What if `files` holds no items?
@@ -234,13 +230,13 @@ The idea behind this whole expression is to create a comma separated string of a
 
 ```js
 // The more performant way (with 10.000.000+ items (arbitrary high number, perf test it first))
-const fileNameString = Array.from(files, (file) => file.name).join(", ") || "";
+const fileNameString = Array.from(files, (file) => file.name).join(', ') || ''
 
 // The more readable way
 const fileNameString =
   Array.from(files)
     .map((file) => file.name)
-    .join(", ") || "";
+    .join(', ') || ''
 ```
 
 #### Switch cases
@@ -251,28 +247,28 @@ Most `switch` cases I've seen had the exact same operation with a different valu
 // Instead of
 function getValueByType(type) {
   switch (type) {
-    case "type1":
-      return value1;
-    case "type2":
-      return value2;
-    case "typeN":
-      return valueN;
+    case 'type1':
+      return value1
+    case 'type2':
+      return value2
+    case 'typeN':
+      return valueN
     default:
-      return valueDefault;
+      return valueDefault
   }
 }
-const value = getValueByType(/* some type */);
+const value = getValueByType(/* some type */)
 
 // Use
 const typeValues = {
   type1: value1,
   type2: value2,
   typeN: valueN,
-};
-function getValueByType(type) {
-  return typeValues[type] ?? valueDefault;
 }
-const value = getValueByType(/* some type */);
+function getValueByType(type) {
+  return typeValues[type] ?? valueDefault
+}
+const value = getValueByType(/* some type */)
 ```
 
 ### Iterations
@@ -282,7 +278,7 @@ JavaScript provides useful methods to loop over [iterables](https://developer.mo
 ```js
 const fruits = [
   /* items */
-];
+]
 
 // Instead of
 for (let i = 0; i < fruits.length; i++) {
@@ -297,7 +293,7 @@ for (let fruit of fruits) {
 // Use
 fruits.forEach(() => {
   // ...
-});
+})
 ```
 
 Also make sure to use proper names in your loops. Don't use `item` if the iterable holds a specific type of item. Use the type's name instead.
@@ -329,10 +325,10 @@ Prime example. JavaScript's [bitwise operators](https://developer.mozilla.org/en
 
 ```js
 // A common use was
-const containsApples = ~fruitBasket.indexOf("apple");
+const containsApples = ~fruitBasket.indexOf('apple')
 
 // Instead of
-const containsApples = fruitBasket.indexOf("apple") !== -1;
+const containsApples = fruitBasket.indexOf('apple') !== -1
 ```
 
 Not a lot of people understand what is happening here (because nobody needs to use them) and it takes a few sentences in English to explain. The result of both expressions is exactly the same. So, when would you use the bitwise operators? When you need to operate on bits. And in some cases they're more performant than the alternatives, so when that's more important use them and add a comment.

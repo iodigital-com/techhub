@@ -1,13 +1,13 @@
 ---
-title: "_Inversion of Control_ through _Compound Components_"
-date: "2023-04-26"
+title: '_Inversion of Control_ through _Compound Components_'
+date: '2023-04-26'
 images:
   [
-    "/articles/inversion-of-control-through-compound-components/inversion-of-control-through-compound-components.webp",
+    '/articles/inversion-of-control-through-compound-components/inversion-of-control-through-compound-components.webp',
   ]
-summary: "Learn how to keep your component libraries simple, easy to use, and adaptable to many use cases by leveraging Inversion of Control through Compound Components."
-authors: ["dave-bitter"]
-theme: "blue"
+summary: 'Learn how to keep your component libraries simple, easy to use, and adaptable to many use cases by leveraging Inversion of Control through Compound Components.'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 I’ve worked on many component libraries during my career. One of the main difficulties I find is to keep your components simple, easy to use and cater to many use cases. One of the ways I like to ensure this is to use Inversion of Control through Compound Components. Let’s have a look at both patterns and see how this can help you!
@@ -19,43 +19,43 @@ Let’s say you have a list of users and you create a couple of utilities to ret
 ```jsx
 const users = [
   {
-    name: "John",
+    name: 'John',
     age: 20,
-    country: "USA",
-    hobbies: ["reading", "swimming"],
+    country: 'USA',
+    hobbies: ['reading', 'swimming'],
   },
   {
-    name: "Peter",
+    name: 'Peter',
     age: 30,
-    country: "England",
-    hobbies: ["running", "swimming"],
+    country: 'England',
+    hobbies: ['running', 'swimming'],
   },
   undefined,
   {
-    name: "Mary",
+    name: 'Mary',
     age: 25,
-    country: "France",
-    hobbies: ["reading", "hiking"],
+    country: 'France',
+    hobbies: ['reading', 'hiking'],
   },
-];
+]
 
 const getEnglish = (users) => {
   return users.filter((user) => {
-    return !!user && user.country === "England";
-  });
-};
+    return !!user && user.country === 'England'
+  })
+}
 
 const getThirtyYearOlds = (users) => {
   return users.filter((user) => {
-    return !!user && user.age === 30;
-  });
-};
+    return !!user && user.age === 30
+  })
+}
 
 const getPeters = (users) => {
   return users.filter((user) => {
-    return !!user && user.name === "Peter";
-  });
-};
+    return !!user && user.name === 'Peter'
+  })
+}
 ```
 
 Naturally, it doesn’t make sense to duplicate so much code for every possible filter so you might create a reusable function like this:
@@ -63,15 +63,15 @@ Naturally, it doesn’t make sense to duplicate so much code for every possible 
 ```jsx
 const filterUsers = (users, attribute, value) => {
   return users.filter((user) => {
-    return user[attribute] === value;
-  });
-};
+    return user[attribute] === value
+  })
+}
 
-const english = filterUsers(users, "country", "England");
+const english = filterUsers(users, 'country', 'England')
 
-const thirtyYearOlds = filterUsers(users, "age", 30);
+const thirtyYearOlds = filterUsers(users, 'age', 30)
 
-const peters = filterUsers(users, "name", "Peter");
+const peters = filterUsers(users, 'name', 'Peter')
 ```
 
 Now this seems fine, but what if I want to get all French hikers? As hobbies is an array, I need to refactor the `filterUsers` function to also be able to filter for that:
@@ -80,16 +80,16 @@ Now this seems fine, but what if I want to get all French hikers? As hobbies is 
 const filterUsers = (users, attribute, value) => {
   return users.filter((user) => {
     if (Array.isArray(user[attribute])) {
-      return user[attribute].includes(value);
+      return user[attribute].includes(value)
     }
 
-    return user[attribute] === value;
-  });
-};
+    return user[attribute] === value
+  })
+}
 
 const getFrenchReaders = (users) => {
-  return filterUsers(users, "country", "France");
-};
+  return filterUsers(users, 'country', 'France')
+}
 ```
 
 You can imagine this function getting more and more complex when new requirements come in. The user of this function doesn’t have control and therefore I need to keep adding logic for new use cases. Let’s invert that and let the user have full control:
@@ -121,22 +121,19 @@ Now, I hear you thinking, why would they need to use this function at all and do
 In this article, I will use React.js for the examples, but this pattern can be applied to any framework. Let’s say you have a list where users can select an item, the component will call a callback with the selected option and it will close the list:
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const SelectList = ({ options, value, onChange }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleSelect = (option) => {
-    onChange(option);
-    setIsOpen(false);
-  };
+    onChange(option)
+    setIsOpen(false)
+  }
 
   return (
     <div className="select-list">
-      <button
-        className="select-list__button"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <button className="select-list__button" onClick={() => setIsOpen(!isOpen)}>
         {value}
       </button>
 
@@ -144,10 +141,7 @@ const SelectList = ({ options, value, onChange }) => {
         <ul className="select-list__options">
           {options.map((option) => (
             <li key={option} className="select-list__option">
-              <button
-                className="select-list__button"
-                onClick={() => handleSelect(option)}
-              >
+              <button className="select-list__button" onClick={() => handleSelect(option)}>
                 {option}
               </button>
             </li>
@@ -155,28 +149,28 @@ const SelectList = ({ options, value, onChange }) => {
         </ul>
       )}
     </div>
-  );
-};
+  )
+}
 ```
 
 Now a user of your component has a requirement where they don’t want to have the list close after a user selects an option. So, you update the component to handle this:
 
 ```jsx {3,9-11}
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const SelectList = ({ options, value, onChange, keepOpenAfterSelection }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleSelect = (option) => {
-    onChange(option);
+    onChange(option)
 
     if (!keepOpenAfterSelection) {
-      setIsOpen(false);
+      setIsOpen(false)
     }
-  };
+  }
 
   // ...
-};
+}
 ```
 
 Now, imagine ten other requirements coming in in the coming months. What happens is you enter the [“apropcalypse”](https://twitter.com/gurlcode/status/1002110517094371328?lang=en). Not only will your component handle a vast number of props, it becomes very complex very quickly.
@@ -186,44 +180,39 @@ Now, imagine ten other requirements coming in in the coming months. What happens
 The real issue in the simplified example above is that the `handleSelect` function has logic being added to for updating the state it for specific use cases when a prop (`keepOpenAfterSelection`) is passed. Let’s invert this logic. First, we allow the user to pass a state reducer and replace `useState` with `useReducer`. Next, we remove the check for the `keepOpenAfterSelection` prop:
 
 ```jsx
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react'
 
-const defaultStateReducer = (state, changes) => ({ ...state, ...changes });
+const defaultStateReducer = (state, changes) => ({ ...state, ...changes })
 
-const SelectList = ({
-  options,
-  value,
-  onChange,
-  stateReducer = defaultStateReducer,
-}) => {
-  const [{ isOpen }, setState] = useReducer(stateReducer, { isOpen: false });
+const SelectList = ({ options, value, onChange, stateReducer = defaultStateReducer }) => {
+  const [{ isOpen }, setState] = useReducer(stateReducer, { isOpen: false })
 
   const handleSelect = (option) => {
-    onChange(option);
-    setState({ isOpen: false });
-  };
+    onChange(option)
+    setState({ isOpen: false })
+  }
 
   /// ...
-};
+}
 ```
 
 When a user doesn’t provide a state reducer, the default behaviour is used. But, the user can now take full control like so:
 
 ```jsx
-import React from "react";
+import React from 'react'
 
 const App = () => {
   return (
     <SelectList
-      options={["One", "Two", "Three"]}
+      options={['One', 'Two', 'Three']}
       value="One"
       onChange={(value) => console.log(value)}
       stateReducer={(state) => {
-        return { ...state, isOpen: true };
+        return { ...state, isOpen: true }
       }}
     />
-  );
-};
+  )
+}
 ```
 
 As you can see, whenever the SelectList component’s `setState` function is called, the stateReducer callback gets the state passes. There we can return that state, but make an exception as well. Now, this example works for keeping the list open, but you can imagine you can now update any state based on the context of your application and requirements.
@@ -245,12 +234,12 @@ The Inversion of Control example you looked at is great, but it’s merely a sol
 As far as I see it, the user of the SelectList component has the context of their application and what should be rendered. Let’s give them the power to do just that:
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const SelectList = ({ options, value, onChange, isOpen, onToggle }) => {
   const handleSelect = (option) => {
-    onChange(option);
-  };
+    onChange(option)
+  }
 
   return (
     <div className="select-list">
@@ -262,10 +251,7 @@ const SelectList = ({ options, value, onChange, isOpen, onToggle }) => {
         <ul className="select-list__options">
           {options.map((option) => (
             <li key={option} className="select-list__option">
-              <button
-                className="select-list__button"
-                onClick={() => handleSelect(option)}
-              >
+              <button className="select-list__button" onClick={() => handleSelect(option)}>
                 {option}
               </button>
             </li>
@@ -273,30 +259,30 @@ const SelectList = ({ options, value, onChange, isOpen, onToggle }) => {
         </ul>
       )}
     </div>
-  );
-};
+  )
+}
 ```
 
 The user then has to update their App component like this:
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const App = () => {
-  const [selectListIsOpen, setSelectListIsOpen] = useState(false);
+  const [selectListIsOpen, setSelectListIsOpen] = useState(false)
 
   return (
     <div className="App">
       <SelectList
-        options={["One", "Two", "Three"]}
+        options={['One', 'Two', 'Three']}
         value="One"
         onChange={(value) => console.log(value)}
         isOpen={selectListIsOpen}
         onToggle={(isOpen) => setSelectListIsOpen(isOpen)}
       />
     </div>
-  );
-};
+  )
+}
 ```
 
 Sure, the state is now gone from the component, but now we are left with the original problem of a large number of props that the component needs to accept. Let’s use compound components.
@@ -316,19 +302,19 @@ The idea of Compound Components is to have multiple components work together whe
 On their own, `select` and `option` don’t make much sense, but when combined they provide a useful interaction. Let’s first update the SelectList to offer this and look at the benefits of this approach:
 
 ```jsx
-import React from "react";
+import React from 'react'
 
 const SelectListToggle = ({ children, onClick }) => {
   return (
     <button className="select-list__button" onClick={onClick}>
       {children}
     </button>
-  );
-};
+  )
+}
 
 const SelectListItems = ({ children }) => {
-  return <ul className="select-list__options">{children}</ul>;
-};
+  return <ul className="select-list__options">{children}</ul>
+}
 
 const SelectListItem = ({ children, onClick }) => {
   return (
@@ -337,18 +323,18 @@ const SelectListItem = ({ children, onClick }) => {
         {children}
       </button>
     </li>
-  );
-};
+  )
+}
 
 const SelectList = ({ children }) => {
-  return <div className="select-list">{children}</div>;
-};
+  return <div className="select-list">{children}</div>
+}
 
-SelectList.Toggle = SelectListToggle;
-SelectList.Items = SelectListItems;
-SelectList.Item = SelectListItem;
+SelectList.Toggle = SelectListToggle
+SelectList.Items = SelectListItems
+SelectList.Item = SelectListItem
 
-export default SelectList;
+export default SelectList
 ```
 
 As you can see, all the separate elements that construct a SelectList are split out into separate components. They are then added as a key of `SelectList`. Naturally, you could use the components as is, but this ensures that only SelectList can be imported from the file which has the several sub-components as a key. This way they are always used together. In a minute, I’ll show you how this looks.

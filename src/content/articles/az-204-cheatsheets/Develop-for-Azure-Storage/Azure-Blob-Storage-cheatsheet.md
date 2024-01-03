@@ -1,10 +1,10 @@
 ---
-title: "Develop solutions that use Blob storage Cheatsheets"
-date: "2022-11-07 14:40:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Develop solutions that use Blob storage Cheatsheets'
+date: '2022-11-07 14:40:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

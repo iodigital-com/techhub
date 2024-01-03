@@ -1,10 +1,10 @@
 ---
-title: "Develop solutions that use Azure Cosmos DB Cheatsheets"
-date: "2022-11-07 15:00:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Develop solutions that use Azure Cosmos DB Cheatsheets'
+date: '2022-11-07 15:00:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 
@@ -290,9 +290,9 @@ The post-trigger runs as part of the same transaction for the underlying item it
 an exception during the _post-trigger_ execution will **fail the whole transaction**. Anything committed will be rolled back and an exception returned.
 
 ```js
-var context = getContext();
-var container = context.getCollection();
-var response = context.getResponse();
+var context = getContext()
+var container = context.getCollection()
+var response = context.getResponse()
 
 //rest of the code
 ```

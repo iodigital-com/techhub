@@ -1,21 +1,12 @@
 ---
-title: "Streamlining Deployment and Scaling: An Introduction to Kubernetes, Helm and Terraform"
-date: "2023-07-27"
+title: 'Streamlining Deployment and Scaling: An Introduction to Kubernetes, Helm and Terraform'
+date: '2023-07-27'
 tags:
-  [
-    "Kubernetes",
-    "Minikube",
-    "k8s",
-    "Helm",
-    "Terraform",
-    "Dockerization",
-    "Kotlin",
-    "Springboot",
-  ]
-images: ["/articles/streamlining-deployment-and-scaling/Intro-Clouds.jpg"]
-summary: "A small go-through to explore Kubernetes, Helm and Terraform"
-authors: ["eyad-jarrar"]
-theme: "beige"
+  ['Kubernetes', 'Minikube', 'k8s', 'Helm', 'Terraform', 'Dockerization', 'Kotlin', 'Springboot']
+images: ['/articles/streamlining-deployment-and-scaling/Intro-Clouds.jpg']
+summary: 'A small go-through to explore Kubernetes, Helm and Terraform'
+authors: ['eyad-jarrar']
+theme: 'beige'
 ---
 
 ## Introduction

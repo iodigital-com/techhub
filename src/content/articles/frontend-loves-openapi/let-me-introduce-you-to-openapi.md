@@ -1,9 +1,9 @@
 ---
-title: "Let me introduce you to OpenAPI"
-date: "2023-01-11"
-summary: "OpenAPI allows us to improve effeciency between teams and interdependent projects. It allows us to describe our API in a single document. In this part of the series, we will take you through the most important parts of an OpenAPI document."
-authors: ["maarten-van-hoof"]
-serie: "frontend-loves-openapi"
+title: 'Let me introduce you to OpenAPI'
+date: '2023-01-11'
+summary: 'OpenAPI allows us to improve effeciency between teams and interdependent projects. It allows us to describe our API in a single document. In this part of the series, we will take you through the most important parts of an OpenAPI document.'
+authors: ['maarten-van-hoof']
+serie: 'frontend-loves-openapi'
 ---
 
 [In the previous part of this series](openapi-a-contract-for-rest-ful-apis), we introduced you to the purpose of contracts between API providers and consumers. This visibility allows us to improve efficiency between teams and interdependent projects, wether that be internal or external projects.
@@ -125,18 +125,18 @@ paths:
       #...
 
       responses:
-        "200":
+        '200':
           description: Expected response to a valid request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                $ref: '#/components/schemas/Pets'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
 ```
 
 We declare an operation **response** by stating a **status code** or the keyword **default** for a default response an operation should return when the defined status codes don't suffice. Very handy to declare a default error response that produces the same error format for all erroneous status codes.
@@ -208,7 +208,7 @@ components:
     Pets:
       type: array
       items:
-        $ref: "#/components/schemas/Pet"
+        $ref: '#/components/schemas/Pet'
 ```
 
 For example, we describe our Pet as an object. It has the properties id, name, image, and tag. All, except id, are described as values of the type string. Id is defined as a 64-bit integer. Id and name are described as required, meaning API consumers should consider that the image and tag value could not be in the returned data. We can reuse our Pet component to create a Pets component, an array of the Pet component.

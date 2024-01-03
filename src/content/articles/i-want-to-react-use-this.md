@@ -1,10 +1,10 @@
 ---
-title: "I want to _React.use()_ this!"
-date: "2022-11-22"
-images: ["/articles/i-want-to-react-use-this/i-want-to-react-use-this.jpg"]
-summary: "A big part of working with React.js is fetching data and displaying the results. Let’s see how the new React.use() hook can can help you!"
-authors: ["dave-bitter"]
-theme: "blue"
+title: 'I want to _React.use()_ this!'
+date: '2022-11-22'
+images: ['/articles/i-want-to-react-use-this/i-want-to-react-use-this.jpg']
+summary: 'A big part of working with React.js is fetching data and displaying the results. Let’s see how the new React.use() hook can can help you!'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 There’s quite a bit of chatter lately about an experimental hook called `React.use()`. This will fundamentally change the way you work with [React.js](https://reactjs.org/). Let’s have a look at what it is, why you would want to `React.use()` it and how it works!
@@ -20,29 +20,29 @@ Couldn’t you already do that? Nope! Sure you could have promises in React.js f
 The ability to now await some asynchronous code will for instance have a big impact on how you load data into your component. Previously, you would have to resort to `useEffect` to fetch data. You would then have to add some state where you store the data and potentially show a spinner while the data is being fetched. This could look something like this:
 
 ```jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
 const YourComponent = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+  const [data, setData] = useState([])
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true)
 
-    fetch("api.com/data")
+    fetch('api.com/data')
       .then((res) => res.json())
       .then((result) => {
-        setData(result);
-        setIsLoading(false);
-      });
-  }, []);
+        setData(result)
+        setIsLoading(false)
+      })
+  }, [])
 
   if (isLoading) {
-    return "Loading...";
+    return 'Loading...'
   }
 
   if (!data) {
-    return "No data";
+    return 'No data'
   }
 
   return (
@@ -51,10 +51,10 @@ const YourComponent = () => {
         <li key={datum.id}>{datum.name}</li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default YourComponent;
+export default YourComponent
 ```
 
 Note that all the data fetching happens on the client-side. Because of this, the first time the component renders on the client you start fetching data and you need to show some feedback to the user. In this simplified example that is the string ‘Loading…’, but more than likely you display a spinner.
@@ -66,15 +66,15 @@ This isn’t great as the component is rather useless if the data is not fetched
 You can simply import the `use` hook from the React.js package. Next, you pass it a fetching function, or rather, a Promise. Finally, you assign the response to a variable. The updated example would look a bit like this:
 
 ```jsx
-import React, { use } from "react";
+import React, { use } from 'react'
 
-const getData = fetch("api.com/data").then((res) => res.json());
+const getData = fetch('api.com/data').then((res) => res.json())
 
 const YourComponent = () => {
-  const data = use(getData);
+  const data = use(getData)
 
   if (!data) {
-    return "No data";
+    return 'No data'
   }
 
   return (
@@ -83,10 +83,10 @@ const YourComponent = () => {
         <li key={datum.id}>{datum.name}</li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default YourComponent;
+export default YourComponent
 ```
 
 It looks like a minor change, but let’s see what you gained.

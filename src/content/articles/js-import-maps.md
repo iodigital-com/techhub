@@ -1,16 +1,16 @@
 ---
-title: "Import maps in JavaScript"
-date: "2023-05-03"
+title: 'Import maps in JavaScript'
+date: '2023-05-03'
 summary: Traditionally, developers have used build tools like Webpack or Rollup to bundle and optimize their code for production. These build processes can be time-consuming to set up and make development more complicated. With native JavaScript modules now widely supported in modern web browsers, there is a need to map JavaScript packages to their source files.
-authors: ["sander-borgman"]
-theme: "blue"
+authors: ['sander-borgman']
+theme: 'blue'
 ---
 
 Let's say we have the following JavaScript module on our page:
 
 ```html
 <script type="module">
-  import moment from "moment";
+  import moment from 'moment'
   // ...
 </script>
 ```
@@ -54,9 +54,9 @@ In JavaScript it's common to have packages consisting of multiple modules and fi
   }
 </script>
 <script type="module">
-  import moment from "moment/moment.js";
+  import moment from 'moment/moment.js'
 
-  console.log(moment().format("MMMM Do YYYY, h:mm:ss a"));
+  console.log(moment().format('MMMM Do YYYY, h:mm:ss a'))
 </script>
 ```
 
@@ -75,9 +75,9 @@ In this example, we're using import maps to import the Moment.js library from a 
   }
 </script>
 <script type="module">
-  import moment from "moment";
+  import moment from 'moment'
 
-  console.log(moment().format("MMMM Do YYYY, h:mm:ss a"));
+  console.log(moment().format('MMMM Do YYYY, h:mm:ss a'))
 </script>
 ```
 
@@ -120,8 +120,8 @@ As an alternative to scoping, you have the option to define multiple versions of
   }
 </script>
 <script type="module">
-  import moment from "moment@2.29";
-  import momentLegacy from "moment@2.18";
+  import moment from 'moment@2.29'
+  import momentLegacy from 'moment@2.18'
 </script>
 ```
 
