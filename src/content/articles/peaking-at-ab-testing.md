@@ -1,10 +1,10 @@
 ---
-title: "Peeking problem in A/B testing: Frequentist approach"
-date: "2022-09-08"
-images: ["/articles/peaking-at-ab-testing/peaking-at-ab-testing.png"]
-summary: "In our current state of digitization, data-based decision-making has become an integral aspect of online businesses. Evidence-based practice, the paradigm used to make those informed decisions, relies on the use of data and solid statistical methods to solve real problems."
-authors: ["abdelhak-chahid"]
-theme: "blue"
+title: 'Peeking problem in A/B testing: Frequentist approach'
+date: '2022-09-08'
+images: ['/articles/peaking-at-ab-testing/peaking-at-ab-testing.png']
+summary: 'In our current state of digitization, data-based decision-making has become an integral aspect of online businesses. Evidence-based practice, the paradigm used to make those informed decisions, relies on the use of data and solid statistical methods to solve real problems.'
+authors: ['abdelhak-chahid']
+theme: 'blue'
 ---
 
 A/B testing is one of the most commonly used statistical methods and the most of successful applications of statistical inferences in the internet age, particularly in online settings for data-based decisions.

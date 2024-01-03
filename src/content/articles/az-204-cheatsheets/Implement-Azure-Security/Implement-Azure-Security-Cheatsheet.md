@@ -1,10 +1,10 @@
 ---
-title: "Implement Azure Security Cheatsheet"
-date: "2022-11-07 15:00:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Implement Azure Security Cheatsheet'
+date: '2022-11-07 15:00:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

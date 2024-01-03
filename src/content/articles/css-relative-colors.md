@@ -1,10 +1,10 @@
 ---
-title: "CSS Relative colors"
-date: "2023-12-01"
-images: ["/articles/css-relative-colors/color-spectrum.webp"]
-summary: "Before the relative color syntax you had to rely on CSS variables or even worse: JavaScript to modify the parameters of a color. Using the from keyword the browser can convert the originating color to different color spaces and change the color properties."
-authors: ["lucien-immink"]
-theme: "blue"
+title: 'CSS Relative colors'
+date: '2023-12-01'
+images: ['/articles/css-relative-colors/color-spectrum.webp']
+summary: 'Before the relative color syntax you had to rely on CSS variables or even worse: JavaScript to modify the parameters of a color. Using the from keyword the browser can convert the originating color to different color spaces and change the color properties.'
+authors: ['lucien-immink']
+theme: 'blue'
 ---
 
 For a lot of websites and applications, there is a need for an accent color. This accent color is used on links and buttons for example and when
@@ -18,17 +18,16 @@ As an example, I'm going to use iO's primary accent color `#0017ee` which transl
   --accent-chroma: 0.291;
   --accent-hue: 264.18;
 
-  --accent-oklch: var(--accent-lightness) var(--accent-chroma) var(--accent-hue)
-    --accent-color: oklch(var(--accent-oklch));
+  --accent-oklch: var(--accent-lightness) var(--accent-chroma) var(--accent-hue) --accent-color: oklch(
+      var(--accent-oklch)
+    );
 }
 ```
 
 With the separate properties set, I can now easily add new colors based on those properties:
 
 ```css
---accent-hover: oklch(
-  var(--accent-lightness + 10) var(--accent-chroma) var(--accent-hue)
-);
+--accent-hover: oklch(var(--accent-lightness + 10) var(--accent-chroma) var(--accent-hue));
 ```
 
 Quite a lot of work and it's very error prone. Chrome 119 introduced CSS native relative colors which changes this syntax quite drastically.
@@ -118,9 +117,7 @@ To invert a color a trick is applied by converting the color to `rgb` and substr
 
 ```css
 .invert-accent-color {
-  background-color: rgb(
-    from var(--accent-color) calc(1 - r) calc(1 - g) calc(1 - b)
-  );
+  background-color: rgb(from var(--accent-color) calc(1 - r) calc(1 - g) calc(1 - b));
 }
 ```
 

@@ -1,10 +1,10 @@
 ---
-title: "Generate unit tests using CodiumAI"
-date: "2023-09-27"
-images: ["/articles/codiumai-for-unit-tests/codiumai-for-unit-tests-cover.webp"]
-summary: "Unit tests are an essential part of software development. Tests help you to ensure that the code works as you expect. It takes time to create all necessary tests. But there is a way to generate them."
-authors: ["alexey-ses"]
-theme: "blue"
+title: 'Generate unit tests using CodiumAI'
+date: '2023-09-27'
+images: ['/articles/codiumai-for-unit-tests/codiumai-for-unit-tests-cover.webp']
+summary: 'Unit tests are an essential part of software development. Tests help you to ensure that the code works as you expect. It takes time to create all necessary tests. But there is a way to generate them.'
+authors: ['alexey-ses']
+theme: 'blue'
 ---
 
 ## What is Unit testing
@@ -33,15 +33,13 @@ Here's an example of TypeScript code that will be used for unit tests generation
 
 ```typescript
 export interface User {
-  userId: string;
-  userName: string;
+  userId: string
+  userName: string
 }
 
 export class AuthService {
   searchUsersByName(users: User[], userName: string) {
-    return users.filter((user) =>
-      user.userName.toLowerCase().includes(userName.toLowerCase())
-    );
+    return users.filter((user) => user.userName.toLowerCase().includes(userName.toLowerCase()))
   }
 }
 ```

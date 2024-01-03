@@ -1,13 +1,13 @@
 ---
-title: "Make awesome animated interactions with two lines of code"
-date: "2023-10-18"
+title: 'Make awesome animated interactions with two lines of code'
+date: '2023-10-18'
 images:
   [
-    "/articles/view-transitions-api-animated-interactions/view-transitions-api-animated-interactions.png",
+    '/articles/view-transitions-api-animated-interactions/view-transitions-api-animated-interactions.png',
   ]
-summary: "Transform your web app with two lines of code – create seamless animated interactions using the View Transitions API."
-authors: ["dave-bitter"]
-theme: "blue"
+summary: 'Transform your web app with two lines of code – create seamless animated interactions using the View Transitions API.'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 You might have heard about the View Transitions API in the context of animating between web pages. Whilst this is certainly awesome, you can apply this approach on a way smaller level to create awesome animated interactions in your web applications!
@@ -37,11 +37,11 @@ As always, I made to see what we can do with this approach:
 First, I created a layout like I would normally do. Next, I wrote some JavaScript to remove a list item with a small delay to see it get the checked state first. Removing an item looked like this:
 
 ```jsx
-list.addEventListener("change", (e) => {
+list.addEventListener('change', (e) => {
   setTimeout(() => {
-    removeListItemFromInputChangeEvent(e);
-  }, 300);
-});
+    removeListItemFromInputChangeEvent(e)
+  }, 300)
+})
 ```
 
 ![Screen recording showing an item being removed and the grid of cards immediately snap into place](./images/view-transitions-api-animated-interactions/removing-unanimated.gif)
@@ -49,17 +49,17 @@ list.addEventListener("change", (e) => {
 The user experience of removing an item is not great. Because the item is removed, the item next to it now takes it place. Suddenly, this item is in the place of the removed one which makes it look like it was always there. What if we can remove it, have all the items neatly animate to their new position and by doing that give the user the proper feedback they need? In the past, this took quite a bit of JavaScript to do and even then it worked a bit janky. Now let’s (technically) add two lines of code. First, wrap the call of the remove function in a `startViewTransition`. For good measure, we’ll also feature check to progressively enhance the user experience. Meaning, if the View Transitions API is supported, we enhance the default behaviour with a nice animation:
 
 ```jsx {6,8}
-list.addEventListener("change", (e) => {
+list.addEventListener('change', (e) => {
   setTimeout(() => {
     if (!document.startViewTransition) {
-      removeListItemFromInputChangeEvent(e);
+      removeListItemFromInputChangeEvent(e)
     } else {
       document.startViewTransition(() => {
-        removeListItemFromInputChangeEvent(e);
-      });
+        removeListItemFromInputChangeEvent(e)
+      })
     }
-  }, 300);
-});
+  }, 300)
+})
 ```
 
 Next, we add unique name to each of the list items:
@@ -82,9 +82,9 @@ With just adding the `document.startViewTransition` and a unique `view-transitio
 Now, let’s add a button that allows you to add a new item:
 
 ```jsx
-addButton.addEventListener("click", () => {
-  addListItem();
-});
+addButton.addEventListener('click', () => {
+  addListItem()
+})
 ```
 
 ![Screen recording showing an item being added and the grid of cards immediately snap into place](./images/view-transitions-api-animated-interactions/adding-unanimated.gif)
@@ -92,15 +92,15 @@ addButton.addEventListener("click", () => {
 We see the same unanimated behaviour as previously when deleting an item. Now let’s add the `document.startViewTransition` again:
 
 ```jsx
-addButton.addEventListener("click", () => {
+addButton.addEventListener('click', () => {
   if (!document.startViewTransition) {
-    addListItem();
+    addListItem()
   } else {
     document.startViewTransition(() => {
-      addListItem();
-    });
+      addListItem()
+    })
   }
-});
+})
 ```
 
 ![Screen recording showing an item being added and the grid of cards animate into place](./images/view-transitions-api-animated-interactions/adding-animated.gif)

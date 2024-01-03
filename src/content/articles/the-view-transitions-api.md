@@ -1,10 +1,10 @@
 ---
-title: "The _View Transitions API_: Enhancing the feel of the web"
-date: "2023-04-11"
-images: ["/articles/view-transitions-api/view-transitions-api-demo.webp"]
-summary: "The View Transitions API has landed in Chrome. Let’s have a look at how the API works and why it will change the feel of the web."
-authors: ["dave-bitter"]
-theme: "green"
+title: 'The _View Transitions API_: Enhancing the feel of the web'
+date: '2023-04-11'
+images: ['/articles/view-transitions-api/view-transitions-api-demo.webp']
+summary: 'The View Transitions API has landed in Chrome. Let’s have a look at how the API works and why it will change the feel of the web.'
+authors: ['dave-bitter']
+theme: 'green'
 ---
 
 As a developer, I am always on the lookout for new tools and technologies to make my work easier and more efficient, but simultaneously increase the user experience of it. That's why I was excited to explore the View Transitions API, which is now stable in Chrome and see how it could simplify the process of creating view transitions on the web.
@@ -41,13 +41,12 @@ To create a view transition, I first added a unique value for the CSS property `
     <p class="product__price" data-product-price>$170</p>
     <a class="product__link" data-product-link>View</a>
     <p class="product__description" data-product-description>
-      Introducing FlyTech's WaveRider Pro - the ultimate sneaker for runners and
-      athletes. With a sleek and aerodynamic design, it offers unparalleled
-      speed and comfort. Made with the latest FlyTech materials for durability
-      and performance, it features a wave-shaped sole for unbeatable traction
-      and advanced sensors for real-time feedback on performance. With built-in
-      GPS and Bluetooth connectivity, it's perfect for achieving your personal
-      best. Get yours today and experience the ultimate in futuristic footwear!
+      Introducing FlyTech's WaveRider Pro - the ultimate sneaker for runners and athletes. With a
+      sleek and aerodynamic design, it offers unparalleled speed and comfort. Made with the latest
+      FlyTech materials for durability and performance, it features a wave-shaped sole for
+      unbeatable traction and advanced sensors for real-time feedback on performance. With built-in
+      GPS and Bluetooth connectivity, it's perfect for achieving your personal best. Get yours today
+      and experience the ultimate in futuristic footwear!
     </p>
   </div>
   <div class="product__image-wrapper">
@@ -64,47 +63,44 @@ Next, I added an event listener to each product’s link to the detail page. I c
 
 ```jsx {7-13}
 const addEventListenersForProduct = (productElement, product) => {
-  const productLinkElement = productElement.querySelector(
-    "[data-product-link]"
-  );
+  const productLinkElement = productElement.querySelector('[data-product-link]')
 
-  productLinkElement.addEventListener("click", (e) => {
-    e.preventDefault();
+  productLinkElement.addEventListener('click', (e) => {
+    e.preventDefault()
 
     if (!document.startViewTransition) {
-      handleViewProduct(product);
+      handleViewProduct(product)
     } else {
       document.startViewTransition(() => {
-        handleViewProduct(product);
-      });
+        handleViewProduct(product)
+      })
     }
-  });
-};
+  })
+}
 ```
 
 Finally, in the `handleViewProduct` function, you can set the `view-transition-name` of the clicked product as the `view-transition-name` of the detail page's product element and render the page. Here's an example:
 
 ```jsx {18}
 const handleViewProduct = (product) => {
-  renderProductDetail();
+  renderProductDetail()
 
   window.history.pushState(
     product.slug,
     `${product.name} - ${product.brand}`,
     `/product/${product.slug}`
-  );
+  )
 
-  const productDetailElement = document.querySelector("[data-product-detail]");
-  const { name, brand, price, description, image, slug } = product;
+  const productDetailElement = document.querySelector('[data-product-detail]')
+  const { name, brand, price, description, image, slug } = product
 
-  productDetailElement.querySelector("[data-product-name]").innerHTML = name;
-  productDetailElement.querySelector("[data-product-brand]").innerHTML = brand;
-  productDetailElement.querySelector("[data-product-price]").innerHTML = price;
-  productDetailElement.querySelector("[data-product-description]").innerHTML =
-    description;
-  productDetailElement.querySelector("[data-product-image]").src = image;
-  productDetailElement.style.viewTransitionName = `${slug}-details`;
-};
+  productDetailElement.querySelector('[data-product-name]').innerHTML = name
+  productDetailElement.querySelector('[data-product-brand]').innerHTML = brand
+  productDetailElement.querySelector('[data-product-price]').innerHTML = price
+  productDetailElement.querySelector('[data-product-description]').innerHTML = description
+  productDetailElement.querySelector('[data-product-image]').src = image
+  productDetailElement.style.viewTransitionName = `${slug}-details`
+}
 ```
 
 And that’s all! The element will now use sensible defaults to animate between the two views. From here on out, you can tweak the animations to your liking with CSS.

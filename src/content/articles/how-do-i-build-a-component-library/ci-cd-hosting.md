@@ -1,14 +1,11 @@
 ---
-title: "How do I setup _CI/CD & hosting?_"
-date: "2022-09-07"
-images:
-  [
-    "/articles/how-do-i-build-a-component-library/ci-cd-hosting/ci-cd-hosting.png",
-  ]
-summary: "How to build a component library Part 4: Setting up CI/CD & hosting."
-authors: ["dave-bitter"]
-theme: "blue"
-serie: "how-do-i-build-a-component-library"
+title: 'How do I setup _CI/CD & hosting?_'
+date: '2022-09-07'
+images: ['/articles/how-do-i-build-a-component-library/ci-cd-hosting/ci-cd-hosting.png']
+summary: 'How to build a component library Part 4: Setting up CI/CD & hosting.'
+authors: ['dave-bitter']
+theme: 'blue'
+serie: 'how-do-i-build-a-component-library'
 ---
 
 <div className="p-4 bg-io_blue-100">_This article is part 4 of the series [How do I build a Component Library?](/series/how-do-i-build-a-component-library). You can find the demo repository for this series on [GitHub](https://github.com/DaveBitter/fe-monorepo) and the component library itself hosted [here](https://fe-monorepo.davebitter.com/)._</div>

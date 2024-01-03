@@ -5,10 +5,9 @@ import formPlugin from '@tailwindcss/forms'
 import typographyPlugin from '@tailwindcss/typography'
 import aspectRatioPlugin from '@tailwindcss/aspect-ratio'
 
-
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
   theme: {
     container: {
@@ -174,9 +173,5 @@ export default {
       }),
     },
   },
-  plugins: [
-    formPlugin,
-    typographyPlugin,
-    aspectRatioPlugin,
-  ],
-};
+  plugins: [formPlugin, typographyPlugin, aspectRatioPlugin],
+}

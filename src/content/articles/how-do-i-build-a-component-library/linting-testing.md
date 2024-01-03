@@ -1,14 +1,11 @@
 ---
-title: "How do I set up _linting_, _unit_, _snapshot_ and _visual regression testing_?"
-date: "2022-08-31"
-images:
-  [
-    "/articles/how-do-i-build-a-component-library/linting-testing/linting-testing.png",
-  ]
-summary: "How to build a component library Part 3: Setting up linting, unit, snapshot and visual regression testing."
-authors: ["dave-bitter"]
-theme: "blue"
-serie: "how-do-i-build-a-component-library"
+title: 'How do I set up _linting_, _unit_, _snapshot_ and _visual regression testing_?'
+date: '2022-08-31'
+images: ['/articles/how-do-i-build-a-component-library/linting-testing/linting-testing.png']
+summary: 'How to build a component library Part 3: Setting up linting, unit, snapshot and visual regression testing.'
+authors: ['dave-bitter']
+theme: 'blue'
+serie: 'how-do-i-build-a-component-library'
 ---
 
 <div className="p-4 bg-io_blue-100">_This article is part 3 of the series [How do I build a Component Library?](/series/how-do-i-build-a-component-library). You can find the demo repository for this series on [GitHub](https://github.com/DaveBitter/fe-monorepo) and the component library itself hosted [here](https://fe-monorepo.davebitter.com/)._</div>
@@ -33,19 +30,19 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["airbnb-base", "airbnb-typescript/base", "prettier"],
-  parser: "@typescript-eslint/parser",
+  extends: ['airbnb-base', 'airbnb-typescript/base', 'prettier'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: "module",
-    project: "./tsconfig.json",
+    sourceType: 'module',
+    project: './tsconfig.json',
   },
-  plugins: ["prettier"],
+  plugins: ['prettier'],
   rules: {
-    "prettier/prettier": "error",
+    'prettier/prettier': 'error',
   },
   root: true,
-};
+}
 ```
 
 As you can see, I added the `airbnb-typescipt/base` to the extends array. This will give us some basic linting rules for our project. Next to that, I added the `@typescript-eslint/parser` as the parser value. Finally, in the parser options, I pointed the project to the `tsconfig.json` file. This `tsconfig.json` file looks like this:
@@ -179,16 +176,16 @@ You can have a look at the configuration file here:
 
 ```jsx
 module.exports = {
-  preset: "ts-jest/presets/js-with-babel",
-  testEnvironment: "jsdom",
+  preset: 'ts-jest/presets/js-with-babel',
+  testEnvironment: 'jsdom',
   transformIgnorePatterns: [
-    "node_modules/(?!(testing-library__dom|@open-wc|lit-html|@lit|lit|lit-element|pure-lit|lit-element-state-decoupler)/)",
+    'node_modules/(?!(testing-library__dom|@open-wc|lit-html|@lit|lit|lit-element|pure-lit|lit-element-state-decoupler)/)',
   ],
-  setupFilesAfterEnv: ["<rootDir>/config/tests/testSetup.ts"],
+  setupFilesAfterEnv: ['<rootDir>/config/tests/testSetup.ts'],
   moduleNameMapper: {
-    "^.+\\.(css|less)$": "<rootDir>/config/tests/cssImportStub.ts",
+    '^.+\\.(css|less)$': '<rootDir>/config/tests/cssImportStub.ts',
   },
-};
+}
 ```
 
 Head over to the demo repository to see the contents of the referenced files.
@@ -205,20 +202,20 @@ I then added the following NPM scripts to the root `package.json`:
 Great, I can run basic tests which are useful for my utility packages, but now we need to add support for the Web Components. Even though Open Web Components has a [specific test runner for this](https://open-wc.org/guides/developing-components/testing/), I want to be able to test my components in Jest using [Testing Library](https://testing-library.com/). Luckily, Open Web Components offers [testing helpers](https://open-wc.org/docs/testing/helpers/) to test your Web Components as well. Simply add the `@open-wc/testing-helpers` package and test your component:
 
 ```jsx
-import { fixture } from "@open-wc/testing-helpers";
-import { screen } from "testing-library__dom";
+import { fixture } from '@open-wc/testing-helpers'
+import { screen } from 'testing-library__dom'
 
-import Button from "../Button";
+import Button from '../Button'
 
-describe("Button", () => {
+describe('Button', () => {
   beforeEach(async () => {
-    await fixture(Button({ label: "test", testId: "test-button" }));
-  });
+    await fixture(Button({ label: 'test', testId: 'test-button' }))
+  })
 
-  it("renders passed label in as text in button", () => {
-    expect(screen.getByTestId("test-button")).toHaveTextContent("test");
-  });
-});
+  it('renders passed label in as text in button', () => {
+    expect(screen.getByTestId('test-button')).toHaveTextContent('test')
+  })
+})
 ```
 
 ## How do I set up snapshot and visual regression testing?
@@ -230,22 +227,20 @@ As components in a component library often use other components from the same li
 Firstly, we can make snapshots of the DOM for every story using [Storyshots](https://storybook.js.org/addons/@storybook/addon-storyshots). With this Storybook addon, we can create a test file called, for example, `storyshots.spec.ts` which looks like this:
 
 ```jsx
-import initStoryshots, {
-  multiSnapshotWithOptions,
-} from "@storybook/addon-storyshots";
-import path from "path";
+import initStoryshots, { multiSnapshotWithOptions } from '@storybook/addon-storyshots'
+import path from 'path'
 
 initStoryshots({
-  suite: "Storyshots",
-  framework: "web-components",
+  suite: 'Storyshots',
+  framework: 'web-components',
   test: (story) => {
-    const fileName = path.resolve(__dirname, story.story.id);
+    const fileName = path.resolve(__dirname, story.story.id)
     return multiSnapshotWithOptions()({
       ...story,
       context: { ...story.context, fileName },
-    });
+    })
   },
-});
+})
 ```
 
 When running this test, it will go over all Storybook stories and create a snapshot of the DOM. If something changes, the test will fail. If you pass the flag `-u` when running this test, it will update the locally checked-in snapshots and pass. You can then review these changes (in a merge request). I’ve added the following NPM script to the root `package.json`:
@@ -259,17 +254,17 @@ When running this test, it will go over all Storybook stories and create a snaps
 Its visual counterpart is called [Storyshots](https://storybook.js.org/addons/@storybook/addon-storyshots). Like before, I’ve created a test tile called `imageshots.spec.ts` with the following content:
 
 ```jsx
-import initStoryshots from "@storybook/addon-storyshots";
-import { imageSnapshot } from "@storybook/addon-storyshots-puppeteer";
-import path from "path";
+import initStoryshots from '@storybook/addon-storyshots'
+import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
+import path from 'path'
 
 initStoryshots({
-  suite: "Imageshots",
-  framework: "web-components",
+  suite: 'Imageshots',
+  framework: 'web-components',
   test: imageSnapshot({
-    storybookUrl: `file://${path.resolve(__dirname, "../storybook-static")}`,
+    storybookUrl: `file://${path.resolve(__dirname, '../storybook-static')}`,
   }),
-});
+})
 ```
 
 This will do the same as the code snapshots, but using images. This way, you can make sure that any visual changes are correct. I added the following NPM script to the root `package.json`:

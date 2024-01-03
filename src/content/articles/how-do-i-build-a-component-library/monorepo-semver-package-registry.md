@@ -1,14 +1,14 @@
 ---
-title: "How do I set up a _Monorepo_, _SemVer strategy_ and _Private package registry_?"
-date: "2022-08-17"
+title: 'How do I set up a _Monorepo_, _SemVer strategy_ and _Private package registry_?'
+date: '2022-08-17'
 images:
   [
-    "/articles/how-do-i-build-a-component-library/monorepo-semver-package-registry/monorepo-semver-package-registry.png",
+    '/articles/how-do-i-build-a-component-library/monorepo-semver-package-registry/monorepo-semver-package-registry.png',
   ]
-summary: "How to build a component library Part 1: Setting up a Monorepo, Semver strategy and Private package registry."
-authors: ["dave-bitter"]
-theme: "blue"
-serie: "how-do-i-build-a-component-library"
+summary: 'How to build a component library Part 1: Setting up a Monorepo, Semver strategy and Private package registry.'
+authors: ['dave-bitter']
+theme: 'blue'
+serie: 'how-do-i-build-a-component-library'
 ---
 
 <div className="p-4 bg-io_blue-100">_This article is part 1 of the series [How do I build a Component Library?](/series/how-do-i-build-a-component-library). You can find the demo repository for this series on [GitHub](https://github.com/DaveBitter/fe-monorepo) and the component library itself hosted [here](https://fe-monorepo.davebitter.com/)._</div>

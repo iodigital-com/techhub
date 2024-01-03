@@ -1,9 +1,9 @@
 ---
-title: "How to build accessible main navigation?"
-date: "2023-02-07"
-summary: "This article contains a guide to building an accessible main navigation of a website in 5 steps. The key takeaways of this guide are HTML semantics, WAI-ARIA, CSS, and JS for accessibility."
-authors: ["tim-dujardin"]
-theme: "blue"
+title: 'How to build accessible main navigation?'
+date: '2023-02-07'
+summary: 'This article contains a guide to building an accessible main navigation of a website in 5 steps. The key takeaways of this guide are HTML semantics, WAI-ARIA, CSS, and JS for accessibility.'
+authors: ['tim-dujardin']
+theme: 'blue'
 ---
 
 ## Introduction

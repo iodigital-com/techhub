@@ -1,13 +1,11 @@
 ---
-title: "Reactive Backend Applications with Spring Boot, Kotlin and Coroutines (Part 1)"
-date: "2023-01-09"
+title: 'Reactive Backend Applications with Spring Boot, Kotlin and Coroutines (Part 1)'
+date: '2023-01-09'
 images:
-  [
-    "/articles/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/headline.jpg",
-  ]
-summary: "This 2-part article is about going from a traditional MVC-style Spring Boot application written in Java to a modern, functional, reactive Spring Boot application using Kotlin and Coroutines."
-authors: ["mehmet-akif-tutuncu", "leo-schneider"]
-theme: "green"
+  ['/articles/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/headline.jpg']
+summary: 'This 2-part article is about going from a traditional MVC-style Spring Boot application written in Java to a modern, functional, reactive Spring Boot application using Kotlin and Coroutines.'
+authors: ['mehmet-akif-tutuncu', 'leo-schneider']
+theme: 'green'
 ---
 
 Spring Framework is one of the most popular choices for web applications. It comes with a great ecosystem, tooling, and support. Spring applications are mainly written in Java. While they can serve quite well in many different domains and use cases, they may not be a good fit for modern-day applications which require low-latency and high-throughput. This is where the reactive programming paradigm could help because the paradigm is designed to address these issues by its non-blocking nature. Spring already supports reactive programming via [Project Reactor](https://projectreactor.io).

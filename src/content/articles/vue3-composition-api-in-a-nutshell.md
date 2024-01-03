@@ -1,10 +1,10 @@
 ---
-title: "Vue 3 composition API in a nutshell"
-date: "2022-11-01"
-images: ["/articles/vue3-composition-api-in-a-nutshell/header.png"]
-summary: "Vue 3 has been launched with the composition API. In this article we dive deeper into this subject and compare it with the options API (old way)."
-authors: ["lars-janssen"]
-theme: "green"
+title: 'Vue 3 composition API in a nutshell'
+date: '2022-11-01'
+images: ['/articles/vue3-composition-api-in-a-nutshell/header.png']
+summary: 'Vue 3 has been launched with the composition API. In this article we dive deeper into this subject and compare it with the options API (old way).'
+authors: ['lars-janssen']
+theme: 'green'
 ---
 
 Vue 3 has been released on Monday, February 7, 2022. Since the release of Vue 3 the ecosystem got a boost (for example with Vite) and
@@ -71,7 +71,7 @@ export default {
   watch: {
     //Watch data
   },
-};
+}
 ```
 
 With the composition API we can use hooks for this:
@@ -105,12 +105,12 @@ In Vue 2 you could already define a type, but this was still quite limited. You 
 
 ```ts
 interface Props {
-  dogNames: Array<String>;
+  dogNames: Array<String>
 }
 
 let props = withDefaults(defineProps<Props>(), {
   dogNames: [],
-});
+})
 ```
 
 ### Events
@@ -120,16 +120,16 @@ can be declared so the developer knows if an incorrect value is being passed. Co
 
 ```ts
 const emit = defineEmits<{
-  (event: "dogNames", value: Array<string>): void;
-}>();
+  (event: 'dogNames', value: Array<string>): void
+}>()
 
-emit("dogNames", ["Snuffel"]);
+emit('dogNames', ['Snuffel'])
 ```
 
 With the options API:
 
 ```js
-$emit("dogNames", ["Snuffel"]);
+$emit('dogNames', ['Snuffel'])
 ```
 
 ### Code reusage with hooks
@@ -138,18 +138,18 @@ With the options API duplicate code is prevented with `mixins`. When using multi
 
 ```ts
 const useGetPreferences = () => {
-  return useQuery(["Preference"], async () =>
+  return useQuery(['Preference'], async () =>
     PreferencesService.getPreferences().then(({ data }) => data)
-  );
-};
+  )
+}
 
-export { useGetPreferences };
+export { useGetPreferences }
 ```
 
 It's used like this:
 
 ```ts
-const { data: preferences } = useGetPreferences();
+const { data: preferences } = useGetPreferences()
 ```
 
 With the options API:
@@ -158,12 +158,12 @@ With the options API:
 var mixin = {
   methods: {
     useGetPreferences() {
-      return useQuery(["Preference"], async () =>
+      return useQuery(['Preference'], async () =>
         PreferencesService.getPreferences().then(({ data }) => data)
-      );
+      )
     },
   },
-};
+}
 ```
 
 It's used like this:
@@ -171,7 +171,7 @@ It's used like this:
 ```js
 new Vue({
   mixins: [mixin],
-});
+})
 ```
 
 ## Composition API and options API together
