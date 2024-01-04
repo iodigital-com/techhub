@@ -4,6 +4,7 @@ import Author from '@components/article/Author.astro'
 import { getRelatedJobs } from '@utils/jobs'
 import BaseLayout from './BaseLayout.astro'
 
+import Header from '@components/article/Header.astro'
 import Series from '@components/article/Series.astro'
 import type { CollectionEntry } from 'astro:content'
 
@@ -20,7 +21,8 @@ const { jobs } = await getRelatedJobs(4, searchString)
 ---
 
 <BaseLayout pageTitle={article.data.title} pageDescription={article.data.summary}>
-  <article class="grid grid-col-5 gap-10">
+  <Header article={article} authors={authors} />
+  <article class="grid grid-col-5 gap-10 my-10">
     <div class="col-start-1 col-end-2 max-w-96">
       <ul>
         {
@@ -35,7 +37,7 @@ const { jobs } = await getRelatedJobs(4, searchString)
       </ul>
 
       {
-        series && (
+        series.length > 0 && (
           <div class="mt-10">
             <Series series={series} />
           </div>
