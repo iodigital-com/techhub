@@ -1,0 +1,71 @@
+---
+import AuthorSocialsComp, { type AuthorSocials } from '@components/AuthorSocials.astro'
+import BaseLayout from './BaseLayout.astro'
+
+import Article from '@components/Article.astro'
+import Talk from '@components/talks/Talk.astro'
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  author: CollectionEntry<'authors'>
+  articles: CollectionEntry<'articles'>[]
+  talks: CollectionEntry<'talks'>[]
+}
+
+const { author, articles, talks } = Astro.props
+
+const authorSocials: AuthorSocials = {
+  twitter: author.data.twitter,
+  github: author.data.github,
+  linkedin: author.data.linkedin,
+  website: author.data.website,
+}
+---
+
+<BaseLayout pageTitle={author.data.name}>
+  <article class="grid grid-cols-12 gap-10">
+    <div class="col-start-1 col-end-7">
+      <h1 class="text-4xl mb-2">{author.data.name}</h1>
+      {author.data.occupation && <p class="mb-4 text-2xl">{author.data.occupation}</p>}
+      <AuthorSocialsComp socials={authorSocials} name={author.data.name} />
+      <div class="prose mt-4">
+        <slot />
+      </div>
+    </div>
+
+    <div class="col-start-9 col-end-13">
+      <Image class="rounded-full" src={author.data.avatar} alt={author.data.name} />
+    </div>
+
+    {
+      articles.length > 0 && (
+        <div class="col-start-1 col-end-7">
+          <h2 class="text-4xl mb-5">
+            Articles by <span class="font-serif font-light">{author.data.name}</span>
+          </h2>
+          {articles.map((article) => (
+            <div class="col-span-4 mb-5">
+              <Article article={article} />
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      talks.length > 0 && (
+        <div class="col-start-7 col-end-13">
+          <h2 class="text-4xl mb-5">
+            Talks by <span class="font-serif font-light">{author.data.name}</span>
+          </h2>
+          {talks.map((talk) => (
+            <div class="col-span-4 mb-5">
+              <Talk talk={talk} />
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </article>
+</BaseLayout>

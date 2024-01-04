@@ -8,7 +8,8 @@ theme: 'beige'
 serie: 'getting-started-with-trpc'
 ---
 
-import { Image } from 'astro:assets'
+import powerTRPCImage from '../images/getting-started-with-trpc/power-of-trpc.gif'
+import fullAppImage from '../images/getting-started-with-trpc/full-app.gif'
 
 In the previous part of this two-part series, we built the backend of our fullstack Todo mobile application using ExpressJS and tRPC. We looked at several tRPC concepts, such as query procedures, mutation procedures, and request body validation. If you haven't read the previous part yet, I suggest you do so.
 
@@ -191,12 +192,7 @@ export default useTodosQuery
 
 I would recommend you type the above-mentioned code out yourself to really see the magic of tRPC. I'll include a small demonstration of the power of tRPC in case you're too lazy (which I know most of you are 😋) to type it out yourself.
 
-<Image
-  src="/articles/images/getting-started-with-trpc/power-of-trpc.gif"
-  width="1200"
-  height="1073"
-  alt="the power of trpc"
-/>
+<img src={powerTRPCImage.src} width="1200" height="1073" alt="the power of trpc" />
 
 The autocomplete and linting is great, isn't it?
 
@@ -1075,12 +1071,7 @@ And update our `Text` subtitle to make use of those variables.
 
 Now that we have implemented all our features, it's time to run through the app and test!
 
-<Image
-  src="/articles/images/getting-started-with-trpc/full-app.gif"
-  width="600"
-  height="1298"
-  alt="What we are creating"
-/>
+<img src={fullAppImage.src} width="600" height="1298" alt="What we are creating" />
 
 There ya go! An fully functional full stack todo app 🥳
 

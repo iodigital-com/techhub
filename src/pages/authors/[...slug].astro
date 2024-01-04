@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content'
+import MarkdownAuthorLayout from '../../layouts/MarkdownAuthorLayout.astro'
+
+export async function getStaticPaths() {
+  const authors = await getCollection('authors')
+
+  return Promise.all(
+    authors.map(async (author) => {
+      const articles = await getCollection('articles', (article) => {
+        const articleAuthorSlugs = article.data.authors.map(({ slug }) => slug)
+        return articleAuthorSlugs.includes(author.slug)
+      })
+
+      const talks = await getCollection('talks', (talk) => {
+        const talkAuthorSlugs = talk.data.authors.map(({ slug }) => slug)
+        return talkAuthorSlugs.includes(author.slug)
+      })
+
+      return {
+        params: { slug: author.slug },
+        props: {
+          author,
+          articles,
+          talks,
+        },
+      }
+    })
+  )
+}
+
+const { author, articles, talks } = Astro.props
+const { Content } = await author.render()
+---
+
+<MarkdownAuthorLayout author={author} articles={articles} talks={talks}>
+  <Content />
+</MarkdownAuthorLayout>
