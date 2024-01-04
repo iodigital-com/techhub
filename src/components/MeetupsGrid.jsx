@@ -5,6 +5,7 @@ const MeetupsGrid = ({ events }) => (
     {events.map((event) => (
       <a
         key={event.eventUrl}
+        href={event.eventUrl}
         target="_blank"
         rel="noreferrer"
         className="border-t border-slate-200 pt-3"
