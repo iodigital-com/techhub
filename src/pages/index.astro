@@ -1,8 +1,13 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import JobGrid from '@components/JobGrid';
+import { getLatestJobs } from '@utils/jobs';
 import "../styles/global.css";
 
 const pageTitle = "Home Page";
+const { jobs } = await getLatestJobs(9);
 ---
 
-<BaseLayout pageTitle={pageTitle}></BaseLayout>
+<BaseLayout pageTitle={pageTitle}>
+  <JobGrid jobs={jobs} />
+</BaseLayout>

@@ -10,7 +10,14 @@ authors: ['dave-bitter']
 theme: 'blue'
 ---
 
-import { Image } from 'astro:assets'
+import removingUnanimatedImage from './images/view-transitions-api-animated-interactions/removing-unanimated.gif'
+import removingAnimatedImage from './images/view-transitions-api-animated-interactions/removing-animated.gif'
+import addingUnanimatedImage from './images/view-transitions-api-animated-interactions/adding-unanimated.gif'
+import addingAnimatedImage from './images/view-transitions-api-animated-interactions/adding-animated.gif'
+import togglingUnanimatedImage from './images/view-transitions-api-animated-interactions/toggling-unanimated.gif'
+import togglingAnimatedImage from './images/view-transitions-api-animated-interactions/toggling-animated.gif'
+import reorderingImage from './images/view-transitions-api-animated-interactions/reordering-animated.gif'
+import tableImage from './images/view-transitions-api-animated-interactions/table-animated.gif'
 
 You might have heard about the View Transitions API in the context of animating between web pages. Whilst this is certainly awesome, you can apply this approach on a way smaller level to create awesome animated interactions in your web applications!
 
@@ -50,8 +57,8 @@ list.addEventListener('change', (e) => {
 })
 ```
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/removing-unanimated.gif"
+<img
+  src={removingUnanimatedImage.src}
   width="1200"
   height="566"
   alt="Screen recording showing an item being removed and the grid of cards immediately snap into place"
@@ -86,8 +93,8 @@ Next, we add unique name to each of the list items:
 
 Now if we delete an item, we see this behaviour:
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/removing-animated.gif"
+<img
+  src={removingAnimatedImage.src}
   width="1200"
   height="568"
   alt="Screen recording showing an item being removed and the grid of cards animate into place"
@@ -107,8 +114,8 @@ addButton.addEventListener('click', () => {
 })
 ```
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/adding-unanimated.gif"
+<img
+  src={addingUnanimatedImage.src}
   width="1200"
   height="568"
   alt="Screen recording showing an item being added and the grid of cards immediately snap into place"
@@ -128,8 +135,8 @@ addButton.addEventListener('click', () => {
 })
 ```
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/adding-animated.gif"
+<img
+  src={addingAnimatedImage.src}
   width="1200"
   height="568"
   alt="Screen recording showing an item being added and the grid of cards animate into place"
@@ -137,8 +144,8 @@ addButton.addEventListener('click', () => {
 
 As you can see, now when an item is added, the rest of the items animate to their new position. We can even add a bit of JavaScript that will randomly reorder the list and see what this technique will do:
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/reordering-animated.gif"
+<img
+  src={reorderingImage.src}
   width="1200"
   height="567"
   alt="Screen recording showing an items being randomly reordered and the grid of cards animate into place"
@@ -148,8 +155,8 @@ As you can see, now when an item is added, the rest of the items animate to thei
 
 While having a grid of cards that may be filtered is a pretty common use case, you can naturally take this approach to other interactions as well. More than likely, you are working/have worked with tables. When adding to, removing from, sorting or filtering these tables the rows may change position. When calling the `startViewTransition` you can animate the changing of the rows like so:
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/table-animated.gif"
+<img
+  src={tableImage.src}
   width="1200"
   height="567"
   alt="Screen recording showing an items being reordered, removed and added and the grid of cards animate into place"
@@ -157,8 +164,8 @@ While having a grid of cards that may be filtered is a pretty common use case, y
 
 You may have noticed I added a toggle to this demo for showing the items in a grid or underneath each other. When switching, that looks like this:
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/toggling-unanimated.gif"
+<img
+  src={togglingUnanimatedImage.src}
   width="1200"
   height="567"
   alt="Screen recording showing the grid of cards toggle between grid and table view and immediately snap into place"
@@ -166,8 +173,8 @@ You may have noticed I added a toggle to this demo for showing the items in a gr
 
 I thought to myself, why not use this technique when switching between the two views?
 
-<Image
-  src="/articles/images/view-transitions-api-animated-interactions/toggling-animated.gif"
+<img
+  src={togglingAnimatedImage.src}
   width="1200"
   height="567"
   alt="Screen recording showing the grid of cards toggle between grid and table view and animating into place"
