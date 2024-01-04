@@ -6,16 +6,12 @@ import JobGrid from '@components/JobGrid';
 import { getRelatedJobs } from '@utils/jobs'
 
 export async function getStaticPaths() {
-  const articles = await getCollection("articles");
-
-  // http://127.0.0.1:4321/posts/my-article-series/my-test
-  // "id": "my-article-series/my-test.md",
-  // "slug": "my-article-series/my-test",
+  const articles = await getCollection('articles')
 
   return Promise.all(
     articles.map(async (article) => {
-      const series = getSeries(articles, article);
-      const authors = await getEntries(article.data.authors);
+      const series = getSeries(articles, article)
+      const authors = await getEntries(article.data.authors)
 
       return {
         params: { slug: article.slug },
@@ -24,14 +20,13 @@ export async function getStaticPaths() {
           authors,
           series,
         },
-      };
+      }
     })
-  );
+  )
 }
 
 const { article, series, authors } = Astro.props;
 const { Content } = await article.render();
-
 const searchString = authors.map(({ data }) => data.occupation).join(' ');
 const { jobs } = await getRelatedJobs(4, searchString);
 ---
