@@ -7,7 +7,11 @@ authors: ['alexey-ses']
 theme: 'blue'
 ---
 
-import { Image } from 'astro:assets'
+import vscodeGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-vscode.gif'
+import intellijGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-intellij.gif'
+import customTestGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-custom-test.gif'
+import runTestImage from './images/codiumai-for-unit-tests/codiumai-how-to-run-tests.gif'
+import codeSuggestionImage from './images/codiumai-for-unit-tests/codiumai-how-to-apply-code-suggestion.gif'
 
 ## What is Unit testing
 
@@ -48,8 +52,8 @@ export class AuthService {
 
 Tests generation with CodiumAI works similarly in VS Code and IntelliJ Idea. Here's how to do it in VS Code:
 
-<Image
-  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-vscode.gif"
+<img
+  src={vscodeGenerateImage.src}
   width="1200"
   height="771"
   alt="How to generate unit tests with CodiumAI in VS Code"
@@ -57,8 +61,8 @@ Tests generation with CodiumAI works similarly in VS Code and IntelliJ Idea. Her
 
 And here's how you can do the same thing in IntelliJ Idea:
 
-<Image
-  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-intellij.gif"
+<img
+  src={intellijGenerateImage.src}
   width="1200"
   height="771"
   alt="How to generate unit tests with CodiumAI in IntelliJ Idea"
@@ -74,8 +78,8 @@ Let's say we need a custom unit test that would make our test users have name an
 
 We can generate that custom test using the Behaviours Coverage section:
 
-<Image
-  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-generate-custom-test.gif"
+<img
+  src={customTestGenerateImage.src}
   width="978"
   height="692"
   alt="How to generate custom unit test with CodiumAI"
@@ -89,8 +93,8 @@ Time to run the tests!
 
 That might require you to have one of the testing libraries (Jest, Mocha, Karma Jasmine, etc.) installed and configured in your project. The only available Test Framework from the Configuration section that worked without any configuration with my simple code example is "React Testing Library". Here's how it works:
 
-<Image
-  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-run-tests.gif"
+<img
+  src={runTestImage.src}
   width="978"
   height="692"
   alt="How to run all unit tests with CodiumAI"
@@ -104,8 +108,8 @@ You might find one of the tests broken, due to edge case. CodiumAI would suggest
 
 Now it's time to apply the code suggestion:
 
-<Image
-  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-apply-code-suggestion.gif"
+<img
+  src={codeSuggestionImage.src}
   width="978"
   height="692"
   alt="How to apply CodiumAI code suggestion"

@@ -7,6 +7,9 @@ theme: 'blue'
 ---
 
 import { Image } from 'astro:assets'
+import renamingImage from './images/6-vscode-tips/renamingf2.gif'
+import keybindingsImage from './images/6-vscode-tips/keybindings-json.gif'
+import autoImportImage from './images/6-vscode-tips/autoimport.webp'
 
 ## 1. Remove Unused Imports with Ease
 
@@ -16,13 +19,7 @@ Especially when refactoring, a file can end up with a lot of unused imports. VSC
 
 Renaming variables can be a tedious and error-prone task, especially when you have multiple usages. In VSCode, you can simplify this process by utilizing the `F2` key. Place your cursor on the variable you want to rename and press `F2`. VSCode will automatically update all instances of the variable throughout your code, ensuring consistency and saving you valuable time.
 
-<Image
-  src="/articles/6-vscode-tips/renamingf2.gif"
-  alt="renaming"
-  width={438}
-  height={72}
-  style={{ borderRadius: 8 }}
-/>
+<Image src={renamingImage} alt="renaming" width={438} height={72} style={{ borderRadius: 8 }} />
 
 ## 3. Create Custom Shortcuts for Frequent Actions
 
@@ -31,7 +28,7 @@ Do you find yourself repeatedly performing a specific action in VSCode? If you f
 You can also open the `keybindings.json` file directly by clicking on the file icon in the top right corner of the keyboard shortcuts settings. This file contains all your custom shortcuts.
 
 <Image
-  src="/articles/6-vscode-tips/keybindings-json.gif"
+  src={keybindingsImage}
   alt="keybindings"
   width={864}
   height={608}
@@ -63,7 +60,7 @@ Whenever VSCode encounters an issue, you can hover wherever the red squiggly lin
 
 <Image
   alt="autoimport"
-  src="/articles/6-vscode-tips/autoimport.webp"
+  src={autoImportImage}
   width={700}
   height={291}
   style={{ borderRadius: 8 }}

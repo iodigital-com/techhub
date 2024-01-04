@@ -1,19 +1,17 @@
 ---
 import { getCollection, getEntries } from "astro:content";
-import MarkdownArticleLayout from "../../layouts/MarkdownArticleLayout.astro";
-import { getSeries } from "../../utils/content-collections.util";
+import MarkdownArticleLayout from "@layouts/MarkdownArticleLayout.astro";
+import { getSeries } from "@utils/content-collections.util";
+import JobGrid from '@components/JobGrid';
+import { getRelatedJobs } from '@utils/jobs'
 
 export async function getStaticPaths() {
-  const articles = await getCollection("articles");
-
-  // http://127.0.0.1:4321/posts/my-article-series/my-test
-  // "id": "my-article-series/my-test.md",
-  // "slug": "my-article-series/my-test",
+  const articles = await getCollection('articles')
 
   return Promise.all(
     articles.map(async (article) => {
-      const series = getSeries(articles, article);
-      const authors = await getEntries(article.data.authors);
+      const series = getSeries(articles, article)
+      const authors = await getEntries(article.data.authors)
 
       return {
         params: { slug: article.slug },
@@ -22,15 +20,23 @@ export async function getStaticPaths() {
           authors,
           series,
         },
-      };
+      }
     })
-  );
+  )
 }
 
 const { article, series, authors } = Astro.props;
 const { Content } = await article.render();
+const searchString = authors.map(({ data }) => data.occupation).join(' ');
+const { jobs } = await getRelatedJobs(4, searchString);
 ---
 
 <MarkdownArticleLayout article={article} series={series} authors={authors}>
   <Content />
+  <div class="container mx-auto space-y-2 pt-6 pb-8 md:space-y-5">
+    <h2 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+      Jobs
+    </h2>
+    <JobGrid jobs={jobs} />
+  </div>
 </MarkdownArticleLayout>
