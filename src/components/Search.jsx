@@ -2,6 +2,7 @@ import Fuse from 'fuse.js'
 import { useState } from 'react'
 import ArticleReact from './ArticleReact'
 import AuthorReact from './AuthorReact'
+import ContributorsGrid from './ContributorsGrid'
 
 // Configs fuse.js
 // https://fusejs.io/api/options.html
@@ -93,12 +94,13 @@ function Search({ articles, authors }) {
       </div>
 
       <ul className="list-none">
-        {foundAuthors &&
+        <ContributorsGrid contributors={foundAuthors} />
+        {/* {foundAuthors &&
           foundAuthors.map((author) => (
             <li className="py-2" key={author.slug}>
               <AuthorReact author={author} />
             </li>
-          ))}
+          ))} */}
 
         {foundArticles &&
           foundArticles.map((article) => (
