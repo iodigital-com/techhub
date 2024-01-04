@@ -1,20 +1,19 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 
-type AuthorSocials = Pick<
-  CollectionEntry<'authors'>['data'],
-  'github' | 'linkedin' | 'medium' | 'twitter' | 'website'
->
-
 interface Props {
-  socials: AuthorSocials
+  socials: Pick<
+    CollectionEntry<'authors'>['data'],
+    'github' | 'linkedin' | 'medium' | 'twitter' | 'website'
+  >
   name: string
+  renderAxis: 'horizontal' | 'vertical'
 }
 
-const { socials, name } = Astro.props
+const { socials, name, renderAxis } = Astro.props
 ---
 
-<div class="flex flex-wrap gap-4">
+<div class="flex flex-wrap gap-4" class:list={[{ 'flex-col gap-1': renderAxis === 'vertical' }]}>
   {
     socials.linkedin && (
       <>

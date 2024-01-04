@@ -1,45 +1,61 @@
 ---
-import { Image } from "astro:assets";
-import BaseLayout from "./BaseLayout.astro";
+import JobGrid from '@components/JobGrid'
+import Author from '@components/article/Author.astro'
+import { getRelatedJobs } from '@utils/jobs'
+import BaseLayout from './BaseLayout.astro'
 
-import type { CollectionEntry } from "astro:content";
+import Header from '@components/article/Header.astro'
+import Series from '@components/article/Series.astro'
+import type { CollectionEntry } from 'astro:content'
 
 interface Props {
-  article: CollectionEntry<"articles">;
-  series: CollectionEntry<"articles">[];
-  authors: CollectionEntry<"authors">[];
+  article: CollectionEntry<'articles'>
+  series: CollectionEntry<'articles'>[]
+  authors: CollectionEntry<'authors'>[]
 }
 
-const { article, series, authors } = Astro.props;
+const { article, series, authors } = Astro.props
+
+const searchString = authors.map(({ data }) => data.occupation).join(' ')
+const { jobs } = await getRelatedJobs(4, searchString)
 ---
 
 <BaseLayout pageTitle={article.data.title} pageDescription={article.data.summary}>
-  <article>
-    <ul class="layout__authors">
+  <Header article={article} authors={authors} />
+  <article class="grid grid-col-5 gap-10 my-10">
+    <div class="col-start-1 col-end-2 max-w-96">
+      <ul>
+        {
+          authors.map((author) => (
+            <>
+              <li class="my-2">
+                <Author author={author} />
+              </li>
+            </>
+          ))
+        }
+      </ul>
+
       {
-        authors.map((author) => (
-          <li>
-            {author.data.name}
-            {author.data.avatar && (
-              <Image src={author.data.avatar} alt={author.data.name} />
-            )}
-          </li>
-        ))
+        series.length > 0 && (
+          <div class="mt-10">
+            <Series series={series} />
+          </div>
+        )
       }
-    </ul>
+    </div>
 
-    {
-      series && (
-        <ul class="layout__series">
-          {series.map((serie) => (
-            <li>
-              <a href={`/articles/${serie.slug}`}>{serie.data.title}</a>
-            </li>
-          ))}
-        </ul>
-      )
-    }
-
-    <slot />
+    <div class="col-start-2 col-end-5 row-start-1 prose">
+      <slot />
+    </div>
   </article>
+
+  <div class="container mx-auto space-y-2 pt-6 pb-8 md:space-y-5">
+    <h2
+      class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14"
+    >
+      Jobs
+    </h2>
+    <JobGrid jobs={jobs} />
+  </div>
 </BaseLayout>
