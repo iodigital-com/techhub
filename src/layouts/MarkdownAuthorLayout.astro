@@ -1,5 +1,5 @@
 ---
-import AuthorSocialsComp, { type AuthorSocials } from '@components/AuthorSocials.astro'
+import AuthorSocials from '@components/AuthorSocials.astro'
 import BaseLayout from './BaseLayout.astro'
 
 import Article from '@components/Article.astro'
@@ -15,7 +15,7 @@ interface Props {
 
 const { author, articles, talks } = Astro.props
 
-const authorSocials: AuthorSocials = {
+const authorSocials = {
   twitter: author.data.twitter,
   github: author.data.github,
   linkedin: author.data.linkedin,
@@ -28,7 +28,7 @@ const authorSocials: AuthorSocials = {
     <div class="col-start-1 col-end-7">
       <h1 class="text-4xl mb-2">{author.data.name}</h1>
       {author.data.occupation && <p class="mb-4 text-2xl">{author.data.occupation}</p>}
-      <AuthorSocialsComp socials={authorSocials} name={author.data.name} />
+      <AuthorSocials socials={authorSocials} name={author.data.name} renderAxis="horizontal" />
       <div class="prose mt-4">
         <slot />
       </div>

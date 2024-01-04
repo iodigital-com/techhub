@@ -29,7 +29,7 @@ const JobGrid = ({ jobs }) => (
       href="https://www.iodigital.com/en/careers/jobs?expertise=Technology"
       target="_blank"
       rel="noreferrer"
-      className={`h-40 p-2 pt-3 text-white`}
+      className={`h-40 p-2 pt-3`}
     >
       <h3 className="text my-1.5 text-2xl font-medium">
         View all <span className="font-serif font-light">jobs</span>

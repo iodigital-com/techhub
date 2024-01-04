@@ -1,0 +1,36 @@
+---
+import AuthorSocials from '@components/AuthorSocials.astro'
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  author: CollectionEntry<'authors'>
+}
+
+const { author } = Astro.props
+
+const socials = {
+  github: author.data.github,
+  linkedin: author.data.linkedin,
+  twitter: author.data.twitter,
+  website: author.data.website,
+}
+---
+
+<div class="flex gap-5">
+  <div>
+    <Image
+      class="rounded-full"
+      src={author.data.avatar}
+      alt={author.data.name}
+      height={150}
+      width={150}
+    />
+  </div>
+  <div class="flex flex-col justify-center gap-1">
+    <a href={`/authors/${author.slug}`}>
+      {author.data.name}
+    </a>
+    <AuthorSocials socials={socials} name={author.data.name} renderAxis="vertical" />
+  </div>
+</div>
