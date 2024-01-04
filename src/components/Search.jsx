@@ -1,6 +1,8 @@
 import Fuse from 'fuse.js';
 import { useState } from 'react';
 import { Image } from "astro:assets";
+import ArticleReact from './ArticleReact';
+import AuthorReact from './AuthorReact';
 
 
 // Configs fuse.js
@@ -9,14 +11,14 @@ const authorsSearchOptions = {
     keys: ['data.name'],
     includeMatches: true,
     minMatchCharLength: 2,
-    threshold: 0.5,
+    threshold: 0.4,
 };
 
 const articlesSearchOptions = {
-    keys: ['data.title', 'data.summary', 'data.authors'],
+    keys: ['data.authors.slug', 'data.title', 'data.summary'],
     includeMatches: true,
     minMatchCharLength: 2,
-    threshold: 0.5,
+    threshold: 0.4,
 };
 
 function Search({ articles, authors }) {
@@ -37,12 +39,17 @@ function Search({ articles, authors }) {
         .map((result) => result.item)
         .slice(0, 5);
 
-    console.log(foundAuthors);
-    console.log(foundArticles);
+    console.log("Query: " + query, foundArticles);
 
     function handleOnSearch({ target = {} }) {
         const { value } = target;
         setQuery(value);
+    }
+
+    function findArticleAuthors(article) {
+        return article.data.authors.map((authorRef) => {
+            return authors.find(author => authorRef.slug === author.slug);
+        });
     }
 
     return (
@@ -88,49 +95,16 @@ function Search({ articles, authors }) {
 
             <ul className="list-none">
                 {foundAuthors &&
-                    foundAuthors.map((post) => (
-                        <li className="py-2">
-                            <div className="flex flex-grow flex-col justify-end">
-                                <div className="mt-2 mb-3 flex items-center text-lg">
-                                    <div className="flex-0 relative mr-3 inline-block h-10 w-10 overflow-hidden rounded-full">
-                                        <img src={post.data.avatar.src} alt={"avatar " + post.data.name} />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-medium">
-                                            <a
-                                                className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
-                                                href={`/${post.url}`}
-                                            >
-                                                {post.data.name}
-                                            </a>
-                                        </p>
-                                        <p className="text-sm text-gray-800">{post.data.occupation}</p>
-                                    </div>
-                                </div>
-                            </div>
+                    foundAuthors.map((author) => (
+                        <li className="py-2" key={author.slug}>
+                            <AuthorReact author={author} />
                         </li>
                     ))}
 
                 {foundArticles &&
-                    foundArticles.map((post) => (
+                    foundArticles.map((article) => (
                         <li className="py-2">
-                            <div className="flex flex-grow flex-col justify-end">
-                                <div className="mt-2 mb-3 flex items-center text-lg">
-                                    <div className="flex-0 flex-shrink-0 relative mr-3 inline-block h-10 w-10">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" alt="icon blog"><path fill="currentColor" d="M192 32c0 17.7 14.3 32 32 32c123.7 0 224 100.3 224 224c0 17.7 14.3 32 32 32s32-14.3 32-32C512 128.9 383.1 0 224 0c-17.7 0-32 14.3-32 32m0 96c0 17.7 14.3 32 32 32c70.7 0 128 57.3 128 128c0 17.7 14.3 32 32 32s32-14.3 32-32c0-106-86-192-192-192c-17.7 0-32 14.3-32 32m-96 16c0-26.5-21.5-48-48-48S0 117.5 0 144v224c0 79.5 64.5 144 144 144s144-64.5 144-144s-64.5-144-144-144h-16v96h16c26.5 0 48 21.5 48 48s-21.5 48-48 48s-48-21.5-48-48z"/></svg>                                    </div>
-                                    <div>
-                                        <p className="text-sm font-medium">
-                                            <a
-                                                className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2"
-                                                href={`/${post.url}`}
-                                            >
-                                                {post.data.title}
-                                            </a>
-                                        </p>
-                                        <p className="text-sm text-gray-800">{post.data.summary}</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <ArticleReact article={article} authors={findArticleAuthors(article)}/>
                         </li>
                     ))}
             </ul>
