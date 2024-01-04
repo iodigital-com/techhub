@@ -1,11 +1,11 @@
 ---
-title: "First look at Remix"
-date: "2021-12-08"
-images: ["/articles/first-look-at-remix/remix.jpg"]
-summary: "There has been a lot of buzz around the open-source release of Remix. I took a first look by following the deep-dive tutorial and this is what I found."
-authors: ["dave-bitter"]
-theme: "blue"
-canonicalUrl: "https://www.davebitter.com/articles/first-look-at-remix"
+title: 'First look at Remix'
+date: '2021-12-08'
+images: ['/articles/first-look-at-remix/remix.jpg']
+summary: 'There has been a lot of buzz around the open-source release of Remix. I took a first look by following the deep-dive tutorial and this is what I found.'
+authors: ['dave-bitter']
+theme: 'blue'
+canonicalUrl: 'https://www.davebitter.com/articles/first-look-at-remix'
 ---
 
 [Remix](https://remix.run) is a full-stack web framework that lets you focus on the user interface and work back through web fundamentals to deliver a fast, slick, and resilient user experience. This is what excited me when I first read about Remix. I'm a big advocate for progressively enhancing web applications and this framework seems to take this approach by simply using web fundamentals.
@@ -406,18 +406,16 @@ You can export a `CatchBoundary` and `ErrorBoundary` function for every (nested)
 
 ```jsx
 export function CatchBoundary() {
-  const caught = useCatch();
+  const caught = useCatch()
 
   if (caught.status === 404) {
-    return (
-      <div className="error-container">There are no jokes to display.</div>
-    );
+    return <div className="error-container">There are no jokes to display.</div>
   }
-  throw new Error(`Unexpected caught response with status: ${caught.status}`);
+  throw new Error(`Unexpected caught response with status: ${caught.status}`)
 }
 
 export function ErrorBoundary() {
-  return <div className="error-container">I did a whoopsies.</div>;
+  return <div className="error-container">I did a whoopsies.</div>
 }
 ```
 

@@ -1,9 +1,9 @@
 ---
-title: "Are our links visually accessible?"
-date: "2022-08-26"
-summary: "A simple link inside a paragraph, what could go wrong? Well, a lot in fact. Let’s have a closer look, shall we?"
-authors: ["frank-van-eldijk"]
-canonicalUrl: "https://beingfrankly.nl/blog/are-our-links-visually-accessible"
+title: 'Are our links visually accessible?'
+date: '2022-08-26'
+summary: 'A simple link inside a paragraph, what could go wrong? Well, a lot in fact. Let’s have a closer look, shall we?'
+authors: ['frank-van-eldijk']
+canonicalUrl: 'https://beingfrankly.nl/blog/are-our-links-visually-accessible'
 ---
 
 When I wrote about [the accessibility of links](https://techhub.iodigital.com/articles/how-accessible-are-links), I’ve focused on screen reader & voice recognition users. But this time I’ll focus on what visually goes wrong for our links.

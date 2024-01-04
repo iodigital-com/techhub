@@ -1,10 +1,10 @@
 ---
-title: "You shall not Password!"
-date: "2022-07-22"
-images: ["/articles/you-shall-not-password/keys.jpg"]
+title: 'You shall not Password!'
+date: '2022-07-22'
+images: ['/articles/you-shall-not-password/keys.jpg']
 summary: "Isn't it weird that we have to come up with a phrase and share it with a server to protect our account?"
-authors: ["mark-van-der-linden"]
-theme: "blue"
+authors: ['mark-van-der-linden']
+theme: 'blue'
 ---
 
 Keeping dozens of accounts safe from all kinds of websites and services has become too difficult. All these accounts require a password which needs to be more complex by the day. You start using a password manager because you can't remember all of them or worse, use the same password everywhere. All these passwords end up in databases and if you are unlucky, on leaked password lists online. The question we should ask ourselves is: why do we still entrust the key to our account to some third party? Is there a way to protect our accounts without having to share our secret?

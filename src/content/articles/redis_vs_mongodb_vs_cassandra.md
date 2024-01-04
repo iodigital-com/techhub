@@ -1,10 +1,10 @@
 ---
-title: "Redis VS MongoDB VS Cassandra"
-date: "2022-08-12"
-images: ["/articles/redis-vs-mongodb-vs-cassandra/hero-image.png"]
-summary: "Are the NoSQL databases all the same? If not, what are the differences (and why should you care)? A quick comparison chat between Redis, MongoDB and Cassandra"
-authors: ["massimiliano-scifo"]
-theme: "blue"
+title: 'Redis VS MongoDB VS Cassandra'
+date: '2022-08-12'
+images: ['/articles/redis-vs-mongodb-vs-cassandra/hero-image.png']
+summary: 'Are the NoSQL databases all the same? If not, what are the differences (and why should you care)? A quick comparison chat between Redis, MongoDB and Cassandra'
+authors: ['massimiliano-scifo']
+theme: 'blue'
 ---
 
 Having to choose a database is a task that any developer, at some point, must face. Whether its for a new assignment at your job with a pre-set tech stack or just for a personal project when you have the need of store some data. The options available are many and diverse that is very easily leaving you confused while having to choose which one suits best for your situation.

@@ -1,9 +1,9 @@
 ---
-title: "The iO Drupal contribution day"
-date: "2021-12-01"
-images: ["/articles/drupal-contribution-day/drupal-contribution-day.jpg"]
-summary: "In a year where contributions were going down a bit we thought it was a good idea to see if we can end the year with a little bump."
-authors: ["lennard-swaneveld"]
+title: 'The iO Drupal contribution day'
+date: '2021-12-01'
+images: ['/articles/drupal-contribution-day/drupal-contribution-day.jpg']
+summary: 'In a year where contributions were going down a bit we thought it was a good idea to see if we can end the year with a little bump.'
+authors: ['lennard-swaneveld']
 ---
 
 In a year where [contributions were going down a bit](https://dri.es/who-sponsors-drupal-development-2021) we thought it was a good idea to see if we can end the year with a little bump.

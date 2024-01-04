@@ -1,11 +1,13 @@
 ---
-title: "Generate unit tests using CodiumAI"
-date: "2023-09-27"
-images: ["/articles/codiumai-for-unit-tests/codiumai-for-unit-tests-cover.webp"]
-summary: "Unit tests are an essential part of software development. Tests help you to ensure that the code works as you expect. It takes time to create all necessary tests. But there is a way to generate them."
-authors: ["alexey-ses"]
-theme: "blue"
+title: 'Generate unit tests using CodiumAI'
+date: '2023-09-27'
+images: ['/articles/codiumai-for-unit-tests/codiumai-for-unit-tests-cover.webp']
+summary: 'Unit tests are an essential part of software development. Tests help you to ensure that the code works as you expect. It takes time to create all necessary tests. But there is a way to generate them.'
+authors: ['alexey-ses']
+theme: 'blue'
 ---
+
+import { Image } from 'astro:assets'
 
 ## What is Unit testing
 
@@ -33,26 +35,34 @@ Here's an example of TypeScript code that will be used for unit tests generation
 
 ```typescript
 export interface User {
-  userId: string;
-  userName: string;
+  userId: string
+  userName: string
 }
 
 export class AuthService {
   searchUsersByName(users: User[], userName: string) {
-    return users.filter((user) =>
-      user.userName.toLowerCase().includes(userName.toLowerCase())
-    );
+    return users.filter((user) => user.userName.toLowerCase().includes(userName.toLowerCase()))
   }
 }
 ```
 
 Tests generation with CodiumAI works similarly in VS Code and IntelliJ Idea. Here's how to do it in VS Code:
 
-![How to generate unit tests with CodiumAI in VS Code](./images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-vscode.gif)
+<Image
+  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-vscode.gif"
+  width="1200"
+  height="771"
+  alt="How to generate unit tests with CodiumAI in VS Code"
+/>
 
 And here's how you can do the same thing in IntelliJ Idea:
 
-![How to generate unit tests with CodiumAI in IntelliJ Idea](./images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-intellij.gif)
+<Image
+  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-intellij.gif"
+  width="1200"
+  height="771"
+  alt="How to generate unit tests with CodiumAI in IntelliJ Idea"
+/>
 
 Starting from here I will use VS Code only for tests generation. It works similarly in IntelliJ Idea.
 
@@ -64,7 +74,12 @@ Let's say we need a custom unit test that would make our test users have name an
 
 We can generate that custom test using the Behaviours Coverage section:
 
-![How to generate custom unit test with CodiumAI](./images/codiumai-for-unit-tests/codiumai-how-to-generate-custom-test.gif)
+<Image
+  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-generate-custom-test.gif"
+  width="978"
+  height="692"
+  alt="How to generate custom unit test with CodiumAI"
+/>
 
 Now, a custom unit test is generated and added to the list of tests.
 
@@ -74,7 +89,12 @@ Time to run the tests!
 
 That might require you to have one of the testing libraries (Jest, Mocha, Karma Jasmine, etc.) installed and configured in your project. The only available Test Framework from the Configuration section that worked without any configuration with my simple code example is "React Testing Library". Here's how it works:
 
-![How to run all unit tests with CodiumAI](./images/codiumai-for-unit-tests/codiumai-how-to-run-tests.gif)
+<Image
+  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-run-tests.gif"
+  width="978"
+  height="692"
+  alt="How to run all unit tests with CodiumAI"
+/>
 
 ### Fix the code with CodiumAI suggestions
 
@@ -84,7 +104,12 @@ You might find one of the tests broken, due to edge case. CodiumAI would suggest
 
 Now it's time to apply the code suggestion:
 
-![How to apply CodiumAI code suggestion](./images/codiumai-for-unit-tests/codiumai-how-to-apply-code-suggestion.gif)
+<Image
+  src="/articles/images/codiumai-for-unit-tests/codiumai-how-to-apply-code-suggestion.gif"
+  width="978"
+  height="692"
+  alt="How to apply CodiumAI code suggestion"
+/>
 
 Suggestion is applied, and all unit tests are generated. Now you can copy-paste unit tests into your project.
 

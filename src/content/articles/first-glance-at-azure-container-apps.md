@@ -1,10 +1,10 @@
 ---
-title: "A First Glance at Azure Container Apps"
-date: "2022-09-01"
-images: ["/articles/first-glance-at-azure-container-apps/containerapps.png"]
-summary: "Azure recently launched Container Apps, Somewhere in the function-middle between Container Instances and Kubernetes Services lives this new resource type. This is a journal of a first glance on it."
-authors: ["owin-gruters"]
-theme: "blue"
+title: 'A First Glance at Azure Container Apps'
+date: '2022-09-01'
+images: ['/articles/first-glance-at-azure-container-apps/containerapps.png']
+summary: 'Azure recently launched Container Apps, Somewhere in the function-middle between Container Instances and Kubernetes Services lives this new resource type. This is a journal of a first glance on it.'
+authors: ['owin-gruters']
+theme: 'blue'
 ---
 
 I did some testing of the relatively new Azure Container Apps. I must say I am quite enthusiastic and will probably try to use it in one of the upcoming projects we will do that are eligible for it. In my view, this would be projects that use microservices and maybe even 1 frontend and 1 API, but at least simple enough not to need AKS.

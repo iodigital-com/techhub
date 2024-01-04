@@ -1,10 +1,10 @@
 ---
-title: "Implement IaaS in Azure Cheatsheets"
-date: "2022-11-07 14:00:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Implement IaaS in Azure Cheatsheets'
+date: '2022-11-07 14:00:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

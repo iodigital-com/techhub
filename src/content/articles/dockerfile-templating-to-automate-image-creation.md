@@ -1,14 +1,14 @@
 ---
-title: "Dockerfile templating to automate image creation"
-date: "2022-08-23"
+title: 'Dockerfile templating to automate image creation'
+date: '2022-08-23'
 images:
   [
-    "/articles/dockerfile-templating-to-automate-image-creation/dockerfile-templating-steps-transparent.png",
+    '/articles/dockerfile-templating-to-automate-image-creation/dockerfile-templating-steps-transparent.png',
   ]
 summary: "If we take a look at the repository for the official Node.js Docker images we can see that the source contains a Dockerfile for each image variant. Imagine having to add a package to all of these images. That's a lot of manual edits, but it's manageable. Now imagine adding a package to only specific versions of the image and a different package depending on the Linux distro."
-authors: ["luud-janssen"]
-theme: "blue"
-canonicalUrl: "https://www.iodigital.com/en/history/isaac/dockerfile-templating-to-automate-image-creation"
+authors: ['luud-janssen']
+theme: 'blue'
+canonicalUrl: 'https://www.iodigital.com/en/history/isaac/dockerfile-templating-to-automate-image-creation'
 ---
 
 A lot of open source projects distribute multiple versions of their Docker images on Docker Hub. For example, Node.js has [a set of officially supported images](https://hub.docker.com/_/node/) for each Node.js use case. For starters, they have a Docker image for each patch version of the runtime, but even those are [split up into multiple images based on different distributions of Linux](https://github.com/nodejs/docker-node#image-variants). I take Node.js as an example here, but this is a very common pattern across official Docker images.
@@ -103,34 +103,34 @@ Now, let's add a configuration file that dictates which versions of this templat
 We want to create a script that takes the different combinations of PHP versions and Node.js versions and outputs the different Dockerfiles, so let's first generate a function that can output the combinations of these versions:
 
 ```javascript
-import fse from "fs-extra";
+import fse from 'fs-extra'
 
 /**
  * Returns all PHP and Node.js versions in the given config file
  */
 async function getVersions(file) {
-  const config = await fse.readJson(file);
-  const versions = [];
+  const config = await fse.readJson(file)
+  const versions = []
 
   for (const phpVersion of config.php) {
     for (const nodeVersion of config.node) {
       versions.push({
         php: phpVersion,
         node: nodeVersion,
-      });
+      })
     }
   }
 
-  return versions;
+  return versions
 }
 ```
 
 Next, we want to create functions that can turn a Nunjucks template into a file specific for the version combinations of PHP and Node.js:
 
 ```javascript
-import { promises as fs } from "fs";
-import nunjucks from "nunjucks";
-import { dirname } from "path";
+import { promises as fs } from 'fs'
+import nunjucks from 'nunjucks'
+import { dirname } from 'path'
 
 /**
  * Compiles a Nunjucks template given a filename
@@ -139,8 +139,8 @@ import { dirname } from "path";
  * @return A Nunjucks template which can be rendered later
  */
 async function compileTemplate(file) {
-  const templateContents = await fs.readFile(file, "utf-8");
-  return nunjucks.compile(templateContents);
+  const templateContents = await fs.readFile(file, 'utf-8')
+  return nunjucks.compile(templateContents)
 }
 
 /**
@@ -154,12 +154,12 @@ async function render(template, context) {
   return new Promise((resolve, reject) => {
     nunjucks.render(template, context, function (error, result) {
       if (error) {
-        reject(error);
+        reject(error)
       }
 
-      resolve(result);
-    });
-  });
+      resolve(result)
+    })
+  })
 }
 
 /**
@@ -171,15 +171,15 @@ async function render(template, context) {
  * @return An object containing all the versions as well as the file that was created
  */
 async function createDockerfile(template, file, versions) {
-  const dockerfile = await render(template, versions);
-  const directory = dirname(file);
-  await fs.mkdir(directory, { recursive: true });
-  await fs.writeFile(file, dockerfile, "utf-8");
+  const dockerfile = await render(template, versions)
+  const directory = dirname(file)
+  await fs.mkdir(directory, { recursive: true })
+  await fs.writeFile(file, dockerfile, 'utf-8')
 
   return {
     ...versions,
     file,
-  };
+  }
 }
 
 /**
@@ -197,7 +197,7 @@ async function createDockerfiles(template, versions) {
         version
       )
     )
-  );
+  )
 }
 ```
 
@@ -206,40 +206,37 @@ The `compileTemplate` and `render` function are used to turn the Nunjucks te
 Next, we'll put it all together in a `bootstrap` method:
 
 ```javascript
-import { default as rimrafCallback } from "rimraf";
-import { promisify } from "util";
-import { promises as fs } from "fs";
+import { default as rimrafCallback } from 'rimraf'
+import { promisify } from 'util'
+import { promises as fs } from 'fs'
 
-const configFile = "config.json";
-const templateFile = "templates/base.Dockerfile.njk";
-const outputDirectory = "output";
+const configFile = 'config.json'
+const templateFile = 'templates/base.Dockerfile.njk'
+const outputDirectory = 'output'
 
-const rimraf = promisify(rimrafCallback);
+const rimraf = promisify(rimrafCallback)
 
 async function bootstrap() {
   // Delete the output folder before building
-  await rimraf(outputDirectory);
+  await rimraf(outputDirectory)
 
   // Get the version combinations
-  const versions = await getVersions(configFile);
+  const versions = await getVersions(configFile)
 
   // Compile the Dockerfile template
-  const template = await compileTemplate(templateFile);
+  const template = await compileTemplate(templateFile)
 
   // Create the ouptut directory
-  await fs.mkdir(outputDirectory);
+  await fs.mkdir(outputDirectory)
 
   // Create the Dockerfiles and get the corresponding information
-  const files = await createDockerfiles(template, versions);
+  const files = await createDockerfiles(template, versions)
 
   // Write the infromation to an output.json file
-  await fs.writeFile(
-    `${outputDirectory}/output.json`,
-    JSON.stringify(files, null, 2)
-  );
+  await fs.writeFile(`${outputDirectory}/output.json`, JSON.stringify(files, null, 2))
 }
 
-bootstrap().then(() => console.log("Dockerfiles generated"));
+bootstrap().then(() => console.log('Dockerfiles generated'))
 ```
 
 This gives you a nice overview of all the steps in this process:

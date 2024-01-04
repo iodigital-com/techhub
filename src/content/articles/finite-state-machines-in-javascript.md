@@ -1,13 +1,10 @@
 ---
-title: "_Finite State Machines_ in JavaScript"
-date: "2023-08-01"
-images:
-  [
-    "/articles/finite-state-machines-in-javascript/finite-state-machines-in-javascript.jpg",
-  ]
-summary: "Application state can make any application complex real quick. Let’s have a look at Finite State Machines in Javascript to resolve some of these complexities."
-authors: ["dave-bitter"]
-theme: "blue"
+title: '_Finite State Machines_ in JavaScript'
+date: '2023-08-01'
+images: ['/articles/finite-state-machines-in-javascript/finite-state-machines-in-javascript.jpg']
+summary: 'Application state can make any application complex real quick. Let’s have a look at Finite State Machines in Javascript to resolve some of these complexities.'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 Finite State Machines (FSMs) are a concept in programming that helps model complex systems with a fixed set of states and transitions between those states. In JavaScript, FSMs offer a structured approach to managing application logic for making code more organised, easier to maintain and more.
@@ -25,19 +22,19 @@ An FSM is a model that consists of three main components:
 Let’s have a look at an example to make this concept more practical. Imagine an e-commerce website that tracks the status of a user's order. The order can be in various states, such as `"Pending"`, `"Processing"`, `"Shipped"` and `"Delivered"`. The system is designed without using an FSM, relying on complex nested if-else statements to handle state transitions:
 
 ```jsx
-let orderStatus = "Pending";
+let orderStatus = 'Pending'
 
 const updateOrderStatus = (event) => {
-  if (orderStatus === "Pending" && event === "ProcessOrder") {
-    orderStatus = "Processing";
-  } else if (orderStatus === "Processing" && event === "ShipOrder") {
-    orderStatus = "Shipped";
-  } else if (orderStatus === "Shipped" && event === "DeliverOrder") {
-    orderStatus = "Delivered";
+  if (orderStatus === 'Pending' && event === 'ProcessOrder') {
+    orderStatus = 'Processing'
+  } else if (orderStatus === 'Processing' && event === 'ShipOrder') {
+    orderStatus = 'Shipped'
+  } else if (orderStatus === 'Shipped' && event === 'DeliverOrder') {
+    orderStatus = 'Delivered'
   } else {
-    console.log("Invalid state transition or event.");
+    console.log('Invalid state transition or event.')
   }
-};
+}
 ```
 
 Usually this is the moment I get a coffee to start figuring out what the business logic is in this function. As the codebase grows, more state transitions are added, leading to a convoluted and error-prone `updateOrderStatus` function. The lack of structure and clear separation between states and transitions make it challenging to maintain, debug, and extend the code.

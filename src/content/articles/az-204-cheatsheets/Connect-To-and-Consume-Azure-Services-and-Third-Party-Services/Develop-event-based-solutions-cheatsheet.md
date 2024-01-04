@@ -1,10 +1,10 @@
 ---
-title: "Develop event-based solutions Cheatsheets"
-date: "2022-11-07 15:50:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Develop event-based solutions Cheatsheets'
+date: '2022-11-07 15:50:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

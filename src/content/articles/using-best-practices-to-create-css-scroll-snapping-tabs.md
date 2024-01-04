@@ -1,14 +1,11 @@
 ---
-title: "Using best practices to create CSS scroll snapping tabs"
-date: "2022-03-31"
-images:
-  [
-    "/articles/using-best-practices-to-create-css-scroll-snapping-tabs/snapping.jpg",
-  ]
-summary: "How should scroll snapping tabs behave when using keys? By reading some best practices, I believe I found an elegant solution."
-authors: ["brecht-de-ruyte"]
-theme: "blue"
-canonicalUrl: "https://utilitybend.com/blog/using-best-practices-to-create-css-scroll-snapping-tabs"
+title: 'Using best practices to create CSS scroll snapping tabs'
+date: '2022-03-31'
+images: ['/articles/using-best-practices-to-create-css-scroll-snapping-tabs/snapping.jpg']
+summary: 'How should scroll snapping tabs behave when using keys? By reading some best practices, I believe I found an elegant solution.'
+authors: ['brecht-de-ruyte']
+theme: 'blue'
+canonicalUrl: 'https://utilitybend.com/blog/using-best-practices-to-create-css-scroll-snapping-tabs'
 ---
 
 Scroll snapping is hip and while we all have styled numerous sorts of tab panes and scroll boxes, I had an idea of combining them. What started out as a simple “scroll snapping experiment” turned out to be an accessibility study.
@@ -132,37 +129,37 @@ The first thing on the agenda was making an indication of the hidden content sim
 The next thing I did was adding a bit of CSS for the active tabs and adding some JS, which will use the tabs to scroll to the right position. You can view the CSS in the demo, but the basic idea of the JS was the following:
 
 ```js
-const tabs = document.querySelectorAll(".tab");
-const scrollContainer = document.querySelector(".scroll-container");
-const scrollLists = document.querySelectorAll(".scroll-list");
+const tabs = document.querySelectorAll('.tab')
+const scrollContainer = document.querySelector('.scroll-container')
+const scrollLists = document.querySelectorAll('.scroll-list')
 
 /* check for clicks and update scroll position based on target offset */
 tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    const target = document.getElementById(tab.dataset.target).offsetLeft;
-    scrollContainer.scrollLeft = target;
-  });
-});
+  tab.addEventListener('click', () => {
+    const target = document.getElementById(tab.dataset.target).offsetLeft
+    scrollContainer.scrollLeft = target
+  })
+})
 
 /* 
 when the scrollcontainer is scrolled horizontally, 
 check the current scrollposition is the same as the left offset, 
 and set the tab active when that's the case 
 */
-scrollContainer.addEventListener("scroll", () => {
-  let scrollPos = scrollContainer.scrollLeft;
+scrollContainer.addEventListener('scroll', () => {
+  let scrollPos = scrollContainer.scrollLeft
 
   scrollLists.forEach((list) => {
-    let listId = list.id;
-    let listButton = document.querySelector(`.tab[data-target="${listId}"]`);
+    let listId = list.id
+    let listButton = document.querySelector(`.tab[data-target="${listId}"]`)
     if (scrollPos === list.offsetLeft) {
-      [...listButton.parentElement.children].forEach((sib) => {
-        sib.classList.remove("active");
-      });
-      listButton.classList.add("active");
+      ;[...listButton.parentElement.children].forEach((sib) => {
+        sib.classList.remove('active')
+      })
+      listButton.classList.add('active')
     }
-  });
-});
+  })
+})
 ```
 
 And for a moment, I thought it was perfect:

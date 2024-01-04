@@ -1,11 +1,10 @@
 ---
-title: "How to save a kitten by writing clean code"
-date: "2022-06-13"
-images:
-  ["/articles/how-to-save-a-kitten-by-writing-clean-code/intro-sad-cat.jpeg"]
+title: 'How to save a kitten by writing clean code'
+date: '2022-06-13'
+images: ['/articles/how-to-save-a-kitten-by-writing-clean-code/intro-sad-cat.jpeg']
 summary: "So you came here to save a kitten? That's wonderful, but the real reason we're both here is to talk about clean code."
-authors: ["joeri-timmermans"]
-canonicalUrl: "https://www.joeritimmermans.be/blog/how-to-save-a-kitten-by-writing-clean-code/"
+authors: ['joeri-timmermans']
+canonicalUrl: 'https://www.joeritimmermans.be/blog/how-to-save-a-kitten-by-writing-clean-code/'
 ---
 
 In this blog post I'll be sharing some of my **personal experiences** and **tips**.

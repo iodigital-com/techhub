@@ -1,9 +1,9 @@
 ---
-title: "Let your RESTful API development soar with OpenAPI tooling"
-date: "2023-02-01"
-summary: "Because the OpenAPI specification is a specification, just like the EcmaScript, HTML or CSS specification, we can reliably build tooling upon it. This tooling allows us to optimise our OpenAPI workflows and let us save precious time."
-authors: ["maarten-van-hoof"]
-serie: "frontend-loves-openapi"
+title: 'Let your RESTful API development soar with OpenAPI tooling'
+date: '2023-02-01'
+summary: 'Because the OpenAPI specification is a specification, just like the EcmaScript, HTML or CSS specification, we can reliably build tooling upon it. This tooling allows us to optimise our OpenAPI workflows and let us save precious time.'
+authors: ['maarten-van-hoof']
+serie: 'frontend-loves-openapi'
 ---
 
 In the previous parts of this series, we introduced you to the OpenAPI specification, how to describe an API provider in an OpenAPI document, the approaches we can take incorporating it on workflows helping us build and integrate with RESTful APIs. In this part, we will discuss the tooling that is available to optimise our OpenAPI workflows.

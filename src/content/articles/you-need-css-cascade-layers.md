@@ -1,11 +1,10 @@
 ---
-title: "You need _CSS Cascade Layers_"
-date: "2022-11-15"
-images:
-  ["/articles/you-need-css-cascade-layers/you-need-css-cascade-layers.jpg"]
-summary: "Let’s have a look at how you can better structure your CSS layers with CSS Cascade Layers!"
-authors: ["dave-bitter"]
-theme: "beige"
+title: 'You need _CSS Cascade Layers_'
+date: '2022-11-15'
+images: ['/articles/you-need-css-cascade-layers/you-need-css-cascade-layers.jpg']
+summary: 'Let’s have a look at how you can better structure your CSS layers with CSS Cascade Layers!'
+authors: ['dave-bitter']
+theme: 'beige'
 ---
 
 We’ve all been there. You load some third-party CSS for a date picker and you need to overwrite some CSS to make if fit the visual design language of your project. Suddenly, you’re fighting CSS specificity and slapping an `important!` after every line of CSS. There must be a better way of layering your CSS, right?

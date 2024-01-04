@@ -1,9 +1,9 @@
 ---
-title: "Tailwind for productivity"
-date: "2023-07-13"
+title: 'Tailwind for productivity'
+date: '2023-07-13'
 summary: "In general, developers don't find writing CSS the most fun part of software development. Although, in my opinion, Tailwind CSS makes it fun and efficient!"
-authors: ["ronny-rook"]
-theme: "blue"
+authors: ['ronny-rook']
+theme: 'blue'
 ---
 
 _Using Tailwind is already a highly debated topic, I would like to emphasize that the following statements are just mine and based on my experience. I hope you'll learn something._
@@ -117,9 +117,7 @@ div.item:nth-child(even) {
 ```
 
 ```html
-<span
-  class="odd:bg-green even:bg-green text-center first:text-left last:text-right"
-></span>
+<span class="odd:bg-green even:bg-green text-center first:text-left last:text-right"></span>
 ```
 
 Truncating text is something I simply Google every time I had to use it:
@@ -152,9 +150,7 @@ Tailwind also offers support for selecting elements based on a parent or sibling
   <label for="email">Email:</label>
   <input id="email" name="email" type="email" class="is-dirty peer" required />
   <!-- Will add the `block` class based the peer element being HTML required and having the class .is-dirty -->
-  <div class="peer-[.is-dirty]:peer-required:block hidden">
-    This field is required.
-  </div>
+  <div class="peer-[.is-dirty]:peer-required:block hidden">This field is required.</div>
 </form>
 ```
 

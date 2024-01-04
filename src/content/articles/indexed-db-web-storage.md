@@ -1,10 +1,10 @@
 ---
-title: "_IndexedDB_ > Web Storage"
-date: "2023-07-20"
-images: ["/articles/indexed-db-web-storage/indexed-db-web-storage.jpeg"]
-summary: "Explore the advantages of IndexedDB over the Web Storage API as a more efficient and sophisticated alternative for storing structured data on the client, eliminating the need for repetitive JSON parsing and stringifying operations."
-authors: ["dave-bitter"]
-theme: "blue"
+title: '_IndexedDB_ > Web Storage'
+date: '2023-07-20'
+images: ['/articles/indexed-db-web-storage/indexed-db-web-storage.jpeg']
+summary: 'Explore the advantages of IndexedDB over the Web Storage API as a more efficient and sophisticated alternative for storing structured data on the client, eliminating the need for repetitive JSON parsing and stringifying operations.'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 I often use LocalStorage (or SessionStorage) to store structured data on the client for demos and real projects. While this worked fine, I’ve always had a nagging feeling that there would be a better way than `JSON.parse` and `JSON.stringify` large arrays on every change. Let’s have a look at why IndexedDB might be a better choice for you than the Storage API.
@@ -17,27 +17,27 @@ In essence, with the Storage API, you’re limited to a get and set method where
 
 ```jsx
 window.localStorage.setItem(
-  "tasks",
+  'tasks',
   JSON.stringify([
     {
       id: 1,
-      title: "Learn JavaScript",
+      title: 'Learn JavaScript',
       completed: true,
     },
     {
       id: 2,
-      title: "Learn Vue",
+      title: 'Learn Vue',
       completed: false,
     },
     {
       id: 3,
-      title: "Build something awesome",
+      title: 'Build something awesome',
       completed: false,
     },
   ])
-);
+)
 
-const tasks = JSON.parse(window.localStorage.getItem("tasks"));
+const tasks = JSON.parse(window.localStorage.getItem('tasks'))
 ```
 
 This is great for simple key-value storing, but not so much for more structured data. A quick comparison:
@@ -67,30 +67,30 @@ You can [view the demo here](https://indexed-db-demo.davebitter.com/) and [view 
 As I’m going to add quite a bit of functionality for the IndexedDB database, I’ll first create a helper in a separate file structured like this:
 
 ```jsx
-let openRequest;
+let openRequest
 
 export const db = {
   // Open the database and create the tasks object store if needed
   openDB: () => {
-    return new Promise((resolve, reject) => {});
+    return new Promise((resolve, reject) => {})
   },
   // Add a task to the database
   addTask: (task) => {
-    return new Promise((resolve, reject) => {});
+    return new Promise((resolve, reject) => {})
   },
   // Get all tasks from the database
   getAllTasks: () => {
-    return new Promise((resolve, reject) => {});
+    return new Promise((resolve, reject) => {})
   },
   // Update a task in the database
   updateTask: (task) => {
-    return new Promise((resolve, reject) => {});
+    return new Promise((resolve, reject) => {})
   },
   // Delete a task from the database
   deleteTask: (id) => {
-    return new Promise((resolve, reject) => {});
+    return new Promise((resolve, reject) => {})
   },
-};
+}
 ```
 
 With these methods, I should be able build all the functionality the todo app. Let’s go over them one by one.
@@ -100,33 +100,33 @@ With these methods, I should be able build all the functionality the todo app. L
 With IndexedDB you need an object store for data. You can see this as a collection in your database. I need to either retrieve an existing tasks store or create a new one if it doesn’t exist yet. You can do this like this:
 
 ```jsx
-let openRequest;
+let openRequest
 
 export const db = {
   // Open the database and create the tasks object store if needed
   openDB: () => {
     return new Promise((resolve, reject) => {
-      openRequest = indexedDB.open("tasks", 1);
+      openRequest = indexedDB.open('tasks', 1)
 
       openRequest.onupgradeneeded = () => {
-        const db = openRequest.result;
-        if (!db.objectStoreNames.contains("tasks")) {
-          db.createObjectStore("tasks", { keyPath: "id", autoIncrement: true });
+        const db = openRequest.result
+        if (!db.objectStoreNames.contains('tasks')) {
+          db.createObjectStore('tasks', { keyPath: 'id', autoIncrement: true })
         }
-      };
+      }
 
       openRequest.onsuccess = () => {
-        resolve(openRequest.result);
-      };
+        resolve(openRequest.result)
+      }
 
       openRequest.onerror = () => {
-        reject(openRequest.error);
-      };
-    });
+        reject(openRequest.error)
+      }
+    })
   },
 
   // ...
-};
+}
 ```
 
 First I create a variable called `openRequest` to store the opened database to be used in other methods coming up next. Then I call `indexedDB.open('tasks', 1)` and store it in the variable. The first parameter is the name of the store, the second one is the version of the database.
@@ -140,7 +140,7 @@ Great! I now have an object store to work with! Let’s add the actual methods a
 Firstly, I want to be able to add a new task to the object store. I’ve build a form to gather the data and now need a method to pass the task object to:
 
 ```jsx
-let openRequest;
+let openRequest
 
 export const db = {
   // ...
@@ -148,24 +148,24 @@ export const db = {
   // Add a task to the database
   addTask: (task) => {
     return new Promise((resolve, reject) => {
-      const db = openRequest.result;
-      const transaction = db.transaction(["tasks"], "readwrite");
-      const store = transaction.objectStore("tasks");
+      const db = openRequest.result
+      const transaction = db.transaction(['tasks'], 'readwrite')
+      const store = transaction.objectStore('tasks')
 
-      const addRequest = store.add(task);
+      const addRequest = store.add(task)
 
       addRequest.onsuccess = () => {
-        resolve(addRequest.result);
-      };
+        resolve(addRequest.result)
+      }
 
       addRequest.onerror = () => {
-        reject(addRequest.error);
-      };
-    });
+        reject(addRequest.error)
+      }
+    })
   },
 
   // ...
-};
+}
 ```
 
 First, I get the database from the `openRequest` by getting the `result` property. Next I need to create a transaction. A transaction is basically series of operations that all need to pass successfully in order for the entire transaction to be applied. If one operation fails, all the operations won’t be applied. In this article I won’t go to deep into this, but you can [read more on transactions here](https://www.dbvis.com/thetable/database-transactions-101-the-essential-guide/#:~:text=A%20database%20transaction%20is%20a,operations%20performed%20within%20a%20DBMS.). First I pass an array of object stores I want to modify. In my use case, I only need to make an update to `'tasks'`. Secondly I pass the type of operations I want to perform. As I’m retrieving and writing data I need to pass `'readwrite'`.
@@ -179,7 +179,7 @@ And that’s it! Note how much easier this code is compared to using the WebStor
 The second step is to create a method to retrieve all the tasks for the object store so I can display them in the UI. Let’s create a method that does just that:
 
 ```jsx {13}
-let openRequest;
+let openRequest
 
 export const db = {
   // ...
@@ -187,24 +187,24 @@ export const db = {
   // Get all tasks from the database
   getAllTasks: () => {
     return new Promise((resolve, reject) => {
-      const db = openRequest.result;
-      const transaction = db.transaction(["tasks"], "readonly");
-      const store = transaction.objectStore("tasks");
+      const db = openRequest.result
+      const transaction = db.transaction(['tasks'], 'readonly')
+      const store = transaction.objectStore('tasks')
 
-      const getAllRequest = store.getAll();
+      const getAllRequest = store.getAll()
 
       getAllRequest.onsuccess = () => {
-        resolve(getAllRequest.result);
-      };
+        resolve(getAllRequest.result)
+      }
 
       getAllRequest.onerror = () => {
-        reject(getAllRequest.error);
-      };
-    });
+        reject(getAllRequest.error)
+      }
+    })
   },
 
   // ...
-};
+}
 ```
 
 This method works much like the `addTask` method. The only real difference is that I just need `readonly` for the transaction and I call the `getAll` method to retrieve all tasks.
@@ -214,7 +214,7 @@ This method works much like the `addTask` method. The only real difference is th
 As you might have noticed in the Todo demo, I have a checkbox where I can set the status of a task to be complete or incomplete. For this, I need to be able to make an update to (the `status` property of) the task:
 
 ```jsx {13}
-let openRequest;
+let openRequest
 
 export const db = {
   // ...
@@ -222,24 +222,24 @@ export const db = {
   // Update a task in the database
   updateTask: (task) => {
     return new Promise((resolve, reject) => {
-      const db = openRequest.result;
-      const transaction = db.transaction(["tasks"], "readwrite");
-      const store = transaction.objectStore("tasks");
+      const db = openRequest.result
+      const transaction = db.transaction(['tasks'], 'readwrite')
+      const store = transaction.objectStore('tasks')
 
-      const putRequest = store.put(task);
+      const putRequest = store.put(task)
 
       putRequest.onsuccess = () => {
-        resolve(putRequest.result);
-      };
+        resolve(putRequest.result)
+      }
 
       putRequest.onerror = () => {
-        reject(putRequest.error);
-      };
-    });
+        reject(putRequest.error)
+      }
+    })
   },
 
   // ...
-};
+}
 ```
 
 The only real difference between this method and the `addTask` method is that I call the `put` method instead of `add`.
@@ -249,7 +249,7 @@ The only real difference between this method and the `addTask` method is that I 
 Finally, I want to be able to delete a task from the database:
 
 ```jsx {13}
-let openRequest;
+let openRequest
 
 export const db = {
   // ...
@@ -257,24 +257,24 @@ export const db = {
   // Delete a task from the database
   deleteTask: (id) => {
     return new Promise((resolve, reject) => {
-      const db = openRequest.result;
-      const transaction = db.transaction(["tasks"], "readwrite");
-      const store = transaction.objectStore("tasks");
+      const db = openRequest.result
+      const transaction = db.transaction(['tasks'], 'readwrite')
+      const store = transaction.objectStore('tasks')
 
-      const deleteRequest = store.delete(id);
+      const deleteRequest = store.delete(id)
 
       deleteRequest.onsuccess = () => {
-        resolve(deleteRequest.result);
-      };
+        resolve(deleteRequest.result)
+      }
 
       deleteRequest.onerror = () => {
-        reject(deleteRequest.error);
-      };
-    });
+        reject(deleteRequest.error)
+      }
+    })
   },
 
   // ...
-};
+}
 ```
 
 You guessed it, I just have to call `delete` with the id of the task to remove a task.

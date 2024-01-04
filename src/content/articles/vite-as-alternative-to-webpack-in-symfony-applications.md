@@ -1,11 +1,10 @@
 ---
-title: "Vite as an alternative to webpack-encore in Symfony applications"
-date: "2022-06-24"
-images:
-  ["/articles/vite-as-alternative-to-webpack-in-symfony-applications/hero.webp"]
+title: 'Vite as an alternative to webpack-encore in Symfony applications'
+date: '2022-06-24'
+images: ['/articles/vite-as-alternative-to-webpack-in-symfony-applications/hero.webp']
 summary: 'Vite (French word for "quick", pronounced /vit/, like "veet") is the fastest frontend build tool at the moment. Webpack-encore integrates perfectly with symfony applications. What if we could have both'
-authors: ["yves-maerschalck"]
-theme: "blue"
+authors: ['yves-maerschalck']
+theme: 'blue'
 ---
 
 Whenever you create a new Symfony application, there will be a moment you have to set up your frontend tooling to build your CSS and JavaScript. The easiest way to do this would be to just follow the instructions on the [Symfony docs](https://symfony.com/doc/current/frontend.html).
@@ -231,32 +230,32 @@ You now have a working Vue app inside your Symfony rendered page where you can u
 If we want to deploy our app to production, we will first have to build it. Normally when building a Vite app, the build process will create a `dist` folder inside the app folder. We'll have to edit our `vite.config.ts` (or .js) to alter this behaviour.
 
 ```javascript
-import { fileURLToPath, URL } from "url";
+import { fileURLToPath, URL } from 'url'
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import svgLoader from "vite-svg-loader";
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import svgLoader from 'vite-svg-loader'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), svgLoader()],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   build: {
     manifest: true,
-    assetsDir: "",
-    outDir: "../../web/frontend",
+    assetsDir: '',
+    outDir: '../../web/frontend',
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: "./src/main.ts",
+        main: './src/main.ts',
       },
     },
   },
-});
+})
 ```
 
 Make sure the `outDir` is the same as the one you used in the Twig extension. In this example we've opted to empty the output dir on each build, but this is not necessary.

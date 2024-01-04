@@ -1,10 +1,10 @@
 ---
-title: "Monitoring And logging in Azure Cheatsheets"
-date: "2022-11-07 15:20:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Monitoring And logging in Azure Cheatsheets'
+date: '2022-11-07 15:20:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

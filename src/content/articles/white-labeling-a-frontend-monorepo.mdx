@@ -1,16 +1,18 @@
 ---
 title: "White labeling in a front-end monorepo: The do's and don'ts."
-date: "2023-07-03"
+date: '2023-07-03'
 summary: "Defining a good structure for your theme, components, and files is key to maintaining code for multiple brands. If you're coding multiple applications within one shared codebase, these guidelines will help you out."
-authors: ["zakaria-taissate"]
-theme: "blue"
+authors: ['zakaria-taissate']
+theme: 'blue'
 ---
+
+import { Image } from 'astro:assets'
 
 export const exampleImageProps = {
   width: 1267,
   height: 470,
   style: { borderRadius: 8 },
-};
+}
 
 ## The use case: Maintaining code and UX for multiple radio channels
 
@@ -84,7 +86,7 @@ const theme = {
   borderRadius: 12,
   skewedRadius: undefined,
   //...
-};
+}
 ```
 
 ### 👍🏼 Do: Make sure your theme structure is the same for all brands
@@ -104,7 +106,7 @@ const theme = {
   promotionCardTextColor: whiteColor,
   promotionCardHoverTextColor: whiteColor,
   promotionCardCategoryTextColor: whiteColor,
-};
+}
 //...
 ```
 
@@ -170,8 +172,8 @@ FunX just has a gradient.
 
 <Image
   src="/articles/white-labeling-a-frontend-monorepo/funx.webp"
+  alt="funx"
   {...exampleImageProps}
-
 />
 
 #### Radio1
@@ -180,6 +182,7 @@ Radio 1 has a repeating SVG Pattern.
 
 <Image
   src="/articles/white-labeling-a-frontend-monorepo/radio1.webp"
+  alt="radio1"
   {...exampleImageProps}
 />
 
@@ -189,6 +192,7 @@ Radio 2 has one SVG on the right.
 
 <Image
   src="/articles/white-labeling-a-frontend-monorepo/radio2.webp"
+  alt="radio2"
   {...exampleImageProps}
 />
 
@@ -198,6 +202,7 @@ Radio 5 has one big SVG as a background.
 
 <Image
   src="/articles/white-labeling-a-frontend-monorepo/radio5.webp"
+  alt="radio5"
   {...exampleImageProps}
 />
 
@@ -205,10 +210,7 @@ Radio 5 has one big SVG as a background.
 
 KX has multiple SVGs, both left and right.
 
-<Image
-  src="/articles/white-labeling-a-frontend-monorepo/kx.webp"
-  {...exampleImageProps}
-/>
+<Image src="/articles/white-labeling-a-frontend-monorepo/kx.webp" alt="kx" {...exampleImageProps} />
 
 Uh-oh! The behaviour differs too much to solve with theming. So what do we do now?
 
@@ -294,19 +296,19 @@ Let's say you have Brand 1. It has an object with data that looks like this:
 
 ```typescript
 const data = {
-  title: "Brand 1",
-  description: "This is brand 1",
-};
+  title: 'Brand 1',
+  description: 'This is brand 1',
+}
 ```
 
 And brand2 has an object with additional data that's only relevant for brand2:
 
 ```typescript
 const data = {
-  title: "Brand 2",
-  description: "This is brand 2",
-  extraData: "This is only relevant for brand 2",
-};
+  title: 'Brand 2',
+  description: 'This is brand 2',
+  extraData: 'This is only relevant for brand 2',
+}
 ```
 
 ### 👎🏼 Don't: Write conditional logic per brand
@@ -319,10 +321,10 @@ const Card = ({ data }) => {
     <div>
       <h1>{data.title}</h1>
       <h2>{data.description}</h2>
-      {brand === "brand2" && <h3>{data.extraData}</h3>}
+      {brand === 'brand2' && <h3>{data.extraData}</h3>}
     </div>
-  );
-};
+  )
+}
 ```
 
 ### 👍🏼 Do: Conditional logic for the field
@@ -337,8 +339,8 @@ const Card = ({ data }) => {
       <h2>{data.description}</h2>
       {data.extraData && <h3>{data.extraData}</h3>}
     </div>
-  );
-};
+  )
+}
 ```
 
 While I realise this is the simplest example, you'll have to keep this approach in mind for more complex data structures and differences as well. Your components will become hard to maintain if you add conditional logic per brand. You won't remember what brand uses what logic. Instead of worrying about that, focus on the component design itself.

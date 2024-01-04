@@ -1,14 +1,12 @@
 ---
-title: "Practical uses of the :has() relational pseudo class"
-date: "2022-10-27"
+title: 'Practical uses of the :has() relational pseudo class'
+date: '2022-10-27'
 images:
-  [
-    "/articles/practical-uses-of-the-has-relational-pseudo-class/has-relational-pseudo-class.png",
-  ]
-summary: "The :has() relational pseudo class has landed in Chrome and Safari and even though it gets less hype than for instance container queries, I believe this little pseudo class contains a lot of improvements to the way we write CSS today."
-authors: ["brecht-de-ruyte"]
-theme: "beige"
-canonicalUrl: "https://utilitybend.com/blog/practical-uses-of-the-has-relational-pseudo-class"
+  ['/articles/practical-uses-of-the-has-relational-pseudo-class/has-relational-pseudo-class.png']
+summary: 'The :has() relational pseudo class has landed in Chrome and Safari and even though it gets less hype than for instance container queries, I believe this little pseudo class contains a lot of improvements to the way we write CSS today.'
+authors: ['brecht-de-ruyte']
+theme: 'beige'
+canonicalUrl: 'https://utilitybend.com/blog/practical-uses-of-the-has-relational-pseudo-class'
 ---
 
 ## Using :has() as a simple parent selector
@@ -22,9 +20,7 @@ Whichever the templating language you’re using. You’ll probably add a condit
 ```html
 <div class="articles">
   {% for article in articles %}
-  <article class="article{% if article.image %} has-image{% endif %}">
-    {# content here #}
-  </article>
+  <article class="article{% if article.image %} has-image{% endif %}">{# content here #}</article>
   {% endfor %)
 </div>
 ```
@@ -105,7 +101,7 @@ a {
 }
 
 a::before {
-  content: "";
+  content: '';
   display: block;
   width: 10px;
   height: 10px;

@@ -1,11 +1,10 @@
 ---
-title: "Interacting with ChatGPT through _Voice UI_ on the web"
-date: "2023-11-02"
-images:
-  ["/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva.png"]
-summary: "How can I improve the way someone interacts with ChatGPT? How can I make it feel more natural than a dreadful “chatbot”? Can I create something cool? Those were some of the questions I asked myself recently while starting a two-day hackathon at iO. I’ll take you through what I build, how, and most importantly, why."
-authors: ["dave-bitter"]
-theme: "blue"
+title: 'Interacting with ChatGPT through _Voice UI_ on the web'
+date: '2023-11-02'
+images: ['/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva.png']
+summary: 'How can I improve the way someone interacts with ChatGPT? How can I make it feel more natural than a dreadful “chatbot”? Can I create something cool? Those were some of the questions I asked myself recently while starting a two-day hackathon at iO. I’ll take you through what I build, how, and most importantly, why.'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 I probably don’t have to tell you what an enormous impact the rise of AI has had on the industry in recent times. It’s amazing to see all the progress that is being made. I knew when I was looking at an upcoming two-day hackathon at iO, I just needed to build something cool with ChatGPT. More particularly, the way you interact with ChatGPT.
@@ -41,7 +40,7 @@ A big upside for me is the before-mentioned benefit that you get with using a we
 Using the SpeechRecognition Web API is fairly straightforward. You first see if the Web API is supported in the user’s browser:
 
 ```js
-if (!("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
+if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
   // handle fallback
 }
 ```
@@ -49,12 +48,11 @@ if (!("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
 Next, as seen in the example above, the Web API can either named `SpeechRecognition` or `webkitSpeechRecognition`. We assign it like this and set it up:
 
 ```jsx
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 
-const recognition = new SpeechRecognition();
-recognition.interimResults = true;
-recognition.lang = "en-US";
+const recognition = new SpeechRecognition()
+recognition.interimResults = true
+recognition.lang = 'en-US'
 ```
 
 We change two settings, first we set `interimResults` to `true` so we can receive the interim results while the user is speaking. Next, we set the language the user is going to speak in. Naturally, you can provide UI to alter this, but for the demo english is fine.
@@ -63,14 +61,14 @@ With everything configured, our next step is to create an `onresult` and `onend`
 
 ```jsx
 recognition.onresult = (event) => {
-  const { transcript } = event.results[0][0];
+  const { transcript } = event.results[0][0]
   // do something with transcript
-};
+}
 
 recognition.onend = (event) => {
-  const { transcript } = event.results[0][0];
+  const { transcript } = event.results[0][0]
   // do something with transcript
-};
+}
 ```
 
 I've created this small demo so you can try it out yourself:
@@ -102,21 +100,21 @@ As mentioned before, this Web API comes with the browser already built-in! It’
 Let’s make it read out a text string. First we check whether the user’s browser supports the Web API again and create a constant to use later on. Finally, we need to make a `SpeechSynthesisUtterance` which is basically a unit of text that the Web API needs to read out loud:
 
 ```jsx
-if (!("speechSynthesis" in window && "SpeechSynthesisUtterance" in window)) {
+if (!('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window)) {
   // handle fallback
 }
 
-const synth = window.speechSynthesis;
+const synth = window.speechSynthesis
 
-const voices = synth.getVoices();
-const preferredVoice = voices.find((voice) => voice.voiceURI === "Karen");
+const voices = synth.getVoices()
+const preferredVoice = voices.find((voice) => voice.voiceURI === 'Karen')
 
-const utterance = new SpeechSynthesisUtterance("Hello from the computer!");
-utterance.rate = 1;
-utterance.pitch = 1;
+const utterance = new SpeechSynthesisUtterance('Hello from the computer!')
+utterance.rate = 1
+utterance.pitch = 1
 
 if (preferredVoice) {
-  utterance.voice = preferredVoice;
+  utterance.voice = preferredVoice
 }
 ```
 
@@ -143,9 +141,9 @@ Now all that is left is to speak:
 ```jsx
 utterance.onend = () => {
   // do something once all the text has been spoken
-};
+}
 
-window.speechSynthesis.speak(utterance);
+window.speechSynthesis.speak(utterance)
 ```
 
 That’s it! We now have both input and output covered.
@@ -217,26 +215,26 @@ I could then create a little hook to change these values based on the conversati
 ```jsx
 useEffect(() => {
   switch (conversationState) {
-    case "RESPONDING":
-      speed = 2;
-      intensity = 0.75;
-      break;
-    case "LISTENING":
-      speed = 1.25;
-      intensity = 0.35;
-      break;
-    case "STOPPED":
-    case "IDLING":
-      speed = 0.8;
-      intensity = 0.1;
-      break;
-    case "UNPERMITTED":
+    case 'RESPONDING':
+      speed = 2
+      intensity = 0.75
+      break
+    case 'LISTENING':
+      speed = 1.25
+      intensity = 0.35
+      break
+    case 'STOPPED':
+    case 'IDLING':
+      speed = 0.8
+      intensity = 0.1
+      break
+    case 'UNPERMITTED':
     default:
-      speed = 0.5;
-      intensity = 0.05;
-      break;
+      speed = 0.5
+      intensity = 0.05
+      break
   }
-}, [conversationState]);
+}, [conversationState])
 ```
 
 ## The end result

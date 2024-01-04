@@ -1,10 +1,10 @@
 ---
-title: "A technical introduction to SSO"
-date: "2020-09-22"
-summary: "Single Sign-on has been around for years but on what standards is it working?"
-authors: ["daan-beulen", "mark-van-der-linden"]
-theme: "blue"
-serie: "a-deep-dive-into-single-sing-on"
+title: 'A technical introduction to SSO'
+date: '2020-09-22'
+summary: 'Single Sign-on has been around for years but on what standards is it working?'
+authors: ['daan-beulen', 'mark-van-der-linden']
+theme: 'blue'
+serie: 'a-deep-dive-into-single-sing-on'
 ---
 
 The term Single Sign-On has multiple meanings in the industry. A well-known one is to describe users signing into a platform once and gaining access to multiple applications. However, an SSO solution can provide a lot more than just simplified authentication. It can provide:

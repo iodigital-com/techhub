@@ -113,11 +113,7 @@ Checking authorization is done with roles. To protect sections of your app for a
 
   <Private unauthenticated="home" roles="admin">
     <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
-    <Route
-      path="/admin/posts/{id:Int}/edit"
-      page={PostEditPostPage}
-      name="editPost"
-    />
+    <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
     <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />
     <Route path="/admin/posts" page={PostPostsPage} name="posts" />
   </Private>
@@ -129,8 +125,7 @@ To control access to GraphQL queries and mutations you pass the roles as an argu
 ```graphql
 type Mutation {
   createPost(input: CreatePostInput!): Post! @requireAuth(roles: ["admin"])
-  updatePost(id: Int!, input: UpdatePostInput!): Post!
-    @requireAuth(roles: ["admin"])
+  updatePost(id: Int!, input: UpdatePostInput!): Post! @requireAuth(roles: ["admin"])
   deletePost(id: Int!): Post! @requireAuth(roles: ["admin"])
 }
 ```

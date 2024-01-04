@@ -1,20 +1,20 @@
-import { type CollectionEntry } from "astro:content";
+import { type CollectionEntry } from 'astro:content'
 
 export function getSeries(
-  articles: CollectionEntry<"articles">[],
-  article: CollectionEntry<"articles">,
+  articles: CollectionEntry<'articles'>[],
+  article: CollectionEntry<'articles'>
 ) {
-  if (!article.data.serie) return [];
+  if (!article.data.serie) return []
 
   return articles.filter((x) => {
     if (article.id === x.id) {
-      return false;
+      return false
     }
 
     if (article.data.serie === x.data.serie) {
-      return true;
+      return true
     }
 
-    return false;
-  });
+    return false
+  })
 }
