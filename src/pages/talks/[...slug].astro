@@ -1,0 +1,29 @@
+---
+import { getCollection, getEntries } from "astro:content";
+import MarkdownTalkLayout from "../../layouts/MarkdownTalkLayout.astro";
+
+export async function getStaticPaths() {
+  const talks = await getCollection("talks");
+
+  return Promise.all(
+    talks.map(async (talk) => {
+      const authors = await getEntries(talk.data.authors);
+
+      return {
+        params: { slug: talk.slug },
+        props: {
+          talk,
+          authors,
+        },
+      };
+    })
+  );
+}
+
+const { talk, authors } = Astro.props;
+const { Content } = await talk.render();
+---
+
+<MarkdownTalkLayout talk={talk} authors={authors}>
+  <Content />
+</MarkdownTalkLayout>

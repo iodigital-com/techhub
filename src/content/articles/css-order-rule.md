@@ -1,9 +1,9 @@
 ---
-title: "TIL: The CSS `order` Property Requires Each Grid/Flex Item to be `order`ed"
-date: "2023-09-12"
-summary: "To use order on one element means using order on each of its siblings, too."
-authors: ["remy-parzinski"]
-theme: "blue"
+title: 'TIL: The CSS `order` Property Requires Each Grid/Flex Item to be `order`ed'
+date: '2023-09-12'
+summary: 'To use order on one element means using order on each of its siblings, too.'
+authors: ['remy-parzinski']
+theme: 'blue'
 ---
 
 I was today years old when I learned something new about the CSS `order` property. I didn't learn about the existence of the property today, mind you. I just learned about a constriction which, in my opinion, makes it a little bit less usable. You see... when you want to `order` a `flex` or `grid` item, you have to `order` all of them. You can't just `order` one of them. Let me show you what I mean.

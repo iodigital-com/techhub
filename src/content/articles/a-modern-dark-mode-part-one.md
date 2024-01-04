@@ -1,9 +1,9 @@
 ---
-title: "A modern dark mode - part one"
-date: "2022-12-21"
-summary: "I’ve wanted to implement dark mode for quite a while now. But, I just didn’t want to ship a part of it. I had to include a perfect dark theme, together with the perfect accessible toggle. However, two things have happened last month that changed my perspective on this approach."
-authors: ["frank-van-eldijk"]
-canonicalUrl: "https://beingfrankly.nl/blog/a-modern-dark-mode/"
+title: 'A modern dark mode - part one'
+date: '2022-12-21'
+summary: 'I’ve wanted to implement dark mode for quite a while now. But, I just didn’t want to ship a part of it. I had to include a perfect dark theme, together with the perfect accessible toggle. However, two things have happened last month that changed my perspective on this approach.'
+authors: ['frank-van-eldijk']
+canonicalUrl: 'https://beingfrankly.nl/blog/a-modern-dark-mode/'
 ---
 
 I’ve wanted to implement dark mode for quite a while now. But, I just didn’t want to ship a part of it. I had to include a perfect dark theme, together with the perfect accessible toggle. I might be a perfectionist.
@@ -29,7 +29,7 @@ Now we know that only having a light or a dark theme doesn’t work, we have to 
 What I really like about [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), is that they can inherit from other CSS variables. This allows us to create “functional” CSS variables with a clear name and purpose, which keeps our CSS clean. Here, I’ll show you!
 
 ```css
-@import "./colors.css";
+@import './colors.css';
 
 :root {
   color-scheme: dark light;

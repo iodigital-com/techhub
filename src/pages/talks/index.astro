@@ -1,5 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import Talk from "../../components/talks/Talk.astro";
+import talksImage from "../../images/talks.jpg";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const talks = await getCollection("talks");
 
 const emailError = "Please enter a valid email address";
 const errors = { firstName: "", lastName: "", email: "", permission: "" };
@@ -29,9 +35,11 @@ if (Astro.request.method === "POST") {
 ---
 
 <BaseLayout pageTitle="Talks">
-  <div class="grid grid-cols-12 gap-5">
+  <div class="grid grid-cols-12 gap-10">
     <section class="col-start-1 col-end-7">
-      <h1 class="text-lg mb-5">Looking for an inspiring talk at your event?</h1>
+      <h1 class="text-4xl mb-5">
+        Looking for an inspiring talk at your event?
+      </h1>
       <p>
         We have great experts that can deliver inspiring talks at your event. <br
         />
@@ -123,20 +131,22 @@ if (Astro.request.method === "POST") {
     </section>
 
     <section class="col-start-7 col-end-13 row-start-1">
-      <h1 class="text-lg mb-5">Image</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
-        doloremque nulla? Labore, exercitationem deserunt. Quis sint quod vero
-        veniam, qui porro autem illo enim id aliquam quisquam repellat mollitia
-        nostrum explicabo, quibusdam amet veritatis dolore quos omnis quo
-        voluptatum! Amet, maxime dolores. Ut ipsam optio asperiores dolores
-        maiores labore esse saepe molestiae animi veritatis, repellat in nisi id
-        nulla! Reprehenderit totam, blanditiis officia ab provident hic in
-        fugiat corporis consequuntur perferendis voluptatem ex ducimus,
-        similique, magni beatae enim laudantium asperiores veniam at eos. Iure,
-        quasi molestiae temporibus error neque architecto aspernatur. Officiis
-        facere error molestias ratione asperiores earum maiores adipisci.
-      </p>
+      <Image
+        src={talksImage}
+        alt="iO Talks"
+        class="rounded-full float-right"
+        width={500}
+      />
     </section>
+  </div>
+
+  <div class="grid grid-cols-12 gap-x-10 gap-y-14 mt-10">
+    {
+      talks.map((talk) => (
+        <div class="col-span-4">
+          <Talk talk={talk} />
+        </div>
+      ))
+    }
   </div>
 </BaseLayout>

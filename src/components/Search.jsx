@@ -23,27 +23,25 @@ const articlesSearchOptions = {
 
 function Search({ articles, authors }) {
     // User's input
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('')
 
-    const fuseAuthors = new Fuse(authors, authorsSearchOptions);
-    const fuseArticles = new Fuse(articles, articlesSearchOptions);
+    const fuseAuthors = new Fuse(authors, authorsSearchOptions)
+    const fuseArticles = new Fuse(articles, articlesSearchOptions)
 
     // Set a limit to the posts: 5
     const foundAuthors = fuseAuthors
         .search(query)
         .map((result) => result.item)
-        .slice(0, 5);
+        .slice(0, 5)
 
     const foundArticles = fuseArticles
         .search(query)
         .map((result) => result.item)
-        .slice(0, 5);
-
-    console.log("Query: " + query, foundArticles);
+        .slice(0, 5)
 
     function handleOnSearch({ target = {} }) {
-        const { value } = target;
-        setQuery(value);
+        const { value } = target
+        setQuery(value)
     }
 
     function findArticleAuthors(article) {
@@ -104,7 +102,7 @@ function Search({ articles, authors }) {
                 {foundArticles &&
                     foundArticles.map((article) => (
                         <li className="py-2">
-                            <ArticleReact article={article} authors={findArticleAuthors(article)}/>
+                            <ArticleReact article={article} authors={findArticleAuthors(article)} />
                         </li>
                     ))}
             </ul>
@@ -112,4 +110,4 @@ function Search({ articles, authors }) {
     );
 }
 
-export default Search;
+export default Search

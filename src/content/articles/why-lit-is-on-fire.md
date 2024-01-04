@@ -1,10 +1,10 @@
 ---
-title: "Why lit is 🔥"
-date: "2022-06-17"
-images: ["/articles/why-lit-is-on-fire/header-image.png"]
-summary: "Every day a new JavaScript library is born, every week a new framework arrives and every month a front-end developer needs to rewrite a date picker 😢 LIT is a modern library for creating component libraries, design systems but also sites and apps. LIT components are web components and as such work anywhere you use HTML."
-authors: ["lucien-immink"]
-theme: "blue"
+title: 'Why lit is 🔥'
+date: '2022-06-17'
+images: ['/articles/why-lit-is-on-fire/header-image.png']
+summary: 'Every day a new JavaScript library is born, every week a new framework arrives and every month a front-end developer needs to rewrite a date picker 😢 LIT is a modern library for creating component libraries, design systems but also sites and apps. LIT components are web components and as such work anywhere you use HTML.'
+authors: ['lucien-immink']
+theme: 'blue'
 ---
 
 In the fast-changing world of front-end development it's hard to keep up with all the new libraries and frameworks out there that promise to be the next big thing. Frameworks tend to do a lot of heavy lifting but also tend to not agree with each other. As a developer this means that you might have to rewrite code to swap out the old framework for the new. It becomes more of an issue if you must rewrite nearly _all_ of your code if the frameworks can't live together.
@@ -35,12 +35,12 @@ Literals represent a value in JavaScript. fixed (no variable) value that you _li
 A string literal is everything between a single (`'`) or double (`"`) quotation mark. With the introduction of ECMAScript 2015 (ES6) another literal was added: the _template literal_ which provide an easy way to create multiline strings and perform string interpolation. Template literals are string literals and allow embedded expressions. Template literals use the backtick (`` ` ``) as delimiter. Some examples of the template literal:
 
 ```js
-const str = `Hello`;
+const str = `Hello`
 const multi = `Hello
 wonderful
-world`;
-const expression = `Hello ${type} world`;
-taggedFunction`Hello ${type} world`;
+world`
+const expression = `Hello ${type} world`
+taggedFunction`Hello ${type} world`
 ```
 
 The _tagged_ template literal calls the function with that name (in this case `taggedFunction()`) with the template as the first argument and the substitution values as the subsequent arguments.
@@ -58,22 +58,22 @@ Take template literals for rendering templates and combine them with web compone
 <sub>⚠️ Note that all examples in this article will use TypeScript but LIT can also be written using pure JavaScript. ⚠️</sub>
 
 ```ts
-import { html, css, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { html, css, LitElement } from 'lit'
+import { customElement, property } from 'lit/decorators.js'
 
-@customElement("hello-world")
+@customElement('hello-world')
 export class HelloWorld extends LitElement {
   static styles = css`
     p {
       color: green;
     }
-  `;
+  `
 
   @property()
-  type = "wonderful";
+  type = 'wonderful'
 
   render() {
-    return html`<p>Hello ${this.type} world</p>`;
+    return html`<p>Hello ${this.type} world</p>`
   }
 }
 ```
@@ -125,13 +125,13 @@ render() {
 But why stop there? Well one reason is readability of course! And reusability could be another reason. Split this template up in 3 separate components will improve both the readability and reusability. Let's take a look at the `my-header` first.
 
 ```ts
-import { html, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
+import { html, LitElement } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
-@customElement("my-header")
+@customElement('my-header')
 export class MyHeader extends LitElement {
   render() {
-    return html`<div>Some fancy header</div>`;
+    return html`<div>Some fancy header</div>`
   }
 }
 ```
@@ -139,22 +139,20 @@ export class MyHeader extends LitElement {
 The same applies for `my-footer`. Both are now a web component, usable in other LIT elements or directly on a HTML page or imported into a React, angular, vue... HTML based web application.
 
 ```ts
-import { LitElement, html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { LitElement, html } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
-import "./my-header.js";
-import "./my-footer.js";
+import './my-header.js'
+import './my-footer.js'
 
-@customElement("my-page")
+@customElement('my-page')
 class MyPage extends LitElement {
   render() {
     return html`
       <my-header></my-header>
-      <p>
-        What a nice ${new Date().getHours() < 12 ? html`morning` : html`day`}
-      </p>
+      <p>What a nice ${new Date().getHours() < 12 ? html`morning` : html`day`}</p>
       <my-footer></my-footer>
-    `;
+    `
   }
 }
 ```
@@ -164,23 +162,23 @@ class MyPage extends LitElement {
 Handling events with LIT is quite straightforward. The following example adds a `click` handler to a button and the result is automatically updated in the `counter`:
 
 ```ts
-import { html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { html, LitElement } from 'lit'
+import { customElement, property } from 'lit/decorators.js'
 
-@customElement("my-counter")
+@customElement('my-counter')
 export class HelloWorld extends LitElement {
   @property()
-  counter: number = 0;
+  counter: number = 0
 
   addCount() {
-    this.counter += 1;
+    this.counter += 1
   }
 
   render() {
     return html`
       <button @click=${this.addCount}>Add more</button>
       <p>counter is now at: ${this.counter}</p>
-    `;
+    `
   }
 }
 ```
@@ -197,10 +195,10 @@ addCount()
 Styling in LIT uses template literals as well. Lit components use a shadow DOM making styling straightforward.
 
 ```ts
-import { LitElement, html, css } from "lit";
-import { customElement } from "lit/decorators.js";
+import { LitElement, html, css } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
-@customElement("my-element")
+@customElement('my-element')
 export class MyElement extends LitElement {
   static styles = css`
     :host {
@@ -211,9 +209,9 @@ export class MyElement extends LitElement {
     p {
       color: var(--blue, blue);
     }
-  `;
+  `
   render() {
-    return html`<p>I am blue da ba dee! ®eiffel 65</p>`;
+    return html`<p>I am blue da ba dee! ®eiffel 65</p>`
   }
 }
 ```
@@ -224,7 +222,7 @@ Sharing styles between components can easily be achieved by creating a separate 
 
 ```ts
 // file: button-styles.ts
-import { css } from "lit";
+import { css } from 'lit'
 
 export const buttonStyles = css`
   .primary-button {
@@ -235,15 +233,15 @@ export const buttonStyles = css`
     opacity: 0.6;
     pointer-events: none;
   }
-`;
+`
 ```
 
 ```ts
-import { css, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
-import { buttonStyles } from "./button-styles.ts";
+import { css, LitElement } from 'lit'
+import { customElement } from 'lit/decorators.js'
+import { buttonStyles } from './button-styles.ts'
 
-@customElement("my-element")
+@customElement('my-element')
 export class MyElement extends LitElement {
   static styles = [
     buttonStyles,
@@ -253,7 +251,7 @@ export class MyElement extends LitElement {
         border: 1px solid black;
       }
     `,
-  ];
+  ]
 }
 ```
 

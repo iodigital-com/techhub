@@ -1,8 +1,8 @@
 ---
-title: "Solving Tower of Hanoi coding challenge"
-date: "2022-12-20"
-summary: ""
-authors: ["ahmed-ali"]
+title: 'Solving Tower of Hanoi coding challenge'
+date: '2022-12-20'
+summary: ''
+authors: ['ahmed-ali']
 ---
 
 In the previous article on the Tower of Hanoi coding challenge, we discussed the Tower of Hanoi as a mathematical problem that we need to solve using code. We were introduced to the Tower of Hanoi puzzle and the rules to solve it. If you haven't read the previous article yet, I suggest you do so.  

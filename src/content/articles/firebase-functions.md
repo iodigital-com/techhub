@@ -1,9 +1,9 @@
 ---
-title: "Firebase Functions in a nutshell"
-date: "2023-02-01"
-authors: ["mohsen-mahabadi"]
-summary: "Firebase Functions is a powerful tool that allows developers to build and run backend code for their applications."
-theme: "blue"
+title: 'Firebase Functions in a nutshell'
+date: '2023-02-01'
+authors: ['mohsen-mahabadi']
+summary: 'Firebase Functions is a powerful tool that allows developers to build and run backend code for their applications.'
+theme: 'blue'
 ---
 
 Before we begin, it should be noted that if you are not familiar with Firebase Functions, this article will get you right up to speed! If you are experienced with them, there might be some interesting pieces that you are unaware of.
@@ -55,11 +55,11 @@ myproject
 
 ```javascript
 // The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers
-import * as functions from "firebase-functions";
+import * as functions from 'firebase-functions'
 // the Firebase Admin SDK to access Firestore.
-import * as admin from "firebase-admin";
+import * as admin from 'firebase-admin'
 
-admin.initializeApp();
+admin.initializeApp()
 ```
 
 ## Trigger Firebase Functions
@@ -117,8 +117,8 @@ For example, the URL to invoke helloWorld() looks like this:
 
 ```javascript
 exports.toGoogle = functions.https.onRequest((req, res) => {
-  return res.redirect("https://www.google.com");
-});
+  return res.redirect('https://www.google.com')
+})
 ```
 
 You will be redirected to `google.com` whenever you access this URL, such as `www.mydomain.com/toGoogle`.
@@ -129,9 +129,9 @@ Callable functions provide a simple, secure way to invoke a function from a clie
 
 ```javascript
 exports.greeting = functions.https.onCall((data, context) => {
-  const { name } = data;
-  return `Hello, ${name}`;
-});
+  const { name } = data
+  return `Hello, ${name}`
+})
 ```
 
 Assume that a button (called callBtn) exists and that we want to call our function by clicking on it. Our greeting function will be called each time you click the button.
@@ -155,10 +155,10 @@ If in callable function we need to check whether the user is logged in or not, w
 exports.doSomething = functions.https.onCall((data, context) => {
   if (!context.auth) {
     //user hasn't logged in
-    throw new functions.https.HttpsError("unauthenticated", "you must login.");
+    throw new functions.https.HttpsError('unauthenticated', 'you must login.')
   }
   //do something
-});
+})
 ```
 
 ### Background Triggers
@@ -177,7 +177,7 @@ This function will be triggered after adding a user.
 ```javascript
 exports.sendWelcomeEmail = functions.auth.user().onCreate((user) => {
   // ...
-});
+})
 ```
 
 ##### 2. User onDelete:
@@ -186,9 +186,9 @@ This function is triggered when a user is deleted.
 
 ```javascript
 exports.deleteUser = functions.auth.user().onDelete((user) => {
-  console.log("user deleted", user.email);
-  return admin.firestore().collection("users").doc(user.uid).delete();
-});
+  console.log('user deleted', user.email)
+  return admin.firestore().collection('users').doc(user.uid).delete()
+})
 ```
 
 ##### 3. onAuthStateChanged:
@@ -204,7 +204,7 @@ firebase.auth().onAuthStateChanged((user) => {
   } else {
     // user didn't log in
   }
-});
+})
 ```
 
 #### Storge Events
@@ -222,21 +222,20 @@ For instance, we'd like to know when the user collection was last updated:
 exports.updateLastUpdated = functions.firestore
   .document(`documents/{id}`)
   .onUpdate((snap, context) => {
-    const previousData = snap.before.data();
-    const newData = snap.after.data();
-    const docId = context.params.id;
+    const previousData = snap.before.data()
+    const newData = snap.after.data()
+    const docId = context.params.id
 
-    const shouldUpdateLastUpdated =
-      previousData.lastUpdated === newData.lastUpdated;
+    const shouldUpdateLastUpdated = previousData.lastUpdated === newData.lastUpdated
 
     if (shouldUpdateLastUpdated) {
-      return admin.firestore().collection("documents").doc(docId).update({
+      return admin.firestore().collection('documents').doc(docId).update({
         lastUpdated: Date.now(),
-      });
+      })
     }
 
-    return null;
-  });
+    return null
+  })
 ```
 
 **Firestore onSnapshot**
@@ -261,27 +260,27 @@ When events occur in your Firebase Realtime Database, you can use Firebase Funct
 - **onDelete**: which triggers when data is deleted from Realtime Database.
 
 ```javascript
-import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
-admin.initializeApp();
+import * as functions from 'firebase-functions'
+import * as admin from 'firebase-admin'
+admin.initializeApp()
 
 exports.sendPushNotification = functions.database
-  .ref("/chat_rooms/{chatRoomId}/messages/{messageId}")
+  .ref('/chat_rooms/{chatRoomId}/messages/{messageId}')
   .onCreate((snapshot, context) => {
-    const message = snapshot.val();
-    const chatRoomId = context.params.chatRoomId;
-    const messageId = context.params.messageId;
+    const message = snapshot.val()
+    const chatRoomId = context.params.chatRoomId
+    const messageId = context.params.messageId
 
     const payload = {
       notification: {
         title: `New message in chat room ${chatRoomId}`,
         body: message.text,
-        badge: "1",
-        sound: "default",
+        badge: '1',
+        sound: 'default',
       },
-    };
-    return admin.messaging().sendToTopic(chatRoomId, payload);
-  });
+    }
+    return admin.messaging().sendToTopic(chatRoomId, payload)
+  })
 ```
 
 This function listens to the path `/chat_rooms/{chatRoomId}/messages/{messageId}` and when it detects a new message,
@@ -299,20 +298,18 @@ Here's an example of a Firebase Function that triggers when a user logs an event
 /**
  * After a user has completed a purchase, send them a coupon via FCM valid on their next purchase.
  */
-exports.sendCouponOnPurchase = functions.analytics
-  .event("in_app_purchase")
-  .onLog((event) => {
-    const user = event.user;
-    const uid = user.userId; // The user ID set via the setUserId API.
-    const purchaseValue = event.valueInUSD; // Amount of the purchase in USD.
-    const userLanguage = user.deviceInfo.userDefaultLanguage; // The user language in language-country format.
+exports.sendCouponOnPurchase = functions.analytics.event('in_app_purchase').onLog((event) => {
+  const user = event.user
+  const uid = user.userId // The user ID set via the setUserId API.
+  const purchaseValue = event.valueInUSD // Amount of the purchase in USD.
+  const userLanguage = user.deviceInfo.userDefaultLanguage // The user language in language-country format.
 
-    // For purchases above 500 USD, we send a coupon of higher value.
-    if (purchaseValue > 500) {
-      return sendHighValueCouponViaFCM(uid, userLanguage);
-    }
-    return sendCouponViaFCM(uid, userLanguage);
-  });
+  // For purchases above 500 USD, we send a coupon of higher value.
+  if (purchaseValue > 500) {
+    return sendHighValueCouponViaFCM(uid, userLanguage)
+  }
+  return sendCouponViaFCM(uid, userLanguage)
+})
 ```
 
 You might want to access user attributes like the user's language and the event's value (valueInUSD) for a purchase-triggered function, as shown in this sample. This second attribute allows the sample function to test whether this is a high-value conversion event, in order to send a higher-value coupon to valuable customers.

@@ -1,10 +1,10 @@
 ---
-title: "Advent Of Code 2022"
-date: "2023-02-08"
+title: 'Advent Of Code 2022'
+date: '2023-02-08'
 images: []
-summary: "Advent Of Code is a set of puzzles that will test your problem-solving skills using your favourite programming language. You do not need extensive programming skills, but the knowledge of some standard algorithms is a pre. Plus, it is a lot of fun and a very exciting way to challenge yourself."
-authors: ["dmitri-sirobokov"]
-theme: "blue"
+summary: 'Advent Of Code is a set of puzzles that will test your problem-solving skills using your favourite programming language. You do not need extensive programming skills, but the knowledge of some standard algorithms is a pre. Plus, it is a lot of fun and a very exciting way to challenge yourself.'
+authors: ['dmitri-sirobokov']
+theme: 'blue'
 ---
 
 It's been almost three months ago since I heard about [Advent Of Code](https://adventofcode.com/) for the first time. At first, I didn't pay any attention, until I got an invitation link from my colleague to join. My colleague showed me a few interesting puzzles from the previous year, and I suddenly became very interested in them.

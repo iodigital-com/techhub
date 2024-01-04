@@ -1,13 +1,10 @@
 ---
-title: "Developers are not _Trusted Types_!"
-date: "2022-10-20"
-images:
-  [
-    "/articles/developers-are-not-trusted-types/developers-are-not-trusted-types.jpg",
-  ]
-summary: "Even with our best intentions as developers, we all make mistakes. XSS being one of the most common web vulnerabilities on the web proves that we need to better defend ourselves and our users against this. Let’s see how Trusted Types can help us!"
-authors: ["dave-bitter"]
-theme: "blue"
+title: 'Developers are not _Trusted Types_!'
+date: '2022-10-20'
+images: ['/articles/developers-are-not-trusted-types/developers-are-not-trusted-types.jpg']
+summary: 'Even with our best intentions as developers, we all make mistakes. XSS being one of the most common web vulnerabilities on the web proves that we need to better defend ourselves and our users against this. Let’s see how Trusted Types can help us!'
+authors: ['dave-bitter']
+theme: 'blue'
 ---
 
 At iO, we continuously work on improving our skills. Recently quite a few developers, including myself, followed a two-day training course on web security by [Philippe De Ryck](https://pragmaticwebsecurity.com/about.html). This course covered a wide arrange of topics, but one technique, in particular, stood out to me. He showed how you can use Trusted Types in your Content Security Policy (CSP) to protect yourself against cross-site scripting (XSS) attacks. Let’s have a look at what Trusted Types are, why you want to use this technique and how you can use it.
@@ -17,7 +14,7 @@ At iO, we continuously work on improving our skills. Recently quite a few develo
 Firstly, let’s have a quick look at what XSS is again and how you could easily become vulnerable to this attack. XSS is a vulnerability that allows an attacker to inject malicious code into your website. Let’s look at a basic example of how this works in, for instance, a Single Page Application (SPA) if you don’t protect yourself. Let’s say you are building a comment section for this website ([please do](https://github.com/iodigital-com/io-technology/issues/53)). This website is built using [React.js](reactjs.org) so we’ll use that for the code examples. You might have a component that displays some data that is fetched from an API:
 
 ```jsx {9}
-import React from "react";
+import React from 'react'
 
 const Comments = ({ comments }) => {
   return (
@@ -29,10 +26,10 @@ const Comments = ({ comments }) => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments
 ```
 
 If you have worked with React.js before, you probably used `dangerouslySetInnerHTML` before. So why do developers use this and why is it dangerous? `dangerouslySetInnerHTML` is used when you need to inject some HTML instead of a string. In this example, the comment was written in a what-you-see-is-what-you-get-editor (WYSIWYG). The editor then creates the HTML of the content and sends that over during the submission of the comment. This HTML “string” is then stored in the database. You as a developer then fetch all the comments and want to render that bit of HTML in the DOM. You don’t want to render the HTML as a string, hence the quotation marks, but want to create the DOM elements out of it. For this `dangerouslySetInnerHTML` is used.
@@ -66,11 +63,11 @@ There are a couple of ways of doing this more safely.
 You can make use safe DOM APIs to inject and parse the content. For instance, you could create a paragraph element where you set the `textContent`:
 
 ```jsx
-const commentParagraph = document.createElement("p");
+const commentParagraph = document.createElement('p')
 
-commentParagraph.textContent = comment.content;
+commentParagraph.textContent = comment.content
 
-document.getElementById("comments").appendChild(commentParagraph);
+document.getElementById('comments').appendChild(commentParagraph)
 ```
 
 By using the `textContent` API, you tell the browser that you have some text content that you want to show. If this content contains malicious code, this will just be added as text content, not as actual code in the DOM.
@@ -82,8 +79,8 @@ Now, earlier I said that the comment contains HTML that the WYSIWYG editor gener
 You can make use of a package like [DOMPurify](https://github.com/cure53/DOMPurify). This package sanitises the content it is passed with sensible defaults which you can always tweak if you know what you are doing. Let’s go back to the React.js Example and add DOMPurify:
 
 ```jsx {2,10}
-import React from "react";
-import * as DOMPurify from "dompurify";
+import React from 'react'
+import * as DOMPurify from 'dompurify'
 
 const Comments = ({ comments }) => {
   return (
@@ -91,16 +88,14 @@ const Comments = ({ comments }) => {
       {comments.map(({ id, content, authorName }) => (
         <li key={id}>
           <strong>{authorName} wrote: </strong>
-          <span
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
-          />
+          <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments
 ```
 
 Now when the content is injected and parsed in the DOM, the `onerror` attribute will be stripped. Perfect, problem solved! Or not?
@@ -119,21 +114,21 @@ Once you hit the injection button, the following code is executed and the XSS vu
 
 ```jsx
 const elements = {
-  injectionForm: document.querySelector("[data-injection-form]"),
-  injectionFormInput: document.querySelector("[data-injection-form-input]"),
-  injectionFormOutput: document.querySelector("[data-injection-form-output]"),
-};
+  injectionForm: document.querySelector('[data-injection-form]'),
+  injectionFormInput: document.querySelector('[data-injection-form-input]'),
+  injectionFormOutput: document.querySelector('[data-injection-form-output]'),
+}
 
 const handleSubmit = (e) => {
-  e.preventDefault();
+  e.preventDefault()
 
-  const formData = new FormData(e.currentTarget);
-  const input = formData.get("input");
+  const formData = new FormData(e.currentTarget)
+  const input = formData.get('input')
 
-  elements.injectionFormOutput.innerHTML = input;
-};
+  elements.injectionFormOutput.innerHTML = input
+}
 
-elements.injectionForm.addEventListener("submit", handleSubmit);
+elements.injectionForm.addEventListener('submit', handleSubmit)
 ```
 
 ### Adding a basic CSP header
@@ -163,10 +158,7 @@ No, you could even take it a step further by adding [the Trusted Types CSP heade
 First, you add the Trusted Types CSP header:
 
 ```jsx
-<meta
-  http-equiv="Content-Security-Policy"
-  content="require-trusted-types-for 'script'"
-/>
+<meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'" />
 ```
 
 Now when you hit the injection button none of the content is injected and parsed in the DOM:
@@ -179,9 +171,9 @@ Next, you can configure a Trusted Types Policy:
 
 ```jsx
 if (window.trustedTypes && trustedTypes.createPolicy) {
-  trustedTypes.createPolicy("default", {
-    createHTML: (string) => string.replace(/\</g, "<").replace(/\>/g, ">"),
-  });
+  trustedTypes.createPolicy('default', {
+    createHTML: (string) => string.replace(/\</g, '<').replace(/\>/g, '>'),
+  })
 }
 ```
 
@@ -190,8 +182,8 @@ Note that you have to feature detect whether Trusted Types a supported. This doe
 Let’s revisit the earlier example using DOMPurify and ask for a Trusted Type as well:
 
 ```jsx {2,12}
-import React from "react";
-import * as DOMPurify from "dompurify";
+import React from 'react'
+import * as DOMPurify from 'dompurify'
 
 const Comments = ({ comments }) => {
   return (
@@ -209,10 +201,10 @@ const Comments = ({ comments }) => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments
 ```
 
 Now when you hit the injection button the malicious JavaScript of the `onerror` attribute will not be executed and the safe content will be injected and parsed as [showcased here](https://www.trusted-type-csp-demo.davebitter.com/with-csp-and-trusted-type.html):

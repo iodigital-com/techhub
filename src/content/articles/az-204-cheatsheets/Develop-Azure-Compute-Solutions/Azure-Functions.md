@@ -1,10 +1,10 @@
 ---
-title: "Azure Functions Cheatsheets"
-date: "2022-11-07 14:10:00"
-summary: ""
-authors: ["saeed-salehi"]
-theme: "blue"
-serie: "az-204-cheatsheets"
+title: 'Azure Functions Cheatsheets'
+date: '2022-11-07 14:10:00'
+summary: ''
+authors: ['saeed-salehi']
+theme: 'blue'
+serie: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

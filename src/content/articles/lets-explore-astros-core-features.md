@@ -1,10 +1,10 @@
 ---
-title: "Let’s explore Astro’s core features"
-date: "2022-12-12"
-images: ["/articles/lets-explore-astros-core-features/hero.png"]
+title: 'Let’s explore Astro’s core features'
+date: '2022-12-12'
+images: ['/articles/lets-explore-astros-core-features/hero.png']
 summary: "When it comes to creating websites, performance is crucial, but how do you achieve a performant website? This is why Astro was created; let's look at how it works and why it's so effective."
-authors: ["zjerilon-ferero"]
-theme: "beige"
+authors: ['zjerilon-ferero']
+theme: 'beige'
 ---
 
 Astro has been steadily increasing in popularity, but why? And what exactly is Astro? And how does it pile up against other web frameworks? Let's find out together by exploring Astro's core features.
@@ -219,9 +219,9 @@ Instead, use a client-side script to add the event handler, like you would in va
 <button id="button">Click Me</button>
 <script>
   function handleClick() {
-    console.log("button clicked!");
+    console.log('button clicked!')
   }
-  document.getElementById("button").addEventListener("click", handleClick);
+  document.getElementById('button').addEventListener('click', handleClick)
 </script>
 ```
 
@@ -469,22 +469,22 @@ Server endpoints can make use of params without the `getStaticPath` function and
 
 ```jsx
 export async function get({ params }) {
-  const id = params.id;
-  const user = await getUserById(id);
+  const id = params.id
+  const user = await getUserById(id)
 
   if (!user) {
     return new Response(null, {
       status: 404,
-      statusText: "Not found",
-    });
+      statusText: 'Not found',
+    })
   }
 
   return new Response(JSON.stringify(user), {
     status: 200,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
-  });
+  })
 }
 ```
 

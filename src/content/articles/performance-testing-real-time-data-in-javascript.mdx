@@ -1,9 +1,9 @@
 ---
-title: "Performance testing real-time data in JavaScript"
-date: "2021-05-11"
-images: ["/articles/performance-testing-real-time-data-in-javascript/hero.svg"]
-summary: "To be able to chose the right protocol for handling real-time data, this post shares with you how we, based on speed, CPU- and memory usage, setup and performed performance tests on different real-time data protocols."
-authors: ["daan-van-berkel", "bader-ali"]
+title: 'Performance testing real-time data in JavaScript'
+date: '2021-05-11'
+images: ['/articles/performance-testing-real-time-data-in-javascript/hero.svg']
+summary: 'To be able to chose the right protocol for handling real-time data, this post shares with you how we, based on speed, CPU- and memory usage, setup and performed performance tests on different real-time data protocols.'
+authors: ['daan-van-berkel', 'bader-ali']
 ---
 
 This developer blog is a result of Bader and Daan's graduation research.
@@ -16,25 +16,19 @@ The different nature of each protocol made it inherently difficult to write a ge
 
 To run the tests we used different tools: Docker(-compose), Puppeteer and NodeJS. This whole process is started by a `simulate.js` script. This script can be run with the following command and arguments to configure the performance test.
 
-<div
-  className="my-12 flex flex-col items-center md:-mx-32"
-  style={{ backgroundColor: "#f9fafb" }}
->
+<div className="my-12 flex flex-col items-center md:-mx-32" style={{ backgroundColor: '#f9fafb' }}>
   <img
     src="/articles/performance-testing-real-time-data-in-javascript/0-performance-testing-javascript.png"
     alt="Run performance test"
-    style={{ backgroundColor: "#f9fafb", margin: "0" }}
+    style={{ backgroundColor: '#f9fafb', margin: '0' }}
   />
 </div>
 
-<div
-  className="my-12 flex flex-col items-center md:-mx-32"
-  style={{ backgroundColor: "#f9fafb" }}
->
+<div className="my-12 flex flex-col items-center md:-mx-32" style={{ backgroundColor: '#f9fafb' }}>
   <img
     src="/articles/performance-testing-real-time-data-in-javascript/1-performance-testing-javascript.png"
     alt="Configuring performance test"
-    style={{ backgroundColor: "#f9fafb", margin: "0" }}
+    style={{ backgroundColor: '#f9fafb', margin: '0' }}
   />
 </div>
 
@@ -49,16 +43,16 @@ Some of the protocols require a server that the browser can connect to. Docker a
 ```js
 const dockerUp = (readyText) =>
   new Promise(async (res) => {
-    const docker = spawn("docker-compose", ["up"]);
-    docker.stdout.on("data", function (data) {
+    const docker = spawn('docker-compose', ['up'])
+    docker.stdout.on('data', function (data) {
       if (data.toString().includes(readyText)) {
-        res();
+        res()
       }
-    });
-  });
+    })
+  })
 
 // example usage
-await dockerUp("PHP server started on");
+await dockerUp('PHP server started on')
 ```
 
 _Example 1: Start docker-compose from NodeJS._
@@ -66,34 +60,34 @@ _Example 1: Start docker-compose from NodeJS._
 <br />
 
 ```js
-const http = require("http");
+const http = require('http')
 
 function dockerWatchStats(containerName, callback) {
   http
     .request(
       {
-        socketPath: "/var/run/docker.sock",
+        socketPath: '/var/run/docker.sock',
         path: `http://localhost/v1.41/containers/${containerName}/stats`,
       },
       (res) => {
-        res.setEncoding("utf8");
-        res.on("data", (data) => {
-          data = JSON.parse(data);
+        res.setEncoding('utf8')
+        res.on('data', (data) => {
+          data = JSON.parse(data)
           // See https://docs.docker.com/engine/api/v1.41/#operation/ContainerStats for formula
-          let cpuPercentage = calculateCpuPercentage(data);
-          let memUsage = calculateMemory(data);
+          let cpuPercentage = calculateCpuPercentage(data)
+          let memUsage = calculateMemory(data)
 
-          callback({ cpuPercentage, memUsage });
-        });
+          callback({ cpuPercentage, memUsage })
+        })
       }
     )
-    .end();
+    .end()
 }
 
 // Example
-dockerWatchStats("", (usage) => {
-  console.log(usage);
-});
+dockerWatchStats('', (usage) => {
+  console.log(usage)
+})
 ```
 
 _Example 2: Get CPU- and memory usage from Docker._
@@ -103,23 +97,23 @@ _Example 2: Get CPU- and memory usage from Docker._
 Unfortunately, Puppeteer does not provide an API for monitoring the CPU and memory usage for each separate tab. However, these values can be extracted by the system itself using the built-in monitoring tools. The built-in monitoring only allows for measuring an entire process not a single tab in a web browser. For that reason, we need to spin up a separate Puppeteer browser with a single client to measure its performance. Below is a code example of how to do this in NodeJS, using the [pidusage](https://www.npmjs.com/package/pidusage) package:
 
 ```js
-const pidusage = require("pidusage");
+const pidusage = require('pidusage')
 
 function browserWatchStats(pid, callback) {
   setInterval(() => {
     pidusage(pid, function (err, stats) {
-      if (stats == null) return;
+      if (stats == null) return
       callback({
         cpuPercentage: stats.cpu,
         memoryUsageInByte: stats.memory,
-      });
-    });
-  }, 500);
+      })
+    })
+  }, 500)
 }
 
-browserWatchStats("", (usage) => {
-  console.log(usage);
-});
+browserWatchStats('', (usage) => {
+  console.log(usage)
+})
 ```
 
 _Example 3: Get CPU- and memory usage from Puppeteer._
@@ -129,7 +123,7 @@ _Example 3: Get CPU- and memory usage from Puppeteer._
 After the browser is done receiving all messages from the server, it needs to communicate this information back to the NodeJS application. This can be done using a hook in the Puppeteer page on the console event. It is possible to listen to \`console.log\` events from a page and get the results in a callback in NodeJS. A code example:
 
 ```js
-page.on("console", (msg) => console.log(msg._text));
+page.on('console', (msg) => console.log(msg._text))
 ```
 
 _Example 4: Pass console message through to NodeJS._
@@ -138,27 +132,21 @@ _Example 4: Pass console message through to NodeJS._
 
 To keep the test fair we need to make sure that the usage in the test does not differ from how the protocol is used in a production environment. We also need to make sure that the connections between each test are the same. Let's take ReactPHP as an example. The test-runner is written in JavaScript so it has no direct way of communicating with PHP:
 
-<div
-  className="my-12 flex flex-col items-center md:-mx-32"
-  style={{ backgroundColor: "#f9fafb" }}
->
+<div className="my-12 flex flex-col items-center md:-mx-32" style={{ backgroundColor: '#f9fafb' }}>
   <img
     src="/articles/performance-testing-real-time-data-in-javascript/2-performance-testing-javascript.png"
     alt="Configuring performance test"
-    style={{ backgroundColor: "#f9fafb", margin: "0" }}
+    style={{ backgroundColor: '#f9fafb', margin: '0' }}
   />
 </div>
 
 The left option is not possible because of language collision. We can combat this issue by writing an HTTP endpoint in ReactPHP that communicates to the SSE code to send a message to the Puppeteer clients. However, we do not face this problem when using a JavaScript protocol/library. Let's take SocketIO as an example:
 
-<div
-  className="my-12 flex flex-col items-center md:-mx-32"
-  style={{ backgroundColor: "#f9fafb" }}
->
+<div className="my-12 flex flex-col items-center md:-mx-32" style={{ backgroundColor: '#f9fafb' }}>
   <img
     src="/articles/performance-testing-real-time-data-in-javascript/3-performance-testing-javascript.png"
     alt="WebSocket"
-    style={{ backgroundColor: "#f9fafb", margin: "0" }}
+    style={{ backgroundColor: '#f9fafb', margin: '0' }}
   />
 </div>
 
@@ -172,14 +160,11 @@ Each protocol has its pros and cons. While executing the performance tests we no
 
 As we mentioned earlier, the test runner can export the results to a JSON file. But what fun would it be if we stopped there? To get a real feel and understanding of the results we need to visualize the data. For this, we chose to create a web application using NodeJS, ChartJS, AlphineJS and TailwindCSS. In the image below you find the results for 100 clients each receiving 1000 messages. The results are the average of 10 tests. The Y axis represents the time in milliseconds it took between receiving the first and last message.
 
-<div
-  className="my-12 flex flex-col items-center md:-mx-32"
-  style={{ backgroundColor: "#f9fafb" }}
->
+<div className="my-12 flex flex-col items-center md:-mx-32" style={{ backgroundColor: '#f9fafb' }}>
   <img
     src="/articles/performance-testing-real-time-data-in-javascript/4-performance-testing-javascript.png"
     alt="WebSocket"
-    style={{ backgroundColor: "#f9fafb", margin: "0" }}
+    style={{ backgroundColor: '#f9fafb', margin: '0' }}
   />
 </div>
 
