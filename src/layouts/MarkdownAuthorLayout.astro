@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro'
+
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  author: CollectionEntry<'authors'>
+  articles: CollectionEntry<'articles'>[]
+  talks: CollectionEntry<'talks'>[]
+}
+
+const { author, articles, talks } = Astro.props
+---
+
+<BaseLayout pageTitle={author.data.name}>
+  <article class="grid grid-cols-12 gap-10">
+    <div class="col-start-1 col-end-7">
+      Author:
+      <pre>
+        {JSON.stringify(author, null, 2)}
+      </pre>
+    </div>
+
+    <div class="col-start-1 col-end-7">
+      Articles:
+      <pre>
+        {JSON.stringify(articles, null, 2)}
+      </pre>
+    </div>
+
+    <div class="col-start-1 col-end-7">
+      Talks:
+      <pre>
+        {JSON.stringify(talks, null, 2)}
+      </pre>
+    </div>
+  </article>
+
+  <slot />
+</BaseLayout>
