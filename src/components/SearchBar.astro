@@ -1,11 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
 import Search from './Search'
-const articles = await getCollection('articles')
 
+const articles = await getCollection('articles')
 const authors = await getCollection('authors')
 ---
 
-<div class="mb-10">
-  <Search client:load articles={articles} authors={authors} />
-</div>
+<Search client:load articles={articles} authors={authors} />
