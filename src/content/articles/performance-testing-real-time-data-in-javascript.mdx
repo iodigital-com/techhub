@@ -43,16 +43,16 @@ Some of the protocols require a server that the browser can connect to. Docker a
 ```js
 const dockerUp = (readyText) =>
   new Promise(async (res) => {
-    const docker = spawn('docker-compose', ['up'])
+    const docker = spawn('docker-compose', ['up']);
     docker.stdout.on('data', function (data) {
       if (data.toString().includes(readyText)) {
-        res()
+        res();
       }
-    })
-  })
+    });
+  });
 
 // example usage
-await dockerUp('PHP server started on')
+await dockerUp('PHP server started on');
 ```
 
 _Example 1: Start docker-compose from NodeJS._
@@ -60,7 +60,7 @@ _Example 1: Start docker-compose from NodeJS._
 <br />
 
 ```js
-const http = require('http')
+const http = require('http');
 
 function dockerWatchStats(containerName, callback) {
   http
@@ -70,24 +70,24 @@ function dockerWatchStats(containerName, callback) {
         path: `http://localhost/v1.41/containers/${containerName}/stats`,
       },
       (res) => {
-        res.setEncoding('utf8')
+        res.setEncoding('utf8');
         res.on('data', (data) => {
-          data = JSON.parse(data)
+          data = JSON.parse(data);
           // See https://docs.docker.com/engine/api/v1.41/#operation/ContainerStats for formula
-          let cpuPercentage = calculateCpuPercentage(data)
-          let memUsage = calculateMemory(data)
+          let cpuPercentage = calculateCpuPercentage(data);
+          let memUsage = calculateMemory(data);
 
-          callback({ cpuPercentage, memUsage })
-        })
+          callback({ cpuPercentage, memUsage });
+        });
       }
     )
-    .end()
+    .end();
 }
 
 // Example
 dockerWatchStats('', (usage) => {
-  console.log(usage)
-})
+  console.log(usage);
+});
 ```
 
 _Example 2: Get CPU- and memory usage from Docker._
@@ -97,23 +97,23 @@ _Example 2: Get CPU- and memory usage from Docker._
 Unfortunately, Puppeteer does not provide an API for monitoring the CPU and memory usage for each separate tab. However, these values can be extracted by the system itself using the built-in monitoring tools. The built-in monitoring only allows for measuring an entire process not a single tab in a web browser. For that reason, we need to spin up a separate Puppeteer browser with a single client to measure its performance. Below is a code example of how to do this in NodeJS, using the [pidusage](https://www.npmjs.com/package/pidusage) package:
 
 ```js
-const pidusage = require('pidusage')
+const pidusage = require('pidusage');
 
 function browserWatchStats(pid, callback) {
   setInterval(() => {
     pidusage(pid, function (err, stats) {
-      if (stats == null) return
+      if (stats == null) return;
       callback({
         cpuPercentage: stats.cpu,
         memoryUsageInByte: stats.memory,
-      })
-    })
-  }, 500)
+      });
+    });
+  }, 500);
 }
 
 browserWatchStats('', (usage) => {
-  console.log(usage)
-})
+  console.log(usage);
+});
 ```
 
 _Example 3: Get CPU- and memory usage from Puppeteer._
@@ -123,7 +123,7 @@ _Example 3: Get CPU- and memory usage from Puppeteer._
 After the browser is done receiving all messages from the server, it needs to communicate this information back to the NodeJS application. This can be done using a hook in the Puppeteer page on the console event. It is possible to listen to \`console.log\` events from a page and get the results in a callback in NodeJS. A code example:
 
 ```js
-page.on('console', (msg) => console.log(msg._text))
+page.on('console', (msg) => console.log(msg._text));
 ```
 
 _Example 4: Pass console message through to NodeJS._

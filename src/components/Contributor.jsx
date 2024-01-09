@@ -17,7 +17,7 @@ const Contributor = ({ contributor }) => {
       </div>
       <p>{contributor.data.name}</p>
     </a>
-  )
-}
+  );
+};
 
-export default Contributor
+export default Contributor;

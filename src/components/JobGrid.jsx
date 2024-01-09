@@ -42,6 +42,6 @@ const JobGrid = ({ jobs }) => (
       </svg>
     </a>
   </div>
-)
+);
 
-export default JobGrid
+export default JobGrid;

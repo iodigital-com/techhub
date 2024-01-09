@@ -1,9 +1,9 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
-import colors from 'tailwindcss/colors'
-import { colors as brandColors } from './brandColors'
-import formPlugin from '@tailwindcss/forms'
-import typographyPlugin from '@tailwindcss/typography'
-import aspectRatioPlugin from '@tailwindcss/aspect-ratio'
+import defaultTheme from 'tailwindcss/defaultTheme';
+import colors from 'tailwindcss/colors';
+import { colors as brandColors } from './brandColors';
+import formPlugin from '@tailwindcss/forms';
+import typographyPlugin from '@tailwindcss/typography';
+import aspectRatioPlugin from '@tailwindcss/aspect-ratio';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -170,4 +170,4 @@ export default {
     },
   },
   plugins: [formPlugin, typographyPlugin, aspectRatioPlugin],
-}
+};

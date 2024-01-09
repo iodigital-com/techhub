@@ -55,12 +55,12 @@ const openFile = async () => {
       },
     ],
     multiple: false,
-  })
+  });
 
   // Do something with the file handle
-}
+};
 
-elements.openFileButton.addEventListener('click', openFile)
+elements.openFileButton.addEventListener('click', openFile);
 ```
 
 Quite a few things are happening here. Let’s go over each of them. First, I create an asynchronous function. This is needed because we need to await the file picker window in the next line. Next, I actually request to open the native file of the user with `window.showOpenFilePicker`. You can pass a couple of options here like which files you allow and whether the user can pick multiple. The browser opens a file picker just like how it would do if you show a regular file input:
@@ -92,18 +92,18 @@ const openDirectory = async () => {
         },
       },
     ],
-  })
+  });
 
   // Do something with the directory handle
-}
+};
 
-elements.openDirectoryButton.addEventListener('click', openDirectory)
+elements.openDirectoryButton.addEventListener('click', openDirectory);
 ```
 
 The second difference is that I get a single directory handle back as a result of `window.showDirectoryPicker`. To get all the file handles in that directory, I can do this:
 
 ```jsx
-const fileHandles = directoryHandle.values()
+const fileHandles = directoryHandle.values();
 ```
 
 I now have an array of all the file handles. Well, the file handles and potentially any directory handles. As there could be subdirectories, there could potentially be directory handles in the array.
@@ -111,42 +111,42 @@ I now have an array of all the file handles. Well, the file handles and potentia
 Unfortunately for me, these directory handles don’t contain an array of file handles in that directory. I can, however, do something similar to the `window.showDirectoryPicker` with a directory handle. I can request the file handles in the directory as follows:
 
 ```jsx
-const [subDirectoryHandle] = fileHandles
+const [subDirectoryHandle] = fileHandles;
 
-const subDirectoryHandles = subDirectoryHandle.values()
+const subDirectoryHandles = subDirectoryHandle.values();
 ```
 
 Now, if this array of handles contains a directory, I can do it again. This sounds like I need to do some recursive programming to walk through the file tree. I wrote a recursive that would, simplified, look something like this:
 
 ```jsx
 const getEntriesRecursivelyFromHandles = async (handles) => {
-  const entries = []
+  const entries = [];
 
   for await (const handle of handles) {
-    const { kind } = handle
+    const { kind } = handle;
 
     switch (kind) {
       case 'file':
         entries.push({
           kind,
           handle,
-        })
-        break
+        });
+        break;
 
       case 'directory':
-        const directoryHandles = await entry.values()
+        const directoryHandles = await entry.values();
 
         entries.push({
           kind,
           handle,
           entries: await getEntriesRecursivelyFromHandles(directoryHandles).catch(console.error),
-        })
-        break
+        });
+        break;
     }
   }
 
-  return entries
-}
+  return entries;
+};
 ```
 
 It might look a bit complex at first, but let’s go over some of the parts. I first create an array that will hold all entries I need to build the sidebar. Then I loop over all the passed handles. If the `kind` of the handle is a file, I can just push a new object to the entries array for that file. If the handle is a directory, I request all the handles for that subdirectory and push an object to the entries array with one additional field. I add an entries key which calls the recursive function with the directory handles for the subdirectory.
@@ -159,11 +159,11 @@ Now that I have this array of handles that is easier to work with, I can start b
 
 ```jsx
 sidebarItemFileButton.addEventListener('click', async () => {
-  const file = await fileHandle.getFile()
-  const contents = await file.text()
+  const file = await fileHandle.getFile();
+  const contents = await file.text();
 
-  editor.setMarkdown(contents)
-})
+  editor.setMarkdown(contents);
+});
 ```
 
 Now, once the user clicks on a sidebar item, the corresponding file handle will be used to get the text content and added to the editor.
@@ -174,12 +174,12 @@ Great, you can see all the files, open them in the editor and make changes. Natu
 
 ```jsx
 saveButton.addEventListener('click', async () => {
-  const contents = editor.getMarkdown()
+  const contents = editor.getMarkdown();
 
-  const writable = await fileHandle.createWritable()
-  await writable.write(contents)
-  await writable.close()
-})
+  const writable = await fileHandle.createWritable();
+  await writable.write(contents);
+  await writable.close();
+});
 ```
 
 First, I add an event listener to the save button. Next, I get the latest content from the Markdown editor. I can then create a writable for the file handle that I’m making changes to, write the updated content and close the writable. While doing this the first time, the user will see another confirmation window to allow the web application to save changes:
@@ -209,8 +209,8 @@ sidebarDirectoryNewFileButton.addEventListener('click', async () => {
         },
       },
     ],
-  })
-})
+  });
+});
 ```
 
 I use `window.showSaveFilePicker` to trigger the UI for the user to save a new file. I can pass it a configuration to help the user a bit. In this example, I tell it to start in the subdirectory where the user clicked on the button for a new file. Next, I gave it a sensible suggested name. Finally, I told it that a Markdown file will be saved. The user will see the following:
@@ -223,12 +223,12 @@ Finally, I’ve added a button to remove a file or directory. The simplified cod
 
 ```jsx
 sidebarDirectoryRemoveButton.addEventListener('click', async () => {
-  await directoryHandle.remove()
-})
+  await directoryHandle.remove();
+});
 
 sidebarFileRemoveButton.addEventListener('click', async () => {
-  await fileHandle.remove()
-})
+  await fileHandle.remove();
+});
 ```
 
 Although this works for the file handle, there is something to note for the directory handle. While you can remove an empty directory this way, it fails when there are files or subdirectories in that directory. A workaround could be to first remove all the files and subdirectories recursively as you have all the handles for them. Then, you can remove the empty directory.

@@ -8,8 +8,8 @@ theme: 'beige'
 serie: 'getting-started-with-trpc'
 ---
 
-import powerTRPCImage from '../images/getting-started-with-trpc/power-of-trpc.gif'
-import fullAppImage from '../images/getting-started-with-trpc/full-app.gif'
+import powerTRPCImage from '../images/getting-started-with-trpc/power-of-trpc.gif';
+import fullAppImage from '../images/getting-started-with-trpc/full-app.gif';
 
 In the previous part of this two-part series, we built the backend of our fullstack Todo mobile application using ExpressJS and tRPC. We looked at several tRPC concepts, such as query procedures, mutation procedures, and request body validation. If you haven't read the previous part yet, I suggest you do so.
 
@@ -42,10 +42,10 @@ If you have never heard (or used) React Query, I'd recommend you take a look at 
 Now that we have installed our dependencies, we can finally start programming! Let's start by creating a tRPC utility which helps us share `types` between server and client. Head over to the `client/src` directory, and create a new directory called `utils`. Within that folder, create a new file called `trpc.ts`, and add the following code:
 
 ```ts
-import { createTRPCReact } from '@trpc/react'
-import type { AppRouter } from '../../../server/src/routers'
+import { createTRPCReact } from '@trpc/react';
+import type { AppRouter } from '../../../server/src/routers';
 
-export const trpc = createTRPCReact<AppRouter>()
+export const trpc = createTRPCReact<AppRouter>();
 ```
 
 All this file will do, is import our `AppRouter` type we have defined in our server code, and create a set of strongly-typed React Query hooks. This step is important because this 'ties' the backend to the frontend, making it possible to have end-to-end typing.
@@ -181,13 +181,13 @@ Llet's test if everything is working correctly by opening the terminal, and runn
 To keep our API logic seperated from our components we will be creating seperate hooks responsible for making the API calls. Let's start by creating a `useTodosQuery` hook which will be responsible for fetching all todos. Start by creating a new folder `hooks` in the `client/src` of our project. Within that folder create a new file `use-todos-query.ts`.
 
 ```ts
-import { trpc } from '../utils/trpc'
+import { trpc } from '../utils/trpc';
 
 const useTodosQuery = () => {
-  return trpc.todo.all.useQuery()
-}
+  return trpc.todo.all.useQuery();
+};
 
-export default useTodosQuery
+export default useTodosQuery;
 ```
 
 I would recommend you type the above-mentioned code out yourself to really see the magic of tRPC. I'll include a small demonstration of the power of tRPC in case you're too lazy (which I know most of you are 😋) to type it out yourself.
@@ -260,7 +260,7 @@ As you can see, we are simply importing and calling our `useTodosQuery` hook. We
 
 ```ts
 // old
-let todos: Todo[] = []
+let todos: Todo[] = [];
 
 // new
 let todos: Todo[] = [
@@ -279,7 +279,7 @@ let todos: Todo[] = [
     title: 'third todo',
     completed: false,
   },
-]
+];
 ```
 
 Now if we go back and log our `data` object, we should receive an array with todos.
@@ -475,19 +475,19 @@ Now that we can view our todos, let's add the ability to mark them as complete a
 Start by creating two new files, `use-delete-todo-mutation.ts` and `use-update-todo-mutation.ts` in our `components/hooks` folder. These files will be almost identical. `use-update-todo-mutation.ts` will have the following content:
 
 ```ts
-import { trpc } from '../utils/trpc'
+import { trpc } from '../utils/trpc';
 
 const useUpdateTodoMutation = () => {
-  const utils = trpc.useContext()
+  const utils = trpc.useContext();
 
   return trpc.todo.update.useMutation({
     onSuccess: () => {
-      utils.todo.all.invalidate()
+      utils.todo.all.invalidate();
     },
-  })
-}
+  });
+};
 
-export default useUpdateTodoMutation
+export default useUpdateTodoMutation;
 ```
 
 When used, this hook will simply execute our `todo.update` mutation procedure. You might have noted that we make use of query invalidation. This is a React Query feature, which makes it possible to refetch data for a given query. In our case, we tell tRPC to refetch our `todo.all` procedure after the `todo.update` procedure has been run successfully (HTTP 2xx status codes), thus making the todos re-render.
@@ -495,19 +495,19 @@ When used, this hook will simply execute our `todo.update` mutation procedure. Y
 Our `use-delete-todo-mutation.tsx` will be similar. The only change we will be applying is that instead of hitting the `todo.update` procedure, we will be hitting `todo.delete` mutation.
 
 ```ts
-import { trpc } from '../utils/trpc'
+import { trpc } from '../utils/trpc';
 
 const useDeleteTodoMutation = () => {
-  const utils = trpc.useContext()
+  const utils = trpc.useContext();
 
   return trpc.todo.delete.useMutation({
     onSuccess() {
-      utils.todo.all.invalidate()
+      utils.todo.all.invalidate();
     },
-  })
-}
+  });
+};
 
-export default useDeleteTodoMutation
+export default useDeleteTodoMutation;
 ```
 
 Easy enough, right?
@@ -744,19 +744,19 @@ You should now be able to mark todos as complete by pressing on them, and delete
 Let's create our last mutation, the add todo mutation. Start by creating a new file, `use-add-todo-mutation.tsx`, in the `src/hooks` directory. The `use-add-todo-mutation.tsx` will have following content:
 
 ```ts
-import { trpc } from '../utils/trpc'
+import { trpc } from '../utils/trpc';
 
 const useAddTodoMutation = () => {
-  const utils = trpc.useContext()
+  const utils = trpc.useContext();
 
   return trpc.todo.add.useMutation({
     onSuccess() {
-      utils.todo.all.invalidate()
+      utils.todo.all.invalidate();
     },
-  })
-}
+  });
+};
 
-export default useAddTodoMutation
+export default useAddTodoMutation;
 ```
 
 This mutation should be pretty self-explanatory by now, since it's pretty much identical to our remove and update mutations. All it does is `invoke` our `todo.add` procedure, and when successfully run, refetch our todos using React Query's `invalidate()` function.

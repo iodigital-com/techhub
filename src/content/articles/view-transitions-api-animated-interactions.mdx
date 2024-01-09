@@ -10,14 +10,14 @@ authors: ['dave-bitter']
 theme: 'blue'
 ---
 
-import removingUnanimatedImage from './images/view-transitions-api-animated-interactions/removing-unanimated.gif'
-import removingAnimatedImage from './images/view-transitions-api-animated-interactions/removing-animated.gif'
-import addingUnanimatedImage from './images/view-transitions-api-animated-interactions/adding-unanimated.gif'
-import addingAnimatedImage from './images/view-transitions-api-animated-interactions/adding-animated.gif'
-import togglingUnanimatedImage from './images/view-transitions-api-animated-interactions/toggling-unanimated.gif'
-import togglingAnimatedImage from './images/view-transitions-api-animated-interactions/toggling-animated.gif'
-import reorderingImage from './images/view-transitions-api-animated-interactions/reordering-animated.gif'
-import tableImage from './images/view-transitions-api-animated-interactions/table-animated.gif'
+import removingUnanimatedImage from './images/view-transitions-api-animated-interactions/removing-unanimated.gif';
+import removingAnimatedImage from './images/view-transitions-api-animated-interactions/removing-animated.gif';
+import addingUnanimatedImage from './images/view-transitions-api-animated-interactions/adding-unanimated.gif';
+import addingAnimatedImage from './images/view-transitions-api-animated-interactions/adding-animated.gif';
+import togglingUnanimatedImage from './images/view-transitions-api-animated-interactions/toggling-unanimated.gif';
+import togglingAnimatedImage from './images/view-transitions-api-animated-interactions/toggling-animated.gif';
+import reorderingImage from './images/view-transitions-api-animated-interactions/reordering-animated.gif';
+import tableImage from './images/view-transitions-api-animated-interactions/table-animated.gif';
 
 You might have heard about the View Transitions API in the context of animating between web pages. Whilst this is certainly awesome, you can apply this approach on a way smaller level to create awesome animated interactions in your web applications!
 
@@ -52,9 +52,9 @@ First, I created a layout like I would normally do. Next, I wrote some JavaScrip
 ```jsx
 list.addEventListener('change', (e) => {
   setTimeout(() => {
-    removeListItemFromInputChangeEvent(e)
-  }, 300)
-})
+    removeListItemFromInputChangeEvent(e);
+  }, 300);
+});
 ```
 
 <img
@@ -70,14 +70,14 @@ The user experience of removing an item is not great. Because the item is remove
 list.addEventListener('change', (e) => {
   setTimeout(() => {
     if (!document.startViewTransition) {
-      removeListItemFromInputChangeEvent(e)
+      removeListItemFromInputChangeEvent(e);
     } else {
       document.startViewTransition(() => {
-        removeListItemFromInputChangeEvent(e)
-      })
+        removeListItemFromInputChangeEvent(e);
+      });
     }
-  }, 300)
-})
+  }, 300);
+});
 ```
 
 Next, we add unique name to each of the list items:
@@ -110,8 +110,8 @@ Now, let’s add a button that allows you to add a new item:
 
 ```jsx
 addButton.addEventListener('click', () => {
-  addListItem()
-})
+  addListItem();
+});
 ```
 
 <img
@@ -126,13 +126,13 @@ We see the same unanimated behaviour as previously when deleting an item. Now le
 ```jsx
 addButton.addEventListener('click', () => {
   if (!document.startViewTransition) {
-    addListItem()
+    addListItem();
   } else {
     document.startViewTransition(() => {
-      addListItem()
-    })
+      addListItem();
+    });
   }
-})
+});
 ```
 
 <img

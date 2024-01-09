@@ -35,19 +35,19 @@ using (var file = File.OpenRead(“path-to-file”))
 In general, without using this new feature, a conventional free-up pattern is by using the `try/finally` syntax:
 
 ```javascript
-var obj
+var obj;
 try {
-  obj = someResource()
+  obj = someResource();
   // ...
 } finally {
-  obj.release() // or any other clean-up method provided by the resource
+  obj.release(); // or any other clean-up method provided by the resource
 }
 ```
 
 Now this can be written in this way in TypeScript 5.2:
 
 ```javascript
-using obj = someResource()
+using obj = someResource();
 // ...
 ```
 
@@ -62,7 +62,7 @@ class MyResource implements Disposable {
   }
 }
 
-using obj = new MyResource()
+using obj = new MyResource();
 // ...
 ```
 
@@ -74,10 +74,10 @@ function myResource(): Disposable {
     [Symbol.dispose]() {
       /* clean-up logic */
     },
-  }
+  };
 }
 
-using obj = myResource()
+using obj = myResource();
 ```
 
 Good to know that after compilation, the above code will become something like this:
@@ -88,15 +88,15 @@ class MyResource {
     // clean-up logic
   }
 }
-var obj
-const env_1 = { stack: [], error: void 0, hasError: false }
+var obj;
+const env_1 = { stack: [], error: void 0, hasError: false };
 try {
-  obj = __addDisposableResource(env_1, MyResource(), false)
+  obj = __addDisposableResource(env_1, MyResource(), false);
 } catch (e_1) {
-  env_1.error = e_1
-  env_1.hasError = true
+  env_1.error = e_1;
+  env_1.hasError = true;
 } finally {
-  __disposeResources(env_1)
+  __disposeResources(env_1);
 }
 ```
 
@@ -108,13 +108,13 @@ Objects can be created in the nested scopes:
 
 ```typescript
 function work() {
-  using a = resource()
+  using a = resource();
   {
-    using b = resource()
+    using b = resource();
   }
 }
 
-work()
+work();
 // b.dispose()
 // a.dispose()
 ```
@@ -129,25 +129,25 @@ Here is an example from the TypeScript blog:
 
 ```typescript
 class TempFile implements Disposable {
-  #path: string
-  #handle: number
+  #path: string;
+  #handle: number;
 
   constructor(path: string) {
-    this.#path = path
-    this.#handle = fs.openSync(path, 'w+')
+    this.#path = path;
+    this.#handle = fs.openSync(path, 'w+');
   }
 
   // other methods
 
   [Symbol.dispose]() {
     // Close the file and delete it.
-    fs.closeSync(this.#handle)
-    fs.unlinkSync(this.#path)
+    fs.closeSync(this.#handle);
+    fs.unlinkSync(this.#path);
   }
 }
 
 function doSomeWork() {
-  using file = new TempFile('path-to-file')
+  using file = new TempFile('path-to-file');
 }
 ```
 
@@ -157,14 +157,14 @@ Here is how:
 
 ```typescript
 function doSomeWork() {
-  const path = 'path-to-file'
-  const file = fs.openSync(path, 'w+')
+  const path = 'path-to-file';
+  const file = fs.openSync(path, 'w+');
 
-  using cleanup = new DisposableStack()
+  using cleanup = new DisposableStack();
   cleanup.defer(() => {
-    fs.closeSync(file)
-    fs.unlinkSync(path)
-  })
+    fs.closeSync(file);
+    fs.unlinkSync(path);
+  });
 
   // use file...
 }
@@ -178,23 +178,23 @@ After the above code is compiled, the resulting JavaScript code will include a `
 Sometimes for your **dispose** logic you might need to use asynchronous operations using `async/await`. In this case, you can simply use the `await` before the `using` keyword:
 
 ```typescript
-await using file = OpenFile('...')
+await using file = OpenFile('...');
 ```
 
 In this case, in the `OpenFile` function or class, you should implement the dispose method using `Symbol.asyncDispose` like below:
 
 ```typescript
-import * as fs from 'fs'
+import * as fs from 'fs';
 
 function OpenFile(path): AsyncDisposable {
-  const file = fs.open(path)
+  const file = fs.open(path);
 
   return {
     file,
     async [Symbol.asyncDispose]() {
-      await fs.anAsyncOperation()
+      await fs.anAsyncOperation();
     },
-  }
+  };
 }
 ```
 
@@ -211,8 +211,8 @@ Because this feature is so recent, most runtimes will not support it natively. T
 `Symbol.dispose` and `Symbol.asyncDispose` can be polyfilled like this:
 
 ```javascript
-Symbol.dispose ??= Symbol('Symbol.dispose')
-Symbol.asyncDispose ??= Symbol('Symbol.asyncDispose')
+Symbol.dispose ??= Symbol('Symbol.dispose');
+Symbol.asyncDispose ??= Symbol('Symbol.asyncDispose');
 ```
 
 The compilation target in the `tsconfig` file should be es2022 or below and the library setting to either include `"esnext"` or `"esnext.disposable"`

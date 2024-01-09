@@ -239,14 +239,14 @@ The main take-away from this is the transform property, we’re setting it for b
 Next up, we’ll use a `mousemove` event in Javascript and do a little calculation to set these custom properties to make the spotlight appear in the center of our cursor:
 
 ```javascript
-const spotlight = document.getElementById('mouse-follower')
+const spotlight = document.getElementById('mouse-follower');
 document.addEventListener('mousemove', (event) => {
   const xAxis = event.clientX - spotlight.clientWidth / 2,
-    yAxis = event.clientY - spotlight.clientHeight / 2
+    yAxis = event.clientY - spotlight.clientHeight / 2;
 
-  spotlight.style.setProperty('--xAxis', `${xAxis}px`)
-  spotlight.style.setProperty('--yAxis', `${yAxis}px`)
-})
+  spotlight.style.setProperty('--xAxis', `${xAxis}px`);
+  spotlight.style.setProperty('--yAxis', `${yAxis}px`);
+});
 ```
 
 The formula to calculate the axis is pretty easy: we just use the axis from our event and subtract half the width of our spotlight itself.

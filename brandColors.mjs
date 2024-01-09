@@ -50,4 +50,4 @@ export const colors = {
     800: '#000000', // Greyscale color: Black
     900: '#000000',
   },
-}
+};

@@ -48,11 +48,11 @@ if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
 Next, as seen in the example above, the Web API can either named `SpeechRecognition` or `webkitSpeechRecognition`. We assign it like this and set it up:
 
 ```jsx
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-const recognition = new SpeechRecognition()
-recognition.interimResults = true
-recognition.lang = 'en-US'
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+recognition.lang = 'en-US';
 ```
 
 We change two settings, first we set `interimResults` to `true` so we can receive the interim results while the user is speaking. Next, we set the language the user is going to speak in. Naturally, you can provide UI to alter this, but for the demo english is fine.
@@ -61,14 +61,14 @@ With everything configured, our next step is to create an `onresult` and `onend`
 
 ```jsx
 recognition.onresult = (event) => {
-  const { transcript } = event.results[0][0]
+  const { transcript } = event.results[0][0];
   // do something with transcript
-}
+};
 
 recognition.onend = (event) => {
-  const { transcript } = event.results[0][0]
+  const { transcript } = event.results[0][0];
   // do something with transcript
-}
+};
 ```
 
 I've created this small demo so you can try it out yourself:
@@ -104,17 +104,17 @@ if (!('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window)) {
   // handle fallback
 }
 
-const synth = window.speechSynthesis
+const synth = window.speechSynthesis;
 
-const voices = synth.getVoices()
-const preferredVoice = voices.find((voice) => voice.voiceURI === 'Karen')
+const voices = synth.getVoices();
+const preferredVoice = voices.find((voice) => voice.voiceURI === 'Karen');
 
-const utterance = new SpeechSynthesisUtterance('Hello from the computer!')
-utterance.rate = 1
-utterance.pitch = 1
+const utterance = new SpeechSynthesisUtterance('Hello from the computer!');
+utterance.rate = 1;
+utterance.pitch = 1;
 
 if (preferredVoice) {
-  utterance.voice = preferredVoice
+  utterance.voice = preferredVoice;
 }
 ```
 
@@ -141,9 +141,9 @@ Now all that is left is to speak:
 ```jsx
 utterance.onend = () => {
   // do something once all the text has been spoken
-}
+};
 
-window.speechSynthesis.speak(utterance)
+window.speechSynthesis.speak(utterance);
 ```
 
 That’s it! We now have both input and output covered.
@@ -216,25 +216,25 @@ I could then create a little hook to change these values based on the conversati
 useEffect(() => {
   switch (conversationState) {
     case 'RESPONDING':
-      speed = 2
-      intensity = 0.75
-      break
+      speed = 2;
+      intensity = 0.75;
+      break;
     case 'LISTENING':
-      speed = 1.25
-      intensity = 0.35
-      break
+      speed = 1.25;
+      intensity = 0.35;
+      break;
     case 'STOPPED':
     case 'IDLING':
-      speed = 0.8
-      intensity = 0.1
-      break
+      speed = 0.8;
+      intensity = 0.1;
+      break;
     case 'UNPERMITTED':
     default:
-      speed = 0.5
-      intensity = 0.05
-      break
+      speed = 0.5;
+      intensity = 0.05;
+      break;
   }
-}, [conversationState])
+}, [conversationState]);
 ```
 
 ## The end result

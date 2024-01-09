@@ -7,11 +7,11 @@ authors: ['alexey-ses']
 theme: 'blue'
 ---
 
-import vscodeGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-vscode.gif'
-import intellijGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-intellij.gif'
-import customTestGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-custom-test.gif'
-import runTestImage from './images/codiumai-for-unit-tests/codiumai-how-to-run-tests.gif'
-import codeSuggestionImage from './images/codiumai-for-unit-tests/codiumai-how-to-apply-code-suggestion.gif'
+import vscodeGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-vscode.gif';
+import intellijGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-tests-intellij.gif';
+import customTestGenerateImage from './images/codiumai-for-unit-tests/codiumai-how-to-generate-custom-test.gif';
+import runTestImage from './images/codiumai-for-unit-tests/codiumai-how-to-run-tests.gif';
+import codeSuggestionImage from './images/codiumai-for-unit-tests/codiumai-how-to-apply-code-suggestion.gif';
 
 ## What is Unit testing
 
@@ -39,13 +39,13 @@ Here's an example of TypeScript code that will be used for unit tests generation
 
 ```typescript
 export interface User {
-  userId: string
-  userName: string
+  userId: string;
+  userName: string;
 }
 
 export class AuthService {
   searchUsersByName(users: User[], userName: string) {
-    return users.filter((user) => user.userName.toLowerCase().includes(userName.toLowerCase()))
+    return users.filter((user) => user.userName.toLowerCase().includes(userName.toLowerCase()));
   }
 }
 ```

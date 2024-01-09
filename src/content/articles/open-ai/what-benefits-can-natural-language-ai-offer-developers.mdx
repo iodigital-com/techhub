@@ -131,16 +131,16 @@ entirely different code style. Then, you can see that Copilot mimics the code st
 
 ```typescript
 interface User {
-  id: number
-  name: string
-  age: number
-  officeId: number
+  id: number;
+  name: string;
+  age: number;
+  officeId: number;
 }
 
-const url = 'https://example.com:8000/users'
+const url = 'https://example.com:8000/users';
 
 function userCreate(name: string, age: number, officeId: number): Promise<User> {
-  const user = { name, age, officeId }
+  const user = { name, age, officeId };
 
   return fetch(url, {
     method: 'POST',
@@ -152,9 +152,9 @@ function userCreate(name: string, age: number, officeId: number): Promise<User> 
     .then((response) => response.json())
     .then((data) => data.user as User) // returns user with id
     .catch((error) => {
-      console.error('error in the userCreate promise', error)
-      throw error
-    })
+      console.error('error in the userCreate promise', error);
+      throw error;
+    });
 }
 ```
 
@@ -167,9 +167,9 @@ function userRead(id: number): Promise<User> {
     .then((response) => response.json())
     .then((data) => data.user as User) // returns user with id
     .catch((error) => {
-      console.error('error in the userRead promise', error)
-      throw error
-    })
+      console.error('error in the userRead promise', error);
+      throw error;
+    });
 }
 
 function userUpdate(user: User): Promise<User> {
@@ -183,9 +183,9 @@ function userUpdate(user: User): Promise<User> {
     .then((response) => response.json())
     .then((data) => data.user as User) // returns user with id
     .catch((error) => {
-      console.error('error in the userUpdate promise', error)
-      throw error
-    })
+      console.error('error in the userUpdate promise', error);
+      throw error;
+    });
 }
 
 function userDelete(id: number): Promise<void> {
@@ -194,12 +194,12 @@ function userDelete(id: number): Promise<void> {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log('user deleted', data)
+      console.log('user deleted', data);
     })
     .catch((error) => {
-      console.error('error in the userDelete promise', error)
-      throw error
-    })
+      console.error('error in the userDelete promise', error);
+      throw error;
+    });
 }
 ```
 
@@ -217,26 +217,26 @@ Here the Create function is written in a different code style, I also imported a
 to generate code. Again, I'm not editing the rest of the code.
 
 ```typescript
-import axios from 'axios'
+import axios from 'axios';
 
 const userCrud = {
   create: async (user: Omit<User, 'id'>): Promise<User> => {
-    const response = await axios.post(url, { user })
-    return response.data.user as User // returns user with id
+    const response = await axios.post(url, { user });
+    return response.data.user as User; // returns user with id
   },
   read: async (id: number): Promise<User> => {
-    const response = await axios.get(`${url} /${id}`)
-    return response.data.user as User // returns user with id
+    const response = await axios.get(`${url} /${id}`);
+    return response.data.user as User; // returns user with id
   },
   update: async (user: User): Promise<User> => {
-    const response = await axios.put(`${url} /${user.id}`, { user })
-    return response.data.user as User // returns user with id
+    const response = await axios.put(`${url} /${user.id}`, { user });
+    return response.data.user as User; // returns user with id
   },
   delete: async (id: number): Promise<void> => {
-    const response = await axios.delete(`${url} /${id}`)
-    console.log('user deleted', response.data)
+    const response = await axios.delete(`${url} /${id}`);
+    console.log('user deleted', response.data);
   },
-}
+};
 ```
 
 _As you can see the exact same problems reoccurred in this code, since the code in the previous example is included as
@@ -327,35 +327,35 @@ class UserCrud:
 Transform that to a Node.js backend code with Express and TypeORM, I added the import libraries to the top of the file.
 
 ```typescript
-import express from 'express'
-import bodyParser from 'body-parser'
-import { createConnection } from 'typeorm'
-import { User } from './entity/User'
+import express from 'express';
+import bodyParser from 'body-parser';
+import { createConnection } from 'typeorm';
+import { User } from './entity/User';
 
-const app = express()
-app.use(bodyParser.json())
+const app = express();
+app.use(bodyParser.json());
 
 createConnection().then(async (connection) => {
   app.post('/users', async (req, res) => {
-    const user = await connection.manager.save(User, req.body)
-    res.json(user) // returns user with id
-  })
+    const user = await connection.manager.save(User, req.body);
+    res.json(user); // returns user with id
+  });
   app.get('/users /:id', async (req, res) => {
-    const user = await connection.manager.findOne(User, req.params['id'])
-    if (!user) throw new Error('User not found')
-    res.json(user) // returns user with id
-  })
+    const user = await connection.manager.findOne(User, req.params['id']);
+    if (!user) throw new Error('User not found');
+    res.json(user); // returns user with id
+  });
   app.put('/users /:id', async (req, res) => {
-    const user = await connection.manager.update(User, req.params['id'], req.body)
-    if (!user) throw new Error('User not found')
-    res.json(user) // returns user with id
-  })
+    const user = await connection.manager.update(User, req.params['id'], req.body);
+    if (!user) throw new Error('User not found');
+    res.json(user); // returns user with id
+  });
   app.delete('/users /:id', async (req, res) => {
-    const user = await connection.manager.delete(User, req.params['id'])
-    if (!user) throw new Error('User not found')
-    console.log('deleted user', user)
-  })
-})
+    const user = await connection.manager.delete(User, req.params['id']);
+    if (!user) throw new Error('User not found');
+    console.log('deleted user', user);
+  });
+});
 ```
 
 _Hold up, wait a minute. I see that the backend code has the same link error as in the front end, does that mean that it
@@ -364,40 +364,40 @@ cancels each other out? And that the code will suddenly work?_
 What if we needed to use another ORM? Transform TypeORM to Prisma!
 
 ```typescript
-import express from 'express'
-import bodyParser from 'body-parser'
-import prisma from '@prisma/client'
+import express from 'express';
+import bodyParser from 'body-parser';
+import prisma from '@prisma/client';
 
-const app = express()
-app.use(bodyParser.json())
-const prismaClient = new prisma.PrismaClient()
+const app = express();
+app.use(bodyParser.json());
+const prismaClient = new prisma.PrismaClient();
 
 app.post('/users', async (req, res) => {
-  const user = await prismaClient.user.create({ data: req.body })
-  res.json(user) // returns user with id
-})
+  const user = await prismaClient.user.create({ data: req.body });
+  res.json(user); // returns user with id
+});
 app.get('/users /:id', async (req, res) => {
   const user = await prismaClient.user.findOne({
     where: { id: Number(req.params['id']) },
-  })
-  if (!user) throw new Error('User not found')
-  res.json(user) // returns user with id
-})
+  });
+  if (!user) throw new Error('User not found');
+  res.json(user); // returns user with id
+});
 app.put('/users /:id', async (req, res) => {
   const user = await prismaClient.user.update({
     where: { id: Number(req.params['id']) },
     data: req.body,
-  })
-  if (!user) throw new Error('User not found')
-  res.json(user) // returns user with id
-})
+  });
+  if (!user) throw new Error('User not found');
+  res.json(user); // returns user with id
+});
 app.delete('/users /:id', async (req, res) => {
   const user = await prismaClient.user.delete({
     where: { id: Number(req.params['id']) },
-  })
-  if (!user) throw new Error('User not found')
-  console.log('deleted user', user)
-})
+  });
+  if (!user) throw new Error('User not found');
+  console.log('deleted user', user);
+});
 ```
 
 One last transformation into Go

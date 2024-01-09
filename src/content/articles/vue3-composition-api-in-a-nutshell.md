@@ -71,7 +71,7 @@ export default {
   watch: {
     //Watch data
   },
-}
+};
 ```
 
 With the composition API we can use hooks for this:
@@ -105,12 +105,12 @@ In Vue 2 you could already define a type, but this was still quite limited. You 
 
 ```ts
 interface Props {
-  dogNames: Array<String>
+  dogNames: Array<String>;
 }
 
 let props = withDefaults(defineProps<Props>(), {
   dogNames: [],
-})
+});
 ```
 
 ### Events
@@ -120,16 +120,16 @@ can be declared so the developer knows if an incorrect value is being passed. Co
 
 ```ts
 const emit = defineEmits<{
-  (event: 'dogNames', value: Array<string>): void
-}>()
+  (event: 'dogNames', value: Array<string>): void;
+}>();
 
-emit('dogNames', ['Snuffel'])
+emit('dogNames', ['Snuffel']);
 ```
 
 With the options API:
 
 ```js
-$emit('dogNames', ['Snuffel'])
+$emit('dogNames', ['Snuffel']);
 ```
 
 ### Code reusage with hooks
@@ -140,16 +140,16 @@ With the options API duplicate code is prevented with `mixins`. When using multi
 const useGetPreferences = () => {
   return useQuery(['Preference'], async () =>
     PreferencesService.getPreferences().then(({ data }) => data)
-  )
-}
+  );
+};
 
-export { useGetPreferences }
+export { useGetPreferences };
 ```
 
 It's used like this:
 
 ```ts
-const { data: preferences } = useGetPreferences()
+const { data: preferences } = useGetPreferences();
 ```
 
 With the options API:
@@ -160,10 +160,10 @@ var mixin = {
     useGetPreferences() {
       return useQuery(['Preference'], async () =>
         PreferencesService.getPreferences().then(({ data }) => data)
-      )
+      );
     },
   },
-}
+};
 ```
 
 It's used like this:
@@ -171,7 +171,7 @@ It's used like this:
 ```js
 new Vue({
   mixins: [mixin],
-})
+});
 ```
 
 ## Composition API and options API together

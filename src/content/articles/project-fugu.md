@@ -40,9 +40,9 @@ To copy text to the clipboard call `writeText()`. Since this API is asynchronous
 ```javascript
 async function copyPageUrl() {
   try {
-    await navigator.clipboard.writeText(location.href)
+    await navigator.clipboard.writeText(location.href);
   } catch (err) {
-    console.error('Failed to copy: ', err)
+    console.error('Failed to copy: ', err);
   }
 }
 ```
@@ -55,16 +55,16 @@ To copy raw data to the clipboard the data needs to be a `blob` meaning that all
 
 ```javascript
 try {
-  const imgURL = '/images/generic/file.png'
+  const imgURL = '/images/generic/file.png';
   await navigator.clipboard.write([
     new ClipboardItem({
       // Set the mimetype beforehand and write a promise as the value.
       'image/png': await fetch(imgUrl)?.blob(),
     }),
-  ])
-  console.log('Image copied.')
+  ]);
+  console.log('Image copied.');
 } catch (err) {
-  console.error(err.name, err.message)
+  console.error(err.name, err.message);
 }
 ```
 
@@ -79,15 +79,15 @@ Each `ClipboardItem` can hold its contents in different types, so you'll need to
 ```javascript
 async function getClipboardContents() {
   try {
-    const clipboardItems = await navigator.clipboard.read()
+    const clipboardItems = await navigator.clipboard.read();
     for (const clipboardItem of clipboardItems) {
       for (const type of clipboardItem.types) {
-        const blob = await clipboardItem.getType(type)
-        console.log(URL.createObjectURL(blob))
+        const blob = await clipboardItem.getType(type);
+        console.log(URL.createObjectURL(blob));
       }
     }
   } catch (err) {
-    console.error(err.name, err.message)
+    console.error(err.name, err.message);
   }
 }
 ```
@@ -112,9 +112,9 @@ There are two types of badges:
 - `<int>`: A value passed when setting the badge. This value will never be 0, passing a value of 0 when setting a badge will cause the user agent to clear the badge by setting it to `nothing`.
 
 ```javascript
-navigator.setClientBadge() // set a badge
-navigator.clearClientBadge() // clear the badge
-navigator.setAppBadge(12) // set 12 as app badge
+navigator.setClientBadge(); // set a badge
+navigator.clearClientBadge(); // clear the badge
+navigator.setAppBadge(12); // set 12 as app badge
 ```
 
 ### WebOTP API

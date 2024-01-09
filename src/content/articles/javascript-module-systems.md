@@ -66,31 +66,31 @@ Ensure you have Node.js installed. If not, download and install it from [Node.js
 Create a file named `counter.js`:
 
 ```js
-let count = 0
+let count = 0;
 
 function increment() {
-  count++
+  count++;
 }
 
 function getCount() {
-  return count
+  return count;
 }
 
 module.exports = {
   increment,
   getCount,
-}
+};
 ```
 
 **_Step2:_**  
 Create a file named `app.js`:
 
 ```js
-const counter = require('./counter.js')
+const counter = require('./counter.js');
 
-console.log(counter.getCount()) // Outputs: 0
-counter.increment()
-console.log(counter.getCount()) // Outputs: 1
+console.log(counter.getCount()); // Outputs: 0
+counter.increment();
+console.log(counter.getCount()); // Outputs: 1
 ```
 
 **_Running the Code:_**  
@@ -128,18 +128,18 @@ Create a file named `scripts/math.js`:
 
 define([], function () {
   function add(a, b) {
-    return a + b
+    return a + b;
   }
 
   function subtract(a, b) {
-    return a - b
+    return a - b;
   }
 
   return {
     add: add,
     subtract: subtract,
-  }
-})
+  };
+});
 ```
 
 Here, we’ve defined a module without any dependencies (empty array) and exported two functions.
@@ -151,9 +151,9 @@ Create a file named `scripts/app.js` (your main script):
 // app.js
 
 require(['math'], function (math) {
-  console.log(math.add(5, 3)) // Outputs: 8
-  console.log(math.subtract(5, 3)) // Outputs: 2
-})
+  console.log(math.add(5, 3)); // Outputs: 8
+  console.log(math.subtract(5, 3)); // Outputs: 2
+});
 ```
 
 Here, we’re loading the `math` module and using its functions. Once the `math` module is loaded, the function will be called.
@@ -184,26 +184,26 @@ Here’s a basic example of how you might define a module using UMD:
 Create a file named `my-umd.js`:
 
 ```javascript
-;(function (root, factory) {
+(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([], factory)
+    define([], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory()
+    module.exports = factory();
   } else {
     // Browser globals (root is window)
-    root.myModule = factory()
+    root.myModule = factory();
   }
 })(this, function () {
   return {
     hello: function () {
-      return 'Hello, World!'
+      return 'Hello, World!';
     },
-  }
-})
+  };
+});
 ```
 
 **_2. Running the UMD module:_**
@@ -214,7 +214,7 @@ Include the UMD module in a script tag:
 ```html
 <script src="my-umd.js"></script>
 <script>
-  console.log(myModule.hello()) // Outputs: "Hello, World!"
+  console.log(myModule.hello()); // Outputs: "Hello, World!"
 </script>
 ```
 
@@ -225,8 +225,8 @@ First, set up RequireJS and then define the module:
 <script src="path_to_require.js"></script>
 <script>
   require(['my-umd'], function (myModule) {
-    console.log(myModule.hello()) // Outputs: "Hello, World!"
-  })
+    console.log(myModule.hello()); // Outputs: "Hello, World!"
+  });
 </script>
 ```
 
@@ -234,8 +234,8 @@ _c. In Node.js:_
 First, set up Node.js and then just require the file:
 
 ```js
-const myModule = require('./my-umd.js')
-console.log(myModule.hello()) // Outputs: "Hello, World!"
+const myModule = require('./my-umd.js');
+console.log(myModule.hello()); // Outputs: "Hello, World!"
 ```
 
 ### 4. ES6 Modules (ESM)
@@ -259,13 +259,13 @@ It is the native module system introduced in ECMAScript 6 (ES6), also known as E
 
 ```js
 // math.js
-export const PI = 3.14
-export const power = (a, b) => a ** b
+export const PI = 3.14;
+export const power = (a, b) => a ** b;
 
 // Importing into another module:
 // app.js
-import { PI, power } from './math.js'
-console.log(power(2, 3)) // Outputs: 8
+import { PI, power } from './math.js';
+console.log(power(2, 3)); // Outputs: 8
 ```
 
 **_Using Default Exports:_**  
@@ -291,15 +291,15 @@ console.log(greet()) // Outputs: Hello!
 
 ```js
 // app.js
-import greet, { add, subtract } from './module.js'
+import greet, { add, subtract } from './module.js';
 ```
 
 **_Renaming Imports:_**
 
 ```js
 // app.js
-import { add as addition } from './math.js'
-console.log(addition(2, 3)) // Outputs: 5
+import { add as addition } from './math.js';
+console.log(addition(2, 3)); // Outputs: 5
 ```
 
 **_Dynamic Imports:_**  
@@ -307,9 +307,9 @@ Useful for `code-splitting` and `lazy-loading` modules.
 
 ```js
 const loadModule = async () => {
-  const module = await import('./dynamicModule.js')
-  module.someFunction()
-}
+  const module = await import('./dynamicModule.js');
+  module.someFunction();
+};
 ```
 
 #### How to use ESM?
@@ -319,16 +319,16 @@ Let's say you have a `math.js` file structured as follows:
 
 ```js
 // math.js
-export const add = (a, b) => a + b
-export const subtract = (a, b) => a - b
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
 ```
 
 **_Step 2:_**  
 You then utilize these functions in your `index.js`:
 
 ```js
-import { add, subtract } from 'math'
-console.log(add(2, 3)) // Outputs: 5
+import { add, subtract } from 'math';
+console.log(add(2, 3)); // Outputs: 5
 ```
 
 **_Running the Code:_**  
@@ -398,7 +398,7 @@ SystemJS.config({
       defaultExtension: 'js',
     },
   },
-})
+});
 ```
 
 **_Loading Modules:_**  
@@ -407,7 +407,7 @@ Use SystemJS to load your main module.
 ```js
 SystemJS.import('app/main.js').then(function (module) {
   // Use the module here
-})
+});
 ```
 
 ## Conclusion

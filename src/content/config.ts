@@ -1,4 +1,4 @@
-import { defineCollection, reference, z } from 'astro:content'
+import { defineCollection, reference, z } from 'astro:content';
 
 const articlesCollection = defineCollection({
   type: 'content',
@@ -13,7 +13,7 @@ const articlesCollection = defineCollection({
     canonicalUrl: z.string().optional(),
     hideInArticleList: z.boolean().optional(),
   }),
-})
+});
 
 const authorsCollection = defineCollection({
   type: 'content',
@@ -29,7 +29,7 @@ const authorsCollection = defineCollection({
       medium: z.string().optional().nullable(),
       email: z.string().optional().nullable(),
     }),
-})
+});
 
 const talksCollection = defineCollection({
   type: 'content',
@@ -40,10 +40,10 @@ const talksCollection = defineCollection({
     video: z.string().optional(),
     slides: z.string().optional(),
   }),
-})
+});
 
 export const collections = {
   articles: articlesCollection,
   authors: authorsCollection,
   talks: talksCollection,
-}
+};
