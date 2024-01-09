@@ -27,10 +27,6 @@ export default {
         13: '3.25rem',
         14: '3.5rem',
       },
-
-      // fontSize: {
-      //   0: '0',
-      // },
       colors: {
         primary: brandColors.io_blue,
         gray: colors.neutral,

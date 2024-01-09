@@ -1,4 +1,4 @@
-import ContributorsGrid from './ContributorsGrid';
+import ContributorsGrid from './ContributorsGrid'
 
 function ArticleReact({ article, authors }) {
   const url = '/articles/' + article.slug + '/'
