@@ -1,14 +1,5 @@
 html {
-  background-color: #f1f5f9;
-  font-size: 18px;
-}
-
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
+  @apply text-lg bg-slate-100;
 }
 
 @font-face {
@@ -47,9 +38,4 @@ body {
   src: url('/fonts/Reckless-RegularItalic.woff2');
   font-weight: 400;
   font-display: swap;
-}
-
-.bg-green-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(206 232 240 / var(--tw-bg-opacity));
 }

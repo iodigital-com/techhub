@@ -51,10 +51,7 @@ function Search({ articles, authors }) {
 
   return (
     <div>
-      <label
-        htmlFor="search"
-        className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-      >
+      <label htmlFor="search" className="text-sm font-medium text-gray-900 sr-only dark:text-white">
         Search
       </label>
       <div className="relative">

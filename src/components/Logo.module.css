@@ -1,0 +1,15 @@
+.logoContainer {
+  @apply flex items-center space-x-3;
+}
+
+.logo {
+  @apply w-[5.3rem];
+
+  & path {
+    @apply fill-black;
+  }
+}
+
+.logoText {
+  @apply hidden h-6 items-center text-xl font-light sm:flex xl:text-2xl;
+}

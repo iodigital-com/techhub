@@ -1,0 +1,7 @@
+.header {
+  @apply p-4;
+}
+
+.headerContainer {
+  @apply container flex justify-between items-center mx-auto;
+}

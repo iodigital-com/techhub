@@ -48,16 +48,11 @@ const { pageTitle, pageDescription, pageNoIndex, pageNoFollow } = Astro.props;
     />
     <ViewTransitions />
   </head>
-  <body class="container">
+  <body>
     <Header />
-    <div>
-      <SearchBar />
-    </div>
-
-    <main>
+    <main class='container mx-auto'>
       <slot />
     </main>
-
     <Footer />
   </body>
 </html>
