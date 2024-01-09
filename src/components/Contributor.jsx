@@ -1,7 +1,5 @@
-
 // todo: use proper type of the contributor
 const Contributor = ({ contributor }) => {
-
   return (
     <a
       href={`/authors/${contributor.slug}`}

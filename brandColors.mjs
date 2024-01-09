@@ -51,10 +51,3 @@ export const colors = {
     900: '#000000',
   },
 }
-
-export const safelist = Object.entries(colors).reduce((acc, [name, tints]) => {
-  Object.keys(tints).forEach((tint) => {
-    acc.push(`bg-${name}-${tint}`)
-  })
-  return acc
-}, [])
