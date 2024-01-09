@@ -22,19 +22,19 @@ An FSM is a model that consists of three main components:
 Let’s have a look at an example to make this concept more practical. Imagine an e-commerce website that tracks the status of a user's order. The order can be in various states, such as `"Pending"`, `"Processing"`, `"Shipped"` and `"Delivered"`. The system is designed without using an FSM, relying on complex nested if-else statements to handle state transitions:
 
 ```jsx
-let orderStatus = 'Pending'
+let orderStatus = 'Pending';
 
 const updateOrderStatus = (event) => {
   if (orderStatus === 'Pending' && event === 'ProcessOrder') {
-    orderStatus = 'Processing'
+    orderStatus = 'Processing';
   } else if (orderStatus === 'Processing' && event === 'ShipOrder') {
-    orderStatus = 'Shipped'
+    orderStatus = 'Shipped';
   } else if (orderStatus === 'Shipped' && event === 'DeliverOrder') {
-    orderStatus = 'Delivered'
+    orderStatus = 'Delivered';
   } else {
-    console.log('Invalid state transition or event.')
+    console.log('Invalid state transition or event.');
   }
-}
+};
 ```
 
 Usually this is the moment I get a coffee to start figuring out what the business logic is in this function. As the codebase grows, more state transitions are added, leading to a convoluted and error-prone `updateOrderStatus` function. The lack of structure and clear separation between states and transitions make it challenging to maintain, debug, and extend the code.

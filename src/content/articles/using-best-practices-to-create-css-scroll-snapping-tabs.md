@@ -129,17 +129,17 @@ The first thing on the agenda was making an indication of the hidden content sim
 The next thing I did was adding a bit of CSS for the active tabs and adding some JS, which will use the tabs to scroll to the right position. You can view the CSS in the demo, but the basic idea of the JS was the following:
 
 ```js
-const tabs = document.querySelectorAll('.tab')
-const scrollContainer = document.querySelector('.scroll-container')
-const scrollLists = document.querySelectorAll('.scroll-list')
+const tabs = document.querySelectorAll('.tab');
+const scrollContainer = document.querySelector('.scroll-container');
+const scrollLists = document.querySelectorAll('.scroll-list');
 
 /* check for clicks and update scroll position based on target offset */
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
-    const target = document.getElementById(tab.dataset.target).offsetLeft
-    scrollContainer.scrollLeft = target
-  })
-})
+    const target = document.getElementById(tab.dataset.target).offsetLeft;
+    scrollContainer.scrollLeft = target;
+  });
+});
 
 /* 
 when the scrollcontainer is scrolled horizontally, 
@@ -147,19 +147,19 @@ check the current scrollposition is the same as the left offset,
 and set the tab active when that's the case 
 */
 scrollContainer.addEventListener('scroll', () => {
-  let scrollPos = scrollContainer.scrollLeft
+  let scrollPos = scrollContainer.scrollLeft;
 
   scrollLists.forEach((list) => {
-    let listId = list.id
-    let listButton = document.querySelector(`.tab[data-target="${listId}"]`)
+    let listId = list.id;
+    let listButton = document.querySelector(`.tab[data-target="${listId}"]`);
     if (scrollPos === list.offsetLeft) {
-      ;[...listButton.parentElement.children].forEach((sib) => {
-        sib.classList.remove('active')
-      })
-      listButton.classList.add('active')
+      [...listButton.parentElement.children].forEach((sib) => {
+        sib.classList.remove('active');
+      });
+      listButton.classList.add('active');
     }
-  })
-})
+  });
+});
 ```
 
 And for a moment, I thought it was perfect:

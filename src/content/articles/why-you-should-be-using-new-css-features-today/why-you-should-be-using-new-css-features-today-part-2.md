@@ -118,7 +118,7 @@ Inside the JS, I added the following when triggering the panel to open:
 
 ```js
 if (!CSS.supports('selector(:has(*))')) {
-  document.body.classList.toggle('panel-open')
+  document.body.classList.toggle('panel-open');
 }
 ```
 
@@ -156,7 +156,7 @@ I keep on mentioning masonry as one of the things I look the most forward to in 
 ```
 
 ```js
-const supportMasonry = CSS.supports('grid-template-rows', 'masonry')
+const supportMasonry = CSS.supports('grid-template-rows', 'masonry');
 
 if (!supportMasonry) {
   /* 

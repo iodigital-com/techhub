@@ -17,20 +17,20 @@ One of the easiest ways to get updates is by requesting if there is new data. By
 ### Polling client-side example
 
 ```javascript
-const POLL_INTERVAL = 1000
+const POLL_INTERVAL = 1000;
 
 const poll = async () => {
-  const response = await fetch('/endpoint')
-  const json = await response.json()
+  const response = await fetch('/endpoint');
+  const json = await response.json();
   /*
   ... do stuff with the JSON
   */
 
   // now call ourselve again to check for new data
   setTimeout(() => {
-    poll()
-  }, POLL_INTERVAL)
-}
+    poll();
+  }, POLL_INTERVAL);
+};
 ```
 
 ## WebSockets
@@ -48,29 +48,29 @@ WebSocket requests are not restricted by the same-origin policy as regular HTTP 
 ### WebSockets client-side example
 
 ```javascript
-const socket = new WebSocket('wss://my-domain.io/ws/stream')
+const socket = new WebSocket('wss://my-domain.io/ws/stream');
 
 socket.onopen = () => {
   // connection is now established as WebSocket
-}
+};
 
 // client sending data to the server
-socket.send('here is my message')
+socket.send('here is my message');
 
 socket.onmessage = (event) => {
   // a new message is received
   /*
   ... do something with event.data
   */
-}
+};
 
 socket.onclose = () => {
   // the server closed the connection
-}
+};
 
 socket.onerror = (event) => {
   // the connection is closed due to an error
-}
+};
 ```
 
 ## Server-sent events
@@ -99,27 +99,27 @@ data: { "complex": { "data": "data can be a json string" }}
 ### SSE client-side example
 
 ```javascript
-const stream = new EventSource('/stream')
+const stream = new EventSource('/stream');
 
 stream.onopen = () => {
   // the EventStream is opened
-}
+};
 
 stream.onmessage = (event) => {
   // a new message is received
   /*
   ... do something with event.data
   */
-}
+};
 
 stream.addEventListener('event-type', (event) => {
   // only messages of the `event: event-type` are captured
-})
+});
 
 stream.onerror = event = {
   // an error occured, by default the SSE connection is restarted automatically
   // close the connection permanently by calling stream.close();
-}
+};
 ```
 
 ### SSE server-side example
@@ -127,19 +127,19 @@ stream.onerror = event = {
 For the server, SSE is handled as any HTTP request. Keep a list of connected clients to send broadcasted events. Keep in mind that the mimetype for SSE is `text/event-stream` and that must be set as the `content-type` response header. The response itself should never be cached meaning that the `cache-control` response header needs to be set as well. Always close the message with a blank line.
 
 ```javascript
-let clients = []
+let clients = [];
 
 const sse = (request, response, next) => {
-  response.header('Content-Type', 'text/event-stream')
-  response.header('Cache-Control', 'no-store, no-cache')
-  response.connection.setTimeout(0)
+  response.header('Content-Type', 'text/event-stream');
+  response.header('Cache-Control', 'no-store, no-cache');
+  response.connection.setTimeout(0);
 
   // add client to list
-  const clientId = 'some-id'
+  const clientId = 'some-id';
   clients.push({
     clientId,
     response,
-  })
+  });
 
   // write a string response when needed.
   response.write(
@@ -147,22 +147,22 @@ const sse = (request, response, next) => {
       clientId,
       message: 'Welcome to the event-stream',
     })}\n\n`
-  )
+  );
 
   request.on('close', () => {
     // remove the client from the clientslist
-    clients = clients.filter((client) => client.clientId !== clientId)
+    clients = clients.filter((client) => client.clientId !== clientId);
 
     // end the response when the client disconnects
-    response.end()
-  })
-}
+    response.end();
+  });
+};
 
 // some other module that wants to send messages
 clients.forEach((client) => {
-  client.response.write(`event: my-module\n`)
-  client.response.write(`data: ${JSON.stringify({ complex: { data: 'message ' } })}\n\n`)
-})
+  client.response.write(`event: my-module\n`);
+  client.response.write(`data: ${JSON.stringify({ complex: { data: 'message ' } })}\n\n`);
+});
 ```
 
 ## Wrap-up

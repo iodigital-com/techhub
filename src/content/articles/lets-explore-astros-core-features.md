@@ -219,9 +219,9 @@ Instead, use a client-side script to add the event handler, like you would in va
 <button id="button">Click Me</button>
 <script>
   function handleClick() {
-    console.log('button clicked!')
+    console.log('button clicked!');
   }
-  document.getElementById('button').addEventListener('click', handleClick)
+  document.getElementById('button').addEventListener('click', handleClick);
 </script>
 ```
 
@@ -469,14 +469,14 @@ Server endpoints can make use of params without the `getStaticPath` function and
 
 ```jsx
 export async function get({ params }) {
-  const id = params.id
-  const user = await getUserById(id)
+  const id = params.id;
+  const user = await getUserById(id);
 
   if (!user) {
     return new Response(null, {
       status: 404,
       statusText: 'Not found',
-    })
+    });
   }
 
   return new Response(JSON.stringify(user), {
@@ -484,7 +484,7 @@ export async function get({ params }) {
     headers: {
       'Content-Type': 'application/json',
     },
-  })
+  });
 }
 ```
 

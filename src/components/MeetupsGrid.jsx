@@ -1,4 +1,4 @@
-const EVENT_DESCRIPTION_MAX_LENGTH = 250
+const EVENT_DESCRIPTION_MAX_LENGTH = 250;
 
 const MeetupsGrid = ({ events }) => (
   <div className="grid gap-4 gap-y-10 xl:grid-cols-2">
@@ -45,6 +45,6 @@ const MeetupsGrid = ({ events }) => (
       </a>
     ))}
   </div>
-)
+);
 
-export default MeetupsGrid
+export default MeetupsGrid;

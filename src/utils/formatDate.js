@@ -1,13 +1,13 @@
-const locale = 'en-US'
+const locale = 'en-US';
 const formatDate = (date) => {
   const options = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }
-  const now = new Date(date).toLocaleDateString(locale, options)
+  };
+  const now = new Date(date).toLocaleDateString(locale, options);
 
-  return now
-}
+  return now;
+};
 
-export default formatDate
+export default formatDate;

@@ -41,9 +41,9 @@ As you can see, we install the `@trpc/server` package, but also a package named 
 Let's start by creating a new file called `trpc.ts` in the `server/src/` of our project folder. In the file, add the following code:
 
 ```ts
-import { initTRPC } from '@trpc/server'
+import { initTRPC } from '@trpc/server';
 
-export const t = initTRPC.create()
+export const t = initTRPC.create();
 ```
 
 All this file is responsible for is initializing and exporting a tRPC instance.
@@ -52,19 +52,19 @@ Now, let's start by creating, arguably, the most important piece of our back-end
 
 ```ts
 // Import our tRPC instance
-import { t } from '../trpc'
+import { t } from '../trpc';
 
 // Initalize an empty array where we will be storing our todo's.
 // For now, we will use the type `any[]`, but this will be changed later on.
-let todos: any[] = []
+let todos: any[] = [];
 
 // Create our todo router, and add a query procedure (equivalent of a REST Get request) called `all`,
 // which will be responsible for returning all the stored todo's
 export const todoRouter = t.router({
   all: t.procedure.query(() => {
-    return todos
+    return todos;
   }),
-})
+});
 ```
 
 We create a tRPC router by calling the `router()` method and passing an object containing the different endpoints and their procedures as an argument. tRPC knows two procedures:
@@ -78,19 +78,19 @@ Now, let's create a new file, `index.ts` in the same `server/src/routers/` folde
 
 ```ts
 // Import our tRPC instance
-import { t } from '../trpc'
+import { t } from '../trpc';
 
 // Import our todo Router
-import { todoRouter } from './todo'
+import { todoRouter } from './todo';
 
 // Create an appRouter which will be used to tie together all our different routers
 // In our case, we will only have one router, our todo router. This todo router will be exported under the namespace `todo`.
 export const appRouter = t.router({
   todo: todoRouter,
-})
+});
 
 // Export only the **type** of a router to avoid importing server code on the client
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;
 ```
 
 As you can see, we start again by importing our tRPC instance, followed by importing our `todoRouter`. After that, we create a new `appRouter` which will be used to tie together all our different routers. In our case, this will only be our `todoRouter`, which is exported under the namespace `todo`.
@@ -105,19 +105,19 @@ Now that we have created our router, we would want to have a way to make calls t
 
 ```ts
 // Import the tRPC Express Adatper
-import * as trpcExpress from '@trpc/server/adapters/express'
+import * as trpcExpress from '@trpc/server/adapters/express';
 
 // Import Express
-import express from 'express'
+import express from 'express';
 
 // Import our App Router
-import appRouter from './routers'
+import appRouter from './routers';
 
 // Initialize Express
-const app = express()
+const app = express();
 
 // Tell Express to parse incoming requests using JSON
-app.use(express.json())
+app.use(express.json());
 
 // Tell Express to let the tRPC adapter handle all incoming requests to `/trpc`
 app.use(
@@ -125,10 +125,10 @@ app.use(
   trpcExpress.createExpressMiddleware({
     router: appRouter,
   })
-)
+);
 
 // Start the server under the port 3000
-app.listen(3000)
+app.listen(3000);
 ```
 
 If you are familiar with Express, the code above is pretty self-explanatory. First, we start by importing the tRPC Express Adapter, Express and finally our `appRouter`. After that, we initialize Express, and tell Express to use the `express.json()` middleware to parse incoming requests to JSON. After that, we instruct Express to route all incoming calls to /trpc through a middleware exported from the trpcExpress.createExpressMiddleware() method. This method takes an option object as an argument. In our case, we only pass our `appRouter` as an option. So, all incoming requests to `/trpc` will be handled by our `appRouter`.
@@ -168,14 +168,14 @@ Let's start by heading back to our `todo.ts` file in our `routers/` directory, a
 ```ts
 export const todoRouter = t.router({
   all: t.procedure.query(() => {
-    return todos
+    return todos;
   }),
   add: t.procedure.mutation(({ input }) => {
-    todos.push(input)
+    todos.push(input);
 
-    return todos
+    return todos;
   }),
-})
+});
 ```
 
 As you can see, we added a new mutation procedure called add, and all it's responsible for, is pushing the received input to the `todos` array and after that, returning the new altered todos array.
@@ -204,20 +204,20 @@ As you can see, it's adding `null` to our data array. This is happening due to u
 
 ```ts
 // Import our input validation tool
-import { z } from 'zod'
+import { z } from 'zod';
 
 // Import our tRPC instance
-import { t } from '../trpc'
+import { t } from '../trpc';
 
 // Initalize an empty array where we will be storing our todo's.
 // For now, we will use the type 'any[]', but this will be changed later on.
-let todos: any[] = []
+let todos: any[] = [];
 
 // Create our todo router, and add a query (equivalent of a REST Get request) procedure with the name `all`
 // Which be responsible for returning all the stored todos
 export const todoRouter = t.router({
   all: t.procedure.query(() => {
-    return todos
+    return todos;
   }),
   add: t.procedure
     .input(
@@ -226,11 +226,11 @@ export const todoRouter = t.router({
       })
     )
     .mutation(({ input }) => {
-      todos.push(input)
+      todos.push(input);
 
-      return todos
+      return todos;
     }),
-})
+});
 ```
 
 If you look closely at the `add` procedure, you will notice we added a new method called `input()`. This `input()` method takes an input validation schema that defines what our incoming request body should look like. tRPC supports a handful of input validators, but we have decided to use `Zod`. If you look closely, you can see that all we are doing is telling tRPC that our request body should exist of an object containing a title that is a string. Let's jump back to Postman and hit our `todo.add` API again to test this out.
@@ -282,26 +282,26 @@ Now, jump back to our todo router and modify our `input()` method to use the new
 /* server/src/routers/todo.ts */
 
 // Import our tRPC instance
-import { t } from '../trpc'
+import { t } from '../trpc';
 
 // Import our todo Schema
-import { todoSchema, Todo } from '../models/todo'
+import { todoSchema, Todo } from '../models/todo';
 
 // Initalize an empty array where we will be storing our todo's.
-let todos: Todo[] = []
+let todos: Todo[] = [];
 
 // Create our todo router, and add a query (equivalent of a REST Get request) procedure with the name `all`
 // Which be responsible for returning all the stored todos
 export const todoRouter = t.router({
   all: t.procedure.query(() => {
-    return todos
+    return todos;
   }),
   add: t.procedure.input(todoSchema).mutation(({ input }) => {
-    todos.push(input)
+    todos.push(input);
 
-    return todos
+    return todos;
   }),
-})
+});
 ```
 
 Let's open Postman and test our API:
@@ -316,36 +316,36 @@ Let's continue by creating our update and delete mutations. Our delete mutation 
 
 ```ts
 // Import Zod
-import { z } from 'zod'
+import { z } from 'zod';
 
 // Import our tRPC instance
-import { t } from '../trpc'
+import { t } from '../trpc';
 
 // Import our todo Schema
-import { todoSchema, Todo } from '../models/todo'
+import { todoSchema, Todo } from '../models/todo';
 
 // Initalize an empty array where we will be storing our todo's.
-let todos: Todo[] = []
+let todos: Todo[] = [];
 
 // Create our todo router, and add a query (equivalent of a REST Get request) procedure with the name `all`
 // Which be responsible for returning all the stored todos
 export const todoRouter = t.router({
   all: t.procedure.query(() => {
-    return todos
+    return todos;
   }),
   add: t.procedure.input(todoSchema).mutation(({ input }) => {
-    todos.push(input)
+    todos.push(input);
 
-    return todos
+    return todos;
   }),
   delete: t.procedure.input(z.number()).mutation(({ input }) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== input)
+    const filteredTodos = todos.filter((todo) => todo.id !== input);
 
-    todos = [...filteredTodos]
+    todos = [...filteredTodos];
 
-    return todos
+    return todos;
   }),
-})
+});
 ```
 
 Pretty easy, right?
@@ -354,57 +354,57 @@ Let's move on to our last mutation, the update todo mutation. First, let's look 
 
 ```ts
 // Import trpc
-import * as trpc from '@trpc/server'
+import * as trpc from '@trpc/server';
 
 // Import Zod
-import { z } from 'zod'
+import { z } from 'zod';
 
 // Import our tRPC instance
-import { t } from '../trpc'
+import { t } from '../trpc';
 
 // Import our todo Schema
-import { todoSchema, Todo } from '../models/todo'
+import { todoSchema, Todo } from '../models/todo';
 
 // Initalize an empty array where we will be storing our todo's.
-let todos: Todo[] = []
+let todos: Todo[] = [];
 
 // Create our todo router, and add a query (equivalent of a REST Get request) procedure with the name `all`
 // Which be responsible for returning all the stored todos
 export const todoRouter = t.router({
   all: t.procedure.query(() => {
-    return todos
+    return todos;
   }),
   add: t.procedure.input(todoSchema).mutation(({ input }) => {
-    todos.push(input)
+    todos.push(input);
 
-    return todos
+    return todos;
   }),
   delete: t.procedure.input(z.number()).mutation(({ input }) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== input)
+    const filteredTodos = todos.filter((todo) => todo.id !== input);
 
-    todos = [...filteredTodos]
+    todos = [...filteredTodos];
 
-    return todos
+    return todos;
   }),
   update: t.procedure.input(todoSchema.partial()).mutation(({ input }) => {
-    const index = todos.findIndex((todo) => todo.id === input.id)
-    const todo = todos?.[index]
+    const index = todos.findIndex((todo) => todo.id === input.id);
+    const todo = todos?.[index];
 
     if (!todo) {
       throw new trpc.TRPCError({
         code: 'NOT_FOUND',
         message: "Given id doesn't exist",
-      })
+      });
     }
 
     todos[index] = {
       ...todo,
       ...input,
-    }
+    };
 
-    return todos[index]
+    return todos[index];
   }),
-})
+});
 ```
 
 For the update mutation, we will have the request body be the same as the add todo procedure, but this time we will make all the fields optional using Zod's `.partial()` helper function. Doing this makes it easy for us to partially update todos.
@@ -416,7 +416,7 @@ if (!todo) {
   throw new trpc.TRPCError({
     code: 'NOT_FOUND',
     message: "Given id doesn't exist",
-  })
+  });
 }
 ```
 

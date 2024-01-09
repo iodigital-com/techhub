@@ -230,11 +230,11 @@ You now have a working Vue app inside your Symfony rendered page where you can u
 If we want to deploy our app to production, we will first have to build it. Normally when building a Vite app, the build process will create a `dist` folder inside the app folder. We'll have to edit our `vite.config.ts` (or .js) to alter this behaviour.
 
 ```javascript
-import { fileURLToPath, URL } from 'url'
+import { fileURLToPath, URL } from 'url';
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import svgLoader from 'vite-svg-loader'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import svgLoader from 'vite-svg-loader';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -255,7 +255,7 @@ export default defineConfig({
       },
     },
   },
-})
+});
 ```
 
 Make sure the `outDir` is the same as the one you used in the Twig extension. In this example we've opted to empty the output dir on each build, but this is not necessary.

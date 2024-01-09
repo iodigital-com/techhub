@@ -63,44 +63,44 @@ Next, I added an event listener to each product’s link to the detail page. I c
 
 ```jsx {7-13}
 const addEventListenersForProduct = (productElement, product) => {
-  const productLinkElement = productElement.querySelector('[data-product-link]')
+  const productLinkElement = productElement.querySelector('[data-product-link]');
 
   productLinkElement.addEventListener('click', (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!document.startViewTransition) {
-      handleViewProduct(product)
+      handleViewProduct(product);
     } else {
       document.startViewTransition(() => {
-        handleViewProduct(product)
-      })
+        handleViewProduct(product);
+      });
     }
-  })
-}
+  });
+};
 ```
 
 Finally, in the `handleViewProduct` function, you can set the `view-transition-name` of the clicked product as the `view-transition-name` of the detail page's product element and render the page. Here's an example:
 
 ```jsx {18}
 const handleViewProduct = (product) => {
-  renderProductDetail()
+  renderProductDetail();
 
   window.history.pushState(
     product.slug,
     `${product.name} - ${product.brand}`,
     `/product/${product.slug}`
-  )
+  );
 
-  const productDetailElement = document.querySelector('[data-product-detail]')
-  const { name, brand, price, description, image, slug } = product
+  const productDetailElement = document.querySelector('[data-product-detail]');
+  const { name, brand, price, description, image, slug } = product;
 
-  productDetailElement.querySelector('[data-product-name]').innerHTML = name
-  productDetailElement.querySelector('[data-product-brand]').innerHTML = brand
-  productDetailElement.querySelector('[data-product-price]').innerHTML = price
-  productDetailElement.querySelector('[data-product-description]').innerHTML = description
-  productDetailElement.querySelector('[data-product-image]').src = image
-  productDetailElement.style.viewTransitionName = `${slug}-details`
-}
+  productDetailElement.querySelector('[data-product-name]').innerHTML = name;
+  productDetailElement.querySelector('[data-product-brand]').innerHTML = brand;
+  productDetailElement.querySelector('[data-product-price]').innerHTML = price;
+  productDetailElement.querySelector('[data-product-description]').innerHTML = description;
+  productDetailElement.querySelector('[data-product-image]').src = image;
+  productDetailElement.style.viewTransitionName = `${slug}-details`;
+};
 ```
 
 And that’s all! The element will now use sensible defaults to animate between the two views. From here on out, you can tweak the animations to your liking with CSS.

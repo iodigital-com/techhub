@@ -1,4 +1,4 @@
-import Contributor from './Contributor'
+import Contributor from './Contributor';
 
 // todo: use proper type of the contributor
 const ContributorsGrid = ({ contributors }) => {
@@ -8,7 +8,7 @@ const ContributorsGrid = ({ contributors }) => {
         <Contributor key={contributor.slug} contributor={contributor} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ContributorsGrid
+export default ContributorsGrid;

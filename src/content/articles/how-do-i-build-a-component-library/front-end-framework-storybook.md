@@ -113,7 +113,7 @@ module.exports = {
   ],
   staticDirs: ['../public'],
   framework: '@storybook/web-components',
-}
+};
 ```
 
 Secondly, I’ve updated the root `package.json` with two scripts:

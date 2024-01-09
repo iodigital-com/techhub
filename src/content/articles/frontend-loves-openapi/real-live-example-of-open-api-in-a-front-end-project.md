@@ -66,19 +66,19 @@ The `front-end` folder contains a Vite application dependent on the SDK folder. 
 
 ```ts
 // Import the generated API client
-import { OpenAPI, PetsService } from '../sdk/dist'
+import { OpenAPI, PetsService } from '../sdk/dist';
 
 // Set the base URL of the API client
-OpenAPI.BASE = 'http://localhost:4010'
+OpenAPI.BASE = 'http://localhost:4010';
 
 // Fetch data
-const data = await PetsService.listPets(3243)
+const data = await PetsService.listPets(3243);
 
 // Output the data in the HTML
-const preview = document.getElementById('preview')
+const preview = document.getElementById('preview');
 
 if (preview) {
-  preview.innerHTML = JSON.stringify(data, null, 2)
+  preview.innerHTML = JSON.stringify(data, null, 2);
 }
 ```
 

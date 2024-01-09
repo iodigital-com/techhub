@@ -406,16 +406,16 @@ You can export a `CatchBoundary` and `ErrorBoundary` function for every (nested)
 
 ```jsx
 export function CatchBoundary() {
-  const caught = useCatch()
+  const caught = useCatch();
 
   if (caught.status === 404) {
-    return <div className="error-container">There are no jokes to display.</div>
+    return <div className="error-container">There are no jokes to display.</div>;
   }
-  throw new Error(`Unexpected caught response with status: ${caught.status}`)
+  throw new Error(`Unexpected caught response with status: ${caught.status}`);
 }
 
 export function ErrorBoundary() {
-  return <div className="error-container">I did a whoopsies.</div>
+  return <div className="error-container">I did a whoopsies.</div>;
 }
 ```
 
