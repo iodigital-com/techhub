@@ -1,13 +1,13 @@
 ---
-import {formatDate} from '@utils/formatDate'
-import type { CollectionEntry } from 'astro:content'
+import { formatDate } from '@utils/formatDate';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  article: CollectionEntry<'articles'>
-  authors: CollectionEntry<'authors'>[]
+  article: CollectionEntry<'articles'>;
+  authors: CollectionEntry<'authors'>[];
 }
 
-const { article, authors } = Astro.props
+const { article, authors } = Astro.props;
 ---
 
 <header class="grid grid-col-2">

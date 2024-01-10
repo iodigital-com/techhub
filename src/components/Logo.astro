@@ -1,17 +1,10 @@
 ---
-import { Player } from '@lottiefiles/react-lottie-player'
-import logo from '@data/logo.json'
+import { Player } from '@lottiefiles/react-lottie-player';
+import logo from '@lottie/logo.json';
 import style from './Logo.module.css';
 ---
+
 <a href="/" class={style.logoContainer}>
-  <Player
-    client:load
-    autoplay
-    src={logo}
-    className={style.logo}
-  />
-  <div
-    class={style.logoText}>
-    tech_hub
-  </div>
+  <Player client:load autoplay src={logo} className={style.logo} />
+  <div class={style.logoText}>tech_hub</div>
 </a>

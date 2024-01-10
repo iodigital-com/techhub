@@ -1,15 +1,15 @@
 ---
-import MarkdownArticleLayout from '@layouts/MarkdownArticleLayout.astro'
-import { getSeries } from '@utils/content-collections.util'
-import { getCollection, getEntries } from 'astro:content'
+import MarkdownArticleLayout from '@layouts/MarkdownArticleLayout.astro';
+import { getSeries } from '@utils/content-collections.util';
+import { getCollection, getEntries } from 'astro:content';
 
 export async function getStaticPaths() {
-  const articles = await getCollection('articles')
+  const articles = await getCollection('articles');
 
   return Promise.all(
     articles.map(async (article) => {
-      const series = getSeries(articles, article)
-      const authors = await getEntries(article.data.authors)
+      const series = getSeries(articles, article);
+      const authors = await getEntries(article.data.authors);
 
       return {
         params: { slug: article.slug },
@@ -18,13 +18,13 @@ export async function getStaticPaths() {
           authors,
           series,
         },
-      }
+      };
     })
-  )
+  );
 }
 
-const { article, series, authors } = Astro.props
-const { Content } = await article.render()
+const { article, series, authors } = Astro.props;
+const { Content } = await article.render();
 ---
 
 <MarkdownArticleLayout article={article} series={series} authors={authors}>

@@ -1,13 +1,13 @@
 ---
-import { Image } from 'astro:assets'
-import { getEntries, type CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets';
+import { getEntries, type CollectionEntry } from 'astro:content';
 interface Props {
-  talk: CollectionEntry<'talks'>
+  talk: CollectionEntry<'talks'>;
 }
 
-const { talk } = Astro.props
+const { talk } = Astro.props;
 
-const authors = await getEntries(talk.data.authors)
+const authors = await getEntries(talk.data.authors);
 ---
 
 <article class="flex flex-col h-full border-b-slate-200 border-b-2 pb-5">

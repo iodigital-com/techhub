@@ -20,7 +20,10 @@ export const siteMetadata = {
   legal: [
     { title: 'Cookies', url: 'https://www.iodigital.com/en/cookie-policy' },
     { title: 'Privacy', url: 'https://www.iodigital.com/en/privacy-policy' },
-    { title: 'Terms & Conditions', url: 'https://www.iodigital.com/en/terms-and-conditions' },
+    {
+      title: 'Terms & Conditions',
+      url: 'https://www.iodigital.com/en/terms-and-conditions',
+    },
     { title: 'Disclaimer', url: 'https://www.iodigital.com/en/disclaimer' },
   ],
 };

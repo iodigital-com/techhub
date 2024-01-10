@@ -1,9 +1,9 @@
 ---
-import { getCollection, getEntries } from "astro:content";
-import MarkdownTalkLayout from "../../layouts/MarkdownTalkLayout.astro";
+import { getCollection, getEntries } from 'astro:content';
+import MarkdownTalkLayout from '../../layouts/MarkdownTalkLayout.astro';
 
 export async function getStaticPaths() {
-  const talks = await getCollection("talks");
+  const talks = await getCollection('talks');
 
   return Promise.all(
     talks.map(async (talk) => {

@@ -24,6 +24,7 @@
     "@astrojs/vercel": "^6.1.2",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "astro": "^4.0.7",
+    "astro-icon": "^1.0.2",
     "astro-seo": "^0.8.0",
     "clsx": "^2.1.0",
     "fuse.js": "^7.0.0",

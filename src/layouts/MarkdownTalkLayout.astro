@@ -1,12 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import BaseLayout from "./BaseLayout.astro";
+import { Image } from 'astro:assets';
+import BaseLayout from './BaseLayout.astro';
 
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  talk: CollectionEntry<"talks">;
-  authors: CollectionEntry<"authors">[];
+  talk: CollectionEntry<'talks'>;
+  authors: CollectionEntry<'authors'>[];
 }
 
 const { talk, authors } = Astro.props;

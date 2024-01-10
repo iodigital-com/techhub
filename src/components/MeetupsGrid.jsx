@@ -35,7 +35,10 @@ const MeetupsGrid = ({ events }) => (
           </div>
           <div>{event.groupName}</div>
         </div>
-        <div>{event.description.trim().substring(0, EVENT_DESCRIPTION_MAX_LENGTH)}...</div>
+        <div>
+          {event.description.trim().substring(0, EVENT_DESCRIPTION_MAX_LENGTH)}
+          ...
+        </div>
         <svg style={{ width: 24, height: 24 }} className="text-gray-400" viewBox="0 0 24 24">
           <path
             fill="currentColor"

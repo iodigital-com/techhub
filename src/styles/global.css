@@ -1,5 +1,5 @@
 html {
-  @apply text-lg bg-slate-100;
+  @apply text-lg;
 }
 
 @font-face {

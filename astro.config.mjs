@@ -5,6 +5,7 @@ import react from '@astrojs/react';
 import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +23,7 @@ export default defineConfig({
         forward: ['dataLayer.push'],
       },
     }),
+    icon(),
   ],
   adapter: vercel(),
   output: 'hybrid',
