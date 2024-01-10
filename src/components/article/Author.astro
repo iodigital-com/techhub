@@ -1,20 +1,20 @@
 ---
-import AuthorSocials from '@components/AuthorSocials.astro'
-import { Image } from 'astro:assets'
-import type { CollectionEntry } from 'astro:content'
+import AuthorSocials from '@components/AuthorSocials.astro';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  author: CollectionEntry<'authors'>
+  author: CollectionEntry<'authors'>;
 }
 
-const { author } = Astro.props
+const { author } = Astro.props;
 
 const socials = {
   github: author.data.github,
   linkedin: author.data.linkedin,
   twitter: author.data.twitter,
   website: author.data.website,
-}
+};
 ---
 
 <div class="flex gap-5">

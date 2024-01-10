@@ -234,7 +234,9 @@
       "category": "information_technology",
       "experience": "mid_level",
       "education": "bachelor_degree",
-      "tags": { "tag": ["API’s", "Agile", "Back-end", "Digitale projecten", "Java", "JavaScript"] },
+      "tags": {
+        "tag": ["API’s", "Agile", "Back-end", "Digitale projecten", "Java", "JavaScript"]
+      },
       "min_hours": null,
       "max_hours": null,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/java-developer-3",
@@ -287,7 +289,9 @@
       "category": "information_technology",
       "experience": "manager",
       "education": "bachelor_degree",
-      "tags": { "tag": ["Agile", "Digitale projecten", "Planning", "Projectmanagement"] },
+      "tags": {
+        "tag": ["Agile", "Digitale projecten", "Planning", "Projectmanagement"]
+      },
       "min_hours": null,
       "max_hours": null,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/senior-digitale-projectmanager",
@@ -343,7 +347,9 @@
       "category": "information_technology",
       "experience": "mid_level",
       "education": "bachelor_degree",
-      "tags": { "tag": [".NET", "Probleemoplossend Vermogen", "Servicegericht"] },
+      "tags": {
+        "tag": [".NET", "Probleemoplossend Vermogen", "Servicegericht"]
+      },
       "min_hours": 32,
       "max_hours": 40,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/software-developer",
@@ -506,7 +512,9 @@
       "category": "internet",
       "experience": "mid_level",
       "education": "bachelor_degree",
-      "tags": { "tag": ["JavaScript", "Node.js", "React", "React Native", "TypeScript", "Vue.js"] },
+      "tags": {
+        "tag": ["JavaScript", "Node.js", "React", "React Native", "TypeScript", "Vue.js"]
+      },
       "min_hours": 32,
       "max_hours": 40,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/senior-frontend-developer-rotterdam",
@@ -562,7 +570,9 @@
       "category": "marketing_pr",
       "experience": "entry_level",
       "education": "bachelor_degree",
-      "tags": { "tag": ["Accountmanagement", "Digitale projecten", "Projectmanagement"] },
+      "tags": {
+        "tag": ["Accountmanagement", "Digitale projecten", "Projectmanagement"]
+      },
       "min_hours": 40,
       "max_hours": 40,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/project-manager-9",
@@ -714,7 +724,9 @@
       "category": "internet",
       "experience": "mid_level",
       "education": "bachelor_degree",
-      "tags": { "tag": ["Analytisch denkvermogen", "Communicatie", "Ondernemerszin"] },
+      "tags": {
+        "tag": ["Analytisch denkvermogen", "Communicatie", "Ondernemerszin"]
+      },
       "min_hours": 32,
       "max_hours": 40,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/service-delivery-manager",
@@ -802,7 +814,9 @@
       "category": "information_technology",
       "experience": "mid_level",
       "education": "associate_degree",
-      "tags": { "tag": [".NET", ".NET Core", "C#", "Microsoft Azure", "REST APIs", "Sitecore"] },
+      "tags": {
+        "tag": [".NET", ".NET Core", "C#", "Microsoft Azure", "REST APIs", "Sitecore"]
+      },
       "min_hours": 31,
       "max_hours": 40,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/net-developer-2",
@@ -859,7 +873,9 @@
       "category": "engineering",
       "experience": "mid_level",
       "education": "bachelor_degree",
-      "tags": { "tag": [".NET", "API’s", "Agile", "Angular", "C#", "React", "Scrum", "Vue.js"] },
+      "tags": {
+        "tag": [".NET", "API’s", "Agile", "Angular", "C#", "React", "Scrum", "Vue.js"]
+      },
       "min_hours": null,
       "max_hours": null,
       "careers_url": "https://iodigital.com/nl/carriere/vacatures/net-developer-sofia",

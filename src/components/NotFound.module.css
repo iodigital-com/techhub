@@ -1,0 +1,19 @@
+.container {
+  @apply flex items-center space-x-3;
+}
+
+.logo {
+  @apply w-[40rem];
+}
+
+.content {
+  @apply p-4 text-center;
+}
+
+.title {
+  @apply text-4xl xl:text-5xl;
+}
+
+.links {
+  @apply mt-4 text-lg xl:text-2xl;
+}

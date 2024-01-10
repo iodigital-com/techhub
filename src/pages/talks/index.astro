@@ -1,30 +1,30 @@
 ---
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import Talk from "../../components/talks/Talk.astro";
-import talksImage from "../../images/talks.jpg";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Talk from '../../components/talks/Talk.astro';
+import talksImage from '../../images/talks.jpg';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const talks = await getCollection("talks");
+const talks = await getCollection('talks');
 
-const emailError = "Please enter a valid email address";
-const errors = { firstName: "", lastName: "", email: "", permission: "" };
-if (Astro.request.method === "POST") {
+const emailError = 'Please enter a valid email address';
+const errors = { firstName: '', lastName: '', email: '', permission: '' };
+if (Astro.request.method === 'POST') {
   try {
     const data = await Astro.request.formData();
     const form = Object.fromEntries(data.entries());
 
     if (!form.firstname) {
-      errors.firstName = "Please enter a firstname";
+      errors.firstName = 'Please enter a firstname';
     }
     if (!form.lastname) {
-      errors.lastName = "Please enter a lastname";
+      errors.lastName = 'Please enter a lastname';
     }
     if (!form.email) {
       errors.email = emailError;
     }
     if (!form.permission) {
-      errors.permission = "Please accept our privacy policy";
+      errors.permission = 'Please accept our privacy policy';
     }
   } catch (error) {
     if (error instanceof Error) {
@@ -37,12 +37,9 @@ if (Astro.request.method === "POST") {
 <BaseLayout pageTitle="Talks">
   <div class="grid grid-cols-12 gap-10">
     <section class="col-start-1 col-end-7">
-      <h1 class="text-4xl mb-5">
-        Looking for an inspiring talk at your event?
-      </h1>
+      <h1 class="text-4xl mb-5">Looking for an inspiring talk at your event?</h1>
       <p>
-        We have great experts that can deliver inspiring talks at your event. <br
-        />
+        We have great experts that can deliver inspiring talks at your event. <br />
         Leave your details and we will reach out to you!
       </p>
 
@@ -50,33 +47,13 @@ if (Astro.request.method === "POST") {
         <fieldset class="flex gap-5 mb-5">
           <label class="flex flex-col">
             <span>Firstname*</span>
-            <input
-              type="text"
-              class=""
-              placeholder=" "
-              name="firstname"
-              required
-            />
-            {
-              errors.firstName && (
-                <span class="mt-2 text-red-500">{errors.firstName}</span>
-              )
-            }
+            <input type="text" class="" placeholder=" " name="firstname" required />
+            {errors.firstName && <span class="mt-2 text-red-500">{errors.firstName}</span>}
           </label>
           <label class="flex flex-col">
             <span>Lastname*</span>
-            <input
-              type="text"
-              class=""
-              placeholder=" "
-              name="lastname"
-              required
-            />
-            {
-              errors.lastName && (
-                <span class="mt-2 text-red-500">{errors.lastName}</span>
-              )
-            }
+            <input type="text" class="" placeholder=" " name="lastname" required />
+            {errors.lastName && <span class="mt-2 text-red-500">{errors.lastName}</span>}
           </label>
         </fieldset>
         <fieldset class="mb-5">
@@ -92,7 +69,7 @@ if (Astro.request.method === "POST") {
             />
             <span
               class="mt-2 text-red-500 hidden peer-[&:not(:placeholder-shown):not(:focus):invalid]:block"
-              class:list={errors.email && "!block"}
+              class:list={errors.email && '!block'}
             >
               {emailError}
             </span>
@@ -112,15 +89,10 @@ if (Astro.request.method === "POST") {
           <label class="flex gap-2">
             <input type="checkbox" class="" name="permission" required />
             <span>
-              iO may process my data in function of this request. View our
-              privacy policy here.*
+              iO may process my data in function of this request. View our privacy policy here.*
             </span>
           </label>
-          {
-            errors.permission && (
-              <span class="mt-2 text-red-500">{errors.permission}</span>
-            )
-          }
+          {errors.permission && <span class="mt-2 text-red-500">{errors.permission}</span>}
         </fieldset>
         <button
           class="bg-slate-900 text-slate-100 py-5 px-10 rounded-full border-2 border-transparent hover:bg-slate-100 hover:text-slate-900 hover:border-2 hover:border-slate-900"
@@ -131,12 +103,7 @@ if (Astro.request.method === "POST") {
     </section>
 
     <section class="col-start-7 col-end-13 row-start-1">
-      <Image
-        src={talksImage}
-        alt="iO Talks"
-        class="rounded-full float-right"
-        width={500}
-      />
+      <Image src={talksImage} alt="iO Talks" class="rounded-full float-right" width={500} />
     </section>
   </div>
 

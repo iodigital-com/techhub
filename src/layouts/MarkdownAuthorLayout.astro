@@ -1,26 +1,26 @@
 ---
-import AuthorSocials from '@components/AuthorSocials.astro'
-import BaseLayout from './BaseLayout.astro'
+import AuthorSocials from '@components/AuthorSocials.astro';
+import BaseLayout from './BaseLayout.astro';
 
-import Article from '@components/Article.astro'
-import Talk from '@components/talks/Talk.astro'
-import { Image } from 'astro:assets'
-import type { CollectionEntry } from 'astro:content'
+import Article from '@components/Article.astro';
+import Talk from '@components/talks/Talk.astro';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  author: CollectionEntry<'authors'>
-  articles: CollectionEntry<'articles'>[]
-  talks: CollectionEntry<'talks'>[]
+  author: CollectionEntry<'authors'>;
+  articles: CollectionEntry<'articles'>[];
+  talks: CollectionEntry<'talks'>[];
 }
 
-const { author, articles, talks } = Astro.props
+const { author, articles, talks } = Astro.props;
 
 const authorSocials = {
   twitter: author.data.twitter,
   github: author.data.github,
   linkedin: author.data.linkedin,
   website: author.data.website,
-}
+};
 ---
 
 <BaseLayout pageTitle={author.data.name}>

@@ -1,13 +1,12 @@
 ---
-import { getEntries, type CollectionEntry } from "astro:content";
+import { getEntries, type CollectionEntry } from 'astro:content';
 import { Article as ArticleJSX } from './Article';
 interface Props {
-  article: CollectionEntry<"articles">;
+  article: CollectionEntry<'articles'>;
 }
 
 const { article } = Astro.props;
 const authors = await getEntries(article.data.authors);
-
 ---
 
 <ArticleJSX client:load article={article} authors={authors} />

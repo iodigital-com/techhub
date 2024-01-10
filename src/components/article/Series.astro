@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  series: CollectionEntry<'articles'>[]
+  series: CollectionEntry<'articles'>[];
 }
 
-const { series } = Astro.props
+const { series } = Astro.props;
 ---
 
 <ul class="flex flex-col gap-5 bg-slate-50 rounded-lg p-4">

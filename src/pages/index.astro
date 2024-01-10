@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
 import JobGrid from '@components/JobGrid';
-import MeetupsGrid from '@components/MeetupsGrid'
+import MeetupsGrid from '@components/MeetupsGrid';
 import { getLatestJobs } from '@utils/jobs';
-import "../styles/global.css";
-import { getMeetups } from '@utils/meetups'
+import '../styles/global.css';
+import { getMeetups } from '@utils/meetups';
 
-const pageTitle = "Home Page";
+const pageTitle = 'Home Page';
 const { jobs } = await getLatestJobs(9);
 const events = await getMeetups();
 ---

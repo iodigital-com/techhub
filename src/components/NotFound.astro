@@ -1,0 +1,19 @@
+---
+import { Player } from '@lottiefiles/react-lottie-player';
+import notFound from '@lottie/404.json';
+import style from './NotFound.module.css';
+---
+
+<div class={style.container}>
+  <Player client:load autoplay loop src={notFound} className={style.logo} />
+  <div class={style.content}>
+    <h1 class={style.title}>Oi, looks like we lost this page.</h1>
+    <p class={style.links}>
+      Take a small detour, go back to
+      <a href={'/'} class="text-gray-400 hover:text-gray-500">homepage</a>,
+      <a href={'/articles'} class="text-gray-400 hover:text-gray-500">articles</a>
+      or check our
+      <a href={'/videos'} class="text-gray-400 hover:text-gray-500">videos</a>.
+    </p>
+  </div>
+</div>

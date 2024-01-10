@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  kind: string;
+  href: string;
+  title: string;
+  size: number;
+}
+
+const { kind, href, size, title } = Astro.props;
+---
+
+<a
+  class="flex items-center transition text-gray-700 hover:text-gray-800"
+  target="_blank"
+  rel="noopener noreferrer"
+  href={href}
+  title={title}
+>
+  <Icon name={kind} size={size} title={title} />
+</a>

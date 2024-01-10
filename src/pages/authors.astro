@@ -1,13 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ContributorsGrid from "../components/ContributorsGrid";
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContributorsGrid from '../components/ContributorsGrid';
 
-const authors = await getCollection(
-  "authors"
-);
+const authors = await getCollection('authors');
 ---
 
-<BaseLayout pageTitle="Blog" >
-    <ContributorsGrid contributors={authors} />
+<BaseLayout pageTitle="Blog">
+  <ContributorsGrid contributors={authors} />
 </BaseLayout>
