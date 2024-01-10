@@ -6,14 +6,14 @@ import { SEO } from 'astro-seo';
 import Analytics from '@components/Analytics.astro';
 import '../styles/global.css';
 
-const { pageTitle, pageDescription, pageNoIndex, pageNoFollow } = Astro.props;
+const { title, description, pageNoIndex, pageNoFollow } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <SEO
-      title={pageTitle}
-      description={pageDescription}
+      title={title}
+      description={description}
       charset="utf-8"
       noindex={pageNoIndex}
       nofollow={pageNoFollow}

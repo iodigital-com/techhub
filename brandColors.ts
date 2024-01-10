@@ -1,7 +1,7 @@
 /**
  * "iO-BrandGuide 2.0 2023.pdf" color themes
  */
-export const colors = {
+export const brandColors = {
   io_green: {
     50: '#ffffff', // Greyscale color: White
     100: '#f4f4f4', // Greyscale color: Grey 10

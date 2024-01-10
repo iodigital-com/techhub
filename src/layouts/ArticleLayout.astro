@@ -20,7 +20,7 @@ const searchString = authors.map(({ data }) => data.occupation).join(' ');
 const { jobs } = await getRelatedJobs(4, searchString);
 ---
 
-<BaseLayout pageTitle={article.data.title} pageDescription={article.data.summary}>
+<BaseLayout title={article.data.title} description={article.data.summary}>
   <Header article={article} authors={authors} />
   <article class="grid grid-col-5 gap-10 my-10">
     <div class="col-start-1 col-end-2 max-w-96">

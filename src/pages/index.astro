@@ -6,12 +6,12 @@ import { getLatestJobs } from '@utils/jobs';
 import '../styles/global.css';
 import { getMeetups } from '@utils/meetups';
 
-const pageTitle = 'Home Page';
+const title = 'Home Page';
 const { jobs } = await getLatestJobs(9);
 const events = await getMeetups();
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title}>
   <MeetupsGrid events={events} />
   <JobGrid jobs={jobs} />
 </BaseLayout>

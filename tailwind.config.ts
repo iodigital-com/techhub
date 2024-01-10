@@ -1,11 +1,11 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import colors from 'tailwindcss/colors';
-import { colors as brandColors } from './brandColors';
+import { brandColors } from './brandColors';
 import formPlugin from '@tailwindcss/forms';
 import typographyPlugin from '@tailwindcss/typography';
 import aspectRatioPlugin from '@tailwindcss/aspect-ratio';
+import { type Config } from 'tailwindcss';
 
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
@@ -32,7 +32,7 @@ export default {
         gray: colors.neutral,
         ...brandColors,
       },
-      typography: (theme) => ({
+      typography: (theme: any) => ({
         DEFAULT: {
           css: {
             color: theme('colors.gray.700'),
@@ -170,4 +170,4 @@ export default {
     },
   },
   plugins: [formPlugin, typographyPlugin, aspectRatioPlugin],
-};
+} satisfies Config;
