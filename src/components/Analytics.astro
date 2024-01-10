@@ -1,0 +1,17 @@
+---
+import { siteMetadata } from '@data/siteMetadata';
+const isProduction = process.env.NODE_ENV === 'production';
+---
+
+{isProduction && (
+    <>
+      <script
+        type="text/partytown"
+        src={`https://www.googletagmanager.com/gtag/js?id=${siteMetadata.gtmId}`}
+      ></script>
+      <script type="text/partytown" define:vars={{ gtmId: siteMetadata.gtmId }}>
+        window.dataLayer = window.dataLayer || []; function gtag(){window.dataLayer.push(arguments)}
+        gtag('js', new Date()); gtag('config', gtmId);
+      </script>
+    </>
+)}

@@ -1,6 +1,6 @@
 ---
 import { getEntries, type CollectionEntry } from "astro:content";
-import ArticleReact from './ArticleReact';
+import Article from './Article';
 interface Props {
   article: CollectionEntry<"articles">;
 }
@@ -10,4 +10,4 @@ const authors = await getEntries(article.data.authors);
 
 ---
 
-<ArticleReact client:load article={article} authors={authors} />
+<Article client:load article={article} authors={authors} />
