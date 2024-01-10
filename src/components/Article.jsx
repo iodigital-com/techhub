@@ -1,6 +1,6 @@
 import ContributorsGrid from './ContributorsGrid';
 
-function ArticleReact({ article, authors }) {
+function Article({ article, authors }) {
   const url = '/articles/' + article.slug + '/';
 
   return (
@@ -24,4 +24,4 @@ function ArticleReact({ article, authors }) {
   );
 }
 
-export default ArticleReact;
+export default Article;

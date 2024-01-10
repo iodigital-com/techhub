@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
+import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +16,12 @@ export default defineConfig({
     }),
     react(),
     sitemap(),
+    partytown({
+      // Adds dataLayer.push as a forwarding-event.
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
   ],
   adapter: vercel(),
   output: 'hybrid',

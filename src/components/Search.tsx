@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import { useCallback, useMemo, useState } from 'react';
-import ArticleReact from './ArticleReact';
+import Article from './Article.jsx';
 import AuthorReact from './AuthorReact';
 import styles from './Search.module.scss';
 import { clsx } from 'clsx';
@@ -117,7 +117,7 @@ const Search = ({ articles, authors }: SearchProps) => {
             ))}
             {foundArticles?.map((article) => (
               <li key={article.slug}>
-                <ArticleReact article={article} authors={findArticleAuthors(article)} />
+                <Article article={article} authors={findArticleAuthors(article)} />
               </li>
             ))}
           </ul>

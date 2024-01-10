@@ -1,13 +1,10 @@
-const locale = 'en-US';
-const formatDate = (date) => {
+import { siteMetadata } from '@data/siteMetadata.js';
+
+export const formatDate = (date) => {
   const options = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
-  const now = new Date(date).toLocaleDateString(locale, options);
-
-  return now;
+  return new Date(date).toLocaleDateString(siteMetadata.locale, options);
 };
-
-export default formatDate;
