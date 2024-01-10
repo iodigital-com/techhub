@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import { useCallback, useMemo, useState } from 'react';
-import Article from './Article.jsx';
+import { Article } from './Article';
 import AuthorReact from './AuthorReact';
 import styles from './Search.module.scss';
 import { clsx } from 'clsx';

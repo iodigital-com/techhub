@@ -1,6 +1,6 @@
 import ContributorsGrid from './ContributorsGrid';
 
-function Article({ article, authors }) {
+export const Article = ({ article, authors }) => {
   const url = '/articles/' + article.slug + '/';
 
   return (
@@ -22,6 +22,4 @@ function Article({ article, authors }) {
       </article>
     </div>
   );
-}
-
-export default Article;
+};
