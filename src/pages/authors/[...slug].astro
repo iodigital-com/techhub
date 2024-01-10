@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import MarkdownAuthorLayout from '../../layouts/MarkdownAuthorLayout.astro';
+import MarkdownAuthorLayout from '../../layouts/AuthorLayout.astro';
 
 export async function getStaticPaths() {
   const authors = await getCollection('authors');

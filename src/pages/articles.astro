@@ -7,7 +7,7 @@ import '../styles/global.css';
 const articles = await getCollection('articles', ({ data }) => !data.hideInArticleList);
 ---
 
-<BaseLayout pageTitle="Blog">
+<BaseLayout title="Articles">
   <ul>
     {
       articles.map((article) => (

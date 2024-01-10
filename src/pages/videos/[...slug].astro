@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteMetadata } from '@data/siteMetadata';
+import { formatDate } from '@utils/formatDate';
+import { getAllVideos } from '@utils/videos';
+import { type InferGetStaticPropsType } from 'astro';
+
+export function getStaticPaths() {
+  const { videos } = getAllVideos();
+  return videos.map((video) => ({
+    params: { slug: video.id },
+    props: {
+      video,
+    },
+  }));
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { video } = Astro.props as Props;
+const descriptionArray = video.description.split('-');
+---
+
+<BaseLayout title={`${video.title} - ${siteMetadata.author}`} description={video.description}>
+  <div class={`mb-72 pb-14 pt-24`}>
+    <div class="container mx-auto">
+      <h1 class="text-4xl font-medium xl:text-7xl">
+        <span>{video.title}</span>
+      </h1>
+      <div class="mb-4">
+        <p class="inline text-xl font-light">
+          Published on
+          <time class="inline font-light" datetime={video.publishedAt}>
+            {formatDate(video.publishedAt)}
+          </time>
+        </p>
+      </div>
+      <div class="grid grid-cols-4">
+        <div class="col-span-full col-start-1 text-2xl md:col-start-2 xl:col-start-3">
+          {descriptionArray.map((description) => <p>{description}</p>)}
+        </div>
+      </div>
+
+      <div class="-mt-20 translate-y-32 md:-mt-64 md:translate-y-72">
+        <div class="aspect-w-16 aspect-h-9 my-10">
+          <iframe
+            src={`https://www.youtube.com/embed/${video.id}`}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
