@@ -1,13 +1,64 @@
 ---
 import { siteMetadata } from '@data/siteMetadata';
 import SocialIcon from './SocialIcon.astro';
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="my-10 flex justify-center space-x-4 mx-auto">
-  <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={27} />
-  <SocialIcon kind="github" href={siteMetadata.github} size={27} />
-  <SocialIcon kind="facebook" href={siteMetadata.facebook} size={27} />
-  <SocialIcon kind="youtube" href={siteMetadata.youtube} size={27} />
-  <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={27} />
-  <SocialIcon kind="twitter" href={siteMetadata.twitter} size={27} />
+<footer>
+  <div class="socials">
+    <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={27} />
+    <SocialIcon kind="github" href={siteMetadata.github} size={27} />
+    <SocialIcon kind="facebook" href={siteMetadata.facebook} size={27} />
+    <SocialIcon kind="youtube" href={siteMetadata.youtube} size={27} />
+    <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={27} />
+    <SocialIcon kind="twitter" href={siteMetadata.twitter} size={27} />
+  </div>
+
+  <div class="copyright">
+    <div>&copy; {currentYear}</div>
+    <a href="/">{siteMetadata.title}</a>
+  </div>
+
+  <div class="legal">
+    {siteMetadata.legal.map((link) => <a href={link.url}>{link.title}</a>)}
+  </div>
 </footer>
+
+<style>
+  footer {
+    @apply mx-auto flex flex-col gap-3 items-center mt-16 text-sm text-gray-500 dark:text-gray-400;
+  }
+
+  .socials {
+    @apply flex items-center gap-4;
+  }
+
+  .copyright {
+    @apply flex gap-2;
+
+    a {
+      @apply flex gap-2;
+
+      &:before {
+        content: '•';
+        @apply block;
+      }
+    }
+  }
+
+  .legal {
+    @apply mb-4 flex flex-col space-y-2 text-center md:flex-row md:space-y-0 md:space-x-2;
+
+    a {
+      @apply flex gap-2;
+
+      &:not(:last-child) {
+        &:after {
+          content: '•';
+          @apply block;
+        }
+      }
+    }
+  }
+</style>

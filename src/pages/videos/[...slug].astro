@@ -24,9 +24,7 @@ const descriptionArray = video.description.split('-');
 <BaseLayout title={`${video.title} - ${siteMetadata.author}`} description={video.description}>
   <div class={`mb-72 pb-14 pt-24`}>
     <div class="container mx-auto">
-      <h1 class="text-4xl font-medium xl:text-7xl">
-        <span>{video.title}</span>
-      </h1>
+      <h1 class="text-4xl font-medium xl:text-7xl" set:html={video.title} />
       <div class="mb-4">
         <p class="inline text-xl font-light">
           Published on
