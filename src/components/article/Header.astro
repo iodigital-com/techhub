@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets'
-import formatDate from '@utils/formatDate'
-import type { CollectionEntry } from 'astro:content'
+import { formatDate } from '@utils/formatDate';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   article: CollectionEntry<'articles'>;
@@ -11,8 +11,8 @@ interface Props {
 const {
   article: { data },
   authors,
-} = Astro.props
-const { title, date, theme, summary, images } = data
+} = Astro.props;
+const { title, date, theme, summary, images } = data;
 ---
 
 <div class={`bg-io_${theme}-500 pb-14 pt-24 white ${images?.length > 0 ? 'mb-72' : 'mb-12'}`}>
