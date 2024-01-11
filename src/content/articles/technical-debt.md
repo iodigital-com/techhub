@@ -1,7 +1,7 @@
 ---
 title: 'Introducing technical debt'
 date: '2022-07-28'
-images: ['/articles/technical-debt/technical-debt.jpg']
+images: ['./images/technical-debt/technical-debt.jpg']
 summary: 'Are you tired of seeing good websites go to waste? Do you want to keep your codebase clean, but you have no idea where to start? Ever wondered how a small change request or simple bugfix turned into an endless game of whack-a-mole? Monitoring technical debt can provide a way out.'
 authors: ['niels-matthijs']
 theme: 'blue'

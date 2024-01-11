@@ -1,7 +1,7 @@
 ---
 title: 'Using best practices to create CSS scroll snapping tabs'
 date: '2022-03-31'
-images: ['/articles/using-best-practices-to-create-css-scroll-snapping-tabs/snapping.jpg']
+images: ['./images/using-best-practices-to-create-css-scroll-snapping-tabs/snapping.jpg']
 summary: 'How should scroll snapping tabs behave when using keys? By reading some best practices, I believe I found an elegant solution.'
 authors: ['brecht-de-ruyte']
 theme: 'blue'

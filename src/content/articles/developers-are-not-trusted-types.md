@@ -1,7 +1,7 @@
 ---
 title: 'Developers are not _Trusted Types_!'
 date: '2022-10-20'
-images: ['/articles/developers-are-not-trusted-types/developers-are-not-trusted-types.jpg']
+images: ['./images/developers-are-not-trusted-types/developers-are-not-trusted-types.jpg']
 summary: 'Even with our best intentions as developers, we all make mistakes. XSS being one of the most common web vulnerabilities on the web proves that we need to better defend ourselves and our users against this. Let’s see how Trusted Types can help us!'
 authors: ['dave-bitter']
 theme: 'blue'

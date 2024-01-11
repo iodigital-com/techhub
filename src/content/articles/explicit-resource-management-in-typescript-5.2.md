@@ -4,7 +4,7 @@ date: '2023-09-08'
 summary: 'The TypeScript implementation of the `using` and `await using` declarations from the TC39 Explicit Resource Management proposal, which is currently at Stage 3'
 images:
   [
-    '/articles/explicit-resource-management-in-typescript-5.2/explicit-resource-management-in-typescript-5.2.webp.webp',
+    './images/explicit-resource-management-in-typescript-5.2/explicit-resource-management-in-typescript-5.2.webp.webp',
   ]
 authors: ['mohi-bagherani']
 theme: 'blue'

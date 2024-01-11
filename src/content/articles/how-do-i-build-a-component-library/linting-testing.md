@@ -1,7 +1,7 @@
 ---
 title: 'How do I set up _linting_, _unit_, _snapshot_ and _visual regression testing_?'
 date: '2022-08-31'
-images: ['/articles/how-do-i-build-a-component-library/linting-testing/linting-testing.png']
+images: ['../images/how-do-i-build-a-component-library/linting-testing/linting-testing.png']
 summary: 'How to build a component library Part 3: Setting up linting, unit, snapshot and visual regression testing.'
 authors: ['dave-bitter']
 theme: 'blue'

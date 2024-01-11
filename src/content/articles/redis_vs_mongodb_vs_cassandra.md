@@ -1,7 +1,7 @@
 ---
 title: 'Redis VS MongoDB VS Cassandra'
 date: '2022-08-12'
-images: ['/articles/redis-vs-mongodb-vs-cassandra/hero-image.png']
+images: ['./images/redis-vs-mongodb-vs-cassandra/hero-image.png']
 summary: 'Are the NoSQL databases all the same? If not, what are the differences (and why should you care)? A quick comparison chat between Redis, MongoDB and Cassandra'
 authors: ['massimiliano-scifo']
 theme: 'blue'

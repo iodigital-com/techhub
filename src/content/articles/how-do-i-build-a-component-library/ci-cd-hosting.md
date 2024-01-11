@@ -1,7 +1,7 @@
 ---
 title: 'How do I setup _CI/CD & hosting?_'
 date: '2022-09-07'
-images: ['/articles/how-do-i-build-a-component-library/ci-cd-hosting/ci-cd-hosting.png']
+images: ['../images/how-do-i-build-a-component-library/ci-cd-hosting/ci-cd-hosting.png']
 summary: 'How to build a component library Part 4: Setting up CI/CD & hosting.'
 authors: ['dave-bitter']
 theme: 'blue'

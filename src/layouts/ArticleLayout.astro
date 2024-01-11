@@ -1,23 +1,28 @@
 ---
-import JobGrid from '@components/JobGrid';
-import Author from '@components/article/Author.astro';
-import { getRelatedJobs } from '@utils/jobs';
-import BaseLayout from './BaseLayout.astro';
+import { Icon } from 'astro-icon/components'
 
-import Header from '@components/article/Header.astro';
-import Series from '@components/article/Series.astro';
-import type { CollectionEntry } from 'astro:content';
+import JobGrid from '@components/JobGrid'
+import Author from '@components/article/Author.astro'
+import { getRelatedJobs } from '@utils/jobs'
+import BaseLayout from './BaseLayout.astro'
+
+import Header from '@components/article/Header.astro'
+import Series from '@components/article/Series.astro'
+import type { CollectionEntry } from 'astro:content'
+import type { Serie } from '@types'
 
 interface Props {
-  article: CollectionEntry<'articles'>;
-  series: CollectionEntry<'articles'>[];
-  authors: CollectionEntry<'authors'>[];
+  article: CollectionEntry<'articles'>
+  nextArticle: CollectionEntry<'articles'>
+  prevArticle: CollectionEntry<'articles'>
+  series: Serie
+  authors: CollectionEntry<'authors'>[]
 }
 
-const { article, series, authors } = Astro.props;
-
-const searchString = authors.map(({ data }) => data.occupation).join(' ');
-const { jobs } = await getRelatedJobs(4, searchString);
+const { article, series, authors, nextArticle, prevArticle } = Astro.props
+const searchString = authors.map(({ data }) => data.occupation).join(' ')
+const { jobs } = await getRelatedJobs(4, searchString)
+const hasSerie = series?.articles?.length > 0
 ---
 
 <BaseLayout title={article.data.title} description={article.data.summary}>
@@ -37,12 +42,51 @@ const { jobs } = await getRelatedJobs(4, searchString);
       </ul>
 
       {
-        series.length > 0 && (
-          <div class="mt-10">
+        !hasSerie && (prevArticle || nextArticle) && (
+          <div class="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
+            {prevArticle && (
+              <div>
+                <h2 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                  Previous Article
+                </h2>
+                <div>
+                  <a href={`/articles/${prevArticle.slug}`}>{prevArticle.data.title}</a>
+                </div>
+              </div>
+            )}
+            {nextArticle && (
+              <div>
+                <h2 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                  Next Article
+                </h2>
+                <div>
+                  <a href={`/articles/${nextArticle.slug}`}>{nextArticle.data.title}</a>
+                </div>
+              </div>
+            )}
+          </div>
+        )
+      }
+      {
+        hasSerie && (
+          <div class="py-4 xl:py-8">
+            <h2 class="mb-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              Part of series
+            </h2>
             <Series series={series} />
           </div>
         )
       }
+
+      <div class="pt-4 xl:pt-8">
+        <a
+          href="/articles"
+          class={`relative inline-flex rounded-full border border-black py-4 px-9 text-base font-bold leading-none transition-colors delay-100 hover:bg-black hover:text-white`}
+        >
+          <Icon name="arrow" class="mr-4 w-6 rotate-180" />
+          Back to all articles
+        </a>
+      </div>
     </div>
 
     <div class="col-start-2 col-end-5 row-start-1 prose">

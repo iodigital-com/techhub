@@ -1,7 +1,7 @@
 ---
 title: '_Finite State Machines_ in JavaScript'
 date: '2023-08-01'
-images: ['/articles/finite-state-machines-in-javascript/finite-state-machines-in-javascript.jpg']
+images: ['./images/finite-state-machines-in-javascript/finite-state-machines-in-javascript.jpg']
 summary: 'Application state can make any application complex real quick. Let’s have a look at Finite State Machines in Javascript to resolve some of these complexities.'
 authors: ['dave-bitter']
 theme: 'blue'

@@ -1,7 +1,7 @@
 ---
 title: 'How to make your GitHub profile stand out'
 date: '2023-05-04'
-images: ['/articles/how-to-make-your-github-profile-stand-out/hero.png']
+images: ['./images/how-to-make-your-github-profile-stand-out/hero.png']
 summary: 'In this article, we will look at how you can make your GitHub profile stand out from the crowd.'
 authors: ['dave-bitter']
 theme: 'green'

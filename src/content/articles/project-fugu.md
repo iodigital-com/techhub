@@ -1,7 +1,7 @@
 ---
 title: 'Project Fugu'
 date: '2023-04-14'
-images: ['/articles/project-fugu/header.webp']
+images: ['./images/project-fugu/header.webp']
 summary: Cross-platform software development is hard. Each platform has its specific implementation of an API and you end up with separate apps for each platform. Multiple frameworks try to fix this issue by creating an abstract between the platform and the application. Browser vendors are doing the same and it's called Project Fugu.
 authors: ['lucien-immink']
 theme: 'beige'
