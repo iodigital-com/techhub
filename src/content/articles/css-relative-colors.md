@@ -1,7 +1,7 @@
 ---
 title: 'CSS Relative colors'
 date: '2023-12-01'
-images: ['/articles/css-relative-colors/color-spectrum.webp']
+images: ['./images/css-relative-colors/color-spectrum.webp']
 summary: 'Before the relative color syntax you had to rely on CSS variables or even worse: JavaScript to modify the parameters of a color. Using the from keyword the browser can convert the originating color to different color spaces and change the color properties.'
 authors: ['lucien-immink']
 theme: 'blue'

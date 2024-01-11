@@ -1,7 +1,7 @@
 ---
 title: 'Interacting with ChatGPT through _Voice UI_ on the web'
 date: '2023-11-02'
-images: ['/articles/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva.png']
+images: ['./images/interacting-with-chat-gpt-through-voice-ui-on-the-web/aiva.png']
 summary: 'How can I improve the way someone interacts with ChatGPT? How can I make it feel more natural than a dreadful “chatbot”? Can I create something cool? Those were some of the questions I asked myself recently while starting a two-day hackathon at iO. I’ll take you through what I build, how, and most importantly, why.'
 authors: ['dave-bitter']
 theme: 'blue'

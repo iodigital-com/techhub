@@ -1,7 +1,7 @@
 ---
 title: 'Introduction to (AZ-204) certification exam Cheatsheets'
 date: '2022-11-06'
-images: ['/articles/az-204-cheatsheets/hero.webp']
+images: ['../images/az-204-cheatsheets/hero.webp']
 summary: ''
 authors: ['saeed-salehi']
 theme: 'blue'

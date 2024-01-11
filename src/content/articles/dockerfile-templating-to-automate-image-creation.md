@@ -3,7 +3,7 @@ title: 'Dockerfile templating to automate image creation'
 date: '2022-08-23'
 images:
   [
-    '/articles/dockerfile-templating-to-automate-image-creation/dockerfile-templating-steps-transparent.png',
+    './images/dockerfile-templating-to-automate-image-creation/dockerfile-templating-steps-transparent.png',
   ]
 summary: "If we take a look at the repository for the official Node.js Docker images we can see that the source contains a Dockerfile for each image variant. Imagine having to add a package to all of these images. That's a lot of manual edits, but it's manageable. Now imagine adding a package to only specific versions of the image and a different package depending on the Linux distro."
 authors: ['luud-janssen']

@@ -2,7 +2,7 @@
 title: 'Practical uses of the :has() relational pseudo class'
 date: '2022-10-27'
 images:
-  ['/articles/practical-uses-of-the-has-relational-pseudo-class/has-relational-pseudo-class.png']
+  ['./images/practical-uses-of-the-has-relational-pseudo-class/has-relational-pseudo-class.png']
 summary: 'The :has() relational pseudo class has landed in Chrome and Safari and even though it gets less hype than for instance container queries, I believe this little pseudo class contains a lot of improvements to the way we write CSS today.'
 authors: ['brecht-de-ruyte']
 theme: 'beige'

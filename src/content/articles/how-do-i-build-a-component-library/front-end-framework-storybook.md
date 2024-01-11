@@ -1,10 +1,6 @@
 ---
 title: 'How do I pick a _front-end framework_ & showcase it with _Storybook_?'
 date: '2022-08-24'
-images:
-  [
-    '/articles/how-do-i-build-a-component-library/front-end-framework-storybook/front-end-framework-storybook.png',
-  ]
 summary: 'How to build a component library Part 2: Picking a front-end framework and setting up Storybook.'
 authors: ['dave-bitter']
 theme: 'blue'

@@ -17,18 +17,18 @@ const socials = {
 }
 ---
 
-<div class="flex gap-5">
-  <div>
+<div class="flex space-x-4 pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
+  <div class="flex items-center">
     <Image
       class="rounded-full"
       src={author.data.avatar}
       alt={author.data.name}
-      height={150}
-      width={150}
+      height={100}
+      width={100}
     />
   </div>
-  <div class="flex flex-col justify-center gap-1">
-    <a href={`/authors/${author.slug}`}>
+  <div class="flex flex-col justify-center gap-2">
+    <a class="text-io_green-600 hover:text-io_green-700 text-lg" href={`/authors/${author.slug}`}>
       {author.data.name}
     </a>
     <AuthorSocials socials={socials} name={author.data.name} renderAxis="vertical" />

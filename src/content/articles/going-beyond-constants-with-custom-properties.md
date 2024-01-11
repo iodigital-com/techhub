@@ -1,7 +1,7 @@
 ---
 title: 'Going beyond constants with custom properties'
 date: '2023-06-26'
-images: ['/articles/going-beyond-constants-with-custom-properties/custom-properties.png']
+images: ['./images/going-beyond-constants-with-custom-properties/custom-properties.png']
 summary: 'If you love CSS, you’ve probably heard of custom properties (a.k.a. CSS variables) before. Still, a lot of people seem to use them as constants for their CSS. In this article, I will try to give you some more insights on how you can use these custom properties to create some smart systems or even use them as booleans in CSS and create easy progressive enhancements.'
 authors: ['brecht-de-ruyte']
 theme: 'rouge'

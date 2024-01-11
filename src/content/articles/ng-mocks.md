@@ -1,7 +1,7 @@
 ---
 title: 'Speedup unit tests development in Angular with NG-Mocks'
 date: '2023-10-04'
-images: ['/articles/ng-mocks/ng-mocks-cover.png']
+images: ['./images/ng-mocks/ng-mocks-cover.png']
 summary: 'There are multiple ways to speed up unit tests development in Angular. Let me show two of them using the NG-Mocks library.'
 authors: ['alexey-ses']
 theme: 'blue'

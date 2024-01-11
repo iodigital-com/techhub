@@ -1,7 +1,7 @@
 ---
 title: 'First look at Remix'
 date: '2021-12-08'
-images: ['/articles/first-look-at-remix/remix.jpg']
+images: ['./images/first-look-at-remix/remix.jpg']
 summary: 'There has been a lot of buzz around the open-source release of Remix. I took a first look by following the deep-dive tutorial and this is what I found.'
 authors: ['dave-bitter']
 theme: 'blue'

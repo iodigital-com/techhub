@@ -13,7 +13,7 @@ interface Props {
 const { socials, name, renderAxis } = Astro.props
 ---
 
-<div class="flex flex-wrap gap-4" class:list={[{ 'flex-col gap-1': renderAxis === 'vertical' }]}>
+<div class="flex flex-wrap text-sm" class:list={[{ 'flex-col gap-2': renderAxis === 'vertical' }]}>
   {
     socials.linkedin && (
       <>

@@ -5,6 +5,8 @@ import react from '@astrojs/react'
 import vercel from '@astrojs/vercel/serverless'
 import sitemap from '@astrojs/sitemap'
 
+import icon from 'astro-icon'
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -15,6 +17,7 @@ export default defineConfig({
     }),
     react(),
     sitemap(),
+    icon(),
   ],
   adapter: vercel(),
   output: 'hybrid',
