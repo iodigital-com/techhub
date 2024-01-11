@@ -1,7 +1,6 @@
 import Fuse from 'fuse.js'
 import { useState } from 'react'
 import ArticleReact from './ArticleReact'
-import AuthorReact from './AuthorReact'
 import ContributorsGrid from './ContributorsGrid'
 
 // Configs fuse.js

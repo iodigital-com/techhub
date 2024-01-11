@@ -1,7 +1,7 @@
 ---
 title: 'You shall not Password!'
 date: '2022-07-22'
-images: ['/articles/you-shall-not-password/keys.jpg']
+images: ['./images/you-shall-not-password/keys.jpg']
 summary: "Isn't it weird that we have to come up with a phrase and share it with a server to protect our account?"
 authors: ['mark-van-der-linden']
 theme: 'blue'

@@ -7,9 +7,12 @@ export async function getStaticPaths() {
   const articles = await getCollection('articles')
 
   return Promise.all(
-    articles.map(async (article) => {
-      const series = getSeries(articles, article)
+    articles.map(async (article, index) => {
+      const series = await getSeries(articles, article)
       const authors = await getEntries(article.data.authors)
+      const prevArticle = articles[index + 1] || null
+      const nextArticle = articles[index - 1] || null
+      console.log(series.length)
 
       return {
         params: { slug: article.slug },
@@ -17,16 +20,24 @@ export async function getStaticPaths() {
           article,
           authors,
           series,
+          prevArticle,
+          nextArticle,
         },
       }
     })
   )
 }
 
-const { article, series, authors } = Astro.props
+const { article, series, authors, nextArticle, prevArticle } = Astro.props
 const { Content } = await article.render()
 ---
 
-<MarkdownArticleLayout article={article} series={series} authors={authors}>
+<MarkdownArticleLayout
+  nextArticle={nextArticle}
+  prevArticle={prevArticle}
+  article={article}
+  series={series}
+  authors={authors}
+>
   <Content />
 </MarkdownArticleLayout>

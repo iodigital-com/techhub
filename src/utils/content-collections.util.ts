@@ -1,20 +1,17 @@
-import { type CollectionEntry } from 'astro:content'
+import { getEntry, type CollectionEntry } from 'astro:content'
 
-export function getSeries(
+export async function getSeries(
   articles: CollectionEntry<'articles'>[],
   article: CollectionEntry<'articles'>
 ) {
-  if (!article.data.serie) return []
+  if (!article.data.serie) return {}
 
-  return articles.filter((x) => {
-    if (article.id === x.id) {
-      return false
-    }
+  const filteredArticles = articles.filter((x) => article.data.serie === x.data.serie)
+  const serieInformation = await getEntry('series', article.data.serie)
 
-    if (article.data.serie === x.data.serie) {
-      return true
-    }
-
-    return false
-  })
+  return {
+    articles: filteredArticles,
+    serie: article.data.serie,
+    ...serieInformation?.data,
+  }
 }

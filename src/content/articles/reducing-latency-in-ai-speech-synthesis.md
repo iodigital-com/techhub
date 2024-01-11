@@ -1,7 +1,7 @@
 ---
 title: 'Reducing latency in _AI Speech Synthesis_'
 date: '2023-11-16'
-images: ['/articles/reducing-latency-in-ai-speech-synthesis/aiva.png']
+images: ['./images/reducing-latency-in-ai-speech-synthesis/aiva.png']
 summary: 'AI-powered speech synthesis is getting incredibly realistic. This opens up many possibilities to generate realistic audio based on the text you provide. Whilst relatively fast, the latency still isn’t low enough for “real-time synthesis”. Let’s optimise that!'
 authors: ['dave-bitter']
 theme: 'blue'

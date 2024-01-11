@@ -3,7 +3,7 @@ title: '_Inversion of Control_ through _Compound Components_'
 date: '2023-04-26'
 images:
   [
-    '/articles/inversion-of-control-through-compound-components/inversion-of-control-through-compound-components.webp',
+    './images/inversion-of-control-through-compound-components/inversion-of-control-through-compound-components.webp',
   ]
 summary: 'Learn how to keep your component libraries simple, easy to use, and adaptable to many use cases by leveraging Inversion of Control through Compound Components.'
 authors: ['dave-bitter']
