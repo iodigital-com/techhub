@@ -51,9 +51,19 @@ const { title, description, pageNoIndex, pageNoFollow } = Astro.props;
   </head>
   <body>
     <Header />
-    <main class="container mx-auto">
+    <main>
       <slot />
     </main>
     <Footer />
+
+    <style>
+      body {
+        @apply flex flex-col min-h-screen;
+      }
+
+      main {
+        @apply container mx-auto flex-1;
+      }
+    </style>
   </body>
 </html>
