@@ -1,7 +1,7 @@
 ---
 title: 'The infinite legacy cycle in front-end'
 date: '2022-06-08'
-images: ['/articles/the-infinite-legacy-cycle-in-front-end/interview.jpg']
+images: ['./images/the-infinite-legacy-cycle-in-front-end/interview.jpg']
 summary: 'Projects often become legacy in a incredibly short time. I have spoken to people in technology with a variety of skills, experience and roles. Time to find out how they think about this, what tips they have to prevent these issues and more.'
 authors: ['dave-bitter']
 theme: 'blue'

@@ -2,7 +2,7 @@
 title: 'Reactive Backend Applications with Spring Boot, Kotlin and Coroutines (Part 2)'
 date: '2023-01-10'
 images:
-  ['/articles/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/cascade.jpg']
+  ['../images/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/cascade.jpg']
 summary: 'An exploration of Kotlin and coroutines to have a Spring reactive application written in direct style'
 authors: ['leo-schneider', 'mehmet-akif-tutuncu']
 theme: 'blue'

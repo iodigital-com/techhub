@@ -1,7 +1,7 @@
 ---
 title: 'The File System Access API: Unlocking New Possibilities for Web Developers'
 date: '2023-02-03'
-images: ['/articles/file-system-access-api/file-system-access-api-hero.webp']
+images: ['./images/file-system-access-api/file-system-access-api-hero.webp']
 summary: 'An incredibly powerful API exists to access the local file system of a user. Let’s have a look at how this works and why this could be interesting for your next project.'
 authors: ['dave-bitter']
 theme: 'blue'

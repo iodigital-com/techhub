@@ -1,28 +1,49 @@
 ---
-import { formatDate } from '@utils/formatDate';
-import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets'
+import formatDate from '@utils/formatDate'
+import type { CollectionEntry } from 'astro:content'
 
 interface Props {
   article: CollectionEntry<'articles'>;
   authors: CollectionEntry<'authors'>[];
 }
 
-const { article, authors } = Astro.props;
+const {
+  article: { data },
+  authors,
+} = Astro.props
+const { title, date, theme, summary, images } = data
 ---
 
-<header class="grid grid-col-2">
-  <div class="col-start-1 col-end-3">
-    <h1 class="text-4xl">{article.data.title}</h1>
+<div class={`bg-io_${theme}-500 pb-14 pt-24 white ${images?.length > 0 ? 'mb-72' : 'mb-12'}`}>
+  <div class="container mx-auto">
+    <h1 class="heading-title text-4xl font-medium xl:text-7xl">
+      {title}
+    </h1>
     <div class="my-4 divide-x">
       <p class="inline pr-2 text-xl font-light">
         By {authors.map((author) => author.data.name).join(', ')}
       </p>
-      <time class="inline px-2 font-light" datetime={article.data.date}>
-        {formatDate(article.data.date)}
+      <time class="inline px-2 font-light" datetime={date}>
+        {formatDate(date)}
       </time>
+      <p class="inline pl-2 font-light">
+        <!-- <Clock class="mr-2 inline w-4" /> -->
+        <!-- {readingTime.text} -->
+      </p>
     </div>
+    <div class="grid grid-cols-4">
+      <p class="col-span-full col-start-1 text-2xl md:col-start-2 xl:col-start-3">
+        {summary}
+      </p>
+    </div>
+
+    {
+      images?.length > 0 && (
+        <div class="-mt-20 translate-y-32 md:-mt-64 md:translate-y-72">
+          <Image src={images[0]} alt={title} width={1280} height={720} />
+        </div>
+      )
+    }
   </div>
-  <div class="col-span-full col-start-1 text-2xl">
-    {article.data.summary}
-  </div>
-</header>
+</div>

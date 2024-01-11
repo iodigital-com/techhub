@@ -2,7 +2,7 @@
 title: 'I want it in my terminal!'
 date: '2023-10-10'
 summary: 'Proficiency in the terminal enhances efficiency and opens up a world of opportunities with handy tools and quick commands.'
-images: ['/articles/i-dont-want-to-leave-my-terminal/hero.webp']
+images: ['./images/i-dont-want-to-leave-my-terminal/hero.webp']
 authors: ['jafar-rezaei']
 theme: 'blue'
 ---

@@ -8,8 +8,10 @@
       "@data/*": ["src/data/*"],
       "@lottie/*": ["src/lottie/*"],
       "@components/*": ["src/components/*"],
+      "@icons/*": ["src/icons/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@types": ["src/types.ts"]
     }
   }
 }

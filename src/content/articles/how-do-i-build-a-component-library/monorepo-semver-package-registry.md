@@ -3,7 +3,7 @@ title: 'How do I set up a _Monorepo_, _SemVer strategy_ and _Private package reg
 date: '2022-08-17'
 images:
   [
-    '/articles/how-do-i-build-a-component-library/monorepo-semver-package-registry/monorepo-semver-package-registry.png',
+    '../images/how-do-i-build-a-component-library/monorepo-semver-package-registry/monorepo-semver-package-registry.png',
   ]
 summary: 'How to build a component library Part 1: Setting up a Monorepo, Semver strategy and Private package registry.'
 authors: ['dave-bitter']

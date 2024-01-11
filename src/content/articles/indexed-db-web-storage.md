@@ -1,7 +1,7 @@
 ---
 title: '_IndexedDB_ > Web Storage'
 date: '2023-07-20'
-images: ['/articles/indexed-db-web-storage/indexed-db-web-storage.jpeg']
+images: ['./images/indexed-db-web-storage/indexed-db-web-storage.jpeg']
 summary: 'Explore the advantages of IndexedDB over the Web Storage API as a more efficient and sophisticated alternative for storing structured data on the client, eliminating the need for repetitive JSON parsing and stringifying operations.'
 authors: ['dave-bitter']
 theme: 'blue'
