@@ -1,10 +1,20 @@
 ---
 import { Player } from '@lottiefiles/react-lottie-player';
 import logo from '@lottie/logo.json';
-import style from './Logo.module.css';
+import styles from './Logo.module.css';
 ---
 
-<a href="/" class={style.logoContainer}>
-  <Player client:load autoplay src={logo} className={style.logo} />
-  <div class={style.logoText}>tech_hub</div>
+<a href="/">
+  <Player client:load autoplay src={logo} className={styles.logo} />
+  <div class="logoText">tech_hub</div>
 </a>
+
+<style>
+  a {
+    @apply flex items-center gap-3;
+  }
+
+  .logoText {
+    @apply hidden h-6 items-center text-xl font-light sm:flex xl:text-2xl;
+  }
+</style>

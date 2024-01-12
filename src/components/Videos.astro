@@ -1,0 +1,23 @@
+---
+import VideoCard from './VideoCard.astro';
+
+interface Props {
+  videos: any[];
+}
+
+const { videos } = Astro.props;
+---
+
+<section>
+  {
+    videos.map((video) => (
+      <VideoCard video={video} class="md:shrink-0 md:w-[500px] md:mb-0 md:snap-center" />
+    ))
+  }
+</section>
+
+<style>
+  section {
+    @apply my-12 py-4 flex flex-col gap-4 flex-wrap items-center md:snap-x md:flex-row md:flex-nowrap md:gap-12 md:overflow-x-auto;
+  }
+</style>
