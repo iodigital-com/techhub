@@ -1,11 +1,11 @@
-import mdx from '@astrojs/mdx'
-import tailwind from '@astrojs/tailwind'
-import { defineConfig } from 'astro/config'
-import react from '@astrojs/react'
-import vercel from '@astrojs/vercel/serverless'
-import sitemap from '@astrojs/sitemap'
+import mdx from '@astrojs/mdx';
+import tailwind from '@astrojs/tailwind';
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import vercel from '@astrojs/vercel/serverless';
+import sitemap from '@astrojs/sitemap';
 
-import icon from 'astro-icon'
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,4 +22,4 @@ export default defineConfig({
   adapter: vercel(),
   output: 'hybrid',
   site: 'https://techhub.iodigital.com/',
-})
+});

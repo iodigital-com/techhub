@@ -8,11 +8,10 @@ export async function getStaticPaths() {
 
   return Promise.all(
     articles.map(async (article, index) => {
-      const series = await getSeries(articles, article)
-      const authors = await getEntries(article.data.authors)
-      const prevArticle = articles[index + 1] || null
-      const nextArticle = articles[index - 1] || null
-      console.log(series.length)
+      const series = await getSeries(articles, article);
+      const authors = await getEntries(article.data.authors);
+      const prevArticle = articles[index + 1] || null;
+      const nextArticle = articles[index - 1] || null;
 
       return {
         params: { slug: article.slug },
@@ -28,8 +27,16 @@ export async function getStaticPaths() {
   );
 }
 
-const { article, series, authors, nextArticle, prevArticle } = Astro.props
-const { Content } = await article.render()
+interface Props {
+  series: any;
+  prevArticle: any;
+  nextArticle: any;
+  authors: any;
+  article: any;
+}
+
+const { article, series, authors, nextArticle, prevArticle } = Astro.props;
+const { Content } = await article.render();
 ---
 
 <MarkdownArticleLayout
