@@ -1,27 +1,30 @@
 ---
 import { Image } from 'astro:assets';
-const { video } = Astro.props;
+const { video, class: className } = Astro.props;
 ---
 
-<a href={`/videos/${video.id}`}>
+<a href={`/videos/${video.id}`} class={className}>
   <article>
-    <header>
-      <h3 set:html={video.title} />
-      <p>{video.description}</p>
-    </header>
-
     <Image
       alt={video.title}
       src={video.thumbnails.default.url.replace('default', 'maxresdefault')}
       width={1280}
       height={720}
     />
+    <header>
+      <h3 set:html={video.title} />
+      <p>{video.description}</p>
+    </header>
   </article>
 </a>
 
 <style>
   a {
-    @apply relative flex flex-col-reverse items-center bg-gray-100 p-8;
+    @apply flex h-full bg-gray-100 p-8;
+  }
+
+  header {
+    @apply mt-8;
   }
 
   h3 {

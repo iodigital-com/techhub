@@ -1,0 +1,16 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import Contributor from './Contributor.astro';
+
+interface Props {
+  contributors: CollectionEntry<'authors'>[];
+}
+
+const { contributors } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-3 gap-y-8 mt-6 md:grid-cols-4 md:gap-y-10 lg:grid-cols-5 xl:grid-cols-6 lg:gap-y-12"
+>
+  {contributors.map((contributor) => <Contributor contributor={contributor} />)}
+</div>

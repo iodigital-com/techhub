@@ -1,0 +1,50 @@
+---
+import type { EventsType } from '@utils/events';
+import { formatDate } from '@utils/formatDate';
+import { truncate } from '@utils/truncate';
+import { Icon } from 'astro-icon/components';
+const EVENT_DESCRIPTION_MAX_LENGTH = 250;
+
+interface Props {
+  events: EventsType;
+}
+
+const { events } = Astro.props;
+---
+
+<div class="grid gap-4 gap-y-10 xl:grid-cols-3">
+  {
+    events.map((event) => (
+      <a
+        href={event.eventUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="border-t border-slate-200 pt-3"
+      >
+        <div class="text my-1.5 text-xl font-medium">{event.title}</div>
+        <div>
+          <div>
+            {formatDate(event.dateTime, { dateStyle: 'long', timeZone: event.timezone })},
+            <span>
+              {formatDate(event.dateTime, {
+                timeStyle: 'short',
+                timeZone: event.timezone,
+                hour12: false,
+              })}
+              -
+              {formatDate(event.endTime, {
+                timeStyle: 'short',
+                timeZone: event.timezone,
+                hour12: false,
+              })}
+            </span>
+            ({event.timezone})
+          </div>
+          <div>{event.groupName}</div>
+        </div>
+        <div>{truncate(event.description, EVENT_DESCRIPTION_MAX_LENGTH)}...</div>
+        <Icon size={24} name="external-link" class="text-gray-400" />
+      </a>
+    ))
+  }
+</div>

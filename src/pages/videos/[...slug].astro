@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { siteMetadata } from '@data/siteMetadata';
+import siteMetadata from '@data/siteMetadata';
 import { formatDate } from '@utils/formatDate';
 import { getAllVideos } from '@utils/videos';
 import { type InferGetStaticPropsType } from 'astro';
@@ -29,7 +29,7 @@ const descriptionArray = video.description.split('-');
         <p class="inline text-xl font-light">
           Published on
           <time class="inline font-light" datetime={video.publishedAt}>
-            {formatDate(video.publishedAt)}
+            {formatDate(video.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         </p>
       </div>

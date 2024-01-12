@@ -1,19 +1,21 @@
-import jobs from '@data/jobs.json';
+import jobs from '@data/jobs.ts';
 import stringSimilarity from 'string-similarity';
 
-export async function getAllJobs() {
+export function getAllJobs() {
   return jobs;
 }
 
-export async function getLatestJobs(num = 5) {
-  const { jobs } = await getAllJobs();
+export function getLatestJobs(num = 5) {
+  const { jobs } = getAllJobs();
   return {
-    jobs: jobs.sort((a, b) => new Date(b.published_at) - new Date(a.published_at)).slice(0, num),
+    jobs: jobs
+      .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
+      .slice(0, num),
   };
 }
 
-export async function getRelatedJobs(num = 5, searchString) {
-  const { jobs } = await getAllJobs();
+export function getRelatedJobs(num = 5, searchString: string) {
+  const { jobs } = getAllJobs();
 
   const jobResults = jobs.map((job) => {
     const tagString = job.tags.tag instanceof Array ? job.tags.tag.join(' ') : job.tags.tag || '';

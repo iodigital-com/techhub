@@ -1,17 +1,51 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import JobGrid from '@components/JobGrid';
-import MeetupsGrid from '@components/MeetupsGrid';
+import Jobs from '@components/Jobs.astro';
+import Events from '@components/Events.astro';
+import Videos from '@components/Videos.astro';
 import { getLatestJobs } from '@utils/jobs';
 import '../styles/global.css';
-import { getMeetups } from '@utils/meetups';
+import { getEvents } from '@utils/events';
+import { getLatestVideos } from '@utils/videos';
+import Contributors from '@components/Contributors.astro';
+import siteMetadata from '../data/siteMetadata';
+import { shuffle } from '../utils/shuffle';
 
-const title = 'Home Page';
-const { jobs } = await getLatestJobs(9);
-const events = await getMeetups();
+const authors = await getCollection('authors');
+const { jobs } = getLatestJobs(9);
+const { videos } = getLatestVideos(10);
+const events = getEvents();
 ---
 
-<BaseLayout title={title}>
-  <MeetupsGrid events={events} />
-  <JobGrid jobs={jobs} />
+<BaseLayout title={siteMetadata.author} description={siteMetadata.description}>
+  <h2>
+    Our amazing <span>writers</span> & <span>speakers</span>
+  </h2>
+  <Contributors contributors={shuffle(authors)} />
+
+  <h2>
+    Our latest <span>videos</span>
+  </h2>
+  <Videos videos={videos} />
+
+  <h2>
+    Our latest <span>events</span>
+  </h2>
+  <Events events={events} />
+
+  <h2>
+    Some of our <span>jobs</span>
+  </h2>
+  <Jobs jobs={jobs} />
 </BaseLayout>
+
+<style>
+  h2 {
+    @apply py-8 text-center text-3xl font-medium text-gray-900 sm:text-4xl md:text-7xl xl:col-span-3 xl:col-start-2;
+  }
+
+  span {
+    @apply font-serif font-light;
+  }
+</style>

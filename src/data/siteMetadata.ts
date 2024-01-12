@@ -1,4 +1,4 @@
-export const siteMetadata = {
+export default {
   title: 'iO tech_hub',
   author: 'iO tech_hub',
   headerTitle: 'tech_hub',

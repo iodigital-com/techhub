@@ -1,5 +1,5 @@
 ---
-import { formatDate } from '@utils/formatDate';
+import { formatDate } from '../../utils/formatDate';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
@@ -25,7 +25,13 @@ const { title, date, theme, summary, images } = data;
         By {authors.map((author) => author.data.name).join(', ')}
       </p>
       <time class="inline px-2 font-light" datetime={date}>
-        {formatDate(date)}
+        {
+          formatDate(date, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
       </time>
       <p class="inline pl-2 font-light">
         <!-- <Clock class="mr-2 inline w-4" /> -->

@@ -1350,4 +1350,4 @@ export default {
       id: 'Jc0byVRqa70',
     },
   ],
-} as const;
+};
