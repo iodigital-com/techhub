@@ -21,7 +21,7 @@ const getVideos = async () => {
       id: id.videoId,
     }));
 
-  fs.writeFileSync(path.resolve('data/youtube.json'), JSON.stringify({ videos }));
+  fs.writeFileSync(path.resolve('src/data/youtube.json'), JSON.stringify({ videos }));
 };
 
 getVideos();
