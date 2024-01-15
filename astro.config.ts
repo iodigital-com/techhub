@@ -6,6 +6,7 @@ import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
+import { remarkReadingTime } from './remark-reading-time';
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,6 +26,9 @@ export default defineConfig({
     }),
     icon(),
   ],
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
   adapter: vercel(),
   output: 'hybrid',
   site: 'https://techhub.iodigital.com/',
