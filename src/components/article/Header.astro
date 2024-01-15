@@ -1,5 +1,6 @@
 ---
-import { formatDate } from '../../utils/formatDate';
+import { formatDate } from '@utils/formatDate';
+import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
@@ -9,10 +10,11 @@ interface Props {
 }
 
 const {
-  article: { data },
+  article: { data, render },
   authors,
 } = Astro.props;
 const { title, date, theme, summary, images } = data;
+const { remarkPluginFrontmatter } = await render();
 ---
 
 <div class={`bg-io_${theme}-500 pb-14 pt-24 white ${images?.length > 0 ? 'mb-72' : 'mb-12'}`}>
@@ -25,17 +27,12 @@ const { title, date, theme, summary, images } = data;
         By {authors.map((author) => author.data.name).join(', ')}
       </p>
       <time class="inline px-2 font-light" datetime={date}>
-        {
-          formatDate(date, {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })
-        }
+        {formatDate(date)}
       </time>
       <p class="inline pl-2 font-light">
-        <!-- <Clock class="mr-2 inline w-4" /> -->
-        <!-- {readingTime.text} -->
+        <Icon name="clock" class="mr-2 inline w-4" />
+        {console.log(remarkPluginFrontmatter.minutesRead)}
+        {remarkPluginFrontmatter.minutesRead}
       </p>
     </div>
     <div class="grid grid-cols-4">
