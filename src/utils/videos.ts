@@ -1,8 +1,32 @@
-import videos from '@data/youtube';
+import videos from '@data/youtube.json';
 import stringSimilarity from 'string-similarity';
 
+interface Videos {
+  publishedAt: string;
+  channelId: string;
+  title: string;
+  description: string;
+  thumbnails: Thumbnails;
+  channelTitle: string;
+  liveBroadcastContent: string;
+  publishTime: string;
+  id: string;
+}
+
+interface Thumbnails {
+  default: Default;
+  medium: Default;
+  high: Default;
+}
+
+interface Default {
+  url: string;
+  width: number;
+  height: number;
+}
+
 export function getAllVideos() {
-  return videos;
+  return videos as { videos: Videos[] };
 }
 
 export function getLatestVideos(num = 5) {
