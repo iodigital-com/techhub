@@ -9,8 +9,6 @@ theme: 'blue'
 
 ## Table of Contents
 
-<TOCInline toc={props.toc} exclude={["Table of Contents"]} toHeading={2} />
-
 ## Background
 
 The functional programming[^1] paradigm[^2] has been around since the early 1930s.
