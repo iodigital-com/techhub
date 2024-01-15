@@ -40,7 +40,7 @@ const getJobs = async () => {
     }))
     .filter((job) => job.department === 'Technology');
 
-  fs.writeFileSync(path.resolve('data/jobs.json'), JSON.stringify({ jobs }));
+  fs.writeFileSync(path.resolve('src/data/jobs.json'), JSON.stringify({ jobs }));
 };
 
 getJobs();
