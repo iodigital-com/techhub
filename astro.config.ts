@@ -6,7 +6,7 @@ import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
-import { remarkReadingTime } from './remark-reading-time';
+import { remarkReadingTime } from './src/utils/remark-reading-time';
 
 // https://astro.build/config
 export default defineConfig({
