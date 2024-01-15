@@ -21,7 +21,7 @@ interface Props {
 
 const { article, series, authors, nextArticle, prevArticle } = Astro.props;
 const searchString = authors.map(({ data }) => data.occupation).join(' ');
-const { jobs } = await getRelatedJobs(4, searchString);
+const { jobs } = getRelatedJobs(4, searchString);
 const hasSerie = series?.articles?.length > 0;
 ---
 

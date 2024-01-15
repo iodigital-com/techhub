@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Article from '@components/Article.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import siteMetadata from '@data/siteMetadata';
+import Pagination from '../../components/Pagination.astro';
+import type { GetStaticPathsOptions, Page } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const articles = await getCollection('articles', ({ data }) => !data.hideInArticleList);
+  return paginate(articles, { pageSize: 10 });
+}
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={`Articles - ${siteMetadata.author}`} description={siteMetadata.description}>
+  <ul>
+    {
+      page.data.map((article) => (
+        <li>
+          <Article article={article} />
+        </li>
+      ))
+    }
+  </ul>
+  <Pagination page={page} />
+</BaseLayout>
