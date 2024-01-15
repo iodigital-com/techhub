@@ -13,6 +13,11 @@
     "format": "prettier . --write",
     "lint": "eslint src/**/*.{js,astro}"
   },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
+  },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/mdx": "^2.0.4",
