@@ -27,11 +27,16 @@ const { remarkPluginFrontmatter } = await render();
         By {authors.map((author) => author.data.name).join(', ')}
       </p>
       <time class="inline px-2 font-light" datetime={date}>
-        {formatDate(date)}
+        {
+          formatDate(date, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
       </time>
       <p class="inline pl-2 font-light">
         <Icon name="clock" class="mr-2 inline w-4" />
-        {console.log(remarkPluginFrontmatter.minutesRead)}
         {remarkPluginFrontmatter.minutesRead}
       </p>
     </div>
