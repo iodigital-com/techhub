@@ -6,38 +6,74 @@ import Events from '@components/Events.astro';
 import Videos from '@components/Videos.astro';
 import { getLatestJobs } from '@utils/jobs';
 import '../styles/global.css';
-import { getEvents } from '@utils/events';
+import { getLatestEvents } from '@utils/events';
 import { getLatestVideos } from '@utils/videos';
 import Contributors from '@components/Contributors.astro';
-import siteMetadata from '../data/siteMetadata';
-import { shuffle } from '../utils/shuffle';
+import siteMetadata from '@data/siteMetadata';
+import { shuffle } from '@utils/shuffle';
+import Article from '@components/Article.astro';
+import { Icon } from 'astro-icon/components';
 
 const authors = await getCollection('authors');
+const articles = await getCollection('articles', ({ data }) => !data.hideInArticleList);
 const { jobs } = getLatestJobs(9);
 const { videos } = getLatestVideos(10);
-const events = getEvents();
+const events = getLatestEvents(6);
 ---
 
 <BaseLayout title={siteMetadata.author} description={siteMetadata.description}>
-  <h2>
-    Our amazing <span>writers</span> & <span>speakers</span>
-  </h2>
-  <Contributors contributors={shuffle(authors)} />
+  <section>
+    <h2>Our latest <span>articles</span></h2>
+    <ul>
+      {
+        articles.slice(0, 5).map((article) => (
+          <li>
+            <Article article={article} />
+          </li>
+        ))
+      }
+    </ul>
 
-  <h2>
-    Our latest <span>videos</span>
-  </h2>
-  <Videos videos={videos} />
+    <footer>
+      <a href="/articles">
+        <span>All Posts</span>
+        <Icon name="arrow" />
+      </a>
+    </footer>
+  </section>
 
-  <h2>
-    Our latest <span>events</span>
-  </h2>
-  <Events events={events} />
+  <section>
+    <h2>Our amazing <span>writers</span> & <span>speakers</span></h2>
+    <Contributors contributors={shuffle(authors)} />
+  </section>
 
-  <h2>
-    Some of our <span>jobs</span>
-  </h2>
-  <Jobs jobs={jobs} />
+  <section>
+    <h2>Our latest <span>videos</span></h2>
+    <Videos videos={videos} />
+
+    <footer>
+      <a href="/videos">
+        <span>All Videos</span>
+        <Icon name="arrow" />
+      </a>
+    </footer>
+  </section>
+
+  <section>
+    <h2>Our latest <span>events</span></h2>
+    <Events events={events} />
+    <footer>
+      <a href="https://covenofwisdom.io" target="_blank">
+        <span>All Events</span>
+        <Icon name="external-link" />
+      </a>
+    </footer>
+  </section>
+
+  <section>
+    <h2>Some of our <span>jobs</span></h2>
+    <Jobs jobs={jobs} />
+  </section>
 </BaseLayout>
 
 <style>
@@ -47,5 +83,15 @@ const events = getEvents();
 
   span {
     @apply font-serif font-light;
+  }
+
+  section {
+    footer {
+      @apply flex justify-end;
+    }
+  }
+
+  a {
+    @apply flex gap-3 items-center border border-black py-2 px-6 rounded-3xl;
   }
 </style>

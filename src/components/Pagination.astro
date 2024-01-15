@@ -11,17 +11,17 @@ const { page } = Astro.props;
 
 <div class="pagination">
   <a href={page.url.prev} class:list={{ disabled: !page.url.prev }}>
-    <Icon name="arrow" class="mr-4 rotate-180" />
+    <Icon name="arrow" class="rotate-180" />
     <span>Previous</span>
   </a>
 
-  <span class="py-4 text-base font-bold leading-none">
+  <div class="pages">
     {page.currentPage} of {page.lastPage}
-  </span>
+  </div>
 
   <a href={page.url.next} class:list={{ disabled: !page.url.next }}>
     <span>Next</span>
-    <Icon name="arrow" class="ml-4" />
+    <Icon name="arrow" />
   </a>
 </div>
 
@@ -30,8 +30,12 @@ const { page } = Astro.props;
     @apply flex mx-auto items-center justify-between;
   }
 
+  .pages {
+    @apply font-bold;
+  }
+
   a {
-    @apply flex items-center border border-black py-2 px-6 rounded-3xl;
+    @apply flex gap-4 items-center border border-black py-2 px-6 rounded-3xl;
 
     &.disabled {
       @apply text-gray-400 border-gray-400;

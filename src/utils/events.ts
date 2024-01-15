@@ -1,4 +1,5 @@
 import events from '@data/events';
+import { getAllJobs } from '@utils/jobs.ts';
 
 export function getEvents() {
   const { upcomingEvents } = events;
@@ -7,6 +8,11 @@ export function getEvents() {
     const currentDate = Date.now();
     return eventDate >= currentDate;
   });
+}
+
+export function getLatestEvents(num = 5) {
+  const events = getEvents();
+  return events.slice(0, num);
 }
 
 export type EventsType = ReturnType<typeof getEvents>;
