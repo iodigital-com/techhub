@@ -27,8 +27,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-#      - name: Update YouTube data
-#        run: node src/scripts/youtube.cjs
+      - name: Update YouTube data
+        run: node src/scripts/youtube.cjs
       - name: Update Events data
         run: node src/scripts/events.cjs
       - name: Update Jobs data
@@ -40,4 +40,4 @@ jobs:
           default_author: github_actions
           new_branch: 'master'
           commit: '--no-verify'
-          message: 'chore(data): update YouTube and jobs files'
+          message: 'chore(data): update data files'
