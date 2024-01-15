@@ -1,0 +1,40 @@
+---
+import type { Page } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
+---
+
+<div class="pagination">
+  <a href={page.url.prev} class:list={{ disabled: !page.url.prev }}>
+    <Icon name="arrow" class="mr-4 rotate-180" />
+    <span>Previous</span>
+  </a>
+
+  <span class="py-4 text-base font-bold leading-none">
+    {page.currentPage} of {page.lastPage}
+  </span>
+
+  <a href={page.url.next} class:list={{ disabled: !page.url.next }}>
+    <span>Next</span>
+    <Icon name="arrow" class="ml-4" />
+  </a>
+</div>
+
+<style>
+  .pagination {
+    @apply flex mx-auto items-center justify-between;
+  }
+
+  a {
+    @apply flex items-center border border-black py-2 px-6 rounded-3xl;
+
+    &.disabled {
+      @apply text-gray-400 border-gray-400;
+    }
+  }
+</style>
