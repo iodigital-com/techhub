@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import { remarkReadingTime } from './src/utils/remark-reading-time';
+import remarkToc from 'remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,7 +28,7 @@ export default defineConfig({
     icon(),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkToc],
   },
   adapter: vercel(),
   output: 'hybrid',
