@@ -1,8 +1,35 @@
-import jobs from '@data/jobs.ts';
+import jobs from '@data/jobs.json';
 import stringSimilarity from 'string-similarity';
 
+interface Jobs {
+  id: string;
+  title: string;
+  location: string;
+  country: string;
+  city: string;
+  postal_code: string;
+  country_code: string;
+  department: string;
+  employment_type: string;
+  category: string;
+  experience: string;
+  education: string;
+  tags: Tags;
+  min_hours: any;
+  max_hours: any;
+  careers_url: string;
+  created_at: string;
+  updated_at: string;
+  published_at: string;
+  closed: string;
+}
+
+interface Tags {
+  tag: string | string[];
+}
+
 export function getAllJobs() {
-  return jobs;
+  return jobs as { jobs: Jobs[] };
 }
 
 export function getLatestJobs(num = 5) {

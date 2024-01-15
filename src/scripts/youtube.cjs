@@ -8,15 +8,13 @@ const getVideos = async () => {
   const baseURL = 'https://www.googleapis.com/youtube/v3/';
   const channelId = 'UCNhy3hGzwMfbtX3Ei8Htcpg';
 
-  const data = await fetch(
+  const { items } = await fetch(
     `${baseURL}search?maxResults=100&part=snippet&order=date&channelId=${channelId}&key=${process.env.YOUTUBE_API_KEY}`
   )
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
-  console.log(data);
-
-  const videos = data.items
+  const videos = items
     .filter(({ snippet, id }) => id.kind === 'youtube#video' && snippet.title !== 'Private video')
     .map(({ id, snippet }) => ({
       ...snippet,
