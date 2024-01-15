@@ -1,28 +1,28 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 
-import JobGrid from '@components/JobGrid'
-import Author from '@components/article/Author.astro'
-import { getRelatedJobs } from '@utils/jobs'
-import BaseLayout from './BaseLayout.astro'
+import JobGrid from '@components/JobGrid';
+import Author from '@components/article/Author.astro';
+import { getRelatedJobs } from '@utils/jobs';
+import BaseLayout from './BaseLayout.astro';
 
-import Header from '@components/article/Header.astro'
-import Series from '@components/article/Series.astro'
-import type { CollectionEntry } from 'astro:content'
-import type { Serie } from '@types'
+import Header from '@components/article/Header.astro';
+import Series from '@components/article/Series.astro';
+import type { CollectionEntry } from 'astro:content';
+import type { Serie } from '@types';
 
 interface Props {
-  article: CollectionEntry<'articles'>
-  nextArticle: CollectionEntry<'articles'>
-  prevArticle: CollectionEntry<'articles'>
-  series: Serie
-  authors: CollectionEntry<'authors'>[]
+  article: CollectionEntry<'articles'>;
+  nextArticle: CollectionEntry<'articles'>;
+  prevArticle: CollectionEntry<'articles'>;
+  series: Serie;
+  authors: CollectionEntry<'authors'>[];
 }
 
-const { article, series, authors, nextArticle, prevArticle } = Astro.props
-const searchString = authors.map(({ data }) => data.occupation).join(' ')
-const { jobs } = await getRelatedJobs(4, searchString)
-const hasSerie = series?.articles?.length > 0
+const { article, series, authors, nextArticle, prevArticle } = Astro.props;
+const searchString = authors.map(({ data }) => data.occupation).join(' ');
+const { jobs } = await getRelatedJobs(4, searchString);
+const hasSerie = series?.articles?.length > 0;
 ---
 
 <BaseLayout title={article.data.title} description={article.data.summary}>
