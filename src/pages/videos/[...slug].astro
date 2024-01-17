@@ -2,11 +2,11 @@
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { formatDate } from '@utils/formatDate';
-import { getAllVideos } from '@utils/videos';
 import { type InferGetStaticPropsType } from 'astro';
+import { getVideos } from '../../utils/videos';
 
 export function getStaticPaths() {
-  const { videos } = getAllVideos();
+  const videos = getVideos();
   return videos.map((video) => ({
     params: { slug: video.id },
     props: {

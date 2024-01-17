@@ -4,7 +4,7 @@ date: '2020-10-15'
 summary: 'What products provide out-of-the-box SSO solutions and how do they differ from each other?'
 authors: ['daan-beulen', 'mark-van-der-linden']
 theme: 'blue'
-serie: 'a-deep-dive-into-single-sing-on'
+series: 'a-deep-dive-into-single-sing-on'
 canonicalUrl: 'https://www.iodigital.com/en/history/isaac/an-overview-of-sso-products'
 ---
 

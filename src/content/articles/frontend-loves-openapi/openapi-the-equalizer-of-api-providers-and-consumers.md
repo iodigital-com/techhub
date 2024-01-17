@@ -3,7 +3,7 @@ title: 'OpenAPI, the equalizer of API providers and consumers'
 date: '2023-01-31'
 summary: "How would you incorporate OpenAPI within your project? In this chapter, we'll explore the two main approaches to using OpenAPI and the benefits of each workflow."
 authors: ['maarten-van-hoof']
-serie: 'frontend-loves-openapi'
+series: 'frontend-loves-openapi'
 ---
 
 In the [previous part of this series](let-us-introduce-you-to-openapi), we explored the OpenAPI specification and how it can be used to document RESTful API providers and consumers. In this chapter, we'll explore the two main approaches that we can incorporate in to our daily workflows to optimize our API provider's and consumer's development process.

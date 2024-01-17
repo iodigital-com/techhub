@@ -5,7 +5,7 @@ images: ['../images/getting-started-with-trpc/hero.png']
 summary: "There's nothing quite like the feeling of finally getting your front-end and back-end types to match up. After hours of slacking, emailing, and going through documentation, you finally have it! But that feeling doesn't last long, because you realize the back-end had some type changes, which broke your front-end again! Well, here is where tRPC comes into play."
 authors: ['zjerlondy-ferero']
 theme: 'beige'
-serie: 'getting-started-with-trpc'
+series: 'getting-started-with-trpc'
 ---
 
 [tRPC](https://trpc.io/) is a lightweight library that allows you to create fully typesafe APIs without schemas or code generation. It provides end-to-end typing, which means that types can be shared between the server and client(s). This results in fewer bugs and less boilerplate code.

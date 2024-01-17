@@ -1,25 +1,31 @@
 ---
 import ArticleLayout from '@layouts/ArticleLayout.astro';
-import { type Serie } from '@types';
-import { getSeries } from '@utils/content-collections.util';
-import { getCollection, getEntries, type CollectionEntry } from 'astro:content';
+import { getArticles, type Article } from '@utils/articles';
+import { getAuthorEntries, type Authors } from '@utils/authors';
+import { getSeries, type Serie } from '@utils/series';
 
 export async function getStaticPaths() {
-  const articles = await getCollection('articles');
+  const articles = await getArticles();
+  const series = await getSeries();
 
   return Promise.all(
     articles.map(async (article, index) => {
-      const series = await getSeries(articles, article);
-      const authors = await getEntries(article.data.authors);
-      const previousArticle = articles[index - 1] || null;
-      const nextArticle = articles[index + 1] || null;
+      const slug = article.slug.replace('/articles/', '');
+      const articleSeries = series.find(
+        (serie) => article.data.series === serie.slug.replace('/series/', '')
+      );
+
+      // TODO: Fix types
+      const authors = await getAuthorEntries(article.data.authors as any);
+      const previousArticle = articles[index + 1] || null;
+      const nextArticle = articles[index - 1] || null;
 
       return {
-        params: { slug: article.slug },
+        params: { slug },
         props: {
           article,
           authors,
-          series,
+          series: articleSeries,
           previousArticle,
           nextArticle,
         },
@@ -30,10 +36,10 @@ export async function getStaticPaths() {
 
 interface Props {
   series: Serie;
-  previousArticle: CollectionEntry<'articles'>;
-  nextArticle: CollectionEntry<'articles'>;
-  authors: CollectionEntry<'authors'>[];
-  article: CollectionEntry<'articles'>;
+  previousArticle: Article;
+  nextArticle: Article;
+  authors: Authors;
+  article: Article;
 }
 
 const { article, series, authors, nextArticle, previousArticle } = Astro.props;

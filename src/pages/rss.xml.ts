@@ -1,15 +1,15 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { getArticles } from '@utils/articles.ts';
 
 export async function GET(context: any) {
-  const articles = await getCollection('articles');
+  const articles = await getArticles();
 
   const items = articles
     .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
     .map(({ data: { date, title, summary }, slug }) => ({
       title,
       description: summary,
-      link: `/articles/${slug}`,
+      link: slug,
       pubDate: new Date(date),
     }));
 

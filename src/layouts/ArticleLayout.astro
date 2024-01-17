@@ -1,28 +1,29 @@
 ---
 import { Markdown } from '@astropub/md';
+import JobGrid from '@components/Jobs.astro';
 import ScrollTopButton from '@components/ScrollTopButton.astro';
 import Author from '@components/article/Author.astro';
 import Header from '@components/article/Header.astro';
 import Series from '@components/article/Series.astro';
-import type { Serie } from '@types';
-import { getRelatedJobs } from '@utils/jobs';
+import { type Article } from '@utils/articles';
+import { type Authors } from '@utils/authors';
+import { type Serie } from '@utils/series';
 import { Icon } from 'astro-icon/components';
-import type { CollectionEntry } from 'astro:content';
-import JobGrid from '../components/Jobs.astro';
+import { getRelatedJobs } from '../utils/jobs';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
-  article: CollectionEntry<'articles'>;
-  nextArticle: CollectionEntry<'articles'>;
-  previousArticle: CollectionEntry<'articles'>;
+  article: Article;
+  nextArticle: Article;
+  previousArticle: Article;
   series: Serie;
-  authors: CollectionEntry<'authors'>[];
+  authors: Authors;
 }
 
 const { article, series, authors, nextArticle, previousArticle } = Astro.props;
 const searchString = authors.map(({ data }) => data.occupation).join(' ');
-const { jobs } = getRelatedJobs(4, searchString);
-const hasSerie = series?.articles?.length > 0;
+const jobs = getRelatedJobs(4, searchString);
+const hasSeries = series?.articles?.length > 0;
 const theme = article.data.theme;
 ---
 
@@ -44,7 +45,7 @@ const theme = article.data.theme;
       </ul>
 
       {
-        hasSerie && (
+        hasSeries && (
           <div class="py-4 xl:py-8">
             <h2 class="mb-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
               Part of series
@@ -63,7 +64,7 @@ const theme = article.data.theme;
                   Previous Article
                 </h2>
                 <div>
-                  <a href={`/articles/${previousArticle.slug}`}>
+                  <a href={previousArticle.slug}>
                     <Markdown of={previousArticle.data.title} />
                   </a>
                 </div>
@@ -75,7 +76,7 @@ const theme = article.data.theme;
                   Next Article
                 </h2>
                 <div>
-                  <a href={`/articles/${nextArticle.slug}`}>
+                  <a href={nextArticle.slug}>
                     <Markdown of={nextArticle.data.title} />
                   </a>
                 </div>

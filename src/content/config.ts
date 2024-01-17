@@ -11,7 +11,7 @@ const articlesCollection = defineCollection({
       summary: z.string(),
       authors: z.array(reference('authors')),
       theme: z.enum(ALLOWED_THEMES).optional(),
-      serie: z.string().optional(),
+      series: z.string().optional(),
       canonicalUrl: z.string().optional(),
       hideInArticleList: z.boolean().optional(),
     }),
@@ -46,13 +46,15 @@ const talksCollection = defineCollection({
 
 const seriesCollection = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string(),
-    date: z.string(),
-    summary: z.string(),
-    authors: z.array(reference('authors')),
-    theme: z.enum(ALLOWED_THEMES).optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.string(),
+      summary: z.string(),
+      authors: z.array(reference('authors')),
+      theme: z.enum(ALLOWED_THEMES).optional(),
+      images: z.array(image()).default([]),
+    }),
 });
 
 export const collections = {

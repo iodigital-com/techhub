@@ -5,7 +5,7 @@ images: ['../images/how-do-i-build-a-component-library/linting-testing/linting-t
 summary: 'How to build a component library Part 3: Setting up linting, unit, snapshot and visual regression testing.'
 authors: ['dave-bitter']
 theme: 'blue'
-serie: 'how-do-i-build-a-component-library'
+series: 'how-do-i-build-a-component-library'
 ---
 
 <div className="p-4 bg-io_blue-100">_This article is part 3 of the series [How do I build a Component Library?](/series/how-do-i-build-a-component-library). You can find the demo repository for this series on [GitHub](https://github.com/DaveBitter/fe-monorepo) and the component library itself hosted [here](https://fe-monorepo.davebitter.com/)._</div>

@@ -1,13 +1,15 @@
 ---
 import { Markdown } from '@astropub/md';
+import { type Article } from '@utils/articles';
+import { type Authors } from '@utils/authors';
 import { formatDate } from '@utils/formatDate';
+import { type Serie } from '@utils/series';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  article: CollectionEntry<'articles'>;
-  authors: CollectionEntry<'authors'>[];
+  article: Article | Serie;
+  authors: Authors;
 }
 
 const {

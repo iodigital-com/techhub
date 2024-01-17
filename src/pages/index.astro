@@ -7,17 +7,17 @@ import Videos from '@components/Videos.astro';
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getLatestArticles } from '@utils/articles';
-import { getAllAuthors } from '@utils/authors';
+import { getAuthors } from '@utils/authors';
 import { getLatestEvents } from '@utils/events';
-import { getLatestJobs } from '@utils/jobs';
-import { getLatestVideos } from '@utils/videos';
 import { Icon } from 'astro-icon/components';
 import '../styles/global.css';
+import { getLatestJobs } from '../utils/jobs';
+import { getLatestVideos } from '../utils/videos';
 
-const authors = await getAllAuthors();
+const authors = await getAuthors();
 const articles = await getLatestArticles(5);
-const { jobs } = getLatestJobs(9);
-const { videos } = getLatestVideos(10);
+const jobs = getLatestJobs(9);
+const videos = getLatestVideos(10);
 const events = getLatestEvents(6);
 ---
 

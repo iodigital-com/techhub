@@ -4,7 +4,7 @@ date: '2022-11-07 15:40:00'
 summary: ''
 authors: ['saeed-salehi']
 theme: 'blue'
-serie: 'az-204-cheatsheets'
+series: 'az-204-cheatsheets'
 hideInArticleList: true
 ---
 

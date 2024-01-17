@@ -3,7 +3,7 @@ title: 'Real live example of OpenAPI in a front-end project'
 date: '2023-02-03'
 summary: ''
 authors: ['maarten-van-hoof']
-serie: 'frontend-loves-openapi'
+series: 'frontend-loves-openapi'
 ---
 
 In the previous parts of this series, we introduced you to the OpenAPI specification, how to describe an API provider in an OpenAPI document, the approaches we can take incorporating it on workflows helping us build and integrate with RESTful APIs, and the tooling that is available to optimise our OpenAPI workflows. In this final part of the series, we will show you how we can use OpenAPI in a front-end monorepo project.

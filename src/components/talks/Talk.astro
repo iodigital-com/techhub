@@ -1,23 +1,25 @@
 ---
+import { getAuthorEntries } from '@utils/authors';
+import { type Talk } from '@utils/talks';
 import { Image } from 'astro:assets';
-import { getEntries, type CollectionEntry } from 'astro:content';
+
 interface Props {
-  talk: CollectionEntry<'talks'>;
+  talk: Talk;
 }
 
 const { talk } = Astro.props;
-
-const authors = await getEntries(talk.data.authors);
+// TODO: Correct type
+const authors = await getAuthorEntries(talk.data.authors as any);
 ---
 
 <article class="flex flex-col h-full border-b-slate-200 border-b-2 pb-5">
-  <a href={`/talks/${talk.slug}`}>
+  <a href={talk.slug}>
     <h2 class="text-2xl">{talk.data.title}</h2>
   </a>
   <p class="my-2 line-clamp-3">
     {talk.data.summary}
   </p>
-  <a href={`/talks/${talk.slug}`} class="flex py-2">
+  <a href={talk.slug} class="flex py-2">
     <span>Read more</span>
     <svg width="14" viewBox="0 0 26 16" xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6"
       ><path
@@ -28,15 +30,15 @@ const authors = await getEntries(talk.data.authors);
   <ul class="mt-auto flex flex-col gap-5">
     {
       authors.map((author) => (
-        <>
-          <li class="flex gap-2 items-center">
+        <li>
+          <a href={author.slug} class="flex gap-2 items-center">
             <Image src={author.data.avatar} alt={author.data.name} class="w-8 h-8 rounded-full" />
             <div class="flex flex-col">
               <div class="text-sm">{author.data.name}</div>
               <div class="text-sm">{author.data.occupation}</div>
             </div>
-          </li>
-        </>
+          </a>
+        </li>
       ))
     }
   </ul>

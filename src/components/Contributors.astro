@@ -1,9 +1,9 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import { type Authors } from '@utils/authors';
 import Contributor from './Contributor.astro';
 
 interface Props {
-  contributors: CollectionEntry<'authors'>[];
+  contributors: Authors;
 }
 
 const { contributors } = Astro.props;
