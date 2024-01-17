@@ -1,12 +1,11 @@
 ---
+import { type Authors } from '@utils/authors';
+import { type Talk } from '@utils/talks';
 import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
-
-import type { CollectionEntry } from 'astro:content';
-
 interface Props {
-  talk: CollectionEntry<'talks'>;
-  authors: CollectionEntry<'authors'>[];
+  talk: Talk;
+  authors: Authors;
 }
 
 const { talk, authors } = Astro.props;

@@ -1,8 +1,8 @@
 ---
 import { Markdown } from '@astropub/md';
 import type { Article } from '@utils/articles';
+import { getAuthorEntries } from '@utils/authors';
 import { formatDate } from '@utils/formatDate';
-import { getEntries } from 'astro:content';
 import Contributor from './Contributor.astro';
 
 interface Props {
@@ -10,7 +10,8 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const authors = await getEntries(article.data.authors);
+// TODO: fix any
+const authors = await getAuthorEntries(article.data.authors as any);
 ---
 
 <div class="grid grid-cols-12 my-10 bg-slate-200 p-5 rounded-lg">
