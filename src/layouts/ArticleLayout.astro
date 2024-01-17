@@ -1,5 +1,6 @@
 ---
 import { Markdown } from '@astropub/md';
+import ScrollTopButton from '@components/ScrollTopButton.astro';
 import Author from '@components/article/Author.astro';
 import Header from '@components/article/Header.astro';
 import Series from '@components/article/Series.astro';
@@ -26,6 +27,7 @@ const theme = article.data.theme;
 ---
 
 <BaseLayout title={article.data.title} description={article.data.summary}>
+  <ScrollTopButton />
   <Header slot="pageHeader" client:load article={article} authors={authors} />
   <article class="grid grid-col-5 gap-10 my-10">
     <div class="col-start-1 col-end-2 max-w-96">
