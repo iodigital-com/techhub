@@ -11,8 +11,8 @@
       "@icons/*": ["src/icons/*"],
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
-      "@types": ["src/types.ts"],
       "@constants/*": ["src/constants/*"]
     }
-  }
+  },
+  "exclude": ["dist"]
 }

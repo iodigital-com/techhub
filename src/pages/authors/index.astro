@@ -2,9 +2,9 @@
 import Contributors from '@components/Contributors.astro';
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getAllAuthors } from '@utils/authors';
+import { getAuthors } from '@utils/authors';
 
-const authors = await getAllAuthors();
+const authors = await getAuthors();
 ---
 
 <BaseLayout title={`Authors - ${siteMetadata.author}`} description={siteMetadata.description}>

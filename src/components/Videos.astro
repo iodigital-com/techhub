@@ -1,9 +1,9 @@
 ---
-import { type Videos } from '@utils/videos';
+import { type Videos } from '../utils/videos';
 import VideoCard from './VideoCard.astro';
 
 interface Props {
-  videos: Videos[];
+  videos: Videos;
 }
 
 const { videos } = Astro.props;

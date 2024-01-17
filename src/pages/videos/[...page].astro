@@ -2,13 +2,13 @@
 import VideoCard from '@components/VideoCard.astro';
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getAllVideos } from '@utils/videos';
 import type { Page } from 'astro';
 import { type GetStaticPathsOptions } from 'astro';
 import Pagination from '../../components/Pagination.astro';
+import { getVideos } from '../../utils/videos';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const { videos } = getAllVideos();
+  const videos = getVideos();
   return paginate(videos, { pageSize: 15 });
 }
 

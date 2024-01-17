@@ -1,10 +1,10 @@
 ---
 import AuthorSocials from '@components/AuthorSocials.astro';
+import { type Author } from '@utils/authors';
 import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  author: CollectionEntry<'authors'>;
+  author: Author;
 }
 
 const { author } = Astro.props;
@@ -30,7 +30,7 @@ const socials = {
     />
   </div>
   <div class="flex flex-col justify-center gap-2">
-    <a class="text-io_green-600 hover:text-io_green-700 text-lg" href={`/authors/${author.slug}`}>
+    <a class="text-io_green-600 hover:text-io_green-700 text-lg" href={author.slug}>
       {author.data.name}
     </a>
     <AuthorSocials socials={socials} name={author.data.name} renderAxis="vertical" />

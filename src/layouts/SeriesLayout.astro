@@ -1,25 +1,25 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 import { Markdown } from '@astropub/md';
+import JobGrid from '@components/Jobs.astro';
 import ScrollTopButton from '@components/ScrollTopButton.astro';
 import Author from '@components/article/Author.astro';
 import Header from '@components/article/Header.astro';
-import { getRelatedJobs } from '@utils/jobs';
-import type { CollectionEntry } from 'astro:content';
-import JobGrid from '../components/Jobs.astro';
+import { type Authors } from '@utils/authors';
+import { type Serie } from '@utils/series';
+import { Icon } from 'astro-icon/components';
+import { getRelatedJobs } from '../utils/jobs';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
-  nextSeries: CollectionEntry<'series'>;
-  previousSeries: CollectionEntry<'series'>;
-  authors: CollectionEntry<'authors'>[];
-  series: CollectionEntry<'articles'>;
+  nextSeries: Serie;
+  previousSeries: Serie;
+  authors: Authors;
+  series: Serie;
 }
 
 const { series, authors, nextSeries, previousSeries } = Astro.props;
 const searchString = authors.map(({ data }) => data.occupation).join(' ');
-const { jobs } = getRelatedJobs(4, searchString);
+const jobs = getRelatedJobs(4, searchString);
 ---
 
 <BaseLayout title={series.data.title} description={series.data.summary}>
@@ -48,7 +48,7 @@ const { jobs } = getRelatedJobs(4, searchString);
                   Previous Series
                 </h2>
                 <div>
-                  <a href={`/series/${previousSeries.slug}`}>
+                  <a href={previousSeries.slug}>
                     <Markdown of={previousSeries.data.title} />
                   </a>
                 </div>
@@ -60,7 +60,7 @@ const { jobs } = getRelatedJobs(4, searchString);
                   Next Series
                 </h2>
                 <div>
-                  <a href={`/series/${nextSeries.slug}`}>
+                  <a href={nextSeries.slug}>
                     <Markdown of={nextSeries.data.title} />
                   </a>
                 </div>

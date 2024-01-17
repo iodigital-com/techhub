@@ -1,26 +1,24 @@
 ---
 import SeriesArticles from '@components/SeriesArticles.astro';
 import SeriesLayout from '@layouts/SeriesLayout.astro';
-import { getAllArticles } from '@utils/articles';
-import { getAllSeries } from '@utils/series';
-import { getEntries, type CollectionEntry } from 'astro:content';
+import { type Articles } from '@utils/articles';
+import { type Authors } from '@utils/authors';
+import { getSeries, type Serie } from '@utils/series';
 
 export async function getStaticPaths() {
-  const series = await getAllSeries();
+  const series = await getSeries();
 
   return Promise.all(
     series.map(async (serie, index) => {
       const slug = serie.slug.replace('/series/', '');
-      const articles = (await getAllArticles()).filter((article) => article.data.serie === slug);
-      const authors = await getEntries(serie.data.authors);
-      const previousSeries = series[index - 1] || null;
-      const nextSeries = series[index + 1] || null;
+      const previousSeries = series[index + 1] || null;
+      const nextSeries = series[index - 1] || null;
 
       return {
         params: { slug },
         props: {
-          articles,
-          authors,
+          articles: serie.articles,
+          authors: serie.authors,
           series: serie,
           previousSeries,
           nextSeries,
@@ -31,11 +29,11 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  nextSeries: CollectionEntry<'series'>;
-  previousSeries: CollectionEntry<'series'>;
-  authors: CollectionEntry<'authors'>[];
-  series: CollectionEntry<'articles'>;
-  articles: CollectionEntry<'articles'>[];
+  nextSeries: Serie;
+  previousSeries: Serie;
+  authors: Authors;
+  series: Serie;
+  articles: Articles;
 }
 
 const { articles, series, authors, nextSeries, previousSeries } = Astro.props;

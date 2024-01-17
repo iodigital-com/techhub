@@ -1,11 +1,11 @@
 ---
+import Talk from '@components/talks/Talk.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getTalks } from '@utils/talks';
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import Talk from '../../components/talks/Talk.astro';
 import talksImage from '../../images/talks.jpg';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const talks = await getCollection('talks');
+const talks = await getTalks();
 
 const emailError = 'Please enter a valid email address';
 const errors = { firstName: '', lastName: '', email: '', permission: '' };

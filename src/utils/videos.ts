@@ -1,63 +1,33 @@
 import videos from '@data/youtube.json';
-import stringSimilarity from 'string-similarity';
 import { getDateTime } from '@utils/getDateTime.ts';
 
-export interface Videos {
+export const getVideos = () =>
+  (videos.videos as Videos).toSorted(
+    (a, b) => getDateTime(b.publishedAt) - getDateTime(a.publishedAt)
+  );
+
+export const getLatestVideos = (num = 5) => getVideos().slice(0, num);
+
+export interface Video {
   publishedAt: string;
   channelId: string;
   title: string;
   description: string;
-  thumbnails: Thumbnails;
+  thumbnails: {
+    default: Thumbnail;
+    medium: Thumbnail;
+    high: Thumbnail;
+  };
   channelTitle: string;
   liveBroadcastContent: string;
   publishTime: string;
   id: string;
 }
 
-interface Thumbnails {
-  default: Default;
-  medium: Default;
-  high: Default;
-}
-
-interface Default {
+interface Thumbnail {
   url: string;
   width: number;
   height: number;
 }
 
-export function getAllVideos() {
-  return videos as { videos: Videos[] };
-}
-
-export function getLatestVideos(num = 5) {
-  const { videos } = getAllVideos();
-  return {
-    videos: videos
-      .toSorted((a, b) => getDateTime(b.publishedAt) - getDateTime(a.publishedAt))
-      .slice(0, num),
-  };
-}
-
-export function getRelatedVideos(num = 5, searchString: string) {
-  const { videos } = getAllVideos();
-
-  const videoResults = videos.map((video) => {
-    const titleAndDescription = `${video.title} || ${video.description}`;
-    const result = stringSimilarity.compareTwoStrings(searchString, titleAndDescription);
-
-    return {
-      video,
-      score: result,
-    };
-  });
-
-  const bestMatches = videoResults
-    .sort((a, b) => b.score - a.score)
-    .map((a) => a.video)
-    .slice(0, num);
-
-  return {
-    videos: bestMatches,
-  };
-}
+export type Videos = Video[];

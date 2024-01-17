@@ -3,7 +3,7 @@ title: 'OpenAPI, a contract for RESTFul APIs'
 date: '2023-01-07'
 summary: 'To optimize project effeciency and to ensure a good communication between teams, we need contracts for our APIs. In this article, I will explain what the OpenAPI specification is and how it can help us to create contracts for our RESTful APIs.'
 authors: ['maarten-van-hoof']
-serie: 'frontend-loves-openapi'
+series: 'frontend-loves-openapi'
 ---
 
 Dag beste lezer, bonne journée, cher lecteur or Good day, dear reader.

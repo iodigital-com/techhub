@@ -4,7 +4,7 @@ date: '2021-02-26'
 summary: 'SSO solutions can be implemented to tackle a great number of use cases'
 authors: ['daan-beulen', 'mark-van-der-linden']
 theme: 'blue'
-serie: 'a-deep-dive-into-single-sing-on'
+series: 'a-deep-dive-into-single-sing-on'
 ---
 
 In the second part of our blog series we've taken a look at some of the market leaders in the SSO space at the moment and what their products offer. In the third and final part of our blog series, we're going to be taking a look at these products in action. We'll be taking a deep dive into a couple of real, anonymized use cases that we've implemented.

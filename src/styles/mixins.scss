@@ -1,4 +1,4 @@
-$themes: green, beige, blue, pink;
+$themes: 'green', 'beige', 'blue', 'pink';
 
 @mixin applyTheme($selector, $property: 'bg') {
   body {

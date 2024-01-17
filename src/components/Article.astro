@@ -24,7 +24,7 @@ const authors = await getEntries(article.data.authors);
       <a href={article.slug}>
         <Markdown of={article.data.title} />
       </a>
-      {article.data.serie && <span class="text-sm text-slate-500">SERIES</span>}
+      {article.data.series && <span class="text-sm text-slate-500">SERIES</span>}
     </h1>
 
     <p class="text-base">{article.data.summary}</p>

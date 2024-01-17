@@ -1,28 +1,34 @@
 ---
-import { getCollection } from 'astro:content';
-import MarkdownAuthorLayout from '../../layouts/AuthorLayout.astro';
+import AuthorLayout from '@layouts/AuthorLayout.astro';
+import { getArticles } from '@utils/articles';
+import { getAuthorCollection } from '@utils/authors';
+import { getTalks } from '@utils/talks';
 
 export async function getStaticPaths() {
-  const authors = await getCollection('authors');
+  const authors = await getAuthorCollection();
+  const articles = await getArticles();
+  const talks = await getTalks();
 
   return Promise.all(
     authors.map(async (author) => {
-      const articles = await getCollection('articles', (article) => {
-        const articleAuthorSlugs = article.data.authors.map(({ slug }) => slug);
-        return articleAuthorSlugs.includes(author.slug);
+      const slug = author.slug.replace('/authors/', '');
+
+      const authorArticles = articles.filter(({ data }) => {
+        const authorSlugs = data.authors.map(({ slug }) => slug as string);
+        return authorSlugs.includes(slug);
       });
 
-      const talks = await getCollection('talks', (talk) => {
-        const talkAuthorSlugs = talk.data.authors.map(({ slug }) => slug);
-        return talkAuthorSlugs.includes(author.slug);
+      const authorTalks = talks.filter(({ data }) => {
+        const authorSlugs = data.authors.map(({ slug }) => slug as string);
+        return authorSlugs.includes(slug);
       });
 
       return {
-        params: { slug: author.slug },
+        params: { slug },
         props: {
           author,
-          articles,
-          talks,
+          articles: authorArticles,
+          talks: authorTalks,
         },
       };
     })
@@ -33,6 +39,6 @@ const { author, articles, talks } = Astro.props;
 const { Content } = await author.render();
 ---
 
-<MarkdownAuthorLayout author={author} articles={articles} talks={talks}>
+<AuthorLayout author={author} articles={articles} talks={talks}>
   <Content />
-</MarkdownAuthorLayout>
+</AuthorLayout>

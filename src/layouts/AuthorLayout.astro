@@ -1,16 +1,17 @@
 ---
+import Article from '@components/Article.astro';
 import AuthorSocials from '@components/AuthorSocials.astro';
+import Talk from '@components/talks/Talk.astro';
+import { type Articles } from '@utils/articles';
+import { type Author } from '@utils/authors';
+import { type Talks } from '@utils/talks';
+import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 
-import Article from '@components/Article.astro';
-import Talk from '@components/talks/Talk.astro';
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-
 interface Props {
-  author: CollectionEntry<'authors'>;
-  articles: CollectionEntry<'articles'>[];
-  talks: CollectionEntry<'talks'>[];
+  author: Author;
+  articles: Articles;
+  talks: Talks;
 }
 
 const { author, articles, talks } = Astro.props;

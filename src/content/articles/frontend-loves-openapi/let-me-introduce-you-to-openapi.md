@@ -3,7 +3,7 @@ title: 'Let me introduce you to OpenAPI'
 date: '2023-01-11'
 summary: 'OpenAPI allows us to improve effeciency between teams and interdependent projects. It allows us to describe our API in a single document. In this part of the series, we will take you through the most important parts of an OpenAPI document.'
 authors: ['maarten-van-hoof']
-serie: 'frontend-loves-openapi'
+series: 'frontend-loves-openapi'
 ---
 
 [In the previous part of this series](openapi-a-contract-for-rest-ful-apis), we introduced you to the purpose of contracts between API providers and consumers. This visibility allows us to improve efficiency between teams and interdependent projects, wether that be internal or external projects.

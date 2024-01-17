@@ -1,16 +1,21 @@
-import { getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { getDateTime } from '@utils/getDateTime.ts';
 
-export const getAllArticles = async () =>
-  (await getCollection('articles', ({ data }) => !data.hideInArticleList))
-    .map((article) => ({
-      ...article,
-      slug: `/articles/${article.slug}`,
-    }))
-    .toSorted((a, b) => getDateTime(b.data.date) - getDateTime(a.data.date));
+const articleMapper = (article: CollectionEntry<'articles'>) => ({
+  ...article,
+  slug: `/articles/${article.slug}`,
+});
 
-export const getLatestArticles = async (num = 5) => (await getAllArticles()).slice(0, num);
+export const getArticleCollection = async () =>
+  (await getCollection('articles', ({ data }) => !data.hideInArticleList)).map(articleMapper);
 
-export type Articles = Awaited<ReturnType<typeof getAllArticles>>;
+export const getArticles = async () =>
+  (await getArticleCollection()).toSorted(
+    (a, b) => getDateTime(b.data.date) - getDateTime(a.data.date)
+  );
 
-export type Article = Articles[0];
+export const getLatestArticles = async (num = 5) => (await getArticles()).slice(0, num);
+
+export type Articles = Awaited<ReturnType<typeof getArticles>>;
+
+export type Article = Articles[number];

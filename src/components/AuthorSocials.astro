@@ -1,11 +1,8 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import { type Author } from '../utils/authors';
 
 interface Props {
-  socials: Pick<
-    CollectionEntry<'authors'>['data'],
-    'github' | 'linkedin' | 'medium' | 'twitter' | 'website'
-  >;
+  socials: Pick<Author['data'], 'github' | 'linkedin' | 'medium' | 'twitter' | 'website'>;
   name: string;
   renderAxis: 'horizontal' | 'vertical';
 }

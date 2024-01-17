@@ -1,7 +1,33 @@
 import jobs from '@data/jobs.json';
 import stringSimilarity from 'string-similarity';
+import { getDateTime } from '@utils/getDateTime.ts';
 
-export interface Jobs {
+export const getJobs = () =>
+  (jobs.jobs as Jobs).toSorted((a, b) => getDateTime(b.published_at) - getDateTime(a.published_at));
+
+export const getLatestJobs = (num = 5) => getJobs().slice(0, num);
+
+export const getRelatedJobs = (num = 5, searchString: string) => {
+  const jobs = getJobs();
+
+  const matchedJobs = jobs.map((job) => {
+    const tagString = job.tags.tag instanceof Array ? job.tags.tag.join(' ') : job.tags.tag || '';
+    const titleAndTags = `${job.title} || ${tagString}`;
+    const score = stringSimilarity.compareTwoStrings(searchString, titleAndTags);
+
+    return {
+      job,
+      score,
+    };
+  });
+
+  return matchedJobs
+    .toSorted((a, b) => b.score - a.score)
+    .map((a) => a.job)
+    .slice(0, num);
+};
+
+export interface Job {
   id: string;
   title: string;
   location: string;
@@ -14,7 +40,9 @@ export interface Jobs {
   category: string;
   experience: string;
   education: string;
-  tags: Tags;
+  tags: {
+    tag: string | string[];
+  };
   min_hours: any;
   max_hours: any;
   careers_url: string;
@@ -24,44 +52,4 @@ export interface Jobs {
   closed: string;
 }
 
-interface Tags {
-  tag: string | string[];
-}
-
-export function getAllJobs() {
-  return jobs as { jobs: Jobs[] };
-}
-
-export function getLatestJobs(num = 5) {
-  const { jobs } = getAllJobs();
-  return {
-    jobs: jobs
-      .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
-      .slice(0, num),
-  };
-}
-
-export function getRelatedJobs(num = 5, searchString: string) {
-  const { jobs } = getAllJobs();
-
-  const jobResults = jobs.map((job) => {
-    const tagString = job.tags.tag instanceof Array ? job.tags.tag.join(' ') : job.tags.tag || '';
-    const titleAndTags = `${job.title} || ${tagString}`;
-
-    const result = stringSimilarity.compareTwoStrings(searchString, titleAndTags);
-
-    return {
-      job,
-      score: result,
-    };
-  });
-
-  const bestMatches = jobResults
-    .sort((a, b) => b.score - a.score)
-    .map((a) => a.job)
-    .slice(0, num);
-
-  return {
-    jobs: bestMatches,
-  };
-}
+export type Jobs = Job[];

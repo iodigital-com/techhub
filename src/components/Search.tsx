@@ -2,9 +2,10 @@ import Fuse from 'fuse.js';
 import { useCallback, useMemo, useState } from 'react';
 import styles from './Search.module.scss';
 import { clsx } from 'clsx';
-import { type CollectionEntry } from 'astro:content';
 import { SearchAuthor } from '@components/SearchAuthor.tsx';
 import { SearchArticle } from '@components/SearchArticle.tsx';
+import type { Article, Articles } from '@utils/articles.ts';
+import type { Authors } from '@utils/authors.ts';
 
 const Search = ({ articles, authors }: SearchProps) => {
   const [query, setQuery] = useState('');
@@ -55,7 +56,7 @@ const Search = ({ articles, authors }: SearchProps) => {
   }, []);
 
   const findArticleAuthors = useCallback(
-    (article: CollectionEntry<'articles'>) =>
+    (article: Article) =>
       article.data.authors.map((authorRef) =>
         authors.find((author) => authorRef.slug === author.slug)
       ),
@@ -128,8 +129,8 @@ const Search = ({ articles, authors }: SearchProps) => {
 };
 
 interface SearchProps {
-  articles: CollectionEntry<'articles'>[];
-  authors: CollectionEntry<'authors'>[];
+  articles: Articles;
+  authors: Authors;
 }
 
 export default Search;

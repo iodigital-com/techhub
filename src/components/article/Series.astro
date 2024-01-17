@@ -1,19 +1,23 @@
 ---
 import { Markdown } from '@astropub/md';
-import type { Serie } from '@types';
+import { type Serie } from '@utils/series';
 
 interface Props {
   series: Serie;
 }
 
 const {
-  series: { serie, articles, title },
+  series: {
+    slug,
+    articles,
+    data: { title },
+  },
 } = Astro.props;
 ---
 
 <div class="rounded-lg bg-slate-50 p-4">
   <h4 class="teaser-title text-md font-medium text-gray-600">
-    <a href={`/series/${serie}`}>
+    <a href={slug}>
       <div class={`text-io_blue-600 hover:text-io_blue-700 dark:hover:text-primary-400 text-sm`}>
         <Markdown of={title} />
       </div>
@@ -24,12 +28,10 @@ const {
     {
       articles.map(({ slug, data: { title } }, index) => (
         <li>
-          <a href={`/articles/${slug}`}>
+          <a href={slug}>
             <div
               class={`text-io_blue-600 hover:text-io_blue-700 dark:hover:text-primary-400 ${
-                Astro.url.pathname === `/articles/${slug}`
-                  ? `bg-io_blue-100 -m-2 rounded-lg p-2`
-                  : ''
+                Astro.url.pathname === slug ? `bg-io_blue-100 -m-2 rounded-lg p-2` : ''
               }`}
             >
               <strong class="font-bold text-sm">Part {index + 1}: </strong>
