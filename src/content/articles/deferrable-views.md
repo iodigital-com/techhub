@@ -4,7 +4,7 @@ date: '2023-11-24'
 images: ['./images/deferrable-views/deferrable-views-cover.webp']
 summary: 'The most exciting feature of Angular 17 might be Deferrable Views. It makes it possible to lazy load specific Angular standalone components or show a placeholder as the component is loading. It seems like this feature should go well with Skeletons. Stay around to find out.'
 authors: ['alexey-ses']
-theme: 'default'
+theme: 'blue'
 ---
 
 ## Deferrable Views
