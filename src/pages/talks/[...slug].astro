@@ -1,16 +1,19 @@
 ---
-import { getCollection, getEntries } from 'astro:content';
-import MarkdownTalkLayout from '../../layouts/TalkLayout.astro';
+import MarkdownTalkLayout from '@layouts/TalkLayout.astro';
+import { getAuthorEntries } from '@utils/authors';
+import { getTalks } from '@utils/talks';
 
 export async function getStaticPaths() {
-  const talks = await getCollection('talks');
+  const talks = await getTalks();
 
   return Promise.all(
     talks.map(async (talk) => {
-      const authors = await getEntries(talk.data.authors);
+      const slug = talk.slug.replace('/talks/', '');
+      // TODO: Fix any
+      const authors = await getAuthorEntries(talk.data.authors as any);
 
       return {
-        params: { slug: talk.slug },
+        params: { slug },
         props: {
           talk,
           authors,
