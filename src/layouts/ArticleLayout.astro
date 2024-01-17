@@ -26,7 +26,7 @@ const theme = article.data.theme;
 ---
 
 <BaseLayout title={article.data.title} description={article.data.summary}>
-  <Header slot="pageHeader" client:load article={article} authors={authors} />
+  <Header slot="pageHeader" article={article} authors={authors} />
   <article class="grid grid-col-5 gap-10 my-10">
     <div class="col-start-1 col-end-2 max-w-96">
       <ul>
