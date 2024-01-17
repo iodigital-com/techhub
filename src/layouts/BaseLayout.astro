@@ -51,6 +51,7 @@ const { title, description, pageNoIndex, pageNoFollow } = Astro.props;
   </head>
   <body>
     <Header />
+    <slot name="pageHeader" />
     <main>
       <slot />
     </main>
