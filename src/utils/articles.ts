@@ -10,3 +10,7 @@ export const getAllArticles = async () =>
     .toSorted((a, b) => getDateTime(b.data.date) - getDateTime(a.data.date));
 
 export const getLatestArticles = async (num = 5) => (await getAllArticles()).slice(0, num);
+
+export type Articles = Awaited<ReturnType<typeof getAllArticles>>;
+
+export type Article = Articles[0];

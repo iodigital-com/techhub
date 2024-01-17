@@ -1,15 +1,15 @@
 ---
 import { Markdown } from '@astropub/md';
+import type { Article } from '@utils/articles';
 import { formatDate } from '@utils/formatDate';
-import { getEntries, type CollectionEntry } from 'astro:content';
+import { getEntries } from 'astro:content';
 import Contributor from './Contributor.astro';
 
 interface Props {
-  article: CollectionEntry<'articles'>;
-  prefixUrl: string;
+  article: Article;
 }
 
-const { article, prefixUrl } = Astro.props;
+const { article } = Astro.props;
 const authors = await getEntries(article.data.authors);
 ---
 

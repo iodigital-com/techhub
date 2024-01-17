@@ -6,13 +6,13 @@ import Jobs from '@components/Jobs.astro';
 import Videos from '@components/Videos.astro';
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLatestArticles } from '@utils/articles';
+import { getAllAuthors } from '@utils/authors';
 import { getLatestEvents } from '@utils/events';
 import { getLatestJobs } from '@utils/jobs';
 import { getLatestVideos } from '@utils/videos';
 import { Icon } from 'astro-icon/components';
 import '../styles/global.css';
-import { getLatestArticles } from '../utils/articles';
-import { getAllAuthors } from '../utils/authors';
 
 const authors = await getAllAuthors();
 const articles = await getLatestArticles(5);
@@ -26,7 +26,7 @@ const events = getLatestEvents(6);
     <h2>Our latest <span>articles</span></h2>
     <ul>
       {
-        articles.slice(0, 5).map((article) => (
+        articles.map((article) => (
           <li>
             <Article article={article} />
           </li>
