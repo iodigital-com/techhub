@@ -13,11 +13,11 @@ const {
   article: { data, render },
   authors,
 } = Astro.props;
-const { title, date, theme, summary, images } = data;
+const { title, date, summary, images } = data;
 const { remarkPluginFrontmatter } = await render();
 ---
 
-<div class={`bg-io_${theme}-500 pb-14 pt-24 white ${images?.length > 0 ? 'mb-72' : 'mb-12'}`}>
+<div class={`headerContainer pb-14 pt-24 white ${images?.length > 0 ? 'mb-72' : 'mb-12'}`}>
   <div class="container mx-auto">
     <h1 class="heading-title text-4xl font-medium xl:text-7xl">
       {title}
@@ -31,7 +31,6 @@ const { remarkPluginFrontmatter } = await render();
       </time>
       <p class="inline pl-2 font-light">
         <Icon name="clock" class="mr-2 inline w-4" />
-        {console.log(remarkPluginFrontmatter.minutesRead)}
         {remarkPluginFrontmatter.minutesRead}
       </p>
     </div>
@@ -50,3 +49,8 @@ const { remarkPluginFrontmatter } = await render();
     }
   </div>
 </div>
+
+<style lang="scss">
+  @import '../../styles/mixins.scss';
+  @include applyTheme('.headerContainer', bg);
+</style>
