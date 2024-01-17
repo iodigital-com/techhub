@@ -106,22 +106,22 @@ const Search = ({ articles, authors }: SearchProps) => {
             className={styles.searchInput}
             placeholder="Search for anything..."
           />
-        </div>
 
-        {focus && !!(foundAuthors?.length || foundArticles?.length) && (
-          <ul className={styles.searchResults}>
-            {foundAuthors?.map((author) => (
-              <li key={author.slug}>
-                <SearchAuthor author={author} />
-              </li>
-            ))}
-            {foundArticles?.map((article) => (
-              <li key={article.slug}>
-                <SearchArticle article={article} authors={findArticleAuthors(article)} />
-              </li>
-            ))}
-          </ul>
-        )}
+          {focus && !!(foundAuthors?.length || foundArticles?.length) && (
+            <ul className={styles.searchResults}>
+              {foundAuthors?.map((author) => (
+                <li key={author.slug}>
+                  <SearchAuthor author={author} />
+                </li>
+              ))}
+              {foundArticles?.map((article) => (
+                <li key={article.slug}>
+                  <SearchArticle article={article} authors={findArticleAuthors(article)} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </>
   );

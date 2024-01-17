@@ -8,7 +8,7 @@ export default {
   trailingComma: 'es5',
   bracketSpacing: true,
   endOfLine: 'lf',
-  plugins: ['prettier-plugin-astro'],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-astro-organize-imports'],
   overrides: [
     {
       files: '*.astro',

@@ -1,12 +1,17 @@
 ---
+import { type Jobs } from '@utils/jobs';
 import { Icon } from 'astro-icon/components';
+
+interface Props {
+  jobs: Jobs[];
+}
 
 const { jobs } = Astro.props;
 ---
 
 <div class="grid gap-4 gap-y-10 xl:grid-cols-5">
   {
-    jobs.map((job: any) => (
+    jobs.map((job) => (
       <a
         href={job.careers_url}
         target="_blank"

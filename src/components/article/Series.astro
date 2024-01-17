@@ -1,4 +1,5 @@
 ---
+import { Markdown } from '@astropub/md';
 import type { Serie } from '@types';
 
 interface Props {
@@ -14,7 +15,7 @@ const {
   <h4 class="teaser-title text-md font-medium text-gray-600">
     <a href={`/series/${serie}`}>
       <div class={`text-io_blue-600 hover:text-io_blue-700 dark:hover:text-primary-400 text-sm`}>
-        {title}
+        <Markdown of={title} />
       </div>
     </a>
   </h4>

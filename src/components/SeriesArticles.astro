@@ -1,0 +1,36 @@
+---
+import { Markdown } from '@astropub/md';
+import { formatDate } from '@utils/formatDate';
+import { getDateTime } from '@utils/getDateTime';
+import { type CollectionEntry } from 'astro:content';
+
+interface Props {
+  articles: CollectionEntry<'articles'>[];
+}
+
+const { articles } = Astro.props;
+const sortedArticles = articles.toSorted(
+  (a, b) => getDateTime(a.data.date) - getDateTime(b.data.date)
+);
+---
+
+<ol class="list-decimal ml-4 divide-y">
+  {
+    sortedArticles.map((article) => (
+      <li class="p-2">
+        <a href={`/articles/${article.slug}`} class="block">
+          <div class="text-2xl  hover:text-io_blue-600">
+            <Markdown of={article.data.title} />
+          </div>
+          <span>
+            {formatDate(article.data.date, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ol>

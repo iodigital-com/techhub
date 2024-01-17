@@ -1,33 +1,30 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 import { Markdown } from '@astropub/md';
 import Author from '@components/article/Author.astro';
 import Header from '@components/article/Header.astro';
-import Series from '@components/article/Series.astro';
-import type { Serie } from '@types';
 import { getRelatedJobs } from '@utils/jobs';
-import { Icon } from 'astro-icon/components';
 import type { CollectionEntry } from 'astro:content';
 import JobGrid from '../components/Jobs.astro';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
-  article: CollectionEntry<'articles'>;
-  nextArticle: CollectionEntry<'articles'>;
-  previousArticle: CollectionEntry<'articles'>;
-  series: Serie;
+  nextSeries: CollectionEntry<'series'>;
+  previousSeries: CollectionEntry<'series'>;
   authors: CollectionEntry<'authors'>[];
+  series: CollectionEntry<'articles'>;
 }
 
-const { article, series, authors, nextArticle, previousArticle } = Astro.props;
+const { series, authors, nextSeries, previousSeries } = Astro.props;
 const searchString = authors.map(({ data }) => data.occupation).join(' ');
 const { jobs } = getRelatedJobs(4, searchString);
-const hasSerie = series?.articles?.length > 0;
 ---
 
-<BaseLayout title={article.data.title} description={article.data.summary}>
-  <Header article={article} authors={authors} />
-  <article class="grid grid-col-5 gap-10 my-10">
-    <div class="col-start-1 col-end-2 max-w-96">
+<BaseLayout title={series.data.title} description={series.data.summary}>
+  <Header article={series} authors={authors} />
+  <article class="grid grid-cols-3 gap-4">
+    <div>
       <ul>
         {
           authors.map((author) => (
@@ -41,39 +38,28 @@ const hasSerie = series?.articles?.length > 0;
       </ul>
 
       {
-        hasSerie && (
-          <div class="py-4 xl:py-8">
-            <h2 class="mb-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              Part of series
-            </h2>
-            <Series series={series} />
-          </div>
-        )
-      }
-
-      {
-        (previousArticle || nextArticle) && (
+        (previousSeries || nextSeries) && (
           <div class="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-            {previousArticle && (
+            {previousSeries && (
               <div>
                 <h2 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                  Previous Article
+                  Previous Series
                 </h2>
                 <div>
-                  <a href={`/articles/${previousArticle.slug}`}>
-                    <Markdown of={previousArticle.data.title} />
+                  <a href={`/series/${previousSeries.slug}`}>
+                    <Markdown of={previousSeries.data.title} />
                   </a>
                 </div>
               </div>
             )}
-            {nextArticle && (
+            {nextSeries && (
               <div>
                 <h2 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                  Next Article
+                  Next Series
                 </h2>
                 <div>
-                  <a href={`/articles/${nextArticle.slug}`}>
-                    <Markdown of={nextArticle.data.title} />
+                  <a href={`/series/${nextSeries.slug}`}>
+                    <Markdown of={nextSeries.data.title} />
                   </a>
                 </div>
               </div>
@@ -84,16 +70,16 @@ const hasSerie = series?.articles?.length > 0;
 
       <div class="pt-4 xl:pt-8">
         <a
-          href="/articles"
+          href="/series"
           class={`relative inline-flex rounded-full border border-black py-4 px-9 text-base font-bold leading-none transition-colors delay-100 hover:bg-black hover:text-white`}
         >
           <Icon name="arrow" class="mr-4 w-6 rotate-180" />
-          Back to all articles
+          Back to all series
         </a>
       </div>
     </div>
 
-    <div class="col-start-2 col-end-5 row-start-1 prose">
+    <div class="col-span-2">
       <slot />
     </div>
   </article>

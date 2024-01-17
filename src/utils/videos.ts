@@ -1,7 +1,8 @@
 import videos from '@data/youtube.json';
 import stringSimilarity from 'string-similarity';
+import { getDateTime } from '@utils/getDateTime.ts';
 
-interface Videos {
+export interface Videos {
   publishedAt: string;
   channelId: string;
   title: string;
@@ -33,7 +34,7 @@ export function getLatestVideos(num = 5) {
   const { videos } = getAllVideos();
   return {
     videos: videos
-      .toSorted((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+      .toSorted((a, b) => getDateTime(b.publishedAt) - getDateTime(a.publishedAt))
       .slice(0, num),
   };
 }
