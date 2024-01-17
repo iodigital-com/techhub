@@ -1,0 +1,11 @@
+$themes: green, beige, blue, pink;
+
+@mixin applyTheme($selector, $property: 'bg') {
+  body {
+    @each $theme in $themes {
+      &.#{$theme} #{$selector} {
+        @apply #{$property}-io_#{$theme}-500;
+      }
+    }
+  }
+}
