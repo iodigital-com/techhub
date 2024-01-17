@@ -1,10 +1,22 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import siteMetadata from '@data/siteMetadata';
-import { getAllVideos } from '@utils/videos';
 import VideoCard from '@components/VideoCard.astro';
+import siteMetadata from '@constants/siteMetadata';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getAllVideos } from '@utils/videos';
+import type { Page } from 'astro';
+import { type GetStaticPathsOptions } from 'astro';
+import Pagination from '../../components/Pagination.astro';
 
-const { videos } = getAllVideos();
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const { videos } = getAllVideos();
+  return paginate(videos, { pageSize: 15 });
+}
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
 ---
 
 <BaseLayout title={`Videos - ${siteMetadata.author}`} description={siteMetadata.description}>
@@ -32,16 +44,15 @@ const { videos } = getAllVideos();
   </section>
 
   <div class="container mx-auto">
-    <div class="container py-12">
-      <div class="-m-4 flex flex-wrap">
-        {
-          videos.map((vid) => (
-            <div class="md p-4 md:w-1/3">
-              <VideoCard video={vid} />
-            </div>
-          ))
-        }
-      </div>
+    <div class="-m-4 flex flex-wrap mb-4">
+      {
+        page.data.map((video) => (
+          <div class="md p-4 md:w-1/3">
+            <VideoCard video={video} />
+          </div>
+        ))
+      }
     </div>
+    <Pagination page={page} />
   </div>
 </BaseLayout>

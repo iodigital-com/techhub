@@ -1,7 +1,8 @@
 ---
-import MarkdownArticleLayout from '../../layouts/ArticleLayout.astro';
+import ArticleLayout from '@layouts/ArticleLayout.astro';
+import { type Serie } from '@types';
 import { getSeries } from '@utils/content-collections.util';
-import { getCollection, getEntries } from 'astro:content';
+import { getCollection, getEntries, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -10,8 +11,8 @@ export async function getStaticPaths() {
     articles.map(async (article, index) => {
       const series = await getSeries(articles, article);
       const authors = await getEntries(article.data.authors);
-      const prevArticle = articles[index + 1] || null;
-      const nextArticle = articles[index - 1] || null;
+      const previousArticle = articles[index - 1] || null;
+      const nextArticle = articles[index + 1] || null;
 
       return {
         params: { slug: article.slug },
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
           article,
           authors,
           series,
-          prevArticle,
+          previousArticle,
           nextArticle,
         },
       };
@@ -28,23 +29,23 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  series: any;
-  prevArticle: any;
-  nextArticle: any;
-  authors: any;
-  article: any;
+  series: Serie;
+  previousArticle: CollectionEntry<'articles'>;
+  nextArticle: CollectionEntry<'articles'>;
+  authors: CollectionEntry<'authors'>[];
+  article: CollectionEntry<'articles'>;
 }
 
-const { article, series, authors, nextArticle, prevArticle } = Astro.props;
+const { article, series, authors, nextArticle, previousArticle } = Astro.props;
 const { Content } = await article.render();
 ---
 
-<MarkdownArticleLayout
+<ArticleLayout
   nextArticle={nextArticle}
-  prevArticle={prevArticle}
+  previousArticle={previousArticle}
   article={article}
   series={series}
   authors={authors}
 >
   <Content />
-</MarkdownArticleLayout>
+</ArticleLayout>

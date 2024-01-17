@@ -65,7 +65,7 @@ You can make use safe DOM APIs to inject and parse the content. For instance, yo
 ```jsx
 const commentParagraph = document.createElement('p');
 
-commentParagraph.textContent = comment.content;
+commentParagraph.textContent = comment.entry;
 
 document.getElementById('comments').appendChild(commentParagraph);
 ```

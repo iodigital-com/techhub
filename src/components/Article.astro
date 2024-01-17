@@ -1,29 +1,45 @@
 ---
+import { Markdown } from '@astropub/md';
+import { formatDate } from '@utils/formatDate';
 import { getEntries, type CollectionEntry } from 'astro:content';
-import ArticleContributors from './ArticleContributors.astro';
+import Contributor from './Contributor.astro';
 
 interface Props {
   article: CollectionEntry<'articles'>;
+  prefixUrl: string;
 }
 
-const { article } = Astro.props;
+const { article, prefixUrl } = Astro.props;
 const authors = await getEntries(article.data.authors);
-const url = '/articles/' + article.slug + '/';
 ---
 
 <div class="grid grid-cols-12 my-10 bg-slate-200 p-5 rounded-lg">
   <header>
-    <ArticleContributors contributors={authors} />
+    <div class="flex gap-3">
+      {authors.map((contributor) => <Contributor contributor={contributor} />)}
+    </div>
   </header>
   <article class="col-start-7 col-span-full flex gap-5 flex-col">
     <h1 class="text-xl">
-      <a href={url}>{article.data.title}</a>
-      {article.data.serie && <span class="text-sm text-slate-500"> SERIES</span>}
+      <a href={article.slug}>
+        <Markdown of={article.data.title} />
+      </a>
+      {article.data.serie && <span class="text-sm text-slate-500">SERIES</span>}
     </h1>
 
     <p class="text-base">{article.data.summary}</p>
 
-    <a href={url} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+    <div>
+      {
+        formatDate(article.data.date, {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })
+      }
+    </div>
+
+    <a href={article.slug} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
       Read more
     </a>
   </article>

@@ -1,7 +1,7 @@
 import jobs from '@data/jobs.json';
 import stringSimilarity from 'string-similarity';
 
-interface Jobs {
+export interface Jobs {
   id: string;
   title: string;
   location: string;

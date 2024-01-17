@@ -6,6 +6,7 @@ images:
 summary: 'An exploration of Kotlin and coroutines to have a Spring reactive application written in direct style'
 authors: ['leo-schneider', 'mehmet-akif-tutuncu']
 theme: 'blue'
+serie: 'reactive-backend-applications-with-spring-boot-kotlin-and-coroutines'
 ---
 
 ## Introduction

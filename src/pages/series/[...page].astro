@@ -3,11 +3,12 @@ import Article from '@components/Article.astro';
 import Pagination from '@components/Pagination.astro';
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { getAllSeries } from '@utils/series';
 import type { GetStaticPathsOptions, Page } from 'astro';
-import { getAllArticles } from '../../utils/articles';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  return paginate(await getAllArticles(), { pageSize: 10 });
+  const series = await getAllSeries();
+  return paginate(series, { pageSize: 10 });
 }
 
 interface Props {
@@ -17,7 +18,7 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<BaseLayout title={`Articles - ${siteMetadata.author}`} description={siteMetadata.description}>
+<BaseLayout title={`Series - ${siteMetadata.author}`} description={siteMetadata.description}>
   <ul>
     {
       page.data.map((article) => (

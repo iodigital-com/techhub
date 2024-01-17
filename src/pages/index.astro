@@ -1,21 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Jobs from '@components/Jobs.astro';
-import Events from '@components/Events.astro';
-import Videos from '@components/Videos.astro';
-import { getLatestJobs } from '@utils/jobs';
-import '../styles/global.css';
-import { getLatestEvents } from '@utils/events';
-import { getLatestVideos } from '@utils/videos';
-import Contributors from '@components/Contributors.astro';
-import siteMetadata from '@data/siteMetadata';
-import { shuffle } from '@utils/shuffle';
 import Article from '@components/Article.astro';
+import Contributors from '@components/Contributors.astro';
+import Events from '@components/Events.astro';
+import Jobs from '@components/Jobs.astro';
+import Videos from '@components/Videos.astro';
+import siteMetadata from '@constants/siteMetadata';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLatestEvents } from '@utils/events';
+import { getLatestJobs } from '@utils/jobs';
+import { getLatestVideos } from '@utils/videos';
 import { Icon } from 'astro-icon/components';
+import '../styles/global.css';
+import { getLatestArticles } from '../utils/articles';
+import { getAllAuthors } from '../utils/authors';
 
-const authors = await getCollection('authors');
-const articles = await getCollection('articles', ({ data }) => !data.hideInArticleList);
+const authors = await getAllAuthors();
+const articles = await getLatestArticles(5);
 const { jobs } = getLatestJobs(9);
 const { videos } = getLatestVideos(10);
 const events = getLatestEvents(6);
@@ -44,7 +44,7 @@ const events = getLatestEvents(6);
 
   <section>
     <h2>Our amazing <span>writers</span> & <span>speakers</span></h2>
-    <Contributors contributors={shuffle(authors)} />
+    <Contributors contributors={authors} />
   </section>
 
   <section>
