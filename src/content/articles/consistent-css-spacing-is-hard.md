@@ -4,7 +4,7 @@ date: '2023-08-15'
 images: ['./images/consistent-css-spacing-is-hard/whack-a-mole.jpg']
 summary: 'Two simple guidelines is all it takes to prevent rampant spacing issues from turning your expertly crafted project into an endless game of whack-a-mole.'
 authors: ['niels-matthijs']
-theme: 'rouge'
+theme: 'blue'
 ---
 
 I've been around for a while, and it has been rewarding to witness CSS develop into a powerful styling tool. Many of the complexities we used to face

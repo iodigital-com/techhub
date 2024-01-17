@@ -8,6 +8,12 @@ import { type Config } from 'tailwindcss';
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  safelist: [
+    {
+      pattern: /(bg|text)-io_(green|beige|blue|pink)-(50|100|200|300|400|500|600|700|800|900)/,
+      variants: ['lg', 'hover', 'focus', 'lg:hover'],
+    },
+  ],
   darkMode: 'class',
   theme: {
     container: {
