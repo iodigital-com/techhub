@@ -1,11 +1,11 @@
 ---
-import logo from '@lottie/logo.json';
-import { Player } from '@lottiefiles/react-lottie-player';
-import styles from './Logo.module.css';
+import Lottie from 'astro-integration-lottie/Lottie.astro';
 ---
 
 <a href="/">
-  <Player client:load autoplay src={logo} className={styles.logo} />
+  <div class="logo">
+    <Lottie src="/src/lottie/logo.json" autoplay={true} />
+  </div>
   <div class="logoText">tech_hub</div>
 </a>
 
@@ -16,5 +16,13 @@ import styles from './Logo.module.css';
 
   .logoText {
     @apply hidden h-6 items-center text-xl font-light sm:flex xl:text-2xl;
+  }
+
+  .logo {
+    @apply w-[5.3rem];
+
+    :global(path) {
+      @apply fill-black;
+    }
   }
 </style>

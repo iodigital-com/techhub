@@ -9,6 +9,7 @@ import icon from 'astro-icon';
 import { remarkReadingTime } from './src/utils/remark-reading-time';
 import remarkToc from 'remark-toc';
 import pagefind from 'astro-pagefind';
+import lottie from 'astro-integration-lottie';
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,6 +29,7 @@ export default defineConfig({
     }),
     icon(),
     pagefind(),
+    lottie(),
   ],
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkToc],
