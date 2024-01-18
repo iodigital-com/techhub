@@ -5,6 +5,7 @@ images:
   ['../images/reactive-backend-applications-with-spring-boot-kotlin-and-coroutines/cascade.jpg']
 summary: 'An exploration of Kotlin and coroutines to have a Spring reactive application written in direct style'
 authors: ['leo-schneider', 'mehmet-akif-tutuncu']
+tags: ['Backend']
 theme: 'blue'
 series: 'reactive-backend-applications-with-spring-boot-kotlin-and-coroutines'
 ---

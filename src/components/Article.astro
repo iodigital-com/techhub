@@ -4,12 +4,14 @@ import type { Article } from '@utils/articles';
 import { getAuthorEntries } from '@utils/authors';
 import { formatDate } from '@utils/formatDate';
 import Contributor from './Contributor.astro';
+import Tag from './Tag.astro';
 
 interface Props {
   article: Article;
 }
 
 const { article } = Astro.props;
+const hasTags = !!article.data?.tags?.length;
 const authors = await getAuthorEntries(article.data.authors);
 ---
 
@@ -37,6 +39,9 @@ const authors = await getAuthorEntries(article.data.authors);
           day: 'numeric',
         })
       }
+    </div>
+    <div class="mb-6 flex flex-wrap gap-3">
+      {hasTags && article.data.tags?.map((tag) => <Tag text={tag} />)}
     </div>
 
     <a href={article.slug} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
