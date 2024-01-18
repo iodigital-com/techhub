@@ -1,8 +1,8 @@
 ---
 import AuthorLayout from '@layouts/AuthorLayout.astro';
-import { getArticles } from '@utils/articles';
-import { getAuthorCollection } from '@utils/authors';
-import { getTalks } from '@utils/talks';
+import { getArticles, type Articles } from '@utils/articles';
+import { getAuthorCollection, type Author } from '@utils/authors';
+import { getTalks, type Talks } from '@utils/talks';
 
 export async function getStaticPaths() {
   const authors = await getAuthorCollection();
@@ -33,6 +33,12 @@ export async function getStaticPaths() {
       };
     })
   );
+}
+
+interface Props {
+  author: Author;
+  articles: Articles;
+  talks: Talks;
 }
 
 const { author, articles, talks } = Astro.props;

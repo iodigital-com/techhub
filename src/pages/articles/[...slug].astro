@@ -15,8 +15,7 @@ export async function getStaticPaths() {
         (serie) => article.data.series === serie.slug.replace('/series/', '')
       );
 
-      // TODO: Fix types
-      const authors = await getAuthorEntries(article.data.authors as any);
+      const authors = await getAuthorEntries(article.data.authors);
       const previousArticle = articles[index + 1] || null;
       const nextArticle = articles[index - 1] || null;
 

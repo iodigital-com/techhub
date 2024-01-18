@@ -1,7 +1,7 @@
 ---
-import MarkdownTalkLayout from '@layouts/TalkLayout.astro';
-import { getAuthorEntries } from '@utils/authors';
-import { getTalks } from '@utils/talks';
+import TalkLayout from '@layouts/TalkLayout.astro';
+import { getAuthorEntries, type Authors } from '@utils/authors';
+import { getTalks, type Talk } from '@utils/talks';
 
 export async function getStaticPaths() {
   const talks = await getTalks();
@@ -9,8 +9,7 @@ export async function getStaticPaths() {
   return Promise.all(
     talks.map(async (talk) => {
       const slug = talk.slug.replace('/talks/', '');
-      // TODO: Fix any
-      const authors = await getAuthorEntries(talk.data.authors as any);
+      const authors = await getAuthorEntries(talk.data.authors);
 
       return {
         params: { slug },
@@ -23,10 +22,15 @@ export async function getStaticPaths() {
   );
 }
 
+interface Props {
+  talk: Talk;
+  authors: Authors;
+}
+
 const { talk, authors } = Astro.props;
 const { Content } = await talk.render();
 ---
 
-<MarkdownTalkLayout talk={talk} authors={authors}>
+<TalkLayout talk={talk} authors={authors}>
   <Content />
-</MarkdownTalkLayout>
+</TalkLayout>

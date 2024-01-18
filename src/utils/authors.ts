@@ -10,8 +10,9 @@ export const getAuthorCollection = async () => (await getCollection('authors')).
 
 export const getAuthors = async () => shuffle(await getAuthorCollection());
 
-export const getAuthorEntries = async (authors: CollectionEntry<'authors'>[]) =>
-  (await getEntries(authors)).map(authorMapper);
+// TODO: Check if the as can be avoided
+export const getAuthorEntries = async <T>(authors: T) =>
+  (await getEntries(authors as CollectionEntry<'authors'>[])).map(authorMapper);
 
 export type Authors = Awaited<ReturnType<typeof getAuthors>>;
 

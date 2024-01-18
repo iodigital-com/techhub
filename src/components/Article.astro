@@ -10,8 +10,7 @@ interface Props {
 }
 
 const { article } = Astro.props;
-// TODO: fix any
-const authors = await getAuthorEntries(article.data.authors as any);
+const authors = await getAuthorEntries(article.data.authors);
 ---
 
 <div class="grid grid-cols-12 my-10 bg-slate-200 p-5 rounded-lg">
