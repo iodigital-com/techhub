@@ -1,14 +1,14 @@
 ---
-import notFound from '@lottie/404.json';
-import { Player } from '@lottiefiles/react-lottie-player';
-import style from './NotFound.module.css';
+import Lottie from 'astro-integration-lottie/Lottie.astro';
 ---
 
-<div class={style.container}>
-  <Player client:load autoplay loop src={notFound} className={style.logo} />
-  <div class={style.content}>
-    <h1 class={style.title}>Oi, looks like we lost this page.</h1>
-    <p class={style.links}>
+<div class="container">
+  <div class="page404">
+    <Lottie src="/src/lottie/404.json" autoplay={true} />
+  </div>
+  <div class="content">
+    <h1 class="title">Oi, looks like we lost this page.</h1>
+    <p class="links">
       Take a small detour, go back to
       <a href="/" class="text-gray-400 hover:text-gray-500">homepage</a>,
       <a href="/articles" class="text-gray-400 hover:text-gray-500">articles</a>
@@ -17,3 +17,25 @@ import style from './NotFound.module.css';
     </p>
   </div>
 </div>
+
+<style>
+  .container {
+    @apply flex items-center space-x-3;
+  }
+
+  .page404 {
+    @apply w-[40rem];
+  }
+
+  .content {
+    @apply p-4 text-center;
+  }
+
+  .title {
+    @apply text-4xl xl:text-5xl;
+  }
+
+  .links {
+    @apply mt-4 text-lg xl:text-2xl;
+  }
+</style>
