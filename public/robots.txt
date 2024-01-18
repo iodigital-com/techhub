@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://techhub.iodigital.com/sitemap-index.xml
