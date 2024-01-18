@@ -1,5 +1,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { getDateTime } from '@utils/getDateTime.ts';
+import type { Tags } from '@constants/constants';
 
 const articleMapper = (article: CollectionEntry<'articles'>) => ({
   ...article,
@@ -13,6 +14,10 @@ export const getArticles = async () =>
   (await getArticleCollection()).toSorted(
     (a, b) => getDateTime(b.data.date) - getDateTime(a.data.date)
   );
+
+export const getArticlesByTag = async (tag: Tags) =>
+  (await getArticles()).filter(article => article.data.tags?.includes(tag));
+
 
 export const getLatestArticles = async (num = 5) => (await getArticles()).slice(0, num);
 
