@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<a href={`/tags/${text}`} class="tagContainer">
+  {text.split(' ').join('-')}
+</a>
+
+<style>
+  .tagContainer {
+    @apply bg-io_blue-600 px-1 text-sm font-medium uppercase text-white hover:bg-white hover:text-io_blue-600;
+  }
+</style>
