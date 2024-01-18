@@ -1,4 +1,4 @@
-import { ALLOWED_THEMES } from '@constants/constants.ts';
+import { ALLOWED_TAGS, ALLOWED_THEMES } from '@constants/constants.ts';
 import { defineCollection, reference, z } from 'astro:content';
 
 const articlesCollection = defineCollection({
@@ -11,6 +11,7 @@ const articlesCollection = defineCollection({
       summary: z.string(),
       authors: z.array(reference('authors')),
       theme: z.enum(ALLOWED_THEMES).optional(),
+      tags: z.array(z.enum(ALLOWED_TAGS)).optional(),
       series: z.string().optional(),
       canonicalUrl: z.string().optional(),
       hideInArticleList: z.boolean().optional(),

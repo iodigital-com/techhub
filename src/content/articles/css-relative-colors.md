@@ -5,6 +5,7 @@ images: ['./images/css-relative-colors/color-spectrum.webp']
 summary: 'Before the relative color syntax you had to rely on CSS variables or even worse: JavaScript to modify the parameters of a color. Using the from keyword the browser can convert the originating color to different color spaces and change the color properties.'
 authors: ['lucien-immink']
 theme: 'blue'
+tags: ['Frontend']
 ---
 
 For a lot of websites and applications, there is a need for an accent color. This accent color is used on links and buttons for example and when
