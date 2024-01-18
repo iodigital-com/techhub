@@ -8,8 +8,7 @@ interface Props {
 }
 
 const { talk } = Astro.props;
-// TODO: Correct type
-const authors = await getAuthorEntries(talk.data.authors as any);
+const authors = await getAuthorEntries(talk.data.authors);
 ---
 
 <article class="flex flex-col h-full border-b-slate-200 border-b-2 pb-5">

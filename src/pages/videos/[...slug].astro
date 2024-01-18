@@ -2,8 +2,7 @@
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { formatDate } from '@utils/formatDate';
-import { type InferGetStaticPropsType } from 'astro';
-import { getVideos } from '../../utils/videos';
+import { getVideos, type Video } from '@utils/videos';
 
 export function getStaticPaths() {
   const videos = getVideos();
@@ -15,10 +14,11 @@ export function getStaticPaths() {
   }));
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+type Props = {
+  video: Video;
+};
 
 const { video } = Astro.props as Props;
-const descriptionArray = video.description.split('-');
 ---
 
 <BaseLayout title={`${video.title} - ${siteMetadata.author}`} description={video.description}>
@@ -29,13 +29,19 @@ const descriptionArray = video.description.split('-');
         <p class="inline text-xl font-light">
           Published on
           <time class="inline font-light" datetime={video.publishedAt}>
-            {formatDate(video.publishedAt, { year: 'numeric', month: 'long', day: 'numeric' })}
+            {
+              formatDate(video.publishedAt, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            }
           </time>
         </p>
       </div>
       <div class="grid grid-cols-4">
         <div class="col-span-full col-start-1 text-2xl md:col-start-2 xl:col-start-3">
-          {descriptionArray.map((description) => <p>{description}</p>)}
+          {video.description.split('-').map((description) => <p>{description}</p>)}
         </div>
       </div>
 

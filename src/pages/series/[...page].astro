@@ -3,6 +3,7 @@ import Article from '@components/Article.astro';
 import Pagination from '@components/Pagination.astro';
 import siteMetadata from '@constants/siteMetadata';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { type Article as ArticleType } from '@utils/articles';
 import { getSeries } from '@utils/series';
 import type { GetStaticPathsOptions, Page } from 'astro';
 
@@ -12,7 +13,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 
 interface Props {
-  page: Page;
+  page: Page<ArticleType>;
 }
 
 const { page } = Astro.props;
