@@ -1,0 +1,19 @@
+---
+import PageFind from 'astro-pagefind/components/Search';
+---
+
+<PageFind uiOptions={{ showImages: false }} />
+
+<style is:global>
+  .pagefind-ui {
+    @apply relative;
+
+    .pagefind-ui__drawer {
+      @apply absolute bg-white p-2 shadow w-screen max-w-[50vw] border border-solid border-gray-100 right-0;
+    }
+
+    .pagefind-ui__results {
+      @apply overflow-auto max-h-[60vh];
+    }
+  }
+</style>
