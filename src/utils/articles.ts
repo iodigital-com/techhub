@@ -16,8 +16,7 @@ export const getArticles = async () =>
   );
 
 export const getArticlesByTag = async (tag: Tags) =>
-  (await getArticles()).filter(article => article.data.tags?.includes(tag));
-
+  (await getArticles()).filter((article) => article.data.tags?.includes(tag));
 
 export const getLatestArticles = async (num = 5) => (await getArticles()).slice(0, num);
 
