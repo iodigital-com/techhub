@@ -11,6 +11,7 @@ import remarkToc from 'remark-toc';
 import pagefind from 'astro-pagefind';
 import lottie from 'astro-integration-lottie';
 import robotsTxt from 'astro-robots-txt';
+import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,6 +33,9 @@ export default defineConfig({
     pagefind(),
     lottie(),
     robotsTxt(),
+    compress({
+      Image: false,
+    }),
   ],
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkToc],
