@@ -2,6 +2,7 @@
 title: 'Let’s explore Astro’s core features'
 date: '2022-12-12'
 images: ['./images/lets-explore-astros-core-features/hero.png']
+tags: ['Frontend']
 summary: "When it comes to creating websites, performance is crucial, but how do you achieve a performant website? This is why Astro was created; let's look at how it works and why it's so effective."
 authors: ['zjerilon-ferero']
 theme: 'beige'
