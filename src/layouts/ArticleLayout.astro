@@ -2,6 +2,7 @@
 import { Markdown } from '@astropub/md';
 import JobGrid from '@components/Jobs.astro';
 import ScrollTopButton from '@components/ScrollTopButton.astro';
+import Tag from '@components/Tag.astro';
 import Author from '@components/article/Author.astro';
 import Header from '@components/article/Header.astro';
 import Series from '@components/article/Series.astro';
@@ -23,8 +24,9 @@ interface Props {
 const { article, series, authors, nextArticle, previousArticle } = Astro.props;
 const searchString = authors.map(({ data }) => data.occupation).join(' ');
 const jobs = getRelatedJobs(4, searchString);
-const hasSeries = series?.articles?.length > 0;
+const hasSeries = series?.articles.length > 0;
 const theme = article.data.theme;
+const hasTags = !!article.data?.tags;
 ---
 
 <BaseLayout title={article.data.title} description={article.data.summary}>
@@ -43,6 +45,19 @@ const theme = article.data.theme;
           ))
         }
       </ul>
+
+      {
+        hasTags && (
+          <div class="py-4 xl:py-8">
+            <h2 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Tags</h2>
+            <div class="mt-2 flex flex-wrap gap-3">
+              {article.data.tags?.map((tag) => (
+                <Tag text={tag} />
+              ))}
+            </div>
+          </div>
+        )
+      }
 
       {
         hasSeries && (
