@@ -1,0 +1,36 @@
+---
+import Article from '@components/Article.astro';
+import { ALLOWED_TAGS } from '@constants/constants';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getArticlesByTag, type Articles } from '@utils/articles';
+
+export async function getStaticPaths() {
+  return Promise.all(
+    ALLOWED_TAGS.map(async (tag) => {
+      const articles = await getArticlesByTag(tag);
+      return {
+        params: { tag },
+        props: { articles },
+      };
+    })
+  );
+}
+
+interface Props {
+  articles: Articles;
+}
+
+const { articles } = Astro.props;
+---
+
+<BaseLayout>
+  <ul>
+    {
+      articles.map((article) => (
+        <li>
+          <Article article={article} />
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>>
